@@ -6,7 +6,7 @@
             </div>
 
             <div class="profile-info">
-                {{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }}
+                {{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }} ({{ Session::get('contact')->portal_name }})
 
                 <i class="zmdi zmdi-caret-down"></i>
             </div>
@@ -29,32 +29,21 @@
         <li class="@if (Request::is('home/*')) active @endif">
             <a href="{{ URL::to('/') }}"><i class="zmdi zmdi-home"></i> {{ trans('app.dashboard') }}</a>
         </li>
-        <li class="@if (Request::is('project/*')) active @endif">
-            <a href="{{ URL::to('/project/index') }}"><i class="zmdi zmdi-home"></i> {{ trans('app.projects') }}</a>
+        <li class="@if (Request::is('sms/*')) active @endif">
+            <a href="{{ URL::to('/sms/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.sms') }}</a>
         </li>
-        <li class="@if (Request::is('contract/*')) active @endif">
-            <a href="{{ URL::to('/contract/index') }}"><i class="zmdi zmdi-home"></i> {{ trans('app.contracts') }}</a>
+        <li class="@if (Request::is('schedule/*')) active @endif">
+            <a href="{{ URL::to('/schedule/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.schedule') }}</a>
         </li>
-        <li class="@if (Request::is('billing/*')) active @endif">
-            <a href="{{ URL::to('/billing/index') }}"><i class="zmdi zmdi-home"></i> {{ trans('app.billings') }}</a>
+		<li class="@if (Request::is('enrollment/*')) active @endif">
+            <a href="{{ URL::to('/enrollment/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.enrollment') }}</a>
         </li>
-		<li class="@if (Request::is('student/*')) active @endif">
-            <a href="{{ URL::to('/student/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.students') }}</a>
-        </li>
-        <li class="sub-menu @if (Request::is('complaint/*')) active @endif">
-            <a href="#"><i class="zmdi zmdi-view-compact"></i> {{ trans('app.complaints') }}</a>
+        <li class="sub-menu @if (Request::is('feedback/*')) active @endif">
+            <a href="#"><i class="zmdi zmdi-view-compact"></i> {{ trans('app.feedback') }}</a>
 
             <ul>
-                <li><a href="{{ URL::to('/complaint/index') }}">{{ trans('app.complaint_list') }}</a></li>
-                <li><a href="{{ URL::to('/complaint/add') }}">{{ trans('app.send_complaint') }}</a></li>
-            </ul>
-        </li>
-        <li class="sub-menu @if (Request::is('ticket/*')) active @endif">
-            <a href="#"><i class="zmdi zmdi-view-compact"></i> {{ trans('app.tickets') }}</a>
-
-            <ul>
-                <li><a href="{{ URL::to('/ticket/index') }}">{{ trans('app.ticket_list') }}</a></li>
-                <li><a href="{{ URL::to('/ticket/add') }}">{{ trans('app.send_ticket') }}</a></li>
+                <li><a href="{{ URL::to('/feedback/add') }}">{{ trans('app.send_feedback') }}</a></li>
+                <li><a href="{{ URL::to('/feedback/index') }}">{{ trans('app.history_feedback') }}</a></li>
             </ul>
         </li>
     </ul>

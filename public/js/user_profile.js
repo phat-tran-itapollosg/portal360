@@ -7,9 +7,6 @@ $(function(){
         'last_name': {
             required: true,
         },
-        'mobile_phone': {
-            required: true,
-        },
         'email': {
             required: true,
             email: true,

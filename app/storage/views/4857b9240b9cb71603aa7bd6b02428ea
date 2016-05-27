@@ -6,7 +6,7 @@
             </div>
 
             <div class="profile-info">
-                <?php echo Session::get('contact')->last_name; ?> <?php echo Session::get('contact')->first_name; ?>
+                <?php echo Session::get('contact')->last_name; ?> <?php echo Session::get('contact')->first_name; ?> (<?php echo Session::get('contact')->portal_name; ?>)
 
                 <i class="zmdi zmdi-caret-down"></i>
             </div>
@@ -29,32 +29,21 @@
         <li class="<?php if (Request::is('home/*')): ?> active <?php endif; ?>">
             <a href="<?php echo URL::to('/'); ?>"><i class="zmdi zmdi-home"></i> <?php echo trans('app.dashboard'); ?></a>
         </li>
-        <li class="<?php if (Request::is('project/*')): ?> active <?php endif; ?>">
-            <a href="<?php echo URL::to('/project/index'); ?>"><i class="zmdi zmdi-home"></i> <?php echo trans('app.projects'); ?></a>
+        <li class="<?php if (Request::is('sms/*')): ?> active <?php endif; ?>">
+            <a href="<?php echo URL::to('/sms/index'); ?>"><i class="zmdi zmdi-face"></i> <?php echo trans('app.sms'); ?></a>
         </li>
-        <li class="<?php if (Request::is('contract/*')): ?> active <?php endif; ?>">
-            <a href="<?php echo URL::to('/contract/index'); ?>"><i class="zmdi zmdi-home"></i> <?php echo trans('app.contracts'); ?></a>
+        <li class="<?php if (Request::is('schedule/*')): ?> active <?php endif; ?>">
+            <a href="<?php echo URL::to('/schedule/index'); ?>"><i class="zmdi zmdi-face"></i> <?php echo trans('app.schedule'); ?></a>
         </li>
-        <li class="<?php if (Request::is('billing/*')): ?> active <?php endif; ?>">
-            <a href="<?php echo URL::to('/billing/index'); ?>"><i class="zmdi zmdi-home"></i> <?php echo trans('app.billings'); ?></a>
+		<li class="<?php if (Request::is('enrollment/*')): ?> active <?php endif; ?>">
+            <a href="<?php echo URL::to('/enrollment/index'); ?>"><i class="zmdi zmdi-face"></i> <?php echo trans('app.enrollment'); ?></a>
         </li>
-		<li class="<?php if (Request::is('student/*')): ?> active <?php endif; ?>">
-            <a href="<?php echo URL::to('/student/index'); ?>"><i class="zmdi zmdi-face"></i> <?php echo trans('app.students'); ?></a>
-        </li>
-        <li class="sub-menu <?php if (Request::is('complaint/*')): ?> active <?php endif; ?>">
-            <a href="#"><i class="zmdi zmdi-view-compact"></i> <?php echo trans('app.complaints'); ?></a>
+        <li class="sub-menu <?php if (Request::is('feedback/*')): ?> active <?php endif; ?>">
+            <a href="#"><i class="zmdi zmdi-view-compact"></i> <?php echo trans('app.feedback'); ?></a>
 
             <ul>
-                <li><a href="<?php echo URL::to('/complaint/index'); ?>"><?php echo trans('app.complaint_list'); ?></a></li>
-                <li><a href="<?php echo URL::to('/complaint/add'); ?>"><?php echo trans('app.send_complaint'); ?></a></li>
-            </ul>
-        </li>
-        <li class="sub-menu <?php if (Request::is('ticket/*')): ?> active <?php endif; ?>">
-            <a href="#"><i class="zmdi zmdi-view-compact"></i> <?php echo trans('app.tickets'); ?></a>
-
-            <ul>
-                <li><a href="<?php echo URL::to('/ticket/index'); ?>"><?php echo trans('app.ticket_list'); ?></a></li>
-                <li><a href="<?php echo URL::to('/ticket/add'); ?>"><?php echo trans('app.send_ticket'); ?></a></li>
+                <li><a href="<?php echo URL::to('/feedback/add'); ?>"><?php echo trans('app.send_feedback'); ?></a></li>
+                <li><a href="<?php echo URL::to('/feedback/index'); ?>"><?php echo trans('app.history_feedback'); ?></a></li>
             </ul>
         </li>
     </ul>

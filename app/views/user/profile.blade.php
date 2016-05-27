@@ -27,9 +27,9 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('user_profile.company') }}</label>
+                                
                                 <div class="fg-line">
-                                    <input type="text" id="company" name="company" class="form-control" placeholder="{{ trans('user_profile.company') }}" value="{{ $contact->account_name }}" disabled>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -57,9 +57,9 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('user_profile.office_phone') }}</label>
+                                
                                 <div class="fg-line">
-                                    <input type="text" id="office_phone" name="office_phone" class="form-control" placeholder="{{ trans('user_profile.office_phone') }}" value="{{ $user->phone_work }}">
+                                    
                                 </div>
                             </div>
                         </div>
