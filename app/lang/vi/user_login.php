@@ -3,14 +3,14 @@
 return array(
 
     'page_title' => 'Đăng nhập',
-    'customer_id' => 'Mã số khách hàng',
+    'customer_id' => 'Mã học viên',
     'password' => 'Mật khẩu',
     'remember_me' => 'Ghi nhớ',
     'remember_me_warning_msg' => 'Cảnh báo: Chức năng này chỉ nên sử dụng trên máy tính cá nhân!',
     'login' => 'Đăng nhập',
-    'account_is_not_a_customer_error_msg' => 'Tài khoản này không phải là một khách hàng. Vui lòng đăng nhập vào CRM!',
+    'account_is_not_a_customer_error_msg' => 'Tài khoản này không dành cho hệ thống Portal. Vui lòng đăng nhập vào CRM!',
     'login_failed_error_msg' => 'Đăng nhập không thành công. Vui lòng thử lại!',
-    'description' => '<p>Quý khách đăng nhập với <strong>mã số khách hàng</strong> và <strong>mật khẩu</strong> được cung cấp khi đăng ký sử dụng dịch vụ của OnlineCRM.</p><p>Khi đăng nhập quý khách sẽ được gửi yêu cầu hỗ trợ kỹ thuật, xem thông tin những dịch vụ đã đăng ký, thay đổi password, ...</p>',
+    'description' => '<p>Để sử dụng hệ thống, quý phụ huynh xin vui lòng đăng nhập với <strong>mã học viên</strong> và <strong>mật khẩu</strong> được cung cấp khi đăng ký sử dụng dịch vụ báo cáo trực tuyến của Trung Tâm Anh Ngữ Quốc tế Apollo.</p><p>Nếu không thể đăng nhập vào hệ thống hoặc không có tài khoản, xin quý phụ huynh liên hệ bộ phận kỹ thuật để được giúp đỡ.</p><p>Xin chân thành cảm ơn quý phụ huynh!</p>',
     'southern_sales' => 'Kinh doanh Miền Nam',
     'northern_sales' => 'Kinh doanh Miền Bắc',
     'technical_supports' => 'Hỗ trợ kỹ thuật',

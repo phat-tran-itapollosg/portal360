@@ -52,23 +52,14 @@
             </div>
             <div id="about" class="round10">
                 <div id="logo">
-                    <img src="<?php echo URL::asset('/public/img/logo.png'); ?>" alt="Công ty TNHH Phần Mềm Quản Lý Khách Hàng Việt Nam"/>
-                </div>
+                    <img src="<?php echo URL::asset('/public/img/logo_apollo.png'); ?>" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 263px; height: auto"/>
+                </div>  
                 <div id="description">
-                    <?php echo trans('user_login.description'); ?>                    
+                    
                 </div>
-            </div>
+            </div> 
             <div id="contact" class="round10">
-                <ul id="chat">
-                    <li><a href="skype:duytran.onlinecrm?chat"><strong><?php echo trans('user_login.southern_sales'); ?></strong></a></li>
-                    <li><a href="skype:hoc.buicao?chat"><strong><?php echo trans('user_login.northern_sales'); ?></strong></a></li>
-                </ul>
-                <ul id="phone">
-                    <li><span><strong><?php echo trans('user_login.technical_supports'); ?>:</strong> 0973 550 940</span></li>
-                    <li><span><strong><?php echo trans('user_login.customer_services'); ?>:</strong> (08) 35 117 737</span></li>
-                    <li><span><strong><?php echo trans('user_login.southern_sales'); ?>:</strong> 0914 271 679</span></li>
-                    <li><span><strong><?php echo trans('user_login.northern_sales'); ?>:</strong> 0913 617 452</span></li>
-                </ul>
+                <?php echo trans('user_login.description'); ?>                    
             </div>
             <div class="clear"></div>
         </div>

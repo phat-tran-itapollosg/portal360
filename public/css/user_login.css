@@ -4,7 +4,7 @@
 }
 
 body {
-    background: url(../img/bg-pattern.png);
+    background: url(../img/bg-pattern-blue.png);
     font-family: sans-serif;
     font-size: 10pt;
 }
@@ -173,6 +173,10 @@ div#contact ul#chat {
     margin-top: 25px;
     list-style-position: inside;
     list-style-image: url(../img/chat-icon.png);
+}
+
+div#contact p {
+    padding: 10px;
 }
 
 ul#chat li {
