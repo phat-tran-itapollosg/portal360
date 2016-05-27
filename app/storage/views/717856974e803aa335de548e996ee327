@@ -12,7 +12,7 @@
         </li>
 
         <li class="logo hidden-xs">
-            <a href="<?php echo URL::to('/'); ?>"><?php echo trans('app.app_title'); ?></a>
+            <a href="<?php echo URL::to('/'); ?>"><?php echo trans('app.company_name'); ?></a>
         </li>
 
         <li class="pull-right">

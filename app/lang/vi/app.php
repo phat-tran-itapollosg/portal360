@@ -2,7 +2,8 @@
 
 return array(
 
-    'app_title' => 'APOLLO JUNIOR',
+    'app_title' => 'CHƯƠNG TRÌNH BÁO CÁO TRỰC TUYẾN DÀNH CHO PHỤ HUYNH',
+    'company_name' => 'APOLLO JUNIOR',
     'spinner_text' => 'Vui lòng đợi...',
     'view_profile' => 'Thông tin cá nhân',
     'change_password' => 'Đổi mật khẩu',

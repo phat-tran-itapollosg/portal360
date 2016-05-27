@@ -12,7 +12,7 @@
         </li>
 
         <li class="logo hidden-xs">
-            <a href="{{ URL::to('/') }}">{{ trans('app.app_title') }}</a>
+            <a href="{{ URL::to('/') }}">{{ trans('app.company_name') }}</a>
         </li>
 
         <li class="pull-right">

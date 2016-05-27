@@ -38,6 +38,10 @@
         Route::post('/ticket/comment/{id}', 'TicketController@comment');
         Route::post('/ticket/close/{id}', 'TicketController@close');
         Route::get('/student/index', 'StudentController@index');
+        Route::get('/sms/index', 'SmsController@index');
+        Route::get('/schedule/index', 'ScheduleController@index');
+        Route::get('/enrollment/index', 'EnrollmentController@index');
+        Route::get('/feedback/index', 'FeedbackController@index');
     });
 
     // Routes that dont't need to be checked for authentication

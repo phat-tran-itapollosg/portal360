@@ -2,6 +2,6 @@
 
 return array(
 
-    'page_title' => 'Dashboard',
+    'page_title' => 'Home',
     'recent_news' => 'Recent News',
 );
