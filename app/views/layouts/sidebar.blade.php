@@ -30,16 +30,16 @@
             <a href="{{ URL::to('/') }}"><i class="zmdi zmdi-home"></i> {{ trans('app.dashboard') }}</a>
         </li>
         <li class="@if (Request::is('sms/*')) active @endif">
-            <a href="{{ URL::to('/sms/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.sms') }}</a>
+            <a href="{{ URL::to('/sms/index') }}"><i class="zmdi zmdi-comment-outline"></i> {{ trans('app.sms') }}</a>
         </li>
         <li class="@if (Request::is('schedule/*')) active @endif">
-            <a href="{{ URL::to('/schedule/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.schedule') }}</a>
+            <a href="{{ URL::to('/schedule/index') }}"><i class="zmdi zmdi-calendar-alt"></i> {{ trans('app.schedule') }}</a>
         </li>
 		<li class="@if (Request::is('enrollment/*')) active @endif">
-            <a href="{{ URL::to('/enrollment/index') }}"><i class="zmdi zmdi-face"></i> {{ trans('app.enrollment') }}</a>
+            <a href="{{ URL::to('/enrollment/index') }}"><i class="zmdi zmdi-money-box"></i> {{ trans('app.enrollment') }}</a>
         </li>
         <li class="sub-menu @if (Request::is('feedback/*')) active @endif">
-            <a href="#"><i class="zmdi zmdi-view-compact"></i> {{ trans('app.feedback') }}</a>
+            <a href="#"><i class="zmdi zmdi-assignment-o"></i> {{ trans('app.feedback') }}</a>
 
             <ul>
                 <li><a href="{{ URL::to('/feedback/add') }}">{{ trans('app.send_feedback') }}</a></li>

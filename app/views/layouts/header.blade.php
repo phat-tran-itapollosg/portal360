@@ -27,7 +27,7 @@
                 <!--<li id="top-search">
                     <a href=""><i class="tm-icon zmdi zmdi-search"></i></a>
                 </li>-->
-
+                <!--
                 <li class="dropdown">
                     <a data-toggle="dropdown" href="">
                         <i class="tm-icon zmdi zmdi-email"></i>
@@ -59,6 +59,8 @@
                         </li>
                     </ul>
                 </li>
+                -->
+                
                 
                 <!--<li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
                     <a href=""><i class="tm-icon zmdi zmdi-comment-alt-text"></i></a>

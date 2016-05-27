@@ -2,13 +2,13 @@
 
 return array(
 
-    'app_title' => 'PARENT\'S ONLINE REPORTING',
+    'app_title' => 'APOLLO JUNIOR',
     'spinner_text' => 'Please wait...',
     'view_profile' => 'View Profile',
     'change_password' => 'Change Password',
     'logout' => 'Logout',
     'logout_confirm_msg' => 'Are you sure to log out of the system?',
-    'dashboard' => 'Dashboard',
+    'dashboard' => 'Home',
     'sms' => 'SMS',
     'schedule' => 'Schedule',
     'enrollment' => 'Enrollment',

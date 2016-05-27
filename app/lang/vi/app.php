@@ -2,7 +2,7 @@
 
 return array(
 
-    'app_title' => 'CHƯƠNG TRÌNH BÁO CÁO TRỰC TUYẾN DÀNH CHO PHỤ HUYNH',
+    'app_title' => 'APOLLO JUNIOR',
     'spinner_text' => 'Vui lòng đợi...',
     'view_profile' => 'Thông tin cá nhân',
     'change_password' => 'Đổi mật khẩu',

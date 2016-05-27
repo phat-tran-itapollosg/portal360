@@ -53,7 +53,7 @@
             </div>
             <div id="about" class="round10">
                 <div id="logo">
-                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 263px; height: auto"/>
+                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 320px; height: auto"/>
                 </div>  
                 <div id="description">
                     
