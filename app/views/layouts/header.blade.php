@@ -1,4 +1,7 @@
 <header id="header" class="clearfix" data-current-skin="blue">
+    <div>
+        <img src="../public/img/apollo_portal_poster.png" height="auto" width="100%">
+    </div>
     <ul class="header-inner">
         <li id="menu-trigger" data-trigger="#sidebar">
             <div class="line-wrap">
