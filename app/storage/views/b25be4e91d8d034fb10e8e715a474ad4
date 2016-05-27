@@ -1,0 +1,56 @@
+
+<?php $__env->startSection('title', trans('billing_index.page_title')); ?>
+
+<?php $__env->startSection('styles'); ?>
+        
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    
+    <div class="container">
+        <div class="block-header">
+            <h2><?php echo trans('billing_index.page_title'); ?></h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-body card-padding">
+                <table id="data-table" class="datatable table table-striped table-vmiddle">
+                    <thead>
+                        <tr>
+                            <th><?php echo trans('billing_index.billing_number'); ?></th>
+                            <th><?php echo trans('billing_index.billing_name'); ?></th>
+                            <th><?php echo trans('billing_index.type'); ?></th>
+                            <th data-type="timestamp"><?php echo trans('billing_index.billing_date'); ?></th>
+                            <th data-type="number"><?php echo trans('billing_index.billing_amount'); ?></th>
+                            <th data-type="number"><?php echo trans('billing_index.total_amount'); ?></th>
+                            <th data-type="number"><?php echo trans('billing_index.remaining_amount'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($billings as $billing): ?>
+                            <tr>
+                                <td><?php echo $billing->number; ?></td>
+                                <td><?php echo $billing->name; ?></td>
+                                <td><?php echo $types->{$billing->type}; ?></td>
+                                <td><?php echo SugarUtil::formatDate($billing->receipts_date); ?></td>
+                                <td><?php echo number_format($billing->amount); ?></td>
+                                <td><?php echo number_format($billing->total_amount); ?></td>
+                                <td><?php echo number_format($billing->remaining_amount); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+    <script src="<?php echo URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/js/billing_index.js'); ?>"></script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

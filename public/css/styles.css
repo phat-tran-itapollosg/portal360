@@ -1,0 +1,78 @@
+body[lang="vi"] *:not(.zmdi), body[lang="en"] #recent-news {
+    font-family: sans-serif;    
+}
+
+.dataTables_length, .dataTables_filter {
+    margin-bottom: 10px;    
+}
+
+.dataTables_info {
+    margin-top: 25px;
+}
+
+label.error {
+    color: #f6675d !important;
+    font-size: 90%;
+    margin-top: 5px;
+}
+
+.dataTables_wrapper .length-select, .dataTables_wrapper .filter-input {
+    height: 30px;
+    border: 1px solid #C3C3C3;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 2px;    
+}
+
+.item-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding: 10px  
+}
+
+.item-list > li {
+    border: 1px solid #DDD;
+    border-left-width: 3px;
+    border-right: none;
+    padding: 9px;
+    background-color: #FFF;
+    margin-top: -1px;
+    position: relative
+}
+
+.item-list > li.item-orange {
+    border-left-color: #eccb71
+}
+
+.item-list > li.item-red {
+    border-left-color: #e05656
+}
+
+.item-list > li.item-green {
+    border-left-color: #9ecf6a
+}
+
+.item-list > li.item-blue {
+    border-left-color: #569add
+}
+
+.item-list > li.item-pink {
+    border-left-color: #dd56c0
+}
+
+.item-list > li.item-black {
+    border-left-color: #505050
+}
+
+.item-list > li.item-grey {
+    border-left-color: #999
+}
+
+.item-list > li.item-brown {
+    border-left-color: brown
+}
+
+.item-list > li.item-default {
+    border-left-color: #abbac3
+}

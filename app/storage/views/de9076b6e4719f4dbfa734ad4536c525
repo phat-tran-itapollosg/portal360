@@ -1,0 +1,21 @@
+
+<?php $__env->startSection('title', trans('student_index.page_title')); ?>
+
+<?php $__env->startSection('styles'); ?>
+   
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <?php foreach($students as $student): ?>
+		<?php echo $student['name']; ?> 
+		<?php if($student['name'] == 'trung'): ?> <font color="red">bug</font> <?php endif; ?>
+		<br/>
+	<?php endforeach; ?>
+	
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

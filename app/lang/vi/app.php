@@ -1,0 +1,33 @@
+<?php
+
+return array(
+
+    'app_title' => 'CỔNG THÔNG TIN HỖ TRỢ KHÁCH HÀNG',
+    'spinner_text' => 'Vui lòng đợi...',
+    'view_profile' => 'Thông tin cá nhân',
+    'change_password' => 'Đổi mật khẩu',
+    'logout' => 'Đăng xuất',
+    'logout_confirm_msg' => 'Bạn có chắc muốn đăng xuất khỏi hệ thống?',
+    'dashboard' => 'Trang chủ',
+    'projects' => 'Dự án',
+    'contracts' => 'Hợp đồng',
+    'billings' => 'Lịch sử thanh toán',
+    'students' => 'Danh sach hoc sinh',
+    'complaints' => 'Than phiền',
+    'complaint_list' => 'Danh sách than phiền',
+    'send_complaint' => 'Gửi than phiền',
+    'tickets' => 'Phiếu hỗ trợ',
+    'ticket_list' => 'Danh sách phiếu hỗ trợ',
+    'send_ticket' => 'Gửi yêu cầu hỗ trợ',
+    'datatable_length_menu' => '_MENU_',
+    'datatable_search' => 'Tìm kiếm _INPUT_',
+    'datatable_zero_records' => 'Không có dữ liệu',
+    'datatable_footer_info' => 'Đang hiển thị từ <strong>_START_ đến _END_</strong> trong tổng số _TOTAL_ dòng',
+    'datatable_footer_info_filtered' => '(được lọc ra từ tổng số _MAX_ dòng)',
+    'datatable_footer_info_empty' => 'Không có dữ liệu',
+    'btn_save_text' => 'Lưu',
+    'btn_send_text' => 'Gửi',
+    'btn_cancel_text' => 'Hủy',
+    'btn_delete_text' => 'Xóa',
+    'btn_close_text' => 'Đóng',
+);

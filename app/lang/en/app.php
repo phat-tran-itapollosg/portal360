@@ -1,0 +1,33 @@
+<?php
+
+return array(
+
+    'app_title' => 'CUSTOMER PORTAL',
+    'spinner_text' => 'Please wait...',
+    'view_profile' => 'View Profile',
+    'change_password' => 'Change Password',
+    'logout' => 'Logout',
+    'logout_confirm_msg' => 'Are you sure to log out of the system?',
+    'dashboard' => 'Dashboard',
+    'projects' => 'Projects',
+    'contracts' => 'Contracts',
+    'billings' => 'Billings',
+    'complaints' => 'Complaints',
+	'students' => 'Students',
+    'complaint_list' => 'Complaint List',
+    'send_complaint' => 'Send Complaint',
+    'tickets' => 'Tickets',
+    'ticket_list' => 'Ticket List',
+    'send_ticket' => 'Send Ticket',
+    'datatable_length_menu' => '_MENU_',
+    'datatable_search' => 'Search _INPUT_',
+    'datatable_zero_records' => 'No data',
+    'datatable_footer_info' => 'Showing from <strong>_START_ to _END_</strong> in _TOTAL_ total rows',
+    'datatable_footer_info_filtered' => '(Filtered from _MAX_ total rows)',
+    'datatable_footer_info_empty' => 'No data',
+    'btn_save_text' => 'Save',
+    'btn_send_text' => 'Send',
+    'btn_cancel_text' => 'Cancel',
+    'btn_delete_text' => 'Delete',
+    'btn_close_text' => 'Close',
+);

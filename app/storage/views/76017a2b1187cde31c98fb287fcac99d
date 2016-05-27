@@ -1,0 +1,79 @@
+
+<?php $__env->startSection('title', trans('user_change_password.page_title')); ?>
+
+<?php $__env->startSection('styles'); ?>
+        
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    
+    <div class="container">
+        <div class="block-header">
+            <h2><?php echo trans('user_change_password.page_title'); ?></h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-body card-padding">
+                <form id="form-change-password" action="<?php echo URL::to('user/savePassword'); ?>" method="post">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label"><?php echo trans('user_change_password.current_password'); ?></label>
+                                <div class="fg-line">
+                                    <input type="password" id="current_password" name="current_password" class="form-control" placeholder="<?php echo trans('user_change_password.current_password'); ?>" value="<?php echo $current_password; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label"><?php echo trans('user_change_password.new_password'); ?></label>
+                                <div class="fg-line">
+                                    <input type="password" id="new_password" name="new_password" class="form-control" placeholder="<?php echo trans('user_change_password.new_password'); ?>" value="<?php echo $new_password; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label"><?php echo trans('user_change_password.confirm_password'); ?></label>
+                                <div class="fg-line">
+                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="<?php echo trans('user_change_password.confirm_password'); ?>" value="<?php echo $confirm_password; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-sm m-t-10"><?php echo trans('app.btn_save_text'); ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+    <?php echo ViewUtil::renderJsLanguage('user_change_password'); ?>
+
+    <script src="<?php echo URL::asset('public/vendors/jquery-validate/jquery.validate.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/js/user_change_password.js'); ?>"></script>
+    
+    <?php if(Session::has('error_message')): ?>
+        <script type="text/javascript">
+            Notification.notify('<?php echo Session::get('error_message'); ?>', 'danger');
+        </script>
+    <?php endif; ?>
+    
+    <?php if(Session::has('success_message')): ?>
+        <script type="text/javascript">
+            Notification.notify('<?php echo Session::get('success_message'); ?>', 'success');
+        </script>
+    <?php endif; ?>
+         
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
