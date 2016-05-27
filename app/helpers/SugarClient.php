@@ -233,7 +233,9 @@
             );
 
             $session = $this->call(SugarMethod::LOGIN, $loginParams);
-
+            //customize by Tung Bui - replate session id by root session
+            $session->id = $this->getRootSession();
+            
             if(isset($session->id)){
                 $userId = $session->name_value_list->user_id->value;
                 

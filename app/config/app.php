@@ -29,7 +29,7 @@ return array(
 	'url' => 'http://localhost/apollo_portal',
 
     // For RSS at home page. Added by Hieu Nguyen on 2016-03-15
-    'rss_url' => 'http://apollo.edu.vn/news-events',
+    'rss_url' => '',
     
     // For webservice. Added by Hieu Nguyen on 2016-03-15
     'service_config' => array(

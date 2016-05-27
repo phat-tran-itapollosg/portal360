@@ -6,7 +6,7 @@
             </div>
 
             <div class="profile-info">
-                {{ Session::get('contact')->full_name }}
+                {{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }}
 
                 <i class="zmdi zmdi-caret-down"></i>
             </div>
