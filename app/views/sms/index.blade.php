@@ -14,10 +14,10 @@
         
         <div class="card">
             <div class="card-body card-padding">
-                <table>
+                <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th>{{trans('sms_index.title')}}</th>
+                            <th>{{trans('sms_index.phone_number')}}</th>
                             <th>{{trans('sms_index.content')}}</th>
                             <th>{{trans('sms_index.delivery_status')}}</th>
                             <th>{{trans('sms_index.date')}}</th>
@@ -26,10 +26,10 @@
                     <tbody>
                         @foreach($smsList as $sms)
                             <tr>
-                                <td>{{ $sms->name }} </td>
-                                <td>{{ $sms->description }} </td>
-                                <td>{{ $sms->delivery_status }} </td>
-                                <td>{{ $sms->date_send }} </td>
+                                <td >{{ $sms->phone_number }} </td>
+                                <td >{{ $sms->description }} </td>
+                                <td >{{ $sms->delivery_status }} </td>
+                                <td style="padding: 5px;">{{ $sms->date_send }} </td>
                             </tr>
                         @endforeach
                     </tbody>

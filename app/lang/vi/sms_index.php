@@ -2,7 +2,7 @@
 
 return array(
     'page_title' => 'SMS',
-    'title' => 'Title',
+    'phone_number' => 'Phone Number',
     'content' => 'Content',
     'delivery_status' => 'Delivery Status',
     'date' => 'Date',

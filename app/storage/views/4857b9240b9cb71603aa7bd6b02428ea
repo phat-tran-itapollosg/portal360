@@ -6,7 +6,7 @@
             </div>
 
             <div class="profile-info">
-                <?php echo Session::get('contact')->last_name; ?> <?php echo Session::get('contact')->first_name; ?> (<?php echo Session::get('contact')->portal_name; ?>)
+                <?php echo Session::get('contact')->last_name; ?> <?php echo Session::get('contact')->first_name; ?> (<?php echo Session::get('user')->user_name; ?>)
 
                 <i class="zmdi zmdi-caret-down"></i>
             </div>

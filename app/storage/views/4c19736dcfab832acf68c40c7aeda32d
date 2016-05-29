@@ -13,10 +13,10 @@
         
         <div class="card">
             <div class="card-body card-padding">
-                <table>
+                <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th><?php echo trans('sms_index.title'); ?></th>
+                            <th><?php echo trans('sms_index.phone_number'); ?></th>
                             <th><?php echo trans('sms_index.content'); ?></th>
                             <th><?php echo trans('sms_index.delivery_status'); ?></th>
                             <th><?php echo trans('sms_index.date'); ?></th>
@@ -25,10 +25,10 @@
                     <tbody>
                         <?php foreach($smsList as $sms): ?>
                             <tr>
-                                <td><?php echo $sms->name; ?> </td>
-                                <td><?php echo $sms->description; ?> </td>
-                                <td><?php echo $sms->delivery_status; ?> </td>
-                                <td><?php echo $sms->date_send; ?> </td>
+                                <td ><?php echo $sms->phone_number; ?> </td>
+                                <td ><?php echo $sms->description; ?> </td>
+                                <td ><?php echo $sms->delivery_status; ?> </td>
+                                <td style="padding: 5px;"><?php echo $sms->date_send; ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

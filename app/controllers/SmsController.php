@@ -21,7 +21,7 @@ class SmsController extends BaseController {
             'link_field_name' => 'contacts_sms',
             'related_module_query' => 'c_sms.parent_type = "Contacts"',
             'related_fields' => array(
-                'id', 'name', 'description', 'delivery_status', 'date_send'
+                'id', 'phone_number', 'description', 'delivery_status', 'date_send'
             ),
             'related_module_link_name_to_fields_array' => array(),
             'deleted'=> '0',
