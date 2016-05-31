@@ -12,7 +12,7 @@ return array(
     'dashboard' => 'Trang chủ',
     'sms' => 'SMS',
     'schedule' => 'Lịch học',
-    'enrollment' => 'Phiếu đăng ký',
+    'enrollment' => 'Đăng ký học',
     'feedback' => 'Phản hồi',
     'history_feedback' => 'Lịch sử phản hồi',
     'send_feedback' => 'Gửi phản hồi',
