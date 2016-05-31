@@ -1,35 +1,46 @@
 @extends('layouts.master')
 
-@section('title', trans('complaint_add.page_title'))
+@section('title', trans('feedback_add.page_title'))
 
 @section('styles')
         
 @stop
-
+      
 @section('content')
     
     <div class="container">
         <div class="block-header">
-            <h2>{{ trans('complaint_add.page_title') }}</h2>
+            <h2>{{ trans('feedback_add.page_title') }}</h2>
         </div>
         
         <div class="card">
             <div class="card-body card-padding">
-                <form id="form-add-complaint" action="{{ URL::to('complaint/save') }}" method="post">
+                <form id="form-add-feedback" action="{{ URL::to('feedback/save') }}" method="post">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-2">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('complaint_add.customer_id') }}</label>
+                                <label class="control-label">{{ trans('feedback_add.type') }}</label>
                                 <div class="fg-line">
-                                    <input type="text" id="customer_id" name="customer_id" class="form-control" placeholder="{{ trans('complaint_add.customer_id') }}" value="{{ $user->user_name }} ({{ $user->email1 }})" disabled>
+                                    <select id="slc_type" name="slc_type" class="form-control">
+                                         @foreach($typeOptions as $key => $value)
+                                             <option value="{{ $key }}"> {{ $value }} </option>
+                                         @endforeach;
+                                    </select>    
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-2">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('complaint_add.company') }}</label>
+                                <label class="control-label">{{ trans('feedback_add.target') }}</label>
                                 <div class="fg-line">
-                                    <input type="text" id="company" name="company" class="form-control" placeholder="{{ trans('complaint_add.company') }}" value="{{ $contact->account_name }}" disabled>
+                                    <select id="slc_target" name="slc_target" class="form-control">
+                                         @foreach($targetOptions as $key => $value)
+                                             <option value="{{ $key }}"> {{ $value }} </option>
+                                         @endforeach;
+                                    </select>    
                                 </div>
                             </div>
                         </div>
@@ -38,9 +49,9 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('complaint_add.customer_id') }}</label>
+                                <label class="control-label">{{ trans('feedback_add.subject') }}</label>
                                 <div class="fg-line">
-                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="{{ trans('complaint_add.subject') }}">
+                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="{{ trans('feedback_add.subject') }}">
                                 </div>
                             </div>
                         </div>
@@ -49,9 +60,9 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('complaint_add.content') }}</label>
+                                <label class="control-label">{{ trans('feedback_add.content') }}</label>
                                 <div class="fg-line">
-                                    <textarea type="text" id="contents" name="contents" rows="5" class="form-control" placeholder="{{ trans('complaint_add.content') }}"></textarea>
+                                    <textarea type="text" id="contents" name="contents" rows="5" class="form-control" placeholder="{{ trans('feedback_add.content') }}"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -67,10 +78,10 @@
 
 @section('scripts')
 
-    {{ ViewUtil::renderJsLanguage('complaint_add') }}
+    {{ ViewUtil::renderJsLanguage('feedback_add') }}
 
     <script src="{{ URL::asset('public/vendors/jquery-validate/jquery.validate.min.js') }}"></script>
-    <script src="{{ URL::asset('public/js/complaint_add.js') }}"></script>
+    <script src="{{ URL::asset('public/js/feedback_add.js') }}"></script>
 
     @if(Session::has('error_message'))
         <script type="text/javascript">

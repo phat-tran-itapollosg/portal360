@@ -28,7 +28,7 @@
                                 <td ><?php echo $sms->phone_number; ?> </td>
                                 <td ><?php echo $sms->description; ?> </td>
                                 <td ><?php echo $sms->delivery_status; ?> </td>
-                                <td style="padding: 5px;"><?php echo $sms->date_send; ?> </td>
+                                <td style="padding: 5px;"><?php echo SugarUtil::formatDate($sms->date_send); ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

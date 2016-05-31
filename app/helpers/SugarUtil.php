@@ -22,33 +22,22 @@ class SugarUtil {
     }
 
     // Util function to get complaint list that belongs to the current portal contact
-    public static function getComplaintList() {
+    public static function getFeedbackList() {
         $client = self::getClient();
         $session = Session::get('session');
-        $contact = Session::get('contact');
+        $student = Session::get('contact');
         $rootSession = $client->getRootSession();
 
-        // Get complaints that linked to the portal contact
-        $relationshipsParams = array(
-            'session' => $rootSession,
-            'module_name' => 'Accounts',
-            'module_id' => $contact->account_id,
-            'link_field_name' => 'cases',
-            'related_module_query' => 'cases.type = "Complaint"',
-            'related_fields' => array(
-                'id', 'case_number', 'name', 'status', 'priority', 'description', 'date_entered' 
-            ),
-            'related_module_link_name_to_fields_array' => array(),
-            'deleted'=> '0',
-            'order_by' => 'cases.date_entered DESC',
-            'offset' => 0,
-            'limit' => 1000,
-        );
+        // Get feedback list
+        $feddbacks = $client->getFullList(
+            $rootSession, 
+            'Cases',
+            array(),    // Get all fields
+            'cases.student_id = "'.$student->id.'"',
+            'cases.date_entered ASC'
+        ); 
 
-        $result = $client->call(SugarMethod::GET_RELATIONSHIPS, $relationshipsParams);
-        $complaints = $client->toSimpleObjectList($result->entry_list);
-
-        return $complaints;
+        return $feddbacks;
     }
 
     // Util function to get ticket list that belongs to the current portal contact

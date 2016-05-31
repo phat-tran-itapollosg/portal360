@@ -29,7 +29,7 @@
                                 <td >{{ $sms->phone_number }} </td>
                                 <td >{{ $sms->description }} </td>
                                 <td >{{ $sms->delivery_status }} </td>
-                                <td style="padding: 5px;">{{ $sms->date_send }} </td>
+                                <td style="padding: 5px;">{{ SugarUtil::formatDate($sms->date_send) }} </td>
                             </tr>
                         @endforeach
                     </tbody>

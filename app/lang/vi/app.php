@@ -14,7 +14,7 @@ return array(
     'schedule' => 'Lịch học',
     'enrollment' => 'Đăng ký học',
     'feedback' => 'Phản hồi',
-    'history_feedback' => 'Lịch sử phản hồi',
+    'history_feedback' => 'Danh sách phản hồi',
     'send_feedback' => 'Gửi phản hồi',
     'datatable_length_menu' => '_MENU_',
     'datatable_search' => 'Tìm kiếm _INPUT_',

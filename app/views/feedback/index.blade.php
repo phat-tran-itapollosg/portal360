@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', trans('complaint_index.page_title'))
+@section('title', trans('feedback_index.page_title'))
 
 @section('styles')
         
@@ -10,7 +10,7 @@
     
     <div class="container">
         <div class="block-header">
-            <h2>{{ trans('complaint_index.page_title') }}</h2>
+            <h2>{{ trans('feedback_index.page_title') }}</h2>
         </div>
         
         <div class="card">
@@ -18,23 +18,26 @@
                 <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th>{{ trans('complaint_index.complaint_number') }}</th>
-                            <th>{{ trans('complaint_index.subject') }}</th>
-                            <th>{{ trans('complaint_index.status') }}</th>
-                            <th>{{ trans('complaint_index.priority') }}</th>
-                            <th>{{ trans('complaint_index.content') }}</th>
-                            <th data-type="timestamp">{{ trans('complaint_index.sent_date') }}</th>
+                            <th>{{ trans('feedback_index.subject') }}</th>
+                            <th>{{ trans('feedback_index.type') }}</th>
+                            <th>{{ trans('feedback_index.target') }}</th>  
+                            <th data-type="timestamp">{{ trans('feedback_index.sent_date') }}</th>
+                            <th>{{ trans('feedback_index.status') }}</th>
+                            <th>{{ trans('feedback_index.content') }}</th>
+                            <th>{{ trans('feedback_index.resolution') }}</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($complaints as $complaint)
+                        @foreach($feedbacks as $feedback)
                             <tr>
-                                <td>{{ $complaint->case_number }}</td>
-                                <td>{{ $complaint->name }}</td>
-                                <td>{{ $statuses->{$complaint->status} }}</td>
-                                <td>{{ $priorities->{$complaint->priority} }}</td>
-                                <td>{{ $complaint->description }}</td>
-                                <td>{{ SugarUtil::formatDate($complaint->date_entered) }}</td>
+                                <td>{{ $feedback->name }}</td>
+                                <td>{{ $types->{$feedback->type} }}</td>
+                                <td>{{ $targets->{$feedback->target} }}</td>
+                                <td>{{ SugarUtil::formatDate($feedback->date_entered) }}</td>
+                                <td>{{ $statuses->{$feedback->status} }}</td>
+                                <td>{{ $feedback->description }}</td>
+                                <td></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -49,7 +52,7 @@
 
     <script src="{{ URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('public/js/complaint_index.js') }}"></script>
+    <script src="{{ URL::asset('public/js/feedback_index.js') }}"></script>
 
     @if(Session::has('success_message'))
         <script type="text/javascript">

@@ -1,0 +1,63 @@
+
+<?php $__env->startSection('title', trans('feedback_index.page_title')); ?>
+
+<?php $__env->startSection('styles'); ?>
+        
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    
+    <div class="container">
+        <div class="block-header">
+            <h2><?php echo trans('feedback_index.page_title'); ?></h2>
+        </div>
+        
+        <div class="card">
+            <div class="card-body card-padding">
+                <table id="data-table" class="datatable table table-striped table-vmiddle">
+                    <thead>
+                        <tr>
+                            <th><?php echo trans('feedback_index.type'); ?></th>
+                            <th><?php echo trans('feedback_index.target'); ?></th>
+                            <th><?php echo trans('feedback_index.subject'); ?></th>
+                            <th data-type="timestamp"><?php echo trans('feedback_index.sent_date'); ?></th>
+                            <th><?php echo trans('feedback_index.status'); ?></th>
+                            <th><?php echo trans('feedback_index.content'); ?></th>
+                            <th><?php echo trans('feedback_index.resolution'); ?></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($feedbacks as $feedback): ?>
+                            <tr>
+                                <td><?php echo $types->{$feedback->type}; ?></td>
+                                <td><?php echo $targets->{$feedback->target}; ?></td>
+                                <td><?php echo $feedback->name; ?></td>
+                                <td><?php echo SugarUtil::formatDate($feedback->date_entered); ?></td>
+                                <td><?php echo $statuses->{$feedback->status}; ?></td>
+                                <td><?php echo $feedback->description; ?></td>
+                                <td></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+    </div>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('scripts'); ?>
+
+    <script src="<?php echo URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/js/feedback_index.js'); ?>"></script>
+
+    <?php if(Session::has('success_message')): ?>
+        <script type="text/javascript">
+            Notification.notify('<?php echo Session::get('success_message'); ?>', 'success');
+        </script>
+    <?php endif; ?>
+    
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -14,7 +14,7 @@ return array(
     'schedule' => 'Schedule',
     'enrollment' => 'Enrollment',
     'feedback' => 'Feedback',
-    'history_feedback' => 'History Feedback',
+    'history_feedback' => 'Feedback List',
 	'send_feedback' => 'Send Feedback',
     'datatable_length_menu' => '_MENU_',
     'datatable_search' => 'Search _INPUT_',

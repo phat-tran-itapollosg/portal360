@@ -29,8 +29,8 @@
                             <tr>
                                 <td><?php echo $key+1; ?></td>
                                 <td><?php echo $enrollment->class_name; ?> </td>
-                                <td><?php echo $enrollment->start_study; ?> </td>
-                                <td><?php echo $enrollment->end_study; ?> </td>
+                                <td><?php echo SugarUtil::formatDate($enrollment->start_study); ?> </td>
+                                <td><?php echo SugarUtil::formatDate($enrollment->end_study); ?> </td>
                                 <td></td>
                                 <td><?php echo $enrollment->team_name; ?> </td>
                             </tr>

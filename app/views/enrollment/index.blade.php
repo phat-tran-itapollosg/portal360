@@ -30,8 +30,8 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $enrollment->class_name }} </td>
-                                <td>{{ $enrollment->start_study }} </td>
-                                <td>{{ $enrollment->end_study }} </td>
+                                <td>{{ SugarUtil::formatDate($enrollment->start_study) }} </td>
+                                <td>{{ SugarUtil::formatDate($enrollment->end_study) }} </td>
                                 <td></td>
                                 <td>{{ $enrollment->team_name }} </td>
                             </tr>
