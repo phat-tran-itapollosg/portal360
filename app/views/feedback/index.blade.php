@@ -37,7 +37,7 @@
                                 <td>{{ SugarUtil::formatDate($feedback->date_entered) }}</td>
                                 <td>{{ $statuses->{$feedback->status} }}</td>
                                 <td>{{ $feedback->description }}</td>
-                                <td></td>
+                                <td>{{ $feedback->work_log }}</td>
                             </tr>
                         @endforeach
                     </tbody>

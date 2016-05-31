@@ -36,7 +36,7 @@
                                 <td><?php echo SugarUtil::formatDate($feedback->date_entered); ?></td>
                                 <td><?php echo $statuses->{$feedback->status}; ?></td>
                                 <td><?php echo $feedback->description; ?></td>
-                                <td></td>
+                                <td><?php echo $feedback->work_log; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

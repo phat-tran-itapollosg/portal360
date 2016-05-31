@@ -29,8 +29,8 @@
                             <tr>
                                 <td><?php echo $key+1; ?></td>
                                 <td><?php echo $enrollment->class_name; ?> </td>
-                                <td><?php echo $enrollment->start_date; ?> </td>
-                                <td><?php echo $enrollment->end_date; ?> </td>
+                                <td><?php echo SugarUtil::formatDate($enrollment->start_date); ?> </td>
+                                <td><?php echo SugarUtil::formatDate($enrollment->end_date); ?> </td>
                                 <td><?php echo $enrollment->balance; ?> </td>
                                 <td><?php echo $enrollment->center; ?> </td>       
                             </tr>

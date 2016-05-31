@@ -33,7 +33,7 @@ return array(
     
     // For webservice. Added by Hieu Nguyen on 2016-03-15
     'service_config' => array(
-        'server_url' => 'http://apollojunior.giaiphapcrm.vn',
+        'server_url' => 'localhost/apollo',
         'custom_service' => true,   // Use custom service in custom folder or not
         'root_username' => 'webservice',
         'root_password' => 'e6032a45118887b87d9206bc013e22ed',  // MD5
