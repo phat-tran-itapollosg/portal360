@@ -15,7 +15,8 @@
         const GET_ENTRY = 'get_entry';   
         const GET_ENTRY_LIST = 'get_entry_list';   
         const GET_ENTRIES_COUNT = 'get_entries_count';   
-        const GET_RELATIONSHIPS = 'get_relationships';   
+        const GET_RELATIONSHIPS = 'get_relationships';  
+        const GET_ENROLLMENT_LIST = 'get_enrollment_list';  
         const SET_RELATIONSHIP = 'set_relationship';   
         const SET_NOTE_ATTACHMENT = 'set_note_attachment';   
         const SET_USER_PREFERENCES = 'set_user_preferences';   

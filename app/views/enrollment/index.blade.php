@@ -26,14 +26,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($enrollentList as $key => $enrollment)
+                        @foreach($enrollents as $key => $enrollment)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $enrollment->class_name }} </td>
-                                <td>{{ SugarUtil::formatDate($enrollment->start_study) }} </td>
-                                <td>{{ SugarUtil::formatDate($enrollment->end_study) }} </td>
-                                <td></td>
-                                <td>{{ $enrollment->team_name }} </td>
+                                <td>{{ $enrollment->start_date }} </td>
+                                <td>{{ $enrollment->end_date }} </td>
+                                <td>{{ $enrollment->balance }} </td>
+                                <td>{{ $enrollment->center }} </td>       
                             </tr>
                         @endforeach
                     </tbody>

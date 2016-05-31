@@ -40,6 +40,7 @@
         Route::get('/student/index', 'StudentController@index');
         Route::get('/sms/index', 'SmsController@index');
         Route::get('/schedule/index', 'ScheduleController@index');
+        //Route::get('/enrollment/index', 'EnrollmentController@index');
         Route::get('/enrollment/index', 'EnrollmentController@index');
         Route::get('/feedback/index', 'FeedbackController@index');
         Route::get('/feedback/add', 'FeedbackController@add');
