@@ -17,9 +17,9 @@
                 <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th><?php echo trans('feedback_index.type'); ?></th>
-                            <th><?php echo trans('feedback_index.target'); ?></th>
                             <th><?php echo trans('feedback_index.subject'); ?></th>
+                            <th><?php echo trans('feedback_index.type'); ?></th>
+                            <th><?php echo trans('feedback_index.target'); ?></th>  
                             <th data-type="timestamp"><?php echo trans('feedback_index.sent_date'); ?></th>
                             <th><?php echo trans('feedback_index.status'); ?></th>
                             <th><?php echo trans('feedback_index.content'); ?></th>
@@ -30,9 +30,9 @@
                     <tbody>
                         <?php foreach($feedbacks as $feedback): ?>
                             <tr>
+                                <td><?php echo $feedback->name; ?></td>
                                 <td><?php echo $types->{$feedback->type}; ?></td>
                                 <td><?php echo $targets->{$feedback->target}; ?></td>
-                                <td><?php echo $feedback->name; ?></td>
                                 <td><?php echo SugarUtil::formatDate($feedback->date_entered); ?></td>
                                 <td><?php echo $statuses->{$feedback->status}; ?></td>
                                 <td><?php echo $feedback->description; ?></td>

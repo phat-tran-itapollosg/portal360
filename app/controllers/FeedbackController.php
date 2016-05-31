@@ -14,11 +14,15 @@ class FeedbackController extends BaseController {
         $feedbacks = SugarUtil::getFeedbackList();
         $appListStrings = Session::get('app_list_strings');
 
+        $locale = App::getLocale();        
+        $typeOptions = ($locale == "vi")? $appListStrings->case_type_options_for_vn : $appListStrings->case_type_options;
+        $statusOptions = ($locale == "vi")? $appListStrings->case_status_dom_for_vn : $appListStrings->case_status_dom;
+        
         $data = array(
             'feedbacks' => $feedbacks,
-            'types' => $appListStrings->case_type_options,
+            'types' => $typeOptions,
             'targets' => $appListStrings->case_target_options,
-            'statuses' => $appListStrings->case_status_dom,
+            'statuses' => $statusOptions,
         );
 
         return View::make('feedback.index')->with($data);
@@ -30,9 +34,12 @@ class FeedbackController extends BaseController {
         $user = Session::get('user');
         $contact = Session::get('contact');
         $appListStrings = Session::get('app_list_strings');
+        $locale = App::getLocale();
+        
+        $caseTypeOptions = ($locale == "vi")? $appListStrings->case_type_options_for_vn : $appListStrings->case_type_options;
         
         $data = array(
-            'typeOptions' => $appListStrings->case_type_options,
+            'typeOptions' => $caseTypeOptions,
             'targetOptions' => $appListStrings->case_target_options,
             'user' => $user,
             'contact' => $contact,
