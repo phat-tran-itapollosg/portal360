@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'page_title' => 'Send feedback',
+    'page_title' => 'SEND FEEDBACK',
     'customer_id' => 'Stuent ID',
     'type' => 'Type',
     'target' => 'Target',

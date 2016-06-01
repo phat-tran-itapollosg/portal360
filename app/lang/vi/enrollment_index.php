@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'page_title' => 'Đăng ký học',
+    'page_title' => 'ĐĂNG KÝ HỌC',
     'no' => 'STT',
     'start_date' => 'Ngày bắt đầu',
     'end_date' => 'Ngày kết thúc',

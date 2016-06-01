@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'page_title' => 'History Feedback',
+    'page_title' => 'HISTORY FEEDBACK',
     'type' => 'Type',
     'target' => 'Target',
     'subject' => 'Subject',

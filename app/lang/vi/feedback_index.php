@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'page_title' => 'Danh sách phản hồi',
+    'page_title' => 'DANH SÁCH PHẢN HỒI',
     'type' => 'Loại phản hồi',
     'type' => 'Dạng phản hồi',
     'target' => 'Bộ phận',

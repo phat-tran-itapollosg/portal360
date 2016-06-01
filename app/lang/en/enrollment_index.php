@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'page_title' => 'Enrollment',
+    'page_title' => 'ENROLLMENT',
     'no' => 'No.',
     'start_date' => 'Start Date',
     'end_date' => 'End Date',

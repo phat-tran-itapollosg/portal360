@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'page_title' => 'Gửi phản hồi',
+    'page_title' => 'GỬI PHẢN HỒI',
     'customer_id' => 'Mã học viên',
     'type' => 'Dạng phản hồi',
     'target' => 'Bộ phận',
