@@ -1,0 +1,11 @@
+#calendar .fc-toolbar {
+    height: 50px;
+}
+
+#calendar .fc-toolbar .fc-center {
+    margin-top: -6px;
+}
+
+#calendar .fc-toolbar .fc-center button {
+    margin-top: -4px;
+}

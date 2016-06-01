@@ -13,10 +13,43 @@ class ScheduleController extends BaseController {
         $session = Session::get('session');
         $contact = Session::get('contact');
 
-        
+        $schedules = SugarUtil::getSchedules();
+
+        // Render events for fullcalendar format and return to the view
+        $events = array();
+        $todayDate = time();
+
+        for($i = 0; $i < count($schedules); $i++) {
+            $focusDate = strtotime($schedules[$i]->date);
+            $bgClass = '';
+
+            // The session is in the pass
+            if($todayDate > $focusDate) {
+                // Student is present
+                if($schedules[$i]->attendance_type == 'P') {
+                    $bgClass = 'bgm-green';
+                }
+                // Student is absent
+                else {
+                    $bgClass = 'bgm-red';
+                }
+            }
+            // The session is not started
+            else {
+                $bgClass = 'bgm-yellow';
+            }
+
+            $events[] = array(
+                'title' => $schedules[$i]->class_name,
+                'start' => $schedules[$i]->date_start,
+                'end' => $schedules[$i]->date_end,
+                'allDay' => false,
+                'className' => $bgClass
+            );
+        }
         
         $data = array(
-        
+            'events' => $events
         );
 
         return View::make('schedule.index')->with($data);

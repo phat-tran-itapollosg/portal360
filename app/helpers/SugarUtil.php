@@ -70,6 +70,22 @@ class SugarUtil {
         return $tickets;    
     }
 
+    // Util function to get schedules that belongs to the current student
+    public static function getSchedules() {
+        $client = self::getClient();
+        $session = Session::get('session');
+        $contact = Session::get('contact');
+
+        $params = array(
+            'session' => $session->id,
+            'student_id' => $contact->id,
+        );
+
+        $result = $client->call(SugarMethod::GET_SCHEDULES, $params);
+
+        return $result;
+    }
+
     // Util function to get exactly the link records by a given link name
     public static function getLinkRecords($linkList, $linkName, $singleRecord = false) {
         for($i = 0; $i < count($linkList); $i++) {

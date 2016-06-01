@@ -2,6 +2,10 @@ body[lang="vi"] *:not(.zmdi), body[lang="en"] #recent-news {
     font-family: sans-serif;    
 }
 
+body[lang="vi"] .ui-icon {
+    font-family: 'Material-Design-Iconic-Font' !important;
+}
+
 .dataTables_length, .dataTables_filter {
     margin-bottom: 10px;    
 }

@@ -24,6 +24,7 @@
         
         <script type="text/javascript">
             var APP_URL = '{{ URL::to('/') }}';
+            var locale = '{{ App::getLocale() }}';
             var Lang = {};  // Js language object
         </script>
         
