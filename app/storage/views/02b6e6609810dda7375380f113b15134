@@ -24,6 +24,7 @@
         
         <script type="text/javascript">
             var APP_URL = '<?php echo URL::to('/'); ?>';
+            var locale = '<?php echo App::getLocale(); ?>';
             var Lang = {};  // Js language object
         </script>
         

@@ -29,6 +29,9 @@
         <li class="<?php if (Request::is('home/*')): ?> active <?php endif; ?>">
             <a href="<?php echo URL::to('/'); ?>"><i class="zmdi zmdi-home"></i> <?php echo trans('app.dashboard'); ?></a>
         </li>
+        <li class="<?php if (Request::is('gradebook/*')): ?> active <?php endif; ?>">
+            <a href="<?php echo URL::to('/gradebook/index'); ?>"><i class="zmdi zmdi-book"></i> <?php echo trans('app.lbl_gradebook_index'); ?></a>
+        </li>
         <li class="<?php if (Request::is('sms/*')): ?> active <?php endif; ?>">
             <a href="<?php echo URL::to('/sms/index'); ?>"><i class="zmdi zmdi-comment-outline"></i> <?php echo trans('app.sms'); ?></a>
         </li>

@@ -10,7 +10,7 @@
 class StudentController extends BaseController {
 
 	public function index() {
-		$contact = Session::get('contact');
+		//$contact = Session::get('contact');
 		$data = array(
 			'students' => array(
 				array('name' => 'trung'),

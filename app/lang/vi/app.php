@@ -27,4 +27,5 @@ return array(
     'btn_cancel_text' => 'Hủy',
     'btn_delete_text' => 'Xóa',
     'btn_close_text' => 'Đóng',
+    'lbl_gradebook_index' => 'Bảng điểm',
 );

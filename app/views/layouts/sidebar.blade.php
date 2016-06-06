@@ -29,6 +29,9 @@
         <li class="@if (Request::is('home/*')) active @endif">
             <a href="{{ URL::to('/') }}"><i class="zmdi zmdi-home"></i> {{ trans('app.dashboard') }}</a>
         </li>
+        <li class="@if (Request::is('gradebook/*')) active @endif">
+            <a href="{{ URL::to('/gradebook/index') }}"><i class="zmdi zmdi-book"></i> {{ trans('app.lbl_gradebook_index') }}</a>
+        </li>
         <li class="@if (Request::is('sms/*')) active @endif">
             <a href="{{ URL::to('/sms/index') }}"><i class="zmdi zmdi-comment-outline"></i> {{ trans('app.sms') }}</a>
         </li>

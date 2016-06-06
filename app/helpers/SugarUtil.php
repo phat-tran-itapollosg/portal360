@@ -203,5 +203,55 @@ class SugarUtil {
         
         return $timezoneList;
     }
+    
+    //Trung Nguyen
+        public static function getClassOfStudent() {
+            $client = self::getClient();
+            $contact = Session::get('contact');
+            $rootSession = $client->getRootSession();
+
+            // Get complaints that linked to the portal contact
+            $relationshipsParams = array(
+                'session' => $rootSession,
+                'module_name' => 'Contacts',
+                //'module_id' => "3bf6aa78-16e2-f68e-e798-56c1aca96849",
+                'module_id' => "24641448-cc0e-2e77-a467-56c1ac257b98",
+//                'module_id' => $contact->id,
+                'link_field_name' => 'j_class_contacts_1',
+                'related_module_query' => '',
+                'related_fields' => array(
+                    'id', 'name', 'end_date', 'hours' 
+                ),
+                'related_module_link_name_to_fields_array' => array(),
+                'deleted'=> '0',
+                'order_by' => 'j_class.end_date DESC',
+                'offset' => 0,
+                'limit' => 1000,
+            );
+
+            $result = $client->call(SugarMethod::GET_RELATIONSHIPS, $relationshipsParams);
+            $complaints = $client->toSimpleObjectList($result->entry_list);
+
+            return $complaints; 
+        }
+        
+        public static function getGradebookDetail($class_id){
+            $client = self::getClient();
+            $contact = Session::get('contact');
+            $rootSession = $client->getRootSession();
+
+            // Get complaints that linked to the portal contact
+            $params = array(
+                'session' => $rootSession,
+                //'student_id' => 'Contacts',
+                'student_id' => "24641448-cc0e-2e77-a467-56c1ac257b98",
+                'class_id' => $class_id,                
+            );
+
+            $result = $client->call("getGradebookDetail", $params);
+
+            return $result;
+        }
+        //End Trung Nguyen
 }
 ?>

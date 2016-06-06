@@ -27,4 +27,5 @@ return array(
     'btn_cancel_text' => 'Cancel',
     'btn_delete_text' => 'Delete',
     'btn_close_text' => 'Close',
+    'lbl_gradebook_index' => 'Gradebook',
 );
