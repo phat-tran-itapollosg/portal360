@@ -6,7 +6,7 @@
     *   Date: 2016-03-15
     *   Purpose: To store enumurate values for Sugar's webservice methods
     */
-    
+
     abstract class SugarMethod {
         const LOGIN = 'login';   
         const LOGOUT = 'logout';   
@@ -31,9 +31,9 @@
     *   Date: 2016-03-15
     *   Purpose: To handle Sugar's webservices client
     */
-    
+
     class SugarClient {
-        
+
         var $appName = 'CustomerPortal';
         var $version = '1';
         var $serviceUrl = '';
@@ -79,7 +79,7 @@
 
             return $response;
         }
-        
+
         // Util function to retrieve a specific record from the given module
         public function retrieve($sessionId, $moduleName, $id, $selectFields = '') {
             $params = array(  
@@ -88,16 +88,16 @@
                 'id' => $id, 
                 'select_fields' => $selectFields,
             );
-            
+
             $response = $this->call(SugarMethod::GET_ENTRY, $params);
-            
+
             if(!$response) {
                 return null;    
             }
-            
+
             return $this->toSimpleObject($response->entry_list[0]);
         }
-        
+
         // Util function to save a specific record into the given module
         public function save($sessionId, $moduleName, $id = '', $data) {
             $params = array(  
@@ -105,7 +105,7 @@
                 'module_name' => $moduleName,
                 'name_value_list' => array(),
             );
-            
+
             // Add data to name value list array
             if($id != '') {
                 $params['name_value_list'][] = array(
@@ -113,23 +113,23 @@
                     'value' => $id
                 );
             }
-            
+
             foreach($data as $field => $value) {
                 $params['name_value_list'][] = array(
                     'name' => $field,
                     'value' => $value
                 );    
             }
-            
+
             $response = $this->call(SugarMethod::SET_ENTRY, $params);
-            
+
             if(!$response) {
                 return null;    
             }
 
             return $response;
         }
-        
+
         // Util function to get records count in the given module
         public function count($sessionId, $moduleName, $query = '') {
             $params = array(
@@ -140,14 +140,14 @@
             );
 
             $response = $this->call(SugarMethod::GET_ENTRIES_COUNT, $params);
-            
+
             if($response == null) {
                 return 0;
             }
-            
+
             return $response->result_count;    
         }
-        
+
         // Util funtion to get all records from a given module
         public function getFullList($sessionId, $moduleName, $selectFields = array(), $query = '', $orderBy = '', $limit = 1000, $relationships = array()) {
             $params = array(
@@ -165,49 +165,49 @@
 
             $response = $this->call(SugarMethod::GET_ENTRY_LIST, $params);
             $list = $this->toSimpleObjectList($response->entry_list);
-            
+
             return $list;    
         }
-        
+
         // Util function to convert the complex object returned from the webservice into simple object
         public function toSimpleObject($complexObject) {
             if(!$complexObject) {
                 return null;
             }
-            
+
             $result = new stdClass();
-            
+
             foreach($complexObject->name_value_list as $field => $data) {
                 $result->$field = $data->value;    
             }
-            
+
             return $result;   
         }
-        
+
         // Util function to convert the complex object list returned from the webservice into simple object list
         public function toSimpleObjectList($complexObjectList) {
             if(!$complexObjectList) {
                 return array();
             }
-            
+
             $result = array();
-            
+
             // Loop throught all the objects in the complex list
             for($i = 0; $i < count($complexObjectList); $i++) {
                 $simpleObject = new stdClass();
-                
+
                 // Loop through all field of the complex object
                 foreach($complexObjectList[$i]->name_value_list as $field => $data) {
                     $simpleObject->$field = $data->value;
                 }
-                
+
                 // Append the simple object into the result list
                 $result[] = $simpleObject;
             }
-            
+
             return $result;   
         }
-        
+
         // Util function to get the most powerfull user's session
         public function getRootSession() {
             $loginParams = array(
@@ -222,7 +222,7 @@
 
             return ($loginResult) ? $loginResult->id : null;
         }
-        
+
         //Login
         public function login($username, $password) {
             $loginParams = array(
@@ -235,12 +235,16 @@
             );
 
             $session = $this->call(SugarMethod::LOGIN, $loginParams);
-            //customize by Tung Bui - replate session id by root session
-            $session->id = $this->getRootSession();
-            
+
+
             if(isset($session->id)){
-                $userId = $session->name_value_list->user_id->value;
+                //customize by Tung Bui - replate session id by root session
+                //fix by Trung Nguyen
+                $session->contact_session = $session->id;  
+                $session->id = $this->getRootSession();
                 
+                $userId = $session->name_value_list->user_id->value;
+
                 // Retrieve user info
                 $user = $this->retrieve($session->id, 'Users', $userId);
 
@@ -251,13 +255,13 @@
                     // Retrieve contact info and user preference
                     $contact = $this->retrieve($session->id, 'Contacts', $user->portal_contact_id);
                     $preferences = $this->getUserPreferences($session->id, $user->id, 'global');
-                    
+
                     // Save login session
                     Session::put('session', $session);
                     Session::put('user', $user);
                     Session::put('contact', $contact);
                     Session::put('user_preferences', $preferences);
-                    
+
                     // Return success status
                     $status = 'success';
                 }
@@ -265,7 +269,7 @@
             else {
                 $status = 'login_failed';
             }
-            
+
             return $status;
         }
 
@@ -284,7 +288,7 @@
             $content = $data->contents->value;
             $preferences = unserialize(base64_decode($content));    // Convert from string to array
             $preferences = json_decode(json_encode($preferences));  // Convert from array to object
-            
+
             return $preferences;
         }
     }

@@ -13,12 +13,17 @@
 
 App::before(function($request)
 {
-    // Modified by Hieu Nguyen on 2016-03-15 to expose some common variables into all views
+    // Modified by Hieu Nguyen on 2016-03-15 to expose some common variables into all views    
     if(Session::has('session')) {
         View::share('complaintCount', 10);
         View::share('ticketCount', 290);
     }
     // End Hieu Nguyen
+    
+    /*if(!Session::has('session')) { 
+        return Redirect::guest('user/login');
+        die;
+    }  */
 });
 
 
@@ -43,6 +48,7 @@ Route::filter('auth', function()
     // Modified by Hieu Nguyen on 2016-03-15 to check authenticated user  
 	if(!Session::has('session')) { 
         return Redirect::guest('user/login');
+        die;
     }
     // End Hieu Nguyen
 });

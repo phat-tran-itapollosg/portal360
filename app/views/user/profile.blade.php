@@ -91,48 +91,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label">{{ trans('user_profile.timezone') }}</label>
-                                <div class="fg-line">
-                                    <div class="select">
-                                        <select id="timezone" name="timezone" class="form-control">
-                                            @foreach($timezones as $timezone)
-                                                <option value="{{ $timezone['key'] }}"  @if($timezone['key'] == $preferences->timezone ) selected @endif> {{ $timezone['label'] }} </option>
-                                            @endforeach;
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="control-label">{{ trans('user_profile.date_time_formats') }}</label>
-                                <div>
-                                    <div class="fg-line" style="width:200px; display: inline-block;">
-                                        <div class="select">
-                                            <select id="date_format" name="date_format" class="form-control">
-                                                @foreach($dateFormats as $key => $value)
-                                                    <option value="{{ $key }}" @if($key == $preferences->datef) selected @endif>{{ $value }}</option>
-                                                @endforeach;
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="fg-line" style="width:200px; display: inline-block;">
-                                        <div class="select">
-                                            <select id="time_format" name="time_format" class="form-control">
-                                                @foreach($timeFormats as $key => $value)
-                                                    <option value="{{ $key }}" @if($key == $preferences->timef) selected @endif>{{ $value }}</option>
-                                                @endforeach;
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 
                     <div class="row">
                         <div class="col-sm-12">

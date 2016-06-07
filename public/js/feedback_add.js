@@ -5,8 +5,7 @@ $(function(){
             required: true,
         },
         'contents': {
-            required: true,
-            minlength: 100,
+            required: true,            
         },
     };
     
@@ -15,8 +14,7 @@ $(function(){
             required: Lang.feedback_add.subject_empty_error_msg,
         },
         'contents': {
-            required: Lang.feedback_add.content_empty_error_msg,
-            minlength: Lang.feedback_add.content_too_short_error_msg,
+            required: Lang.feedback_add.content_empty_error_msg,           
         },
     };
     
