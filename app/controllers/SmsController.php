@@ -12,10 +12,10 @@
         public function index() {
             $session = Session::get('session');
             $contact = Session::get('contact');
-            $rootSession = $this->client->getRootSession();
+            //$rootSession = $this->client->getRootSession();
             // Get sms that linked to the current student
             $relationshipsParams = array(
-                'session' => $rootSession,// $session->id,
+                'session' => $session->root_session_id,// $session->id,
                 'module_name' => 'Contacts',
                 'module_id' => $contact->id,
                 'link_field_name' => 'contacts_sms',

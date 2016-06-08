@@ -15,7 +15,7 @@ class EnrollmentController extends BaseController {
 
         // Get sms that linked to the current student
         $params = array(
-            'session' => $session->id,
+            'session' => $session->root_session_id,
             'student_id' => $contact->id,
         );
 

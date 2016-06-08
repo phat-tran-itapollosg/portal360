@@ -47,7 +47,7 @@
                     $session = Session::get('session');
 
                     $languageParams = array(
-                        'session' => $session->id, 
+                        'session' => $session->root_session_id, 
                         'type' => 'app_list_strings', 
                         'language' => (App::getLocale() == 'en') ? 'en_us' : 'vn_vn'
                     );
@@ -109,28 +109,17 @@
             $timezoneList = SugarUtil::getTimezoneList();
 
             // Get data for the view
-            $user = $this->client->retrieve($session->id, 'Users', $user->id);
-            $contact = $this->client->retrieve($session->id, 'Contacts', $user->portal_contact_id);
-            $preferences = $this->client->getUserPreferences($session->id, $user->id, 'global');  
-            //fix by Trung Nguyen 2016.06.07 : defaul some options     
-            if(!isset($preferences->timezone))
-                $preferences->timezone = 'Asia/Ho_Chi_Minh';
-            if(!isset($preferences->timef))
-                $preferences->timef = 'h:i A';
-            if(!isset($preferences->datef))
-                $preferences->datef = 'd/m/Y';
-            //end
+            $user = $this->client->retrieve($session->root_session_id, 'Users', $user->id);
+            $contact = $this->client->retrieve($session->root_session_id, 'Contacts', $user->portal_contact_id);            
 
             // Store preference into session cache so that we can use it later in other pages
-            Session::set('user_preferences', $preferences);
 
             $data = array(
                 'user' => $user,
                 'contact' => $contact,
                 'timezones' => $timezoneList,
                 'dateFormats' => Config::get('app.date_formats'),
-                'timeFormats' => Config::get('app.time_formats'),
-                'preferences' => $preferences
+                'timeFormats' => Config::get('app.time_formats'),               
             );
 
             // Render the view with necessary data
@@ -153,7 +142,7 @@
                 'description' => Input::get('description'),
             );
 
-            $result = $this->client->save($session->id, 'Users', $user->id, $data);
+            $result = $this->client->save($session->root_session_id, 'Users', $user->id, $data);
 
             // Save prefrences
            /* $preferencesParams = array(
@@ -192,7 +181,7 @@
             $session = Session::get('session');
 
             $passwordParams = array(
-                'session' => $session->contact_session,     // #1fix by Trung Nguyen 2016.06.07
+                'session' => $session->id,     // #1fix by Trung Nguyen 2016.06.07
                 'current_password' => Input::get('current_password'),    
                 'new_password' => Input::get('new_password'),    
             );

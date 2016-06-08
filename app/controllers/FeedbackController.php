@@ -66,7 +66,7 @@ class FeedbackController extends BaseController {
             'assigned_user_id' => $user->id,
         );
 
-        $result = $this->client->save($session->id, 'Cases', '', $data);
+        $result = $this->client->save($session->root_session_id, 'Cases', '', $data);
         
         // Return result into the view
         if($result != null) {

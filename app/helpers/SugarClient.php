@@ -235,26 +235,27 @@
             );
 
             $session = $this->call(SugarMethod::LOGIN, $loginParams);
-
+            
 
             if(isset($session->id)){
                 //customize by Tung Bui - replate session id by root session
                 //fix by Trung Nguyen
                 $session->contact_session = $session->id;  
-                $session->id = $this->getRootSession();
+                $session->root_session_id = $this->getRootSession();
+                //$session->id = $this->getRootSession();
                 
                 $userId = $session->name_value_list->user_id->value;
 
                 // Retrieve user info
-                $user = $this->retrieve($session->id, 'Users', $userId);
+                $user = $this->retrieve($session->root_session_id, 'Users', $userId);
 
                 if($user->for_portal_only != 1) {
                     $status = 'not_for_portal';
                 } 
                 else {
                     // Retrieve contact info and user preference
-                    $contact = $this->retrieve($session->id, 'Contacts', $user->portal_contact_id);
-                    $preferences = $this->getUserPreferences($session->id, $user->id, 'global');
+                    $contact = $this->retrieve($session->root_session_id, 'Contacts', $user->portal_contact_id);
+                    $preferences = $this->getUserPreferences($session->root_session_id, $user->id, 'global');
 
                     // Save login session
                     Session::put('session', $session);

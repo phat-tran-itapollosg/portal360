@@ -10,7 +10,7 @@
 class ScheduleController extends BaseController {
 
     public function index() {
-        $session = Session::get('session');
+        //$session = Session::get('session');
         $contact = Session::get('contact');
 
         $schedules = SugarUtil::getSchedules();

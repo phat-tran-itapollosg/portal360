@@ -26,11 +26,11 @@
             $client = self::getClient();
             $session = Session::get('session');
             $student = Session::get('contact');
-            $rootSession = $client->getRootSession();
+            //$rootSession = $client->getRootSession();
 
             // Get feedback list
             $feddbacks = $client->getFullList(
-                $rootSession, 
+                $session->root_session_id, 
                 'Cases',
                 array(),    // Get all fields
                 'cases.student_id = "'.$student->id.'"',
@@ -45,11 +45,11 @@
             $client = self::getClient();
             $session = Session::get('session');
             $contact = Session::get('contact');
-            $rootSession = $client->getRootSession();
+            //$rootSession = $client->getRootSession();
 
             // Get ticket that linked to the portal contact
             $relationshipsParams = array(
-                'session' => $rootSession,
+                'session' => $session->root_session_id,
                 'module_name' => 'Accounts',
                 'module_id' => $contact->account_id,
                 'link_field_name' => 'cases',
@@ -78,7 +78,7 @@
             $contact = Session::get('contact');
 
             $params = array(
-                'session' => $session->id,
+                'session' => $session->root_session_id,
                 'student_id' => $contact->id,
             );
 
@@ -209,14 +209,13 @@
         public static function getClassOfStudent() {
             $client = self::getClient();
             $contact = Session::get('contact');
-            $rootSession = $client->getRootSession();
+            $session = Session::get('session');
+            //$rootSession = $client->getRootSession();
 
             // Get complaints that linked to the portal contact
             $relationshipsParams = array(
-                'session' => $rootSession,
+                'session' => $session->root_session_id,
                 'module_name' => 'Contacts',
-                //'module_id' => "3bf6aa78-16e2-f68e-e798-56c1aca96849",
-                //'module_id' => "24641448-cc0e-2e77-a467-56c1ac257b98",
                 'module_id' => $contact->id,
                 'link_field_name' => 'j_class_contacts_1',
                 'related_module_query' => '',
@@ -239,12 +238,12 @@
         public static function getGradebookDetail($class_id){
             $client = self::getClient();
             $contact = Session::get('contact');
-            $rootSession = $client->getRootSession();
+            $session = Session::get('session');
+            //$rootSession = $client->getRootSession();
 
             // Get complaints that linked to the portal contact
             $params = array(
-                'session' => $rootSession,
-                //'student_id' => "24641448-cc0e-2e77-a467-56c1ac257b98",
+                'session' => $session->root_session_id,
                 'student_id' => $contact->id,
                 'class_id' => $class_id,                
             );
