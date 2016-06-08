@@ -80,3 +80,36 @@ label.error {
 .item-list > li.item-default {
     border-left-color: #abbac3
 }
+
+#footer {
+    padding-left: 0px !important;    
+}
+
+.footer-top {
+    background-image: url(../../public/img/waveUp3.png);
+    background-repeat: repeat;
+    height: 50px;
+}
+
+.footer-bottom {
+    background: #024D8D !important;
+    min-height: 100px !important;
+    width: 100% !important;
+    padding-top: 75px !important;
+}
+
+#header {
+    position: relative !important;
+}
+
+body.sw-toggled #sidebar {
+    position: absolute !important;
+    height: calc(100% - 50px) !important;
+    top: 0px !important;
+}
+
+#content {
+   margin-top: -275px !important;
+   min-height: 400px !important;
+}
+

@@ -1,3 +1,9 @@
 <footer id="footer">
-    Copyright &copy; 2010 - <?php echo date('Y'); ?> <a href="http://www.onlinecrm.vn">OnlineCRM</a>
+    <div>     
+      <div class="footer-top" ></div>
+      <div class="footer-bottom">
+        Copyright &copy; 2010 - <?php echo date('Y'); ?> <a href="http://www.onlinecrm.vn">OnlineCRM</a>
+    </div>
+    
+    
 </footer>
