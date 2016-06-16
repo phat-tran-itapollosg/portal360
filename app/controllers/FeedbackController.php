@@ -1,80 +1,82 @@
 <?php
 
-/*
-*   Class feedbackController
-*   Auhor: Hieu Nguyen
-*   Date: 2016-03-15
-*   Purpose: To handle feedback logic
-*/
+    /*
+    *   Class feedbackController
+    *   Auhor: Hieu Nguyen
+    *   Date: 2016-03-15
+    *   Purpose: To handle feedback logic
+    */
 
-class FeedbackController extends BaseController {
+    class FeedbackController extends BaseController {
 
-    // Render the index page
-    public function index() {
-        $feedbacks = SugarUtil::getFeedbackList();
-        $appListStrings = Session::get('app_list_strings');
+        // Render the index page
+        public function index() {
+            $feedbacks = SugarUtil::getFeedbackList();
+            $appListStrings = Session::get('app_list_strings');
 
-        $locale = App::getLocale();        
-        $typeOptions = ($locale == "vi")? $appListStrings->case_type_options_for_vn : $appListStrings->case_type_options;
-        $statusOptions = ($locale == "vi")? $appListStrings->case_status_dom_for_vn : $appListStrings->case_status_dom;
-        
-        $data = array(
-            'feedbacks' => $feedbacks,
-            'types' => $typeOptions,
-            'targets' => $appListStrings->case_target_options,
-            'statuses' => $statusOptions,
-        );
+            $locale = App::getLocale();        
+            $typeOptions = ($locale == "vi")? $appListStrings->full_relate_feedback_list_for_vn : $appListStrings->full_relate_feedback_list;
+            $statusOptions = ($locale == "vi")? $appListStrings->status_feedback_list_for_vn : $appListStrings->status_feedback_list;
+            $none = '-';
+            $appListStrings->jfeedback_slc_target_list->$none = '';
+            $data = array(
+                'feedbacks' => $feedbacks,
+                'types' => $typeOptions,
+                'targets' => $appListStrings->jfeedback_slc_target_list,
+                'statuses' => $statusOptions,
+            );            
+            return View::make('feedback.index')->with($data);
+        }
 
-        return View::make('feedback.index')->with($data);
+        // Render the add page
+        public function add() {
+            $session = Session::get('session');
+            $user = Session::get('user');
+            $contact = Session::get('contact');
+            $appListStrings = Session::get('app_list_strings');
+            $locale = App::getLocale();
+
+            $caseTypeOptions = ($locale == "vi")? $appListStrings->portal_feedback_type_list_for_vn : $appListStrings->portal_feedback_type_list_for_en;
+
+            $data = array(
+                'typeOptions' => $caseTypeOptions,
+                'targetOptions' => $appListStrings->jfeedback_slc_target_list,
+                'user' => $user,
+                'contact' => $contact,
+            );
+
+            return View::make('feedback.add')->with($data);    
+        }
+
+        // Handle saving feedback
+        public function save() {
+            $session = Session::get('session');
+            $user = Session::get('user');
+            $contact = Session::get('contact');
+
+            // Save user data
+            $data = array(
+                'name' => Input::get('subject'),
+                'type_feedback_list' => 'Customer',
+                'relate_feedback_list' => Input::get('slc_type'),
+                'slc_target' => Input::get('slc_target'),
+                'status' => 'New',
+                // 'priority' => 'P1', // High
+                'description' => Input::get('contents'),
+                'contacts_j_feedback_1contacts_ida' => $contact->id,
+                'is_portal' => 1,
+                // 'assigned_user_id' => $user->id,
+            );
+
+            $result = $this->client->save($session->root_session_id, 'J_Feedback', '', $data);
+
+            // Return result into the view
+            if($result != null) {
+                Session::flash('success_message', trans('feedback_index.send_feedback_success_msg'));
+                return Redirect::to('feedback/index');
+            } else {
+                Session::flash('error_message', trans('feedback_add.send_feedback_failed_msg'));
+                return Redirect::back();
+            }    
+        }	
     }
-    
-    // Render the add page
-    public function add() {
-        $session = Session::get('session');
-        $user = Session::get('user');
-        $contact = Session::get('contact');
-        $appListStrings = Session::get('app_list_strings');
-        $locale = App::getLocale();
-        
-        $caseTypeOptions = ($locale == "vi")? $appListStrings->case_type_options_for_vn : $appListStrings->case_type_options;
-        
-        $data = array(
-            'typeOptions' => $caseTypeOptions,
-            'targetOptions' => $appListStrings->case_target_options,
-            'user' => $user,
-            'contact' => $contact,
-        );
-        
-        return View::make('feedback.add')->with($data);    
-    }
-    
-    // Handle saving feedback
-    public function save() {
-        $session = Session::get('session');
-        $user = Session::get('user');
-        $contact = Session::get('contact');
-        
-        // Save user data
-        $data = array(
-            'name' => Input::get('subject'),
-            'type' => Input::get('slc_type'),
-            'target' => Input::get('slc_target'),
-            'status' => 'New',
-            'priority' => 'P1', // High
-            'description' => Input::get('contents'),
-            'student_id' => $contact->id,
-            'assigned_user_id' => $user->id,
-        );
-
-        $result = $this->client->save($session->root_session_id, 'Cases', '', $data);
-        
-        // Return result into the view
-        if($result != null) {
-            Session::flash('success_message', trans('feedback_index.send_feedback_success_msg'));
-            return Redirect::to('feedback/index');
-        } else {
-            Session::flash('error_message', trans('feedback_add.send_feedback_failed_msg'));
-            return Redirect::back();
-        }    
-    }	
-}

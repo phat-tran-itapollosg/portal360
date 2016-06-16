@@ -32,12 +32,12 @@
                         @foreach($feedbacks as $feedback)
                             <tr>
                                 <td>{{ $feedback->name }}</td>
-                                <td>{{ $types->{$feedback->type} }}</td>
-                                <td>{{ $targets->{$feedback->target} }}</td>
+                                <td>{{ $types->{$feedback->relate_feedback_list} }}</td>
+                                <td>{{ $targets->{$feedback->slc_target?$feedback->slc_target:'-'} }}</td>
                                 <td>{{ SugarUtil::formatDate($feedback->date_entered) }}</td>
                                 <td>{{ $statuses->{$feedback->status} }}</td>
                                 <td>{{ $feedback->description }}</td>
-                                <td>{{ $feedback->work_log }}</td>
+                                <td>{{ $feedback->feedback }}</td>
                             </tr>
                         @endforeach
                     </tbody>

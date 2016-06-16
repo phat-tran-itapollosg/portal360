@@ -235,7 +235,7 @@
             );
 
             $session = $this->call(SugarMethod::LOGIN, $loginParams);
-            
+
 
             if(isset($session->id)){
                 //customize by Tung Bui - replate session id by root session
@@ -243,7 +243,7 @@
                 $session->contact_session = $session->id;  
                 $session->root_session_id = $this->getRootSession();
                 //$session->id = $this->getRootSession();
-                
+
                 $userId = $session->name_value_list->user_id->value;
 
                 // Retrieve user info
@@ -255,7 +255,13 @@
                 else {
                     // Retrieve contact info and user preference
                     $contact = $this->retrieve($session->root_session_id, 'Contacts', $user->portal_contact_id);
-                    $preferences = $this->getUserPreferences($session->root_session_id, $user->id, 'global');
+                    $preferences = $this->getUserPreferences($session->root_session_id, $user->id, 'global');                     
+                    if(empty($preferences->timezone)){
+                        $preferences->datef = 'd/m/Y';
+                        $preferences->timef = 'h:ia';
+                        $preferences->timezone = 'Asia/Ho_Chi_Minh';
+                        $preferences->default_locale_name_format = 's l f';                            
+                    }
 
                     // Save login session
                     Session::put('session', $session);

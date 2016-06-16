@@ -31,12 +31,12 @@
                         <?php foreach($feedbacks as $feedback): ?>
                             <tr>
                                 <td><?php echo $feedback->name; ?></td>
-                                <td><?php echo $types->{$feedback->type}; ?></td>
-                                <td><?php echo $targets->{$feedback->target}; ?></td>
+                                <td><?php echo $types->{$feedback->relate_feedback_list}; ?></td>
+                                <td><?php echo $targets->{$feedback->slc_target?$feedback->slc_target:'-'}; ?></td>
                                 <td><?php echo SugarUtil::formatDate($feedback->date_entered); ?></td>
                                 <td><?php echo $statuses->{$feedback->status}; ?></td>
                                 <td><?php echo $feedback->description; ?></td>
-                                <td><?php echo $feedback->work_log; ?></td>
+                                <td><?php echo $feedback->feedback; ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

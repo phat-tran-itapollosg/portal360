@@ -29,15 +29,35 @@
             //$rootSession = $client->getRootSession();
 
             // Get feedback list
-            $feddbacks = $client->getFullList(
-                $session->root_session_id, 
-                'Cases',
-                array(),    // Get all fields
-                'cases.student_id = "'.$student->id.'"',
-                'cases.date_entered ASC'
-            ); 
+            /* $feddbacks = $client->getFullList(
+            $session->root_session_id, 
+            'Cases',
+            array(),    // Get all fields
+            'cases.student_id = "'.$student->id.'"',
+            'cases.date_entered ASC'
+            );  */
+            $relationshipsParams = array(
+                'session' => $session->root_session_id,
+                'module_name' => 'Contacts',
+                'module_id' => $student->id,
+                'link_field_name' => 'contacts_j_feedback_1',      
+                'related_module_query' => 'j_feedback.type_feedback_list = "Customer" ' ,
+                'related_fields' => array(
+                    'id', 'name', 'status',  'description', 
+                    'assigned_user_name', 'date_entered', 'slc_target', 
+                    'type_feedback_list','relate_feedback_list', 'feedback',
+                ),
+                'related_module_link_name_to_fields_array' => array(),
+                'deleted'=> '0',
+                'order_by' => 'j_feedback.date_entered DESC',
+                'offset' => 0,
+                'limit' => 1000,
+            );
 
-            return $feddbacks;
+            $result = $client->call(SugarMethod::GET_RELATIONSHIPS, $relationshipsParams);
+            $feddbacks = $client->toSimpleObjectList($result->entry_list);
+
+            return $feddbacks;  
         }
 
         // Util function to get ticket list that belongs to the current portal contact
@@ -74,7 +94,7 @@
         public static function getSchedules() {
             $client = self::getClient();
             $session = Session::get('session');
-           // $rootSession = $client->getRoot
+            // $rootSession = $client->getRoot
             $contact = Session::get('contact');
 
             $params = array(
@@ -103,12 +123,13 @@
 
         // Util function to format date time string
         public static function formatDate($dateString) {
+
             if(!empty($dateString)) {
                 $preferences = Session::get('user_preferences');
                 $timezone = isset($preferences->timezone)?$preferences->timezone:"";
                 $dateFormat = isset($preferences->datef)?$preferences->datef:"";
                 $timeFormat = isset($preferences->timef)?$preferences->timef:"";
-
+                // print_r($dateFormat);
                 if(strlen($dateString) > 10) {
                     $format = $dateFormat .' '. $timeFormat;    
                 } 
