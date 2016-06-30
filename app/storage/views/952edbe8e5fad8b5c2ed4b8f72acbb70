@@ -25,10 +25,10 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="gradebook_content">
+            <div class="gradebook_content overflow-auto">
 
             </div>
-            <div class="gradebook_result">
+            <div class="gradebook_result overflow-auto">
 
             </div>
             <div class="modal fade" id="gradebook_detail" data-backdrop="static" data-keyboard="false">

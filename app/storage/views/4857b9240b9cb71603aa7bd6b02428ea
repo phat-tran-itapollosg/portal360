@@ -2,7 +2,11 @@
     <div class="profile-menu">
         <a href="<?php echo URL::to('user/profile'); ?>">
             <div class="profile-pic">
-                <img src="<?php echo URL::asset('public/img/customer-avatar.png'); ?>" alt="">
+                <?php if(Session::get('contact')->picture != ''): ?>
+                    <img src="<?php echo Config::get('app.service_config.server_url'); ?>/index.php?entryPoint=download&id=<?php echo Session::get('contact')->picture; ?>&type=SugarFieldImage&isTempFile=1" alt="">
+                <?php else: ?>
+                    <img src="<?php echo URL::asset('public/img/customer-avatar.png'); ?>" alt="">
+                <?php endif; ?>
             </div>
 
             <div class="profile-info">

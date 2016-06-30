@@ -13,17 +13,29 @@
 
 App::before(function($request)
 {
-    // Modified by Hieu Nguyen on 2016-03-15 to expose some common variables into all views    
+    // Modified by Hieu Nguyen on 2016-03-15 to expose some common variables into all views   
+    $app_title = trans('app.app_title'); 
+    $center_name_title = ""; 
     if(Session::has('session')) {
         View::share('complaintCount', 10);
-        View::share('ticketCount', 290);
-    }
-    // End Hieu Nguyen
+        View::share('ticketCount', 290);         
+                
+        $session = Session::get('session');
+        if(!SugarUtil::checkSession($session->root_session_id)) {
+            Session::forget('session');
+            Session::forget('user');
+            Session::forget('contact');
+            Session::forget('user_preferences');
+        } else {
+            $student = Session::get('contact');
+            $app_title = $student->name;
+            $center_name_title = $student->team_name;
+        } 
+    } 
     
-    /*if(!Session::has('session')) { 
-        return Redirect::guest('user/login');
-        die;
-    }  */
+    View::share('app_title', $app_title); 
+    View::share('center_name_title', $center_name_title); 
+    // End Hieu Nguyen      
 });
 
 

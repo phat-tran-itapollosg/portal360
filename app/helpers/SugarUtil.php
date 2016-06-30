@@ -21,6 +21,25 @@
             return $client;
         }
 
+        /**
+        * function check session_id API is die
+        * 
+        * @param string session_id 
+        * @return bool
+        * 
+        * @author Trung Nguyen 2016.06.17
+        */
+        public static function checkSession($session_id) {              
+            $client = self::getClient();
+            $params = array(
+                'session' => $session_id
+            );
+            $result = $client->call("check_session", $params);  
+            if(isset($result->status))          
+                return $result->status;
+            return false;             
+        }
+
         // Util function to get complaint list that belongs to the current portal contact
         public static function getFeedbackList() {
             $client = self::getClient();
@@ -127,8 +146,8 @@
             if(!empty($dateString)) {
                 $preferences = Session::get('user_preferences');
                 $timezone = isset($preferences->timezone)?$preferences->timezone:"";
-                $dateFormat = isset($preferences->datef)?$preferences->datef:"";
-                $timeFormat = isset($preferences->timef)?$preferences->timef:"";
+                $dateFormat = isset($preferences->date_format)?$preferences->date_format:"";
+                $timeFormat = isset($preferences->time_format)?$preferences->time_format:"";
                 // print_r($dateFormat);
                 if(strlen($dateString) > 10) {
                     $format = $dateFormat .' '. $timeFormat;    
@@ -138,8 +157,7 @@
                 }
 
                 $date = new DateTime($dateString);
-                $date->setTimezone(new DateTimeZone($timezone));
-
+                $date->setTimezone(new DateTimeZone($timezone));                    
                 return $date->format($format);
             }    
         }

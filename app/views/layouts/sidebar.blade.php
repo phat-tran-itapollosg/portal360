@@ -2,7 +2,11 @@
     <div class="profile-menu">
         <a href="{{ URL::to('user/profile') }}">
             <div class="profile-pic">
-                <img src="{{ URL::asset('public/img/customer-avatar.png') }}" alt="">
+                @if(Session::get('contact')->picture != '')
+                    <img src="{{ Config::get('app.service_config.server_url') }}/index.php?entryPoint=download&id={{Session::get('contact')->picture}}&type=SugarFieldImage&isTempFile=1" alt="">
+                @else
+                    <img src="{{ URL::asset('public/img/customer-avatar.png') }}" alt="">
+                @endif
             </div>
 
             <div class="profile-info">

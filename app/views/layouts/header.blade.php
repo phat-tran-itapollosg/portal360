@@ -1,6 +1,8 @@
 <header id="header" class="clearfix" data-current-skin="blue">
-    <div>
+    <div id = 'header_image'>
+        <a href="{{Config::get('app.url')}}">
         <img src="../public/img/apollo_portal_poster.png" height="auto" width="100%">
+        </a>
     </div>
     <ul class="header-inner">
         <li id="menu-trigger" data-trigger="#sidebar">
@@ -12,7 +14,7 @@
         </li>
 
         <li class="logo hidden-xs">
-            <a href="{{ URL::to('/') }}">{{ trans('app.company_name') }}</a>
+            <a href="{{ URL::to('/') }}">{{ $center_name_title }}</a>
         </li>
 
         <li class="pull-right">

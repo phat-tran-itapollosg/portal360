@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                 <td>Date Input:</td>
-                <td>{$gradebook->date_input}</td>
+                <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>
                 </tr>
                 <tr>
                 <td>Center:</td>
@@ -103,7 +103,7 @@
                 <td class = 'center'>".($i+1)."</td>
                 <td>{$gradebook->name}</td>
                 <td>{$gradebook->weight}%</td>                 
-                <td>{$gradebook->date_input}</td>                 
+                <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>                 
                 <td>".($gradebook->total_mark +0)."</td>                 
                 <td>{$gradebook->center_name}</td>                 
                 <td class='center'>

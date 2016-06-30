@@ -14,7 +14,7 @@
         </div>
         
         <div class="card">
-            <div class="card-body card-padding">
+            <div class="card-body card-padding overflow-auto">
                 <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>

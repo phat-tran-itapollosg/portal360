@@ -67,7 +67,7 @@
             );
 
             curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
-            $result = curl_exec($curl);
+            $result = curl_exec($curl);     
             curl_close($curl);
 
             if(!$result) {
@@ -88,7 +88,7 @@
                 'id' => $id, 
                 'select_fields' => $selectFields,
             );
-
+            
             $response = $this->call(SugarMethod::GET_ENTRY, $params);
 
             if(!$response) {
@@ -224,7 +224,7 @@
         }
 
         //Login
-        public function login($username, $password) {
+        public function login($username, $password) {     
             $loginParams = array(
                 'user_auth' => array(
                     'user_name' => $username,
@@ -232,10 +232,10 @@
                     'version' => $this->version
                 ),
                 'application_name' => $this->appName,
-            );
-
+            );    
+            
             $session = $this->call(SugarMethod::LOGIN, $loginParams);
-
+            
 
             if(isset($session->id)){
                 //customize by Tung Bui - replate session id by root session
@@ -257,11 +257,17 @@
                     $contact = $this->retrieve($session->root_session_id, 'Contacts', $user->portal_contact_id);
                     $preferences = $this->getUserPreferences($session->root_session_id, $user->id, 'global');                     
                     if(empty($preferences->timezone)){
-                        $preferences->datef = 'd/m/Y';
-                        $preferences->timef = 'h:ia';
-                        $preferences->timezone = 'Asia/Ho_Chi_Minh';
-                        $preferences->default_locale_name_format = 's l f';                            
+                         $preferences->timezone = 'Asia/Ho_Chi_Minh';
                     }
+                    if(empty($preferences->date_format)){
+                         $preferences->date_format = 'd/m/Y';
+                    }
+                    if(empty($preferences->time_format)){
+                         $preferences->time_format = 'h:ia';
+                    }
+                    if(empty($preferences->default_locale_name_format)){
+                         $preferences->default_locale_name_format = 's l f';
+                    }                    
 
                     // Save login session
                     Session::put('session', $session);

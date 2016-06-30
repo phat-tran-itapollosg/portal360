@@ -1,5 +1,10 @@
 var loading = new Spinner();
 $(document).ready(function(){
+
+    $("#class_id").select2({
+        'language' : locale,    
+    });
+
     $(".container").on("change",'#class_id',function(){
         getGradebookContent()
     });

@@ -13,11 +13,11 @@ $(function() {
         theme: true, //Do not remove this as it ruin the design
         selectable: true,
         selectHelper: true,
-        editable: true,
+        editable: false,
 
         //Add Events
         events: scheduleEvents,
-
+        timeFormat: "H:mm",
         //On Day Select
         select: function(start, end, allDay) {
             // Do nothing

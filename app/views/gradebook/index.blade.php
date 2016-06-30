@@ -5,7 +5,8 @@
 @section('styles')
 <link href="{{ URL::asset('public/css/Spinner.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ URL::asset('public/css/gradebook_index.css') }}" rel="stylesheet" type="text/css"> 
- 
+<link href="{{ URL::asset('public/css/select2.css') }}" rel="stylesheet" type="text/css"> 
+
 @stop
 
 @section('content')
@@ -18,18 +19,18 @@
     <div class="card">
         <div class="card-body card-padding">
             <div class="fielter">
-                {{trans('gradebook_index.lbl_class_name')}}
-                <select id='class_id' class="class_id form-control">
+                <label class="bold">{{trans('gradebook_index.lbl_class_name')}} : </label>
+                <select id='class_id' class="class_id">
                     <option value="">--None--</option>
                     @foreach($classes as $class)
                     <option value="{{$class->id}}">{{$class->name}}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="gradebook_content">
+            <div class="gradebook_content overflow-auto">
 
             </div>
-            <div class="gradebook_result">
+            <div class="gradebook_result overflow-auto">
 
             </div>
             <div class="modal fade" id="gradebook_detail" data-backdrop="static" data-keyboard="false">
@@ -56,7 +57,13 @@
 
 @section('scripts')
     {{ ViewUtil::renderJsLanguage('feedback_add') }}   
+    <script src="{{ URL::asset('public/js/select2.min.js') }}"></script>
+    @if(App::getLocale() == 'vi') 
+        <script src="{{ URL::asset('public/js/select2_locale_vi.js') }}"></script>
+    @else
+        <script src="{{ URL::asset('public/js/select2_locale_en.js') }}"></script>
+    @endif
     <script src="{{ URL::asset('public/js/Spinner.js') }}"></script>  
-    <script src="{{ URL::asset('public/js/gradebook_index.js') }}"></script>  
+    <script src="{{ URL::asset('public/js/gradebook_index.js') }}"></script>     
     
 @stop

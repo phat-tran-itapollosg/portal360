@@ -41,8 +41,8 @@ class ScheduleController extends BaseController {
 
             $events[] = array(
                 'title' => $schedules[$i]->class_name,
-                'start' => $schedules[$i]->date_start,
-                'end' => $schedules[$i]->date_end,
+                'start' => date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_start))),
+                'end' => date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_end))), // $schedules[$i]->date_end,
                 'allDay' => false,
                 'className' => $bgClass
             );
