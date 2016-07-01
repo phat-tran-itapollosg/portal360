@@ -292,5 +292,22 @@
             return $result;
         }
         //End Trung Nguyen
+        //Add by Lam Hai
+        public static function getCertificate($classID){
+            $client = self::getClient();
+            $contact = Session::get('contact');
+            $session = Session::get('session');
+            // Get complaints that linked to the portal contact
+            $params = array(
+                'session' => $session->root_session_id,
+                'studentID' => $contact->id,
+                'classID' => $classID,                
+            );
+
+            $result = $client->call("getCertificate", $params);
+
+            return $result;
+        }
+        //End Lam Hai
     }
 ?>

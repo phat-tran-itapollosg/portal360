@@ -139,4 +139,14 @@
                 'total_result' => $total_result,
             ));                
         }
+        
+        public function viewCertificate() {
+            $classID = $_POST['class_id'];
+            $data = SugarUtil::getCertificate($classID);
+            
+            return json_encode(array(
+                'data_certificate' => $data,
+            ));
+            
+        }
     }

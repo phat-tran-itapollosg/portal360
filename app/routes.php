@@ -45,8 +45,9 @@
         Route::get('/feedback/index', 'FeedbackController@index');
         Route::get('/feedback/add', 'FeedbackController@add');
         Route::post('/feedback/save', 'FeedbackController@save');
-         Route::get('/gradebook/index', 'GradebookController@index');
-         Route::post('/gradebook/getGradebookDetail', 'GradebookController@getGradebookDetail');
+        Route::get('/gradebook/index', 'GradebookController@index');
+        Route::post('/gradebook/getGradebookDetail', 'GradebookController@getGradebookDetail');
+        Route::post('/gradebook/getGradebookDetail', 'GradebookController@viewCertificate');
     });
 
     // Routes that dont't need to be checked for authentication
