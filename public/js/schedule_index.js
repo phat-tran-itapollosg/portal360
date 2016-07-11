@@ -21,6 +21,17 @@ $(function() {
         //On Day Select
         select: function(start, end, allDay) {
             // Do nothing
+        },  
+
+        eventClick: function(calEvent, jsEvent, view) {
+            $(".session_detail .class_name").text(calEvent.class_name);
+            $(".session_detail .duration").text(calEvent.duration);
+            $(".session_detail .starttime").text(calEvent.starttime);
+            $(".session_detail .endtime").text(calEvent.endtime);
+            $(".session_detail .teacher_name").text(calEvent.teacher_name);
+            $(".session_detail .room_name").text(calEvent.room_name);
+            
+            $('#session_detail').modal("show");                 
         }
     });
 

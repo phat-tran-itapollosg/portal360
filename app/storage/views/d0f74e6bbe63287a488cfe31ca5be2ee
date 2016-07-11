@@ -13,17 +13,18 @@
         </div>
         
         <div class="card">
-            <div class="card-body card-padding">
+            <div class="card-body card-padding overflow-auto">
                 <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th><?php echo trans('feedback_index.subject'); ?></th>
-                            <th><?php echo trans('feedback_index.type'); ?></th>
-                            <th><?php echo trans('feedback_index.target'); ?></th>  
-                            <th data-type="timestamp"><?php echo trans('feedback_index.sent_date'); ?></th>
-                            <th><?php echo trans('feedback_index.status'); ?></th>
-                            <th><?php echo trans('feedback_index.content'); ?></th>
-                            <th><?php echo trans('feedback_index.resolution'); ?></th>
+                            <th><b><?php echo trans('feedback_index.subject'); ?></b></th>
+                            <th><b><?php echo trans('feedback_index.type'); ?></b></th>
+                            <th><b><?php echo trans('feedback_index.target'); ?></b></th>  
+                            <th data-type="timestamp"><b><?php echo trans('feedback_index.sent_date'); ?></b></th>
+                            <th><b><?php echo trans('feedback_index.status'); ?></b></th>
+                            <th><b><?php echo trans('feedback_index.content'); ?></b></th>
+                            <th><b><?php echo trans('feedback_index.resolution'); ?></b></th>
+                            <th data-type="timestamp"><b><?php echo trans('feedback_index.resolved_date'); ?></b></th>
                             
                         </tr>
                     </thead>
@@ -37,6 +38,7 @@
                                 <td><?php echo $statuses->{$feedback->status}; ?></td>
                                 <td><?php echo $feedback->description; ?></td>
                                 <td><?php echo $feedback->feedback; ?></td>
+                                 <td><?php echo SugarUtil::formatDate($feedback->resolved_date); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

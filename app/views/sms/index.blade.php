@@ -43,5 +43,7 @@
 @stop
 
 @section('scripts')
-
+    <script src="{{ URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('public/js/datatabel.js') }}"></script>
 @stop

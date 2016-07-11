@@ -4,10 +4,11 @@
 
 body[lang="vi"] .ui-icon {
     font-family: 'Material-Design-Iconic-Font' !important;
-}   */
+}  */ 
 
 body {
-     font-family: 'Opensans Light';
+/*     font-family: 'Opensans Light';*/
+     font-family: Open Sans;
 /*     font-size: 14px;*/
 }
 
@@ -31,7 +32,7 @@ label.error {
     margin-left: 5px;
     padding: 5px;
     border-radius: 2px;    
-}
+}   
 
 .item-list {
     margin: 0;
@@ -161,4 +162,36 @@ body.sw-toggled #sidebar {
 .bold {
     font-weight: bold;
 }
+
+table.dataTable {
+    border-collapse: collapse;
+}
  
+.textbg_redlight {
+    background: #ff0000 none repeat scroll 0 0 !important;
+    border-radius: 2px !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    padding: 2px 5px !important;
+}
+.textbg_bluelight {
+    background: #04adec none repeat scroll 0 0 !important;
+    border-radius: 2px !important;
+    color: #fff;
+    font-weight: bold !important;
+    padding: 2px 5px !important;
+}
+.textbg_dream {
+    background: #32cd32 none repeat scroll 0 0 !important;
+    border-radius: 2px !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    padding: 2px 5px !important;
+}
+.textbg_orange {
+    background: #f1d44a none repeat scroll 0 0 !important;
+    border-radius: 2px !important;
+    color: #fff !important;
+    font-weight: bold !important;
+    padding: 2px 5px !important;
+}

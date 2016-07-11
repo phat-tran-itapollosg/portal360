@@ -12,10 +12,10 @@
     */
 
     Route::get('/', function() {
-        return Redirect::to('/home/index');
+        return Redirect::to('/schedule/index');
     });
     Route::get('/home', function() {
-        return Redirect::to('/home/index');
+        return Redirect::to('/schedule/index');
     });
 
     // Routes that need to be checked for authentication
@@ -40,6 +40,7 @@
         Route::get('/student/index', 'StudentController@index');
         Route::get('/sms/index', 'SmsController@index');
         Route::get('/schedule/index', 'ScheduleController@index');
+        Route::get('/schedule/listview', 'ScheduleController@listview');
         //Route::get('/enrollment/index', 'EnrollmentController@index');
         Route::get('/enrollment/index', 'EnrollmentController@index');
         Route::get('/feedback/index', 'FeedbackController@index');
@@ -47,7 +48,7 @@
         Route::post('/feedback/save', 'FeedbackController@save');
         Route::get('/gradebook/index', 'GradebookController@index');
         Route::post('/gradebook/getGradebookDetail', 'GradebookController@getGradebookDetail');
-        Route::post('/gradebook/getGradebookDetail', 'GradebookController@viewCertificate');
+        Route::get('/gradebook/viewCertificate', 'GradebookController@viewCertificate');
     });
 
     // Routes that dont't need to be checked for authentication

@@ -237,7 +237,7 @@ $(function() {
         e.preventDefault();
         var url = $(this).attr('href');
         
-        Dialog.confirm(Lang.app.logout_confirm_msg, function() {
+        Dialog.confirm(Lang.app.logout_confirm_title, Lang.app.logout_confirm_msg,Lang.app.logout_confirm_oklabel, Lang.app.logout_confirm_cancellabel, function() {
             location.href = url;    
         });
     }); 

@@ -26,17 +26,17 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/apollo_portal',
+	'url' => 'http://crm.apollo.com/apollo_portal',
 
     // For RSS at home page. Added by Hieu Nguyen on 2016-03-15
     'rss_url' => '',
     
     // For webservice. Added by Hieu Nguyen on 2016-03-15
     'service_config' => array(
-        'server_url' => 'localhost/apollo',
+        'server_url' => 'http://crm.apollo.com/Apollo_new',
         'custom_service' => true,   // Use custom service in custom folder or not
         'root_username' => 'webservice',
-        'root_password' => 'e6032a45118887b87d9206bc013e22ed',  // MD5
+        'root_password' => 'fffaabe45f4bd79ebfd2e9fc2f19815c',  // MD5
     ),
     // End for webservice
     

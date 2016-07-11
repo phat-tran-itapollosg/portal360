@@ -3,11 +3,16 @@
 @section('title', trans('app.page_title'))
 
 @section('styles')
-    <link href="{{ URL::asset('public/css/user_login.css') }}" rel="stylesheet">     
+<link href="{{ URL::asset('public/css/user_login.css') }}" rel="stylesheet">     
 @stop
 
 @section('content')
-
+<div id = 'header_image'>
+    <a href="{{Config::get('app.url')}}">
+        <img src="../public/img/apollo_portal_poster.png" height="auto" width="100%">
+    </a>
+</div>
+<div id = "login_content">
     <div id="wrapper">
         <div id="header">
             <h1>{{ trans('app.app_title') }}</h1>
@@ -41,12 +46,12 @@
                             <td><input type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}"/></td>
                         </tr>    
                     </table>
-                    
+
                     <div class="error">
                         @if($result == 'not_for_portal')
-                            {{ trans('user_login.account_is_not_a_customer_error_msg') }}
+                        {{ trans('user_login.account_is_not_a_customer_error_msg') }}
                         @elseif($result == 'login_failed')
-                            {{ trans('user_login.login_failed_error_msg') }}
+                        {{ trans('user_login.login_failed_error_msg') }}
                         @endif
                     </div>
                 </form>
@@ -56,17 +61,18 @@
                     <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 320px; height: auto"/>
                 </div>  
                 <div id="description">
-                    
+
                 </div>
             </div> 
             <div id="contact" class="round10">
                 {{ trans('user_login.description') }}                    
             </div>
             <div class="clear"></div>
-        </div>
-        <div id="footer">
-            @include('layouts.footer')
-        </div>
+        </div>        
+    </div>
+</div>
+<div id="footer">
+    @include('layouts.footer')
     </div>
 @stop
 

@@ -26,7 +26,7 @@ div.round10 {
 
 div#wrapper {
     width: 815px;
-    margin: 80px auto 0 auto;
+    margin: 10px auto 0 auto;
 }
 
 div#header {
@@ -272,3 +272,100 @@ div#footer a:hover {
     font-size: 13px;
     margin: 20px 2px 0;
 }
+
+#header_image {
+/*    display: none;*/
+}
+
+#login_content{
+    width:100%;
+}
+ #header h1 {
+        display: none;
+ }
+  .footer-top {
+        background-image: url(../../public/img/waveUp3.png);
+        background-repeat: repeat;
+        height: 50px;
+    }
+     #contact{
+        display: none;
+    }
+    .footer-bottom {
+        background: #024D8D !important;
+        min-height: 50px !important;
+        width: 100% !important;
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
+    }
+@media only screen and (max-width: 830px) {
+    #header h1 {
+        display: none;
+    } 
+    #about{
+        display: none;
+    }
+    #contact{
+        display: none;
+    }
+    
+    div#content{
+        
+    } 
+    
+    div#wrapper{
+         width: 400px;
+         margin: 20px auto 0
+    }
+    
+    div#content div#login {
+        margin: 9px;
+    }
+    
+    #header_image {
+        display: block;         
+    }
+    
+    .footer-top {
+        background-image: url(../../public/img/waveUp3.png);
+        background-repeat: repeat;
+        height: 50px;
+    }
+    
+    .footer-bottom {
+        background: #024D8D !important;
+        min-height: 30px !important;
+        width: 100% !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+    
+    #login_content{
+        width:100%; 
+        padding-bottom: 30px;        
+    }     
+    
+    div#footer {
+        bottom: 0;
+        position: fixed;
+        z-index: -5;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {   
+    div#wrapper{
+         width: 320px;
+    }
+    
+    div#content div#login {
+        margin: 0px;
+        width: 310px;
+    }
+    
+    div#login table {
+        margin-left: 5px;
+        margin-right: 5px;
+        height: 210px;
+    }
+}  

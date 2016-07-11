@@ -16,18 +16,21 @@
         }
 
         public function getGradebookDetail() {
-            $class_id = $_POST['class_id'];
+            $class_id = Input::get('class_id');
             $datas = SugarUtil::getGradebookDetail($class_id);
+            $detail_htmls = array();
+            $lang = trans('gradebook_index');
+            // print_r($lang);
             $html = "";
             $html = "<table id = 'gradebook_content' class = 'table table-striped' width='100%'>
             <thead>
             <tr>
-            <td ><b>No.</b></td>            
-            <td ><b>Name</b></td>            
-            <td ><b>Weight</b></td>
-            <td ><b>Date Input</b></td>
-            <td ><b>Total Result</b></td>                      
-            <td ><b>Center</b></td>            
+            <td ><b>".$lang['lbl_no']."</b></td>            
+            <td ><b>".$lang['lbl_name']."</b></td>            
+            <td ><b>".$lang['lbl_weight']."</b></td>
+            <td ><b>".$lang['lbl_dateinput']."</b></td>
+            <td ><b>".$lang['lbl_total_result']."</b></td>                      
+            <td ><b>".$lang['lbl_center']."</b></td>            
             <td ><b></b></td>            
             </tr> 
             </thead>  
@@ -41,25 +44,31 @@
                 $detail_content = "<table class = 'gb_detail' width='100%'>
                 <tbody>
                 <tr>
-                <td>Gradebook Name:</td>
+                <td><b>{$lang['lbl_name']}:</b></td>
                 <td>{$gradebook->name}</td>
                 </tr>
                 <tr>    
-                <td>Class Name:</td>
+                <td><b>{$lang['lbl_class_name']}:</b></td>
                 <td>{$gradebook->class_name}</td>
                 </tr>
                 <tr>
-                <td>Date Input:</td>
+                <td><b>{$lang['lbl_dateinput']}:</b></td>
                 <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>
                 </tr>
                 <tr>
-                <td>Center:</td>
+                <td><b>{$lang['lbl_center']}:</b></td>
                 <td>{$gradebook->center_name}</td>
                 </tr>
                 <tr>
+                <tr>
+                <td><b>{$lang['lbl_teacher_comment']}:</b></td>
+                <td>".$detail->comment."</td>
+                </tr>
+                <tr>
                 </tbody>
-                </tabel>
-                <hr>
+                </tabel> 
+
+                <div class= 'overflow-auto'>
                 <table class = 'mark_detail table table-striped' width='100%'>
                 <thead>
                 <tr><th></th>";
@@ -78,36 +87,37 @@
                 $detail_content .= "$header_html </tr></thead>
                 <tbody>
                 <tr>
-                <td>Weight</td>
+                <td>{$lang['lbl_weight']}</td>
                 $weight_html
                 </tr>
                 <tr>    
-                <td>Max Score</td> 
+                <td>{$lang['lbl_max_score']}</td> 
                 $max_html                
                 </tr>
                 <tr>    
-                <td>Score</td>
+                <td>{$lang['lbl_score']}</td>
                 $mark_html
                 </tr>                   
                 <tr>
-                <td>Result (%)</td>
+                <td>{$lang['lbl_result']}</td>
                 $per_html
                 </tr>
                 <tr>
                 </tbody>
                 </tabel> 
+                </div>
                 "; 
                 // $detail_content = array(base64_encode($detail_content));
-
+                $detail_htmls[$i] = $detail_content;
                 $tr = "<tr>
                 <td class = 'center'>".($i+1)."</td>
                 <td>{$gradebook->name}</td>
-                <td>{$gradebook->weight}%</td>                 
+                <td>{$gradebook->weight}</td>                 
                 <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>                 
-                <td>".($gradebook->total_mark +0)."</td>                 
+                <td>".($gradebook->final_result * 100)."</td>                 
                 <td>{$gradebook->center_name}</td>                 
                 <td class='center'>
-                <input name='detail' type = 'button' value = 'Detail' class ='btn-info btn btn_detail' data='".(base64_encode($detail_content))."' >  
+                <input name='detail' type = 'button' value = '{$lang['lbl_detail']}' class ='btn-info btn btn_detail' data='".$i."' >  
                 </td>                  
                 </tr>";
                 $html.= $tr;
@@ -121,32 +131,35 @@
                 $total_result = " <table id = 'gradebook_result' width='100%'>
                 <thead>
                 <tr>
-                <td ><b>Final Result: </b></td>            
+                <td ><b>{$lang['lbl_final_result']}: </b></td>            
                 <td ><b>{$result->mark}</b></td>            
                 </tr> 
                 </thead>  
                 <tbody> 
                 <tr>
-                <td>Teacher's Comment: </td>
+                <td>{$lang['lbl_teacher_comment']}: </td>
                 <td>{$result->comment}</td>
                 </tbody>
-                </table>
+                </table> 
                 ";
             }
+            $url = Config::get('app.url')."/gradebook/viewCertificate?class_id=$class_id";
+            $total_result .= "
+            <hr>
+            <input name='detail' type = 'button' value = '{$lang['lbl_certificate']}' class ='btn-info btn btn_certificate' 
+            onClick=\"window.open('$url','_blank')\" >  
+            ";
 
             return json_encode(array(
                 'html' => $html,
                 'total_result' => $total_result,
+                'detail' => $detail_htmls,
             ));                
         }
-        
-        public function viewCertificate() {
-            $classID = $_POST['class_id'];
-            $data = SugarUtil::getCertificate($classID);
-            
-            return json_encode(array(
-                'data_certificate' => $data,
-            ));
-            
+
+        public function viewCertificate() {   
+            $classID = Input::get('class_id');             
+            $data = SugarUtil::getCertificate($classID);          
+            return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url);           
         }
     }

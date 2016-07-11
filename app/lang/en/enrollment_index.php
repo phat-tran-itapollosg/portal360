@@ -6,6 +6,10 @@ return array(
     'start_date' => 'Start Date',
     'end_date' => 'End Date',
     'class' => 'Class',
-    'ending_balance' => 'Ending Balance',
+    'ending_balance' => 'Balance Amount',
     'center' => 'Center',
+    'total_amount' => 'Total Amount',
+    'total_hour' => 'Total Hours',
+    'ending_hour' => 'Balance Hours',
+    'ec' => 'EC',
 );

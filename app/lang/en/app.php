@@ -9,6 +9,9 @@ return array(
     'change_password' => 'Change Password',
     'logout' => 'Logout',
     'logout_confirm_msg' => 'Are you sure to log out of the system?',
+    'logout_confirm_title' => 'Confirm',
+    'logout_confirm_oklabel' => 'OK',
+    'logout_confirm_cancellabel' => 'CANCEL',
     'dashboard' => 'Home',
     'sms' => 'SMS',
     'schedule' => 'Schedule',
@@ -28,4 +31,6 @@ return array(
     'btn_delete_text' => 'Delete',
     'btn_close_text' => 'Close',
     'lbl_gradebook_index' => 'Gradebook',
+    'schedule_calendar' => 'Calendar View',
+    'schedule_listview' => 'List View',
 );

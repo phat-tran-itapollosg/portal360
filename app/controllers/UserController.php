@@ -11,9 +11,62 @@
 
         // Render the login page
         public function login() {
-            // Redirect the user into the dashboard right away if he already logged in
+            if(isset($_REQUEST['MSID']) && $_REQUEST['MSID']) {                
+                $params = array(
+                    'session_id' => $_REQUEST['MSID'],
+                );
+                $userId = $this->client->call("get_user_id", $params);
+                if(empty($userId))
+                    return Redirect::to('user/login');
+                //print_r($userId);
+                //die;
+                $session = array();    
+                $session['id'] = $_REQUEST['MSID'];
+                $session['contact_session'] = $session['id'];
+                $session['root_session_id'] = $this->client->getRootSession();
+                $session = (object)$session;
+                $user = $this->client->retrieve($session->root_session_id, 'Users', $userId);
+                $contact = $this->client->retrieve($session->root_session_id, 'Contacts', $user->portal_contact_id);
+                $preferences = $this->client->getUserPreferences($session->root_session_id, $user->id, 'global'); 
+
+                if(empty($preferences->timezone)){
+                    $preferences->timezone = 'Asia/Ho_Chi_Minh';
+                }
+                if(empty($preferences->date_format)){
+                    if(empty($preferences->datef))
+                        $preferences->date_format = 'd/m/Y';
+                    else 
+                        $preferences->date_format = $preferences->datef;
+                }
+                if(empty($preferences->time_format)){
+                    if(empty($preferences->timef))
+                        $preferences->time_format = 'h:i A';
+                    else 
+                        $preferences->time_format = $preferences->timef;                     
+                }
+                if(empty($preferences->default_locale_name_format)){
+                    $preferences->default_locale_name_format = 's l f';
+                }
+
+                $languageParams = array(
+                    'session' => $session->root_session_id, 
+                    'type' => 'app_list_strings', 
+                    'language' => (App::getLocale() == 'en') ? 'en_us' : 'vn_vn'
+                );
+
+                $language = $this->client->call(SugarMethod::GET_SUGAR_LANGUAGE, $languageParams);
+                Session::put('app_list_strings', $language);
+
+                Session::put('session', $session);
+                Session::put('user', $user);
+                Session::put('contact', $contact);
+                Session::put('user_preferences', $preferences);
+                return Redirect::to('schedule/index');
+            }
+
+            // Redirect the user into the dashboard right away if he already logged in   
             if(Session::get('session')) {
-                return Redirect::to('home/index');
+                return Redirect::to('schedule/index');
             }
 
             // User accessed the login page
@@ -60,17 +113,17 @@
                         // Save username and password into cookie
                         if(!empty($username) && !empty($password)) {
                             $cookie = Cookie::forever('remembered_user', array('username'=>$username, 'password'=>$password));
-                            return Redirect::to('home/index')->withCookie($cookie);
+                            return Redirect::to('schedule/index')->withCookie($cookie);
                         }
                     }
                     // Remove the remember cookie if user does not tick on the remember checkbox
                     else {
                         if(Input::cookie('remembered_user')) {
-                            return Redirect::to('home/index')->withCookie(Cookie::forget('remembered_user'));    
+                            return Redirect::to('schedule/index')->withCookie(Cookie::forget('remembered_user'));    
                         }
                     }
 
-                    return Redirect::to('home/index');
+                    return Redirect::to('schedule/index');
                 }
 
                 // Show the login page with error message
@@ -95,6 +148,7 @@
             Session::forget('user');
             Session::forget('contact');
             Session::forget('user_preferences');
+            Session::forget('app_list_strings');
 
             return Redirect::to('user/login');    
         }
@@ -145,13 +199,13 @@
             $result = $this->client->save($session->root_session_id, 'Users', $user->id, $data);
 
             // Save prefrences
-           /* $preferencesParams = array(
-                'session' => $session->contact_session,  // #1fix by Trung Nguyen 2016.06.07
-                'preferences' => array(
-                    'timezone' => Input::get('timezone'),
-                    'datef' => Input::get('date_format'),
-                    'timef' => Input::get('time_format'),    
-                ),
+            /* $preferencesParams = array(
+            'session' => $session->contact_session,  // #1fix by Trung Nguyen 2016.06.07
+            'preferences' => array(
+            'timezone' => Input::get('timezone'),
+            'datef' => Input::get('date_format'),
+            'timef' => Input::get('time_format'),    
+            ),
             );   */
 
             //$result = $this->client->call(SugarMethod::SET_USER_PREFERENCES, $preferencesParams);

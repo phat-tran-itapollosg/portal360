@@ -9,6 +9,9 @@ return array(
     'change_password' => 'Đổi mật khẩu',
     'logout' => 'Đăng xuất',
     'logout_confirm_msg' => 'Bạn có chắc muốn đăng xuất khỏi hệ thống?',
+    'logout_confirm_title' => 'Xác nhận',
+    'logout_confirm_oklabel' => 'ĐÚNG',
+    'logout_confirm_cancellabel' => 'KHÔNG',
     'dashboard' => 'Trang chủ',
     'sms' => 'SMS',
     'schedule' => 'Lịch học',
@@ -28,4 +31,6 @@ return array(
     'btn_delete_text' => 'Xóa',
     'btn_close_text' => 'Đóng',
     'lbl_gradebook_index' => 'Bảng điểm',
+     'schedule_calendar' => 'Xem dạng lịch',
+    'schedule_listview' => 'Xem danh sách',
 );

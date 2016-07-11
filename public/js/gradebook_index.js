@@ -1,4 +1,5 @@
 var loading = new Spinner();
+var detail;
 $(document).ready(function(){
 
     $("#class_id").select2({
@@ -30,6 +31,7 @@ $(document).ready(function(){
                 data = $.parseJSON(data);
                 $('.gradebook_content').html(data.html);
                 $('.gradebook_result').html(data.total_result);
+                detail =  data.detail;
                 loading.hide();
             },
             error: function(){                    
@@ -44,7 +46,7 @@ $(document).ready(function(){
     $(".container").on("click",".btn_detail", function(){
         var _this = $(this);
         var data = _this.attr('data');
-        $("#gradebook_detail .modal-body").html(atob(data));
+        $("#gradebook_detail .modal-body").html(detail[data]);
         $('#gradebook_detail').modal("show");        
     });
 });

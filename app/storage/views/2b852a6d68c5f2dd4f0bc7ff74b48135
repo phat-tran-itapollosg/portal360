@@ -20,7 +20,11 @@
                             <th><?php echo trans('enrollment_index.class'); ?></th>
                             <th><?php echo trans('enrollment_index.start_date'); ?></th>
                             <th><?php echo trans('enrollment_index.end_date'); ?></th>
+                            <th><?php echo trans('enrollment_index.total_amount'); ?></th>
                             <th><?php echo trans('enrollment_index.ending_balance'); ?></th>
+                            <th><?php echo trans('enrollment_index.total_hour'); ?></th>
+                            <th><?php echo trans('enrollment_index.ending_hour'); ?></th>
+                            <th><?php echo trans('enrollment_index.ec'); ?></th>
                             <th><?php echo trans('enrollment_index.center'); ?></th>
                         </tr>
                     </thead>
@@ -31,7 +35,11 @@
                                 <td><?php echo $enrollment->class_name; ?> </td>
                                 <td><?php echo SugarUtil::formatDate($enrollment->start_date); ?> </td>
                                 <td><?php echo SugarUtil::formatDate($enrollment->end_date); ?> </td>
+                                <td><?php echo $enrollment->total_amount; ?> </td>
                                 <td><?php echo $enrollment->balance; ?> </td>
+                                <td><?php echo $enrollment->total_hour; ?> </td>
+                                <td><?php echo $enrollment->balance_hour; ?> </td>
+                                <td><?php echo $enrollment->ec_name; ?> </td>
                                 <td><?php echo $enrollment->center; ?> </td>       
                             </tr>
                         <?php endforeach; ?>
@@ -45,6 +53,8 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('scripts'); ?>
-
+    <script src="<?php echo URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo URL::asset('public/js/datatabel.js'); ?>"></script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

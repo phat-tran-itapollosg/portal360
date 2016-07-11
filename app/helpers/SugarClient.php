@@ -88,7 +88,7 @@
                 'id' => $id, 
                 'select_fields' => $selectFields,
             );
-            
+
             $response = $this->call(SugarMethod::GET_ENTRY, $params);
 
             if(!$response) {
@@ -233,9 +233,9 @@
                 ),
                 'application_name' => $this->appName,
             );    
-            
+
             $session = $this->call(SugarMethod::LOGIN, $loginParams);
-            
+
 
             if(isset($session->id)){
                 //customize by Tung Bui - replate session id by root session
@@ -257,16 +257,22 @@
                     $contact = $this->retrieve($session->root_session_id, 'Contacts', $user->portal_contact_id);
                     $preferences = $this->getUserPreferences($session->root_session_id, $user->id, 'global');                     
                     if(empty($preferences->timezone)){
-                         $preferences->timezone = 'Asia/Ho_Chi_Minh';
+                        $preferences->timezone = 'Asia/Ho_Chi_Minh';
                     }
                     if(empty($preferences->date_format)){
-                         $preferences->date_format = 'd/m/Y';
+                        if(empty($preferences->datef))
+                            $preferences->date_format = 'd/m/Y';
+                        else 
+                            $preferences->date_format = $preferences->datef;
                     }
                     if(empty($preferences->time_format)){
-                         $preferences->time_format = 'h:ia';
+                        if(empty($preferences->timef))
+                            $preferences->time_format = 'h:i A';
+                        else 
+                            $preferences->time_format = $preferences->timef;                     
                     }
                     if(empty($preferences->default_locale_name_format)){
-                         $preferences->default_locale_name_format = 's l f';
+                        $preferences->default_locale_name_format = 's l f';
                     }                    
 
                     // Save login session

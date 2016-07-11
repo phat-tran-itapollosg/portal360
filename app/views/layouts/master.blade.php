@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ $app_title }} - @yield('title')</title>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
         <link rel="shortcut icon" href="{{ URL::asset('public/img/favicon_apollo.png') }}">
         
         <!-- Vendor CSS -->
@@ -15,6 +16,7 @@
         <link href="{{ URL::asset('public/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">        
             
         <!-- CSS -->
+        <link href="{{ URL::asset('public/vendors/datatables/media/css/jquery.dataTables.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/app.min.1.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/app.min.2.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/styles.css') }}" rel="stylesheet">
@@ -26,6 +28,8 @@
             var APP_URL = '{{ URL::to('/') }}';
             var locale = '{{ App::getLocale() }}';
             var Lang = {};  // Js language object
+            var cal_date_format = '{{SugarUtil::getDateformat()}}';
+            var cal_time_format = '{{SugarUtil::getTimeformat()}}';
         </script>
         
         {{ ViewUtil::renderJsLanguage('app') }}
@@ -117,11 +121,12 @@
         <!--[if IE 9 ]>
             <script src="{{ URL::asset('public/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js') }}"></script>
         <![endif]-->
-        
+        <script src="{{ URL::asset('public/js/date.js') }}"></script>
         <script src="{{ URL::asset('public/js/functions.js') }}"></script>
         <script src="{{ URL::asset('public/js/notification.js') }}"></script>
         <script src="{{ URL::asset('public/js/dialog.js') }}"></script>
         <script src="{{ URL::asset('public/js/app.js') }}"></script>
+        
         
         <!-- Page specific scripts -->
         @yield('scripts')

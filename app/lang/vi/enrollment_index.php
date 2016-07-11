@@ -8,4 +8,8 @@ return array(
     'class' => 'Lớp',
     'ending_balance' => 'Số dư',
     'center' => 'Chi nhánh',
+    'total_amount' => 'Tổng tiền',
+    'total_hour' => 'Tổng giờ',
+    'ending_hour' => 'Giờ còn lại',
+    'ec' => 'EC',
 );

@@ -21,7 +21,11 @@
                             <th>{{trans('enrollment_index.class')}}</th>
                             <th>{{trans('enrollment_index.start_date')}}</th>
                             <th>{{trans('enrollment_index.end_date')}}</th>
+                            <th>{{trans('enrollment_index.total_amount')}}</th>
                             <th>{{trans('enrollment_index.ending_balance')}}</th>
+                            <th>{{trans('enrollment_index.total_hour')}}</th>
+                            <th>{{trans('enrollment_index.ending_hour')}}</th>
+                            <th>{{trans('enrollment_index.ec')}}</th>
                             <th>{{trans('enrollment_index.center')}}</th>
                         </tr>
                     </thead>
@@ -32,7 +36,11 @@
                                 <td>{{ $enrollment->class_name }} </td>
                                 <td>{{ SugarUtil::formatDate($enrollment->start_date) }} </td>
                                 <td>{{ SugarUtil::formatDate($enrollment->end_date) }} </td>
+                                <td>{{ $enrollment->total_amount }} </td>
                                 <td>{{ $enrollment->balance }} </td>
+                                <td>{{ $enrollment->total_hour }} </td>
+                                <td>{{ $enrollment->balance_hour }} </td>
+                                <td>{{ $enrollment->ec_name }} </td>
                                 <td>{{ $enrollment->center }} </td>       
                             </tr>
                         @endforeach
@@ -46,5 +54,7 @@
 @stop
 
 @section('scripts')
-
+    <script src="{{ URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('public/js/datatabel.js') }}"></script>
 @stop

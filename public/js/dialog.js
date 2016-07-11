@@ -4,6 +4,7 @@
 *   Date: 2016-03-16
 *   Purpose: To handle dialogs
 *   Dependencies: sweet-alert.js
+*   Modify: Trung Nguyen 2016.07.08
 */ 
 
 var Dialog = {
@@ -14,14 +15,15 @@ var Dialog = {
     },
     
     // Show confirm message
-    confirm: function(messsage, callback) {
+    confirm: function(title, messsage, confirmlable, cancellabel, callback) {
         swal({   
-            title: 'Confirm',   
+            title: title,   
             text: messsage,   
             type: 'warning',   
             showCancelButton: true,   
             confirmButtonColor: '#f44336',   
-            confirmButtonText: 'OK',   
+            confirmButtonText: confirmlable,   
+            cancelButtonText: cancellabel,   
             closeOnConfirm: true 
         }, function(){   
             callback(); 

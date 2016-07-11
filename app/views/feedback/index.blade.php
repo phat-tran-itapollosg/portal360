@@ -18,13 +18,14 @@
                 <table id="data-table" class="datatable table table-striped table-vmiddle">
                     <thead>
                         <tr>
-                            <th>{{ trans('feedback_index.subject') }}</th>
-                            <th>{{ trans('feedback_index.type') }}</th>
-                            <th>{{ trans('feedback_index.target') }}</th>  
-                            <th data-type="timestamp">{{ trans('feedback_index.sent_date') }}</th>
-                            <th>{{ trans('feedback_index.status') }}</th>
-                            <th>{{ trans('feedback_index.content') }}</th>
-                            <th>{{ trans('feedback_index.resolution') }}</th>
+                            <th><b>{{ trans('feedback_index.subject') }}</b></th>
+                            <th><b>{{ trans('feedback_index.type') }}</b></th>
+                            <th><b>{{ trans('feedback_index.target') }}</b></th>  
+                            <th data-type="timedate"><b>{{ trans('feedback_index.sent_date') }}</b></th>
+                            <th><b>{{ trans('feedback_index.status') }}</b></th>
+                            <th><b>{{ trans('feedback_index.content') }}</b></th>
+                            <th><b>{{ trans('feedback_index.resolution') }}</b></th>
+                            <th data-type="timedate"><b>{{ trans('feedback_index.resolved_date') }}</b></th>
                             
                         </tr>
                     </thead>
@@ -38,6 +39,7 @@
                                 <td>{{ $statuses->{$feedback->status} }}</td>
                                 <td>{{ $feedback->description }}</td>
                                 <td>{{ $feedback->feedback }}</td>
+                                 <td>{{ SugarUtil::formatDate($feedback->resolved_date) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -52,7 +54,7 @@
 
     <script src="{{ URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('public/js/feedback_index.js') }}"></script>
+    <script src="{{ URL::asset('public/js/datatabel.js') }}"></script>
 
     @if(Session::has('success_message'))
         <script type="text/javascript">

@@ -11,4 +11,5 @@ return array(
     'resolution' => 'Hướng giải quyết',
     'sent_date' => 'Ngày gửi',
     'send_feedback_success_msg' => 'Phản hồi của bạn đã được gửi thành công!',
+    'resolved_date' => 'Ngày giải quyết',
 );

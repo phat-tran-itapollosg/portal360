@@ -63,7 +63,7 @@
                 'related_module_query' => 'j_feedback.type_feedback_list = "Customer" ' ,
                 'related_fields' => array(
                     'id', 'name', 'status',  'description', 
-                    'assigned_user_name', 'date_entered', 'slc_target', 
+                    'assigned_user_name', 'date_entered', 'slc_target', 'resolved_date' ,
                     'type_feedback_list','relate_feedback_list', 'feedback',
                 ),
                 'related_module_link_name_to_fields_array' => array(),
@@ -141,14 +141,13 @@
         }
 
         // Util function to format date time string
-        public static function formatDate($dateString) {
-
+        public static function formatDate($dateString) {             
             if(!empty($dateString)) {
                 $preferences = Session::get('user_preferences');
                 $timezone = isset($preferences->timezone)?$preferences->timezone:"";
                 $dateFormat = isset($preferences->date_format)?$preferences->date_format:"";
                 $timeFormat = isset($preferences->time_format)?$preferences->time_format:"";
-                // print_r($dateFormat);
+                
                 if(strlen($dateString) > 10) {
                     $format = $dateFormat .' '. $timeFormat;    
                 } 
@@ -186,8 +185,19 @@
                     return $date->format($dbDateFormat);
                 }    
             }
+        }  
+        //
+        public static function getDateformat() {
+            $preferences = Session::get('user_preferences');
+            $dateFormat = isset($preferences->date_format)?$preferences->date_format:"";
+            return $dateFormat;
         }
 
+        public static function getTimeformat() {
+            $preferences = Session::get('user_preferences');
+            $timeFormat = isset($preferences->time_format)?$preferences->time_format:"";
+            return $timeFormat;
+        }
         //add by Tung Bui - generate tzname
         public static function tzName($name, $off){
             if(empty($name)) return '';

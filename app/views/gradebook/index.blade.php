@@ -36,11 +36,11 @@
             <div class="modal fade" id="gradebook_detail" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title"> {{trans('gradebook_index.lbl_markdetail')}}</h4>                                 
+                        <div class="modal-header custom-modal-header">
+                            <h3 class="modal-title custom-modal-header"> {{trans('gradebook_index.lbl_markdetail')}}</h3>                                 
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body overflow-auto">
                         </div>
 
                         <div class="modal-footer">

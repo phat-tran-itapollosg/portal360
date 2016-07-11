@@ -3,7 +3,7 @@
         <a href="<?php echo URL::to('user/profile'); ?>">
             <div class="profile-pic">
                 <?php if(Session::get('contact')->picture != ''): ?>
-                    <img src="<?php echo Config::get('app.service_config.server_url'); ?>/index.php?entryPoint=download&id=<?php echo Session::get('contact')->picture; ?>&type=SugarFieldImage&isTempFile=1" alt="">
+                    <img src="<?php echo Config::get('app.service_config.server_url'); ?>/index.php?entryPoint=download&id=<?php echo Session::get('contact')->picture; ?>&type=SugarFieldImage&isTempFile=1&MSID=<?php echo Session::get('session')->root_session_id; ?>" alt="">
                 <?php else: ?>
                     <img src="<?php echo URL::asset('public/img/customer-avatar.png'); ?>" alt="">
                 <?php endif; ?>
@@ -30,9 +30,9 @@
     </div>
 
     <ul class="main-menu">
-        <li class="<?php if (Request::is('home/*')): ?> active <?php endif; ?>">
+      <!--  <li class="<?php if (Request::is('home/*')): ?> active <?php endif; ?>">
             <a href="<?php echo URL::to('/'); ?>"><i class="zmdi zmdi-home"></i> <?php echo trans('app.dashboard'); ?></a>
-        </li>
+        </li> -->
         <li class="<?php if (Request::is('gradebook/*')): ?> active <?php endif; ?>">
             <a href="<?php echo URL::to('/gradebook/index'); ?>"><i class="zmdi zmdi-book"></i> <?php echo trans('app.lbl_gradebook_index'); ?></a>
         </li>
@@ -46,8 +46,7 @@
             <a href="<?php echo URL::to('/enrollment/index'); ?>"><i class="zmdi zmdi-money-box"></i> <?php echo trans('app.enrollment'); ?></a>
         </li>
         <li class="sub-menu <?php if (Request::is('feedback/*')): ?> active <?php endif; ?>">
-            <a href="#"><i class="zmdi zmdi-assignment-o"></i> <?php echo trans('app.feedback'); ?></a>
-
+            <a href="#"><i class="zmdi zmdi-assignment-o"></i> <?php echo trans('app.feedback'); ?></a> 
             <ul>
                 <li><a href="<?php echo URL::to('/feedback/add'); ?>"><?php echo trans('app.send_feedback'); ?></a></li>
                 <li><a href="<?php echo URL::to('/feedback/index'); ?>"><?php echo trans('app.history_feedback'); ?></a></li>

@@ -4,7 +4,8 @@
 <?php $__env->startSection('styles'); ?>
 <link href="<?php echo URL::asset('public/css/Spinner.css'); ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo URL::asset('public/css/gradebook_index.css'); ?>" rel="stylesheet" type="text/css"> 
- 
+<link href="<?php echo URL::asset('public/css/select2.css'); ?>" rel="stylesheet" type="text/css"> 
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -17,8 +18,8 @@
     <div class="card">
         <div class="card-body card-padding">
             <div class="fielter">
-                <?php echo trans('gradebook_index.lbl_class_name'); ?>
-                <select id='class_id' class="class_id form-control">
+                <label class="bold"><?php echo trans('gradebook_index.lbl_class_name'); ?> : </label>
+                <select id='class_id' class="class_id">
                     <option value="">--None--</option>
                     <?php foreach($classes as $class): ?>
                     <option value="<?php echo $class->id; ?>"><?php echo $class->name; ?></option>
@@ -34,8 +35,8 @@
             <div class="modal fade" id="gradebook_detail" data-backdrop="static" data-keyboard="false">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title"> <?php echo trans('gradebook_index.lbl_markdetail'); ?></h4>                                 
+                        <div class="modal-header custom-modal-header">
+                            <h3 class="modal-title custom-modal-header"> <?php echo trans('gradebook_index.lbl_markdetail'); ?></h3>                                 
                         </div>
 
                         <div class="modal-body">
@@ -55,8 +56,14 @@
 
 <?php $__env->startSection('scripts'); ?>
     <?php echo ViewUtil::renderJsLanguage('feedback_add'); ?>   
+    <script src="<?php echo URL::asset('public/js/select2.min.js'); ?>"></script>
+    <?php if(App::getLocale() == 'vi'): ?> 
+        <script src="<?php echo URL::asset('public/js/select2_locale_vi.js'); ?>"></script>
+    <?php else: ?>
+        <script src="<?php echo URL::asset('public/js/select2_locale_en.js'); ?>"></script>
+    <?php endif; ?>
     <script src="<?php echo URL::asset('public/js/Spinner.js'); ?>"></script>  
-    <script src="<?php echo URL::asset('public/js/gradebook_index.js'); ?>"></script>  
+    <script src="<?php echo URL::asset('public/js/gradebook_index.js'); ?>"></script>     
     
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
