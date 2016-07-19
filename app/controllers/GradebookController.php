@@ -138,7 +138,7 @@
                 <tbody> 
                 <tr>
                 <td>{$lang['lbl_teacher_comment']}: </td>
-                <td>{$result->comment}</td>
+                <td>".base64_decode($result->comment)."</td>
                 </tbody>
                 </table> 
                 ";
@@ -159,7 +159,9 @@
 
         public function viewCertificate() {   
             $classID = Input::get('class_id');             
-            $data = SugarUtil::getCertificate($classID);          
-            return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url);           
+            $data = SugarUtil::getCertificate($classID);   
+          //  'https://view.officeapps.live.com/op/view.aspx?src='.$GLOBALS['sugar_config']['site_url'].'/'.$file;       
+           // return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url);           
+            return Redirect::to('https://view.officeapps.live.com/op/view.aspx?src='.$data->file_url);           
         }
     }
