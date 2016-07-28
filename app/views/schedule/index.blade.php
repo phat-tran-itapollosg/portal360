@@ -56,7 +56,7 @@
                                     <tr>
                                         <td class="lable" style="background: #fdfdfd; text-align: right;"><b>{{trans('schedule_index.lbl_teachername')}}:</b></td>
                                         <td class="value"><span class="teacher_name"></span></td>
-                                        <td class="lable" style="background: #fdfdfd; text-align: right;"><b>{{trans('schedule_index.lbl_roomname')}}:</b></td>
+                                        <td class="lable" style="background: #fdfdfd; text-align: right;"><b></b></td>
                                         <td class="value"><span class="room_name"></span></td>
                                     </tr>
                                 </tbody>                            

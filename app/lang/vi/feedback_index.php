@@ -5,6 +5,7 @@ return array(
     'type' => 'Loại phản hồi',
     'type' => 'Dạng phản hồi',
     'target' => 'Bộ phận',
+    'receiver' => 'Người phản hồi',
     'subject' => 'Chủ đề',
     'content' => 'Nội dung',
     'status' => 'Trạng thái',

@@ -20,7 +20,7 @@
                         <tr>
                             <th><b>{{ trans('feedback_index.subject') }}</b></th>
                             <th><b>{{ trans('feedback_index.type') }}</b></th>
-                            <th><b>{{ trans('feedback_index.target') }}</b></th>  
+                            <th><b>{{ trans('feedback_index.receiver') }}</b></th>  
                             <th data-type="timedate"><b>{{ trans('feedback_index.sent_date') }}</b></th>
                             <th><b>{{ trans('feedback_index.status') }}</b></th>
                             <th><b>{{ trans('feedback_index.content') }}</b></th>
@@ -34,9 +34,9 @@
                             <tr>
                                 <td>{{ $feedback->name }}</td>
                                 <td>{{ $types->{$feedback->relate_feedback_list} }}</td>
-                                <td>{{ $targets->{$feedback->slc_target?$feedback->slc_target:'-'} }}</td>
+                                <td>{{ $feedback->receiver }}</td>
                                 <td>{{ SugarUtil::formatDate($feedback->date_entered) }}</td>
-                                <td>{{ $statuses->{$feedback->status} }}</td>
+                                <td>{{ isset($statuses->{$feedback->status})?$statuses->{$feedback->status}:$feedback->status }}</td>
                                 <td>{{ $feedback->description }}</td>
                                 <td>{{ $feedback->feedback }}</td>
                                  <td>{{ SugarUtil::formatDate($feedback->resolved_date) }}</td>

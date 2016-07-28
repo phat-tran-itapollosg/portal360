@@ -64,7 +64,7 @@
                 'related_fields' => array(
                     'id', 'name', 'status',  'description', 
                     'assigned_user_name', 'date_entered', 'slc_target', 'resolved_date' ,
-                    'type_feedback_list','relate_feedback_list', 'feedback',
+                    'type_feedback_list','relate_feedback_list', 'feedback', 'receiver'
                 ),
                 'related_module_link_name_to_fields_array' => array(),
                 'deleted'=> '0',

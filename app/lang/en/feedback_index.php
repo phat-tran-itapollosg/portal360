@@ -4,6 +4,7 @@ return array(
     'page_title' => 'HISTORY FEEDBACK',
     'type' => 'Type',
     'target' => 'Target',
+    'receiver' => 'Receiver',
     'subject' => 'Subject',
     'status' => 'Status',
     'content' => 'Content',

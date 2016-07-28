@@ -29,7 +29,7 @@ $(function() {
             $(".session_detail .starttime").text(calEvent.starttime);
             $(".session_detail .endtime").text(calEvent.endtime);
             $(".session_detail .teacher_name").text(calEvent.teacher_name);
-            $(".session_detail .room_name").text(calEvent.room_name);
+           // $(".session_detail .room_name").text(calEvent.room_name);
             
             $('#session_detail').modal("show");                 
         }
