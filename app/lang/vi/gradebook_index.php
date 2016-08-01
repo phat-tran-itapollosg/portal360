@@ -14,6 +14,7 @@ return array(
     'lbl_max_score' => 'Điểm tối đa',
     'lbl_score' => 'Điểm',
     'lbl_result' => 'Kết quả (%)',
+    'lbl_result_2' => 'Kết quả',
     'lbl_detail' => 'Chi tiết',
     'lbl_final_result' => 'Kết quả cuối khóa', 
      'lbl_certificate' => 'Xem chứng chỉ',

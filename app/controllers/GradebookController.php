@@ -143,12 +143,15 @@
                 </table> 
                 ";
             }
-            $url = Config::get('app.url')."/gradebook/viewCertificate?class_id=$class_id";
-            $total_result .= "
-            <hr>
-            <input name='detail' type = 'button' value = '{$lang['lbl_certificate']}' class ='btn-info btn btn_certificate' 
-            onClick=\"window.open('$url','_blank')\" >  
-            ";
+
+            if(!empty($result) && !empty($result['certificate_type']) && $result['certificate_type'] != 'Fail') {
+                $url = Config::get('app.url')."/gradebook/viewCertificate?class_id=$class_id";
+                $total_result .= "
+                <hr>
+                <input name='detail' type = 'button' value = '{$lang['lbl_certificate']}' class ='btn-info btn btn_certificate' 
+                onClick=\"window.open('$url','_blank')\" >  
+                ";
+            }
 
             return json_encode(array(
                 'html' => $html,
@@ -160,8 +163,8 @@
         public function viewCertificate() {   
             $classID = Input::get('class_id');             
             $data = SugarUtil::getCertificate($classID);   
-          //  'https://view.officeapps.live.com/op/view.aspx?src='.$GLOBALS['sugar_config']['site_url'].'/'.$file;       
-           // return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url);           
+            //  'https://view.officeapps.live.com/op/view.aspx?src='.$GLOBALS['sugar_config']['site_url'].'/'.$file;       
+            // return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url);           
             return Redirect::to('https://view.officeapps.live.com/op/view.aspx?src='.$data->file_url);           
         }
     }

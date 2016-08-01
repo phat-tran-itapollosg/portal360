@@ -15,6 +15,7 @@ return array(
     'lbl_max_score' => 'Max Score',
     'lbl_score' => 'Score',
     'lbl_result' => 'Result (%)',
+    'lbl_result_2' => 'Result',
     'lbl_detail' => 'Detail',
     'lbl_final_result' => 'Final Result',
     'lbl_certificate' => 'View Certificate',
