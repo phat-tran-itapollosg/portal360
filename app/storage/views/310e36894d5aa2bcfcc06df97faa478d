@@ -1,3 +1,0 @@
-<footer id="footer">
-    Copyright &copy; 2010 - <?php echo date('Y'); ?> <a href="http://www.onlinecrm.vn">OnlineCRM</a>
-</footer>

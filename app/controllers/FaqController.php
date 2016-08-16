@@ -74,7 +74,7 @@ class FaqController extends BaseController
     protected function editFagdata()
      {
          
-         var_dump(Input::get());
+        // var_dump(Input::get());
         $id = Input::get('id');
         echo $id;
         $Update = DB::table('alpha_faq')
