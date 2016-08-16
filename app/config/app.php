@@ -33,10 +33,12 @@ return array(
     
     // For webservice. Added by Hieu Nguyen on 2016-03-15
     'service_config' => array(
-        'server_url' => 'http://crm.apollo.com/Apollo_new',
+        //'server_url' => 'http://crm.apollo.com/Apollo_new',
+        'server_url' => 'localhost/apollo_crm',
         'custom_service' => true,   // Use custom service in custom folder or not
-        'root_username' => 'webservice',
-        'root_password' => 'fffaabe45f4bd79ebfd2e9fc2f19815c',  // MD5
+        'root_username' => 'admin',
+        'root_password' => 'a123456'
+        //'root_password' => 'fffaabe45f4bd79ebfd2e9fc2f19815c',  // MD5
     ),
     // End for webservice
     
@@ -223,7 +225,6 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
 	),
 
 );

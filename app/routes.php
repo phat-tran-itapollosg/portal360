@@ -10,14 +10,26 @@
     | and give it the Closure to execute when that URI is requested.
     |
     */
+    
+    Route::get('/faq', 'FaqController@getFag');//->name('getFag')
+    Route::get('/faq/edit/{id}', 'FaqController@editFag');//->name('editFag')
+    Route::get('faq/del/data/{id}', 'FaqController@delFagdata');
+    Route::get('faq/del/get', 'FaqController@delFagget');//->name('delFagget')
+    Route::get('/faq/add', 'FaqController@Fagadd');
+    Route::get('category/add', 'CategoryController@Categoryadd');
+    
+    Route::post('/faq/add/data', 'FaqController@addFagdata');
+    Route::post('/faq/edit/data', 'FaqController@editFagdata');
+    Route::post('/faq/re/del','FaqController@redelFagdata');
 
     Route::get('/', function() {
         return Redirect::to('/schedule/index');
     });
+    
     Route::get('/home', function() {
         return Redirect::to('/schedule/index');
     });
-
+    
     // Routes that need to be checked for authentication
     Route::group(array('before' => 'auth'), function() {
         Route::get('/home/index', 'HomeController@index');
