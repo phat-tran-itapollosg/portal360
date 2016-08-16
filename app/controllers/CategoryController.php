@@ -14,12 +14,20 @@
 class CategoryController extends BaseController
 {
     protected function Categoryget(){
-         $getcate = DB::table('alpha_category')
-                        ->where('cdelete', 0)
-                        ->get();
-                        
-        $getdel=0;
-        return View::make('category.categetadd')->with(array('cate'=>$getcate,'getdel'=>0));
+        $getcate = DB::table('alpha_category')
+                           ->where('cdelete', 0)
+                           ->get();
+                           
+        if($getcate!=null)
+        {
+            
+           $getdel=0;
+           return View::make('category.categetadd')->with(array('cate'=>$getcate,'getdel'=>0));
+        }
+        else
+        {
+            return Redirect::to('category/del/get');
+        }
     }
     protected function Categoryadd(){
         if (Request::isMethod('post'))
@@ -39,7 +47,7 @@ class CategoryController extends BaseController
         if($id!=null)
         {
             $getInfoCate = DB::table('alpha_category')->where('cid', $id)->get();
-            echo $id;
+            //echo $id;
         //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
             return view::make('category.cateedit')->with(array('infocate'=>$getInfoCate));
         }
@@ -49,7 +57,7 @@ class CategoryController extends BaseController
         if (Request::isMethod('post'))
         {      
             $id = Input::get('id');
-            echo $id;
+            //echo $id;
             $Update = DB::table('alpha_category')
                 ->Where('cid',$id)
                 ->update(array('ccontent'=>Input::get('ccontent'),

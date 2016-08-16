@@ -1,0 +1,86 @@
+a.link{
+   color:  black;
+   cursor: auto;
+}
+.textarear {
+    width: 300px;
+    height: 200px;
+}
+.textareaq {
+    width: 300px;
+    height: 50px;
+}
+.lbfaq{
+   
+    color: #4C8FFB;
+    font-size: 18px;
+}
+.content {
+    font-family: 'Open Sans Light',sans-serif;
+    margin:auto;
+    width:900px;
+    height:700px;
+}
+.title{
+    color: #4C8FFB;
+    text-align: center;
+}
+.box{
+    color: #4C8FFB;
+    padding:10px;
+    margin: auto;
+}
+.faq{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
+.question{
+    font-size: 20px;
+    padding:10px;
+}
+.reply{
+    color:#747474;
+    margin-left:10px;
+    padding: 7px;
+}
+.faqli{
+    list-style:none;
+}
+.ulli{
+    text-decoration: none;
+    outline: none;
+}
+.afaq{
+   
+    text-decoration: none;
+    outline: none;
+}
+.afaqadd{
+    background-color: #366ED4;
+    color: white;
+    -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   text-decoration: none;
+}
+tr{
+ text-align: center;
+ }
+td{
+ text-align: right ;
+ }
+td.right{
+   text-align: left;
+}
+.submittable{
+   margin: auto;
+   text-align: center;
+}
+.txt{
+   background-color: black;
+}
+.foo {
+    width: 300px;
+    height:60px;
+}  

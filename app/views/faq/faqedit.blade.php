@@ -1,11 +1,11 @@
 <!--
  *
- *Alpha team Mr.tanphat 
+ *Alpha team Tran Tan Phat
  *trantanphat.it@gmail.com
  *
  */
 -->
-<link rel="stylesheet" href="{{ URL::asset('public/css/css_alphal/css.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('public/css/css.css') }}">
 <div class='content'>
     <h1 class="title">
         Chỉnh sửa FAQ
@@ -16,6 +16,27 @@
             
         
         <table align="center">
+        <tr>
+            <div>
+                <td>
+                         <label class="lbfaq">Danh mục </label>
+                </td>
+                <td class='right'>
+                    <select name="idcate">
+                    @foreach($selected as $sel)
+                        <option value="{{$sel->cid}}">{{$sel->ccontent}}</option>
+                    @endforeach
+                    
+                    @foreach($cate as $cates)
+                        <option value="{{$cates->cid}}">{{$cates->ccontent}}</option>
+                    @endforeach
+                </select>
+                <a class='afaq' href="{{URL::asset('/category/get')}}">
+                   Thêm Category 
+                </td>
+            </div>
+        </tr>
+            
         <tr>
             <div class="question">
                 <td>

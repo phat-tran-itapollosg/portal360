@@ -1,37 +1,43 @@
 <!--
  *
- *Alpha team Mr.tanphat 
+ *Alpha team Tran Tan Phat
  *trantanphat.it@gmail.com
  *
  */
 -->
-<link rel="stylesheet" href="{{ URL::asset('public/css/css_alphal/css.css' )}}">
+<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 <div class='content'>
     <ul class='ulli'>
         <li class="faqli">
+        
             @if($getdel==0)
                 <h1 class="title">
                     Hỏi Đáp FAQ
                 </h1>
-                @foreach ($faq as $faq)
+                
+                   
                     <div class="box">
+                     @foreach ($getfaq1 as $getfaq1s) 
                         <div class="question">
-                            <a class='afaq' href="faq/edit/{{$faq->id}}">Câu hỏi: {{ $faq->faqquestion }}</a>
+                            <a class='afaq' href="faq/edit/{{$getfaq1s->id}}">Câu hỏi: {{ $getfaq1s->faqquestion }}</a>
                             
                         </div>
-                            
                         <div class="reply">
-                            >>{{ $faq->faqreply }}
+                        Danh mục:                            
+                            {{$getfaq1s->ccontent}}
+                        </div>
+                        <div class="reply">
+                            >>{{ $getfaq1s->faqreply }}
                             <div class="question">
                                 ||
-                                <a class='afaqadd' href="{{URL::asset("faq/edit/$faq->id")}}">Sửa</a>
+                                <a class='afaqadd' href="faq/edit/{{$getfaq1s->id}}">Sửa</a>
                                 
                                     &nbsp;||
                                 <a class='afaqadd' href="{{URL::asset('/faq/add')}}">
                                    Thêm FAQ 
                             </a> 
                                 &nbsp;||
-                            <a class='afaqadd' href="faq/del/data/{{$faq->id}}">
+                            <a class='afaqadd' href="faq/del/data/{{$getfaq1s->id}}">
                                 Xóa FAQ
                             </a> 
                                 &nbsp;||
@@ -40,9 +46,10 @@
                             </a> 
                                 &nbsp;||
                             </div>
-                    </div>
+                        </div>
+                    
+                    @endforeach
                 </div>
-                @endforeach
             @elseif($faqdelget!=null)
                 <h1 class="title">
                     Các FAQ đã xóa
@@ -73,7 +80,7 @@
                                     </a>
                             </div>
                     </div>
-                    @endforeach   
+                    @endforeach       
             @else
                 
                 <h1 class="title">

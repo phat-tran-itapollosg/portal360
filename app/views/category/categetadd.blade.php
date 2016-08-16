@@ -1,4 +1,11 @@
-<link rel="stylesheet" href="{{ URL::asset('public/css/css_alphal/css.css' )}}">
+<!--
+ *
+ *Alpha team Tran Tan Phat
+ *trantanphat.it@gmail.com
+ *
+ */
+-->
+<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 <div class='content'>
     <ul class='ulli'>
         <li class="faqli">
@@ -49,11 +56,6 @@
                             
                         </div>
                             <div class="submit" style="text-align:center">
-                                ||
-                                <a class='afaqadd' href="{{URL::asset("category/edit/$cates->cid")}}">Sửa Category</a>
-                                
-                                    &nbsp;||
-                            </a> 
                                 &nbsp;||
                             <a class='afaqadd' href="del/data/{{$cates->cid}}">
                                 Xóa Category
@@ -63,6 +65,10 @@
                                 Các Category đã Xóa
                             </a> 
                                 &nbsp;||
+                            <a class='afaqadd' href="{{URL::asset('faq')}}">
+                                Quay lại trang FAQ
+                            </a> 
+                                
                             </div>
                 </div>
             @else
@@ -85,7 +91,6 @@
                                 <td><a class='afaq' href="edit/{{$cates->cid}}">{{ $cates->ccontent}}</a></td>
                                 <td class='right'>
                                     <a class='afaqadd' href="{{URL::asset("category/edit/$cates->cid")}}">Sửa Category</a>
-                                    <a class='afaqadd' href="{{URL::asset("category/dele/$cates->cid")}}">Xóa Category</a>
                                 </td>
                             </tr>
                 @endforeach
@@ -94,15 +99,6 @@
                             
                         </div>
                             <div class="submit" style="text-align:center">
-                                ||
-                                <a class='afaqadd' href="{{URL::asset("category/edit/$cates->cid")}}">Sửa Category</a>
-                                
-                                    &nbsp;||
-                            </a> 
-                                &nbsp;||
-                            <a class='afaqadd' href="del/data/{{$cates->cid}}">
-                                Xóa Category
-                            </a> 
                                 &nbsp;||
                             <a class='afaqadd' href="{{URL::asset('category/get')}}">
                                 Quay lại trang Category

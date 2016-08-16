@@ -16,13 +16,28 @@ class FaqController extends BaseController
     ///Show FAQ
     public function getFag()
     {
-        $getfaq = DB::table('alpha_faq')
-                        ->where('faqdelete', 0)
-                        ->get();      
-        //return view('faq.faq',['faq' => $getfaq]);
-        $getdel=0;
-        return View::make('faq.faq')->with(array('faq'=>$getfaq,'getdel'=>0));
-        //return View::make('home.index')->with(array('feed'=>$feed));
+        //$getfaq = DB::table('alpha_faq')
+        //                ->where('faqdelete', 0)
+        //                ->get();
+        
+        $getfaq1= DB::table('alpha_faq')
+            ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_faq.faqdelete',0)
+            ->Where('alpha_category.cdelete',0)
+            ->get();
+        if($getfaq1!=null)
+        {
+            
+            $getdel=0;
+            return View::make('faq.faq')->with(array('getdel'=>0,'getfaq1'=>$getfaq1));
+            //return View::make('home.index')->with(array('feed'=>$feed));
+        }
+        else
+            {
+                //echo 'khong co du lieu';
+                return Redirect::to('/faq/add');
+            }
     }
     public function delFagget()
     {
@@ -35,8 +50,13 @@ class FaqController extends BaseController
     }
     protected function Fagadd()
     {
-        
-        return view::make('faq.faqadd');
+        $getcate = DB::table('alpha_category')
+                        ->where('cdelete', 0)
+                        ->get();
+                        
+        //$getdel=0;
+        return View::make('faq.faqadd')->with(array('cate'=>$getcate));
+        //return view::make('faq.faqadd');
         
     }
     // insert new FAQ
@@ -52,9 +72,13 @@ class FaqController extends BaseController
             //var_dump(Input::get());
             $data = array(
             'faqquestion' => Input::get('txtq'),
-            'faqreply' => Input::get('txtr'));
+            'faqreply' => Input::get('txtr'),
+            'idcate' => Input::get('idcate')
+            );
             DB::table('alpha_faq')->insert($data);
-            return $this->getFag();
+            //return $this->getFag();
+            
+            return Redirect::to('/faq');
         }
             return $this->Fagadd();
     }
@@ -64,23 +88,40 @@ class FaqController extends BaseController
             if($id!=null)
             {
                 $getInfoFag = DB::table('alpha_faq')->where('id', $id)->get();
-                echo Input::get('id');
+                foreach ($getInfoFag as $getfaqs)
+                {
+                   $idcate= $getfaqs->idcate;
+                   var_dump($idcate);
+                }
+                
+                $getCategoryed = DB::table('alpha_category')
+                                ->where('cid',$idcate)
+                                ->get();
+                $getCategory = DB::table('alpha_category')                
+                                ->where('cdelete',0)
+                                ->get();
+                //echo Input::get('id');
             //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
-                return view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag));
+                return view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag,
+                                                             'cate'=>$getCategory,
+                                                             'selected'=>$getCategoryed
+                                                             ));
             }
                 // don't id on url
-                //return view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag));
+                return view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag));
     }
     protected function editFagdata()
      {
          
         // var_dump(Input::get());
         $id = Input::get('id');
-        echo $id;
+        //echo $id;
+        //var_dump(Input::get('idcate'));
         $Update = DB::table('alpha_faq')
                 ->Where('id',$id)
                 ->update(array('faqquestion'=>Input::get('txtq'),
                             'faqreply'=>Input::get('txtr'),
+                            'idcate'=>Input::get('idcate'),
                             'faqdelete'=>0,
                           ));
               

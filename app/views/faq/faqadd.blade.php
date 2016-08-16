@@ -1,11 +1,11 @@
 <!--
  *
- *Alpha team Mr.tanphat 
+ *Alpha team Tran Tan Phat
  *trantanphat.it@gmail.com
  *
  */
 -->
-<link rel="stylesheet" href="{{ URL::asset('public/css/css_alphal/css.css' )}}">
+<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 
 <div class='content'>
    
@@ -23,10 +23,26 @@
                     <!--{!! Form::label(' Câu hỏi  ') !!} -->
                 </td>
                 <td class='right'>
-                        <input type="text" name="txtq" id ="txtq"><br>
-                         <!--{!! Form::text('txtq',null,['id' => 'txtq']) !!}-->
+                        <input type="text" name="txtq" id ="txtq"><br> 
                 </td>
             </div>
+        </tr>
+        <tr>
+            <td>
+                    <label>Danh mục category</label>
+                    
+                    <!--{!! Form::label(' Câu hỏi  ') !!} -->
+            </td>
+            <td  class='right'>
+                <select name="idcate">
+                    @foreach($cate as $cates)
+                        <option value="{{$cates->cid}}">{{$cates->ccontent}}</option>
+                    @endforeach
+                </select>
+                <a class='afaq' href="{{URL::asset('/category/get')}}">
+                    Thêm Category
+                </a>
+            </td>
         </tr>
         <tr>
             <div class="question" >
@@ -36,14 +52,15 @@
                 
             </td>
             <td class='right'>
-                <input type="text" name="txtr" id ="txtr"><br>
+                <textarea class="textarear" cols="1" required name="txtr" id ="txtr">
+                </textarea>
                 <!--{!! Form::textarea('txtr', null , ['id' => 'txtr']) !!}-->
             </td>
             </div>
         </tr>    
         </table>
         <div class="submittable" >
-                <input type="submit" name='Lưu lại FAQ'><br>
+                <input type="submit" value='Lưu lại FAQ'><br>
                 <!--{!! Form::submit(' Lưu lại FAQ ')!!}-->
                 ||
                 <a class='afaq' href="{{URL::asset('/faq/add')}}">
@@ -57,15 +74,4 @@
         <!--{!! Form::close() !!}-->
     </div>
 </div>
-   
-   <!--
-   
-   <div style='margin:auto, margin-lef:1000px, float:left'>
-   {!! Form::open(array('url' => 'foo/bar')) !!}
-      {!! Form::label('qaddlb', 'Câu hỏi thêm vào')!!}
-         {!!Form::text('qadd',null,['id'=>'qadd'])!!}<br>
-      {!!Form::label('qaddlb', 'Câu trả lời')!!}
-         {!!Form::text('readd',null,['id'=>'redd'])!!}
-      {!! Form::close() !!}
-   </div>
    -->

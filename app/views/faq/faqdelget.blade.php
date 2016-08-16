@@ -1,11 +1,11 @@
 <!--
  *
- *Alpha team Mr.tanphat 
+ *Alpha team Tran Tan Phat
  *trantanphat.it@gmail.com
  *
  */
 -->
-<link rel="stylesheet" href="{{ URL::asset('public/css/css_alphal/css.css' )}}">
+<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 <div class='content'>
     @if($faqdelget!=null)
         
