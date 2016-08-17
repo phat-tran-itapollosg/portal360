@@ -14,6 +14,7 @@
 class FaqController extends BaseController
 {
     ///Show FAQ
+    protected $layout = 'layouts.master';
     public function getFag()
     {
         //$getfaq = DB::table('alpha_faq')
@@ -30,7 +31,7 @@ class FaqController extends BaseController
         {
             
             $getdel=0;
-            return View::make('faq.faq')->with(array('getdel'=>0,'getfaq1'=>$getfaq1));
+            $this->layout->content = View::make('faq.faq')->with(array('getdel'=>0,'getfaq1'=>$getfaq1));
             //return View::make('home.index')->with(array('feed'=>$feed));
         }
         else
@@ -45,7 +46,7 @@ class FaqController extends BaseController
                         ->where('faqdelete', 1)
                         ->get();
         $getdel=1;
-        return view::make('faq.faq')->with(array('faqdelget' => $getfaq,'getdel'=>$getdel));
+        $this->layout->content = view::make('faq.faq')->with(array('faqdelget' => $getfaq,'getdel'=>$getdel));
         
     }
     protected function Fagadd()
@@ -55,7 +56,7 @@ class FaqController extends BaseController
                         ->get();
                         
         //$getdel=0;
-        return View::make('faq.faqadd')->with(array('cate'=>$getcate));
+        $this->layout->content = View::make('faq.faqadd')->with(array('cate'=>$getcate));
         //return view::make('faq.faqadd');
         
     }
@@ -102,13 +103,13 @@ class FaqController extends BaseController
                                 ->get();
                 //echo Input::get('id');
             //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
-                return view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag,
+                $this->layout->content = view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag,
                                                              'cate'=>$getCategory,
                                                              'selected'=>$getCategoryed
                                                              ));
             }
                 // don't id on url
-                return view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag));
+                $this->layout->content = view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag));
     }
     protected function editFagdata()
      {

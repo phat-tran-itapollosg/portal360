@@ -5,6 +5,9 @@
  *
  */
 -->
+
+@extends('layouts.master')
+@section('content')
 <link rel="stylesheet" href="{{ URL::asset('public/css/css.css') }}">
 <div class='content'>
     <h1 class="title">
@@ -81,3 +84,4 @@
     </div>
     @endforeach   
 </div>
+@stop

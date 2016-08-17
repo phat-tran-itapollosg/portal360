@@ -5,6 +5,9 @@
  *
  */
 -->
+@extends('layouts.master')
+@section('content')
+
 <link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 <div class='content'>
     @if($faqdelget!=null)
@@ -58,3 +61,4 @@
 
     @endif
 </div>
+@stop
