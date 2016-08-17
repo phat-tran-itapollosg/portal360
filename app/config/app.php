@@ -26,19 +26,30 @@ return array(
 	|
 	*/
 
-	'url' => 'http://crm.apollo.com/apollo_portal',
+
+	// 'url' => 'http://crm.apollo.com/apollo_portal',
+	// 'url' => 'http://portaltest.apollo.edu.vn',
+	'url' => 'http://localhost/apolloportal/',
+
 
     // For RSS at home page. Added by Hieu Nguyen on 2016-03-15
     'rss_url' => '',
     
     // For webservice. Added by Hieu Nguyen on 2016-03-15
     'service_config' => array(
+
         //'server_url' => 'http://crm.apollo.com/Apollo_new',
-        'server_url' => 'localhost/apollo_crm',
-        'custom_service' => true,   // Use custom service in custom folder or not
-        'root_username' => 'admin',
-        'root_password' => 'a123456'
+        // 'server_url' => 'localhost/apollo_crm',
+        // 'custom_service' => true,   // Use custom service in custom folder or not
+        // 'root_username' => 'admin',
+        // 'root_password' => 'a123456'
         //'root_password' => 'fffaabe45f4bd79ebfd2e9fc2f19815c',  // MD5
+
+        'server_url' => 'http://sistest.apollo.edu.vn',
+        'custom_service' => true,   // Use custom service in custom folder or not
+        'root_username' => 'webservice',
+        'root_password' => '57ee62e7ce2ba75fac974faa3eae09e0',  // MD5
+
     ),
     // End for webservice
     
