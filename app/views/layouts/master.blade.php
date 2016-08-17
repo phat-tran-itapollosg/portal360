@@ -3,25 +3,55 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Mosaddek">
+        <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <link rel="shortcut icon" href="{{ URL::asset('public/img/favicon_apollo.png') }}">
+
+        <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ URL::asset('public/theme/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('public/theme/css/bootstrap-reset.css') }}" rel="stylesheet">
+        <!--external css-->
+        <link href="{{ URL::asset('public/theme/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+        <link href="{{ URL::asset('public/theme/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css') }}" rel="stylesheet" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="{{ URL::asset('public/theme/css/owl.carousel.css') }}" type="text/css">
+
+          <!--right slidebar-->
+          <link href="{{ URL::asset('public/theme/css/slidebars.css') }}" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+
+        <link href="{{ URL::asset('public/theme/css/style.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('public/theme/css/style-responsive.css" rel="stylesheet') }}" />
+
+
+        <!-- old
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ $app_title }} - @yield('title')</title>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
         <link rel="shortcut icon" href="{{ URL::asset('public/img/favicon_apollo.png') }}">
-        
+        -->
         <!-- Vendor CSS -->
+        <!-- old
         <link href="{{ URL::asset('public/vendors/bower_components/animate.css/animate.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">        
-            
+        -->
         <!-- CSS -->
+        <!-- old
         <link href="{{ URL::asset('public/vendors/datatables/media/css/jquery.dataTables.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/app.min.1.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/app.min.2.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/styles.css') }}" rel="stylesheet">
-        
+        -->
         <!-- Page specific styles -->
+        
         @yield('styles')
         
         <script type="text/javascript">
@@ -33,102 +63,40 @@
         </script>
         
         {{ ViewUtil::renderJsLanguage('app') }}
+    
     </head>
     <body lang="{{ App::getLocale() }}">
+    <section id="container">
         @include('layouts.header')
-        
-        <section id="main" data-layout="layout-1">
-            @include('layouts.sidebar')
-            
-            @include('layouts.chat')
-            
-            <section id="content">
+
+        @include('layouts.sidebar')
+
+        <section id="main-content">
+            <section class="wrapper">
                 @yield('content')
             </section>
         </section>
-        
-        @include('layouts.footer')
+    </section>
+            @yield('scripts')
+    
+         <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{{ URL::asset('public/theme/js/jquery.js') }}"></script>
+    <script src="{{ URL::asset('public/theme/js/bootstrap.min.js') }}"></script>
+    <script class="include" type="text/javascript" src="{{ URL::asset('public/theme/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{ URL::asset('public/theme/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ URL::asset('public/theme/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('public/theme/js/respond.min.js') }}" ></script>
 
-        <!-- Page Loader -->
-        <div class="page-loader">
-            <div class="preloader pls-blue">
-                <svg class="pl-circular" viewBox="25 25 50 50">
-                    <circle class="plc-path" cx="50" cy="50" r="20" />
-                </svg>
+    <!--right slidebar-->
+    <script src="{{ URL::asset('public/theme/js/slidebars.min.js') }}"></script>
 
-                <p>{{ trans('app.spinner_text') }}</p>
-            </div>
-        </div>
-        
-        <!-- Older IE warning message -->
-        <!--[if lt IE 9]>
-            <div class="ie-warning">
-                <h1 class="c-white">Warning!!</h1>
-                <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-                <div class="iew-container">
-                    <ul class="iew-download">
-                        <li>
-                            <a href="http://www.google.com/chrome/">
-                                <img src="public/img/browsers/chrome.png" alt="">
-                                <div>Chrome</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.mozilla.org/en-US/firefox/new/">
-                                <img src="public/img/browsers/firefox.png" alt="">
-                                <div>Firefox</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.opera.com">
-                                <img src="public/img/browsers/opera.png" alt="">
-                                <div>Opera</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.apple.com/safari/">
-                                <img src="public/img/browsers/safari.png" alt="">
-                                <div>Safari</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                                <img src="public/img/browsers/ie.png" alt="">
-                                <div>IE (New)</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <p>Sorry for the inconvenience!</p>
-            </div>   
-        <![endif]-->
-        
-        <!-- Javascript Libraries -->
-        <script src="{{ URL::asset('public/vendors/bower_components/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        
-        <script src="{{ URL::asset('public/vendors/bower_components/flot/jquery.flot.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/flot/jquery.flot.resize.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/flot.curvedlines/curvedLines.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/sparklines/jquery.sparkline.min.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/moment/min/moment.min.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/Waves/dist/waves.min.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bootstrap-growl/bootstrap-growl.min.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js') }}"></script>
-        <script src="{{ URL::asset('public/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-        
-        <!-- Placeholder for IE9 -->
-        <!--[if IE 9 ]>
-            <script src="{{ URL::asset('public/vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js') }}"></script>
-        <![endif]-->
-        <script src="{{ URL::asset('public/js/date.js') }}"></script>
-        <script src="{{ URL::asset('public/js/functions.js') }}"></script>
-        <script src="{{ URL::asset('public/js/notification.js') }}"></script>
-        <script src="{{ URL::asset('public/js/dialog.js') }}"></script>
-        <script src="{{ URL::asset('public/js/app.js') }}"></script>
-        
-        
-        <!-- Page specific scripts -->
-        @yield('scripts')
+    <!--common script for all pages-->
+    <script src="{{ URL::asset('public/theme/js/common-scripts.js') }}"></script>
+
+    <!--script for this page-->
+    <script src="{{ URL::asset('public/theme/js/sparkline-chart.js') }}"></script>
+    <script src="{{ URL::asset('public/theme/js/easy-pie-chart.js') }}"></script>
+    <script src="{{ URL::asset('public/theme/js/count.js') }}"></script>
+
     </body>
 </html>

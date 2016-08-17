@@ -3,7 +3,13 @@
 @section('title', trans('app.page_title'))
 
 @section('styles')
-<link href="{{ URL::asset('public/css/user_login.css') }}" rel="stylesheet">     
+<link href="{{ URL::asset('public/css/user_login.css') }}" rel="stylesheet">   
+<link href="{{ URL::asset('public/theme/css/bootstrap.min.css') }}" rel="stylesheet">     
+<link href="{{ URL::asset('public/theme/css/bootstrap-reset.css') }}" rel="stylesheet">     
+<link href="{{ URL::asset('public/theme/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet">     
+<link href="{{ URL::asset('public/theme/css/style.css') }}" rel="stylesheet">     
+<link href="{{ URL::asset('public/theme/css/style-responsive.css') }}" rel="stylesheet">     
+ 
 @stop
 
 @section('content')
@@ -25,38 +31,9 @@
                 </li>
             </ul>
         </div>
-        <div id="content" class="round10">
-            <div id="login" class="round10">
-                <form name="form-login" action="" method="post">
-                    <table cellpadding="5" cellspacing="5">
-                        <tr>
-                            <td class="label" width="140">{{ trans('user_login.customer_id') }}</td>
-                            <td><input type="text" id="username" name="username" value="{{ $username }}"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">{{ trans('user_login.password') }}</td>
-                            <td><input type="password" id="password" name="password" value="{{ $password }}"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label"></td>
-                            <td><label><input type="checkbox" id="remember_me" name="remember_me" value="1"/> {{ trans('user_login.remember_me') }}</label></td>
-                        </tr>
-                        <tr>
-                            <td class="label"></td>
-                            <td><input type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}"/></td>
-                        </tr>    
-                    </table>
-
-                    <div class="error">
-                        @if($result == 'not_for_portal')
-                        {{ trans('user_login.account_is_not_a_customer_error_msg') }}
-                        @elseif($result == 'login_failed')
-                        {{ trans('user_login.login_failed_error_msg') }}
-                        @endif
-                    </div>
-                </form>
-            </div>
-            <div id="about" class="round10">
+        <form class="form-signin" action="" method="post">
+        <!--<h2 class="form-signin-heading">sign in now</h2>-->
+        <div id="about" class="round10">
                 <div id="logo">
                     <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 320px; height: auto"/>
                 </div>  
@@ -64,11 +41,23 @@
 
                 </div>
             </div> 
-            <div id="contact" class="round10">
-                {{ trans('user_login.description') }}                    
-            </div>
-            <div class="clear"></div>
-        </div>        
+        <div class="login-wrap">
+            <input type="text" id="username" class="form-control" placeholder="{{ trans('user_login.customer_id') }}" name="username" value="{{ $username }}" autofocus>
+            <input type="password" id="password" class="form-control" name="password" value="{{ $password }}" placeholder="{{ trans('user_login.password') }}">
+            <label class="checkbox">
+                <input type="checkbox" id="remember_me" name="remember_me" value="1">{{ trans('user_login.remember_me') }}
+            </label>
+            <button class="btn btn-lg btn-login btn-block" type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}">{{ trans('user_login.login') }}</button>
+        </div>
+        <div class="error">
+            @if($result == 'not_for_portal')
+            {{ trans('user_login.account_is_not_a_customer_error_msg') }}
+            @elseif($result == 'login_failed')
+            {{ trans('user_login.login_failed_error_msg') }}
+            @endif
+        </div>
+      </form>
+       
     </div>
 </div>
 <div id="footer">
