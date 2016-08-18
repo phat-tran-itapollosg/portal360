@@ -4,13 +4,13 @@ $(function() {
     //Generate the Calendar
     calendar.fullCalendar({
         header: {
-            right: '',
-            center: 'prev, title, next',
-            left: ''
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
         },
 
         lang: locale,
-        theme: true, //Do not remove this as it ruin the design
+        theme: false, //Do not remove this as it ruin the design
         selectable: true,
         selectHelper: true,
         editable: false,

@@ -16,8 +16,6 @@
         <link href="{{ URL::asset('public/theme/css/bootstrap-reset.css') }}" rel="stylesheet">
         <!--external css-->
         <link href="{{ URL::asset('public/theme/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
-        <link href="{{ URL::asset('public/theme/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css') }}" rel="stylesheet" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="{{ URL::asset('public/theme/css/owl.carousel.css') }}" type="text/css">
 
           <!--right slidebar-->
           <link href="{{ URL::asset('public/theme/css/slidebars.css') }}" rel="stylesheet">
@@ -77,7 +75,7 @@
             </section>
         </section>
     </section>
-            @yield('scripts')
+            
     
          <!-- js placed at the end of the document so the pages load faster -->
     <script src="{{ URL::asset('public/theme/js/jquery.js') }}"></script>
@@ -94,9 +92,7 @@
     <script src="{{ URL::asset('public/theme/js/common-scripts.js') }}"></script>
 
     <!--script for this page-->
-    <script src="{{ URL::asset('public/theme/js/sparkline-chart.js') }}"></script>
-    <script src="{{ URL::asset('public/theme/js/easy-pie-chart.js') }}"></script>
     <script src="{{ URL::asset('public/theme/js/count.js') }}"></script>
-
+        @yield('scripts')
     </body>
 </html>
