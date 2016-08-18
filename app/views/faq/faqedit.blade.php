@@ -51,13 +51,12 @@
                          <label class="lbfaq">Câu hỏi: </label>
                 </td>
                 <td>
-                        <textarea class="textareaq"  required autofocus  name="txtq">
-                            {{$infofaq->faqquestion}}
-                        </textarea>
+                        <input style="float:left" class="lbfaq" type="text" name="txtq" value=" {{$infofaq->faqquestion}}">
+                           
 
-                        <label>ID Câu hỏi </label>{{$infofaq->id}}
+                    <label class="lbfaq" style="float:left" >__ID Câu hỏi {{$infofaq->id}} </label>
 
-                        <input type="text" name="id" value="{{$infofaq->id}}" hidden />
+                    <input class="lbfaq" type="text" name="id" value="{{$infofaq->id}}" hidden />
                         
                 </td>
             </div>

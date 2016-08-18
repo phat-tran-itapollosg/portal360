@@ -24,7 +24,9 @@
                     <label>Câu hỏi</label>
                 </td>
                 <td class='right'>
-                        <a href="{{URL::asset('/faq/edit/')}}" <label>{{$infofaq->faqquestion}}</label>
+                    <a href="{{URL::asset('/faq/edit/')}}"> 
+                        <label>{{$infofaq->faqquestion}}</label>
+                    </a>
                 </td>
             </div>
         </tr>
