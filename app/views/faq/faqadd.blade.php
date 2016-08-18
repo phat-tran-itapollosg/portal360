@@ -5,16 +5,19 @@
  *
  */
 -->
+
+  
 @extends('layouts.master')
 @section('content')
-<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
+    <link rel="stylesheet" href="{{ URL::asset('public/css/css.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('public/ckeditor/css/samples.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('public/ckeditor/toolbarconfigurator/lib/codemirror/neo.css') }}">
 
-<div class='content'>
-   
+    <script  language="javascript"  src="{{ URL::asset('public/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('public/ckeditor/samples/js/sample.js') }}"></script>
     <h1 class="title">
         Hỏi Đáp FAQ thêm câu hỏi mới
     </h1>
-   <div class="box" >
         <table align="center" >
         <form action="{{URL::asset('/faq/add/data')}}" method="post">
         <!-- {!! Form::open(array('url' => '/faq/add/data', 'method' => 'post'))!!} -->
@@ -54,9 +57,20 @@
                 
             </td>
             <td class='right'>
-                <textarea class="textarear" cols="1" required name="txtr" id ="txtr">
+                <!--<textarea class="textarear" name="txtr" id= 'txtr'>
+                </textarea>-->
+               
+                <textarea id='txtr' name='txtr' >
+                    
                 </textarea>
-                <!--{!! Form::textarea('txtr', null , ['id' => 'txtr']) !!}-->
+                <script type="text/javascript">
+                         CKEDITOR.replace( 'txtr',
+                         {
+                          customConfig : 'config.js',
+                          toolbar : 'simple'
+                          })
+
+                </script> 
             </td>
             </div>
         </tr>    
@@ -74,6 +88,24 @@
         </div>
         </form>
         <!--{!! Form::close() !!}-->
+         
     </div>
-</div>
+<script>
+    var data = CKEDITOR.instances.txtr.getData();
+     var inputValue = $("#txtr").html;     
+        $.ajax( {
+            type : "POST",
+            cache : false,
+            async : true,
+            global : false,
+            url : "URL POST DATA",
+            data : {
+                editorcontents : escape(inputValue),
+            }
+        } ).done( function ( data )
+        {   
+            //Handle event send done;
+        } )
+</script>
 @stop
+

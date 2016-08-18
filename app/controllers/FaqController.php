@@ -31,7 +31,7 @@ class FaqController extends BaseController
         {
             
             $getdel=0;
-            $this->layout->content = View::make('faq.faq')->with(array('getdel'=>0,'getfaq1'=>$getfaq1));
+            $this->layout->content = View::make('faq.faq')->with(array('flat'=>0,'getfaq1'=>$getfaq1));
             //return View::make('home.index')->with(array('feed'=>$feed));
         }
         else
@@ -40,14 +40,35 @@ class FaqController extends BaseController
                 return Redirect::to('/faq/add');
             }
     }
+
+    protected function GetFaqCategory($idcate)
+    {
+        $GetFaqCategory= DB::table('alpha_faq')
+            ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_faq.faqdelete',0)
+            ->Where('alpha_category.cdelete',0)
+            ->Where('alpha_category.cid',$idcate)
+            //->groupBy('alpha_category.idcate')
+            ->get();
+        $this->layout->content = view::make('faq.faq')->with(array('flat'=>2,
+                                                        'FaqCategory'=>$GetFaqCategory));
+    }
+
     public function delFagget()
     {
         $getfaq = DB::table('alpha_faq')
                         ->where('faqdelete', 1)
                         ->get();
-        $getdel=1;
-        $this->layout->content = view::make('faq.faq')->with(array('faqdelget' => $getfaq,'getdel'=>$getdel));
-        
+       
+        if($getfaq!=null){
+            $this->layout->content = view::make('faq.faq')->with(array('faqdelget' => $getfaq,
+                'flat'=>1));
+        }else
+        {
+            $this->layout->content = view::make('faq.faq')->with(array('faqdelget' => $getfaq,
+                'flat'=>-1));
+        }
     }
     protected function Fagadd()
     {
@@ -70,7 +91,7 @@ class FaqController extends BaseController
             
                       
             //show post on views add
-            //var_dump(Input::get());
+            //var_dump(Input::get('txtr'));
             $data = array(
             'faqquestion' => Input::get('txtq'),
             'faqreply' => Input::get('txtr'),
@@ -103,13 +124,13 @@ class FaqController extends BaseController
                                 ->get();
                 //echo Input::get('id');
             //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
-                $this->layout->content = view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag,
-                                                             'cate'=>$getCategory,
-                                                             'selected'=>$getCategoryed
+                $this->layout->content = view::make('faq.faqedit')->with(array(
+                                                            'infofaq'=>$getInfoFag,
+                                                            'cate'=>$getCategory,
+                                                            'selected'=>$getCategoryed
                                                              ));
             }
-                // don't id on url
-                $this->layout->content = view::make('faq.faqedit')->with(array('infofaq'=>$getInfoFag));
+
     }
     protected function editFagdata()
      {
@@ -145,7 +166,7 @@ class FaqController extends BaseController
         
         return Redirect::to('/faq/del/get');
     }
-     protected function redelFagdata(Request $request)
+    protected function redelFagdata(Request $request)
      {
         $Redata= DB::table('alpha_faq')
                 ->Where('id',$request->input('id'))
