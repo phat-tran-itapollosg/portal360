@@ -44,6 +44,7 @@ a.link{
     color:#747474;
     margin-left:10px;
     padding: 7px;
+    font-size: 20px;
 }
 .faqli{
     list-style:none;
@@ -84,3 +85,7 @@ td.right{
     width: 300px;
     height:60px;
 }  
+
+.category{
+    padding:10px;
+}

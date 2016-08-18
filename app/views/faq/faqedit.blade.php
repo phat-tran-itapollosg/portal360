@@ -5,7 +5,15 @@
  *
  */
 -->
-<link rel="stylesheet" href="{{ URL::asset('public/css/css.css') }}">
+
+@extends('layouts.master')
+@section('content')
+    <link rel="stylesheet" href="{{ URL::asset('public/css/css.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('public/ckeditor/css/samples.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('public/ckeditor/toolbarconfigurator/lib/codemirror/neo.css') }}">
+
+    <script  language="javascript"  src="{{ URL::asset('public/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+    <script src="{{ URL::asset('public/ckeditor/samples/js/sample.js') }}"></script>
 <div class='content'>
     <h1 class="title">
         Chỉnh sửa FAQ
@@ -43,11 +51,13 @@
                          <label class="lbfaq">Câu hỏi: </label>
                 </td>
                 <td>
-                        <textarea class="textareaq"  required autofocus  name="txtq">
-                            {{$infofaq->faqquestion}}
-                        </textarea>
-                        <label>ID Câu hỏi </label>{{$infofaq->id}}
-                        <input type="text" name="id" value="{{$infofaq->id}}" hidden />
+                        <input style="float:left" class="lbfaq" type="text" name="txtq" value=" {{$infofaq->faqquestion}}">
+                           
+
+                    <label class="lbfaq" style="float:left" >__ID Câu hỏi {{$infofaq->id}} </label>
+
+                    <input class="lbfaq" type="text" name="id" value="{{$infofaq->id}}" hidden />
+                        
                 </td>
             </div>
         </tr>
@@ -58,9 +68,22 @@
                 
             </td>
             <td class='right'>
+                <!--
                 <textarea class="textarear" cols="1" required  name="txtr" >
                             {{$infofaq->faqreply}}
                 </textarea>
+                -->
+                <textarea id='txtr' name='txtr' >
+                            {{$infofaq->faqreply}}
+                        </textarea>
+                        <script type="text/javascript">
+                                 CKEDITOR.replace( 'txtr',
+                                 {
+                                  customConfig : 'config.js',
+                                  toolbar : 'simple'
+                                  })
+
+                        </script> 
             </td>
             </div>
         
@@ -81,3 +104,21 @@
     </div>
     @endforeach   
 </div>
+<script>
+    var data = CKEDITOR.instances.txtr.getData();
+     var inputValue = $("#txtr").html;     
+        $.ajax( {
+            type : "POST",
+            cache : false,
+            async : true,
+            global : false,
+            url : "URL POST DATA",
+            data : {
+                editorcontents : escape(inputValue),
+            }
+        } ).done( function ( data )
+        {   
+            //Handle event send done;
+        } )
+</script>
+@stop

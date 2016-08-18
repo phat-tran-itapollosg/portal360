@@ -5,6 +5,9 @@
  *
  */
 -->
+@extends('layouts.master')
+@section('content')
+
 <link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 <div class='content'>
     @if($faqdelget!=null)
@@ -21,7 +24,9 @@
                     <label>Câu hỏi</label>
                 </td>
                 <td class='right'>
-                        <a href="{{URL::asset('/faq/edit/')}}" <label>{{$infofaq->faqquestion}}</label>
+                    <a href="{{URL::asset('/faq/edit/')}}"> 
+                        <label>{{$infofaq->faqquestion}}</label>
+                    </a>
                 </td>
             </div>
         </tr>
@@ -58,3 +63,4 @@
 
     @endif
 </div>
+@stop
