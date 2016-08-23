@@ -8,7 +8,6 @@
 
 @section('content')
 <!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
-
     <div class="container">
         <div class="block-header">
             <h2>{{ trans('sms_index.page_title') }}</h2>
