@@ -7,8 +7,7 @@
 
 @section('content')
 <!-- page start-->
-      <div class="row">
-      
+      <div class="row">      
         <div class="col-lg-4">
                 @foreach($enrollents as $key => $enrollment)
                 @if ($key % 3 === 0)
