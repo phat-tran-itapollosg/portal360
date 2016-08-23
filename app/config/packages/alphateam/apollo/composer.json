@@ -1,0 +1,12 @@
+{
+    "name": "alphateam/apollo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alphateam by trantanphat",
+            "email": "trantanphat.it@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
