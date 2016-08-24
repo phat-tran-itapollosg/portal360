@@ -35,7 +35,7 @@
         <!--<h2 class="form-signin-heading">sign in now</h2>-->
         <div id="about" class="round10">
                 <div id="logo">
-                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 320px; height: auto"/>
+                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 160px; height: auto"/>
                 </div>  
                 <div id="description">
 
