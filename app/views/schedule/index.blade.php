@@ -20,7 +20,7 @@
                   </aside>
               </div>
               <!-- page end-->
-	
+  
 @stop
 
 @section('scripts')

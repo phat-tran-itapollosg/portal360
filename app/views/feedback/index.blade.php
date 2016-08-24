@@ -7,15 +7,16 @@
 @stop
 
 @section('content')
-    
-    <div class="container">
-        <div class="block-header">
-            <h2>{{ trans('feedback_index.page_title') }}</h2>
-        </div>
-        
-        <div class="card">
-            <div class="card-body card-padding overflow-auto">
-                <table id="data-table" class="datatable table table-striped table-vmiddle">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <center>
+                    <header class="panel-heading">
+                        {{ trans('feedback_index.page_title') }}
+                    </header>  
+                </center>
+                
+                <table class="table table-striped" style="border-collapse:inherit">
                     <thead>
                         <tr>
                             <th><b>{{ trans('feedback_index.subject') }}</b></th>
@@ -29,7 +30,7 @@
                             
                         </tr>
                     </thead>
-                    <tbody>
+                  <tbody>
                         @foreach($feedbacks as $feedback)
                             <tr>
                                 <td>{{ $feedback->name }}</td>
@@ -43,11 +44,10 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>    
-            </div>
+              </table>
+          </section>
         </div>
     </div>
-
 @stop
 
 @section('scripts')

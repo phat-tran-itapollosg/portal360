@@ -16,24 +16,44 @@
                 <h1 class="title">
                     Hỏi Đáp FAQ
                 </h1>
-                
-                   
-                    <div class="box">
                      @foreach ($getfaq1 as $getfaq1s) 
-                        <div class="question">
-                        Câu hỏi:    
-                            <a class='afaq' href="faq/edit/{{$getfaq1s->id}}">{{ $getfaq1s->faqquestion }}</a>
-                            
+
+                    @if(@admin==0)
+                    <div class="boxfaq">
+
+                        <div class="imgquestion"> 
+                            <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
                         </div>
-                        <div class="category">
+                        <div class="questionhv">
+
+                            <a class='afaq' href="faq/detal/{{$getfaq1s->id}}">{{ $getfaq1s->faqquestion }}</a>
+                            <br>    
                             Danh mục:    
                             <a class='afaq' href="faq/category/{{$getfaq1s->idcate}}">
 
                                     {{$getfaq1s->ccontent}}
-                            </a>        
+                            </a> 
+                        </div>
+                    
+                </div>
+                @else($admin==1)
+                    <div class="boxfaq">
+
+                        <div class="imgquestion"> 
+                            <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
+                        </div>
+                        <div class="questionhv">
+
+                            <a class='afaq' href="faq/edit/{{$getfaq1s->id}}">{{ $getfaq1s->faqquestion }}</a>
+                            <br>    
+                            Danh mục:    
+                            <a class='afaq' href="faq/category/{{$getfaq1s->idcate}}">
+
+                                    {{$getfaq1s->ccontent}}
+                            </a> 
                         </div>
                         <div class="reply">
-                            {{ $getfaq1s->faqreply }}
+                            
                             <div class="question">
                                 ||
                                 <a class='afaqadd' href="faq/edit/{{$getfaq1s->id}}">Sửa</a>
@@ -53,9 +73,8 @@
                                 &nbsp;||
                             </div>
                         </div>
-                    
+                @endif
                     @endforeach
-                </div>
             @elseif($flat==1)
                 <h1 class="title">
                     Các FAQ đã xóa

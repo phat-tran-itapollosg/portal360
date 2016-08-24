@@ -11,23 +11,27 @@
 
 @section('content')
 
-<div class="container">
-    <div class="block-header">
-        <h2>{{ trans('app.lbl_gradebook_index') }}</h2>
-    </div>
 
-    <div class="card">
-        <div class="card-body card-padding">
-            <div class="fielter">
-                <label class="bold">{{trans('gradebook_index.lbl_class_name')}} : </label>
-                <select id='class_id' class="class_id">
-                    <option value="">--None--</option>
-                    @foreach($classes as $class)
+    <div class="row">
+    <div class="container">
+        <div class="fielter">
+            <label class="bold">{{trans('gradebook_index.lbl_class_name')}} : </label>
+            <select id='class_id' class="class_id">
+                <option value="">--None--</option>
+                @foreach($classes as $class)
                     <option value="{{$class->id}}">{{$class->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="gradebook_content overflow-auto">
+                @endforeach
+            </select>
+        </div>
+        <div class="col-lg-12">
+            <section class="panel" style="margin-top:20px;margin-bottom:0px">
+                <center>
+                    <header class="panel-heading">
+                        {{ trans('app.lbl_gradebook_index') }}
+                    </header>
+                </center>
+          </section>
+            <div class="gradebook_content overflow-auto" style="margin-top:0px">
 
             </div>
             <div class="gradebook_result overflow-auto">
@@ -49,8 +53,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
     </div>
+    
 </div>
 
 @stop
