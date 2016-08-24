@@ -90,9 +90,6 @@
 
     <!--common script for all pages-->
     <script src="{{ URL::asset('public/theme/js/common-scripts.js') }}"></script>
-
-    <!--script for this page-->
-    <script src="{{ URL::asset('public/theme/js/count.js') }}"></script>
         @yield('scripts')
     </body>
 </html>
