@@ -63,6 +63,12 @@
                     <span>{{ trans('app.enrollment') }}</span>
                 </a>
             </li>
+            <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('/faq') }}" class="dcjq-parent">
+                    <i class="fa fa-question"></i>
+                    <span>FAQ</span>
+                </a>
+            </li>
 
             <li class="sub-menu dcjq-parent-li">
                 <a href="#" class="dcjq-parent">

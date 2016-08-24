@@ -55,6 +55,8 @@
 
         // Routes FAQ, Category
         Route::get('/faq', 'FaqController@getFag');//->name('getFag')
+        Route::get('/faq/detal/{id}','FaqController@getdetal');
+
         Route::get('/faq/edit/{id}', 'FaqController@editFag');//->name('editFag')
         Route::get('faq/del/data/{id}', 'FaqController@delFagdata');
         Route::get('faq/del/get', 'FaqController@delFagget');//->name('delFagget')

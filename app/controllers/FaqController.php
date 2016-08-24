@@ -15,6 +15,7 @@ class FaqController extends BaseController
 {
     ///Show FAQ
     protected $layout = 'layouts.master';
+
     public function getFag()
     {
         //$getfaq = DB::table('alpha_faq')
@@ -31,7 +32,7 @@ class FaqController extends BaseController
         {
             
             $getdel=0;
-            $this->layout->content = View::make('faq.faq')->with(array('flat'=>0,'getfaq1'=>$getfaq1));
+            $this->layout->content = View::make('faq.faq')->with(array('flat'=>0,'admin'=>0,'getfaq1'=>$getfaq1));
             //return View::make('home.index')->with(array('feed'=>$feed));
         }
         else
@@ -54,7 +55,19 @@ class FaqController extends BaseController
         $this->layout->content = view::make('faq.faq')->with(array('flat'=>2,
                                                         'FaqCategory'=>$GetFaqCategory));
     }
-
+    public function getdetal($id)
+    {
+        $getdetal= DB::table('alpha_faq')
+            ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_faq.faqdelete',0)
+            ->Where('alpha_category.cdelete',0)
+            ->Where('alpha_faq.id',$id)
+            //->groupBy('alpha_category.idcate')
+            ->get();
+        $this->layout->content = view::make('faq.faqdetal')->with(array(
+                                                        'detal'=>$getdetal));
+    }
     public function delFagget()
     {
         $getfaq = DB::table('alpha_faq')

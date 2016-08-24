@@ -89,3 +89,41 @@ td.right{
 .category{
     padding:10px;
 }
+.imgquestion{
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin-right: 80px;
+
+}
+.questionhv{
+    float:left;
+}
+.boxfaq{
+    height: 100px;
+    margin: auto;
+    transition-property: inherit;
+    background-color: white;
+    color: #4C8FFB;
+    padding:20px;
+    margin: auto;
+    margin-top: 10px;
+}
+.imgquestiondetal{
+    margin: auto;
+    width: 400px;
+    height: 400px;
+}
+.h2faqdetal{
+    color: #4C8FFB;
+}
+.detalfaqreply{
+    background-color: white;
+}
+.faqdetalcontent{
+   background-color: white; 
+   font-family: 'Open Sans Light',sans-serif;
+    margin:auto;
+    width:98%;
+    padding: 10px;
+}
