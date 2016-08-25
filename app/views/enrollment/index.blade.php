@@ -3,12 +3,7 @@
 @section('title', trans('enrollment_index.page_title'))
 
 @section('styles')
-<<<<<<< HEAD
-   
-@stop
 
-@section('content')
-=======
 @stop
 
 @section('content')
@@ -20,9 +15,8 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="bio-chart">
-                            <div style="display:inline;width:101px;height:101px;">
-                                </canvas>                          
-                                <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="101" height="101px"/>      
+                            <div style="display:inline;width:101px;height:101px;">                   
+                                <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="101" height="auto"/>      
                             </div>
                         </div>
                         <div class="bio-desk" style="color:#aec785">
@@ -31,9 +25,9 @@
                             <p><b>{{trans('enrollment_index.center')}}: </b>{{ $enrollment->center }}</p>
                         </div>
                         <div class="bio-content">
-                            <table style="float:left;margin-left:5px">
-                              <col width="130">
-                              <col width="80">
+                            <table style="float:left">
+                              <col width="150">
+                              <col width="100">
                               <tr>
                                 <td><b>{{trans('enrollment_index.total_amount')}}:</b></td>
                                 <td>{{ $enrollment->total_amount }}</td>
@@ -71,9 +65,8 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="bio-chart">
-                            <div style="display:inline;width:101px;height:101px;">
-                                </canvas>                          
-                                <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="101" height="101px"/>      
+                            <div style="display:inline;width:101px;height:101px;">                        
+                                <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="101" height="auto"/>      
                             </div>
                         </div>
                         <div class="bio-desk" style="color:#aec785">
@@ -82,9 +75,9 @@
                             <p><b>{{trans('enrollment_index.center')}}: </b>{{ $enrollment->center }}</p>
                         </div>
                         <div class="bio-content">
-                            <table style="float:left;margin-left:5px">
-                              <col width="130">
-                              <col width="80">
+                            <table style="float:left">
+                              <col width="150">
+                              <col width="100">
                               <tr>
                                 <td><b>{{trans('enrollment_index.total_amount')}}:</b></td>
                                 <td>{{ $enrollment->total_amount }}</td>
@@ -122,9 +115,8 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="bio-chart">
-                            <div style="display:inline;width:101px;height:101px;">
-                                </canvas>                          
-                                <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="101" height="101px"/>      
+                            <div style="display:inline">                          
+                                <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="101" height="auto"/>      
                             </div>
                         </div>
                         <div class="bio-desk" style="color:#aec785">
@@ -133,9 +125,9 @@
                             <p><b>{{trans('enrollment_index.center')}}: </b>{{ $enrollment->center }}</p>
                         </div>
                         <div class="bio-content">
-                            <table style="float:left;margin-left:5px">
-                              <col width="130">
-                              <col width="80">
+                            <table style="float:left">
+                              <col width="150">
+                              <col width="100">
                               <tr>
                                 <td><b>{{trans('enrollment_index.total_amount')}}:</b></td>
                                 <td>{{ $enrollment->total_amount }}</td>
@@ -166,82 +158,10 @@
                 </div>
                 @endif
                 @endforeach
-        </div>
-
-                <!--
-                <tr>
-                    <td>{{ $key+1 }}</td>
-                    <td>{{ $enrollment->class_name }} </td>
-                    <td>{{ SugarUtil::formatDate($enrollment->start_date) }} </td>
-                    <td>{{ SugarUtil::formatDate($enrollment->end_date) }} </td>
-                    <td>{{ $enrollment->total_amount }} </td>
-                    <td>{{ $enrollment->balance }} </td>
-                    <td>{{ $enrollment->total_hour }} </td>
-                    <td>{{ $enrollment->balance_hour }} </td>
-                    <td>{{ $enrollment->ec_name }} </td>
-                    <td>{{ $enrollment->center }} </td>       
-                </tr>
-                -->
-                
-
+        </div>              
       </div>
 
   <!-- page end-->
-<!--
->>>>>>> e6346e96613e2fbab18f5130bb39ee48799fce3d
-    <div class="container">
-        <div class="block-header">
-            <h2>{{ trans('enrollment_index.page_title') }}</h2>
-        </div>
-        
-        <div class="card">
-            <div class="card-body card-padding overflow-auto">
-                <table id="data-table" class="datatable table table-striped table-vmiddle">
-                    <thead>
-                        <tr>
-                            <th>{{trans('enrollment_index.no')}}</th>
-                            <th>{{trans('enrollment_index.class')}}</th>
-                            <th>{{trans('enrollment_index.start_date')}}</th>
-                            <th>{{trans('enrollment_index.end_date')}}</th>
-                            <th>{{trans('enrollment_index.total_amount')}}</th>
-                            <th>{{trans('enrollment_index.ending_balance')}}</th>
-                            <th>{{trans('enrollment_index.total_hour')}}</th>
-                            <th>{{trans('enrollment_index.ending_hour')}}</th>
-                            <th>{{trans('enrollment_index.ec')}}</th>
-                            <th>{{trans('enrollment_index.center')}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($enrollents as $key => $enrollment)
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $enrollment->class_name }} </td>
-                                <td>{{ SugarUtil::formatDate($enrollment->start_date) }} </td>
-                                <td>{{ SugarUtil::formatDate($enrollment->end_date) }} </td>
-                                <td>{{ $enrollment->total_amount }} </td>
-                                <td>{{ $enrollment->balance }} </td>
-                                <td>{{ $enrollment->total_hour }} </td>
-                                <td>{{ $enrollment->balance_hour }} </td>
-                                <td>{{ $enrollment->ec_name }} </td>
-                                <td>{{ $enrollment->center }} </td>       
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table> 
-            </div>
-        </div>
-    </div>
-    
-<<<<<<< HEAD
-	
-@stop
-
-@section('scripts')
-    <script src="{{ URL::asset('public/vendors/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ URL::asset('public/vendors/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('public/js/datatabel.js') }}"></script>
-=======
--->
 @stop
 
 @section('scripts')
@@ -251,5 +171,4 @@
     <script src="{{ URL::asset('public/js/datatabel.js') }}"></script>
 -->
     <script src="{{ URL::asset('public/theme/assets/jquery-knob/js/jquery.knob.js') }}"></script>
->>>>>>> e6346e96613e2fbab18f5130bb39ee48799fce3d
 @stop
