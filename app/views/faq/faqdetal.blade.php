@@ -23,7 +23,7 @@
                                 </a> 
                         </div>
                         <div class="imgquestiondetal"> 
-                            <img width="300px" height="300px" src="{{URL::asset('public/img/faq/3.png')}}"> 
+                            <img width="300px" height="300px" src="public/img/faq/{{$getfaq1s->img}}"> 
                         </div>
                         <div class="detalfaqreply" >
                              {{ $getfaq1s->faqreply }}

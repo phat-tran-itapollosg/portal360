@@ -132,17 +132,21 @@
                     <header class="panel-heading" style="border-radius:0">
                       <b>Không có FAQ đã xóa</b>
                     </header>
-
-                    <div class="panel-body">
-                        <ul class='ulli'>
-                    <div class="faqli">
             @endif
             @if($flat==2)
-                <h1 class="title">
+                
+                @foreach ($FaqCategory as $getfaq1s)
+                    <h1 class="title"> 
+                    @if(++$i==1)
+                       Chuyên mục {{$getfaq1s->ccontent}}
+                    @endif
+                    </h1>
+                @endforeach
+
+
                 @foreach ($FaqCategory as $getfaq1s) 
-                    {{$getfaq1s->ccontent}}
-                </h1>
-                <div class="box">
+
+                <div class="box" style="padding: 10px">
                         <div class="question">
                         Câu hỏi:    
                             <a class='afaq' href="../edit/{{$getfaq1s->id}}">
@@ -156,36 +160,8 @@
                                     {{$getfaq1s->ccontent}}
                             </a>        
                         </div>
-                        <div class="reply">
-                            {{ $getfaq1s->faqreply }}
-                            <div class="question">
-                                ||
-                                <a class='afaqadd' href="../edit/{{$getfaq1s->id}}">Sửa</a>
-                                
-                                    &nbsp;||
-                                <a class='afaqadd' href="{{URL::asset('/faq/add')}}">
-                                   Thêm FAQ 
-                            </a> 
-                                &nbsp;||
-                            <a class='afaqadd' href="../del/data/{{$getfaq1s->id}}">
-                                Xóa FAQ
-                            </a> 
-                                &nbsp;||
-                            <a class='afaqadd' href="{{URL::asset('faq/del/get')}}">
-                                Các tin đã Xóa
-                            </a> 
-                                &nbsp;||
-                            <a class='afaqadd' href="{{URL::asset('/faq')}}">
-                                       Quay lại trang FAQ   
-                                </a>
-                            </div>
-                        </div>
-                    
+                </div>
                     @endforeach
-                    </div>   
-                    </ul>
-                    </div>
-                    </section>  
             @endif
     </div>        
 </div>

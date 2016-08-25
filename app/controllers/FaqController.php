@@ -52,7 +52,7 @@ class FaqController extends BaseController
             ->Where('alpha_category.cid',$idcate)
             //->groupBy('alpha_category.idcate')
             ->get();
-        $this->layout->content = view::make('faq.faq')->with(array('flat'=>2,
+        $this->layout->content = view::make('faq.faq')->with(array('flat'=>2,'i'=>0,
                                                         'FaqCategory'=>$GetFaqCategory));
     }
     public function getdetal($id)
