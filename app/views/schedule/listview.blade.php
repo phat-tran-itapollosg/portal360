@@ -8,14 +8,16 @@
 
 @section('content')
     
-    <div class="container">
-        <div class="block-header">
-            <h2>{{ trans('schedule_listview.page_title') }}</h2>
-        </div>
-        
-        <div class="card">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel panel-default">  
+            <header class="panel-heading" style="border-radius:0">
+                <b>{{ trans('schedule_listview.page_title') }}</b>
+            </header>
+            <div class="panel-body">          
+            <div class="card">
             <div class="card-body card-padding overflow-auto">
-                <table id="data-table" class="datatable table table-striped table-vmiddle">
+                <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
                     <thead>                                   
                         <tr>
                             <th><b>{{ trans('schedule_listview.class_name') }}</b></th>                             
@@ -40,6 +42,9 @@
                     </tbody>
                 </table>    
             </div>
+            </div>
+            </div>
+        </section>
         </div>
     </div>
 

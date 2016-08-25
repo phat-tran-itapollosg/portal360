@@ -6,8 +6,18 @@ $(document).ready(function(){
         'language' : locale,    
     });
 
-    $(".container").on("change",'#class_id',function(){
-        getGradebookContent()
+
+    $("#gradebook-filter").on("change",'#class_id',function(){
+        getGradebookContent();
+        
+        if($('#class_id').val() == "")
+        {
+            $('.panel-body').hide();
+        }
+        else
+        {
+            $('.panel-body').show();
+        }
     });
     function getGradebookContent() {
 
@@ -43,7 +53,7 @@ $(document).ready(function(){
     }
     getGradebookContent();
 
-    $(".container").on("click",".btn_detail", function(){
+    $(".panel-body").on("click",".btn_detail", function(){
         var _this = $(this);
         var data = _this.attr('data');
         $("#gradebook_detail .modal-body").html(detail[data]);

@@ -8,65 +8,51 @@
       
 @section('content')
     <div class="row">
-        <div class="col-lg-8">
-            <section class="panel">
-            <header class="panel-heading">
-              <h4><center>{{ trans('feedback_add.page_title') }}</center></h4>
+        <div class="col-lg-12">
+
+            <section class="panel panel-default">
+            <header class="panel-heading" style="border-radius:0">
+              <b>{{ trans('feedback_add.page_title') }}</b>
             </header>
             <div class="panel-body">
-                <form id="form-add-feedback" action="{{ URL::to('feedback/save') }}" method="post" role="form">
-                    <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="slc_type">{{ trans('feedback_add.type') }}</label>
-                            <div class="fg-line">
-                            <select id="slc_type" name="slc_type" class="form-control">
-                                @foreach($typeOptions as $key => $value)
+                <form id="form-add-feedback" class="form-horizontal" action="{{ URL::to('feedback/save') }}" method="post" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="slc_type">{{ trans('feedback_add.type') }}</label>
+                        <div class="fg-line col-sm-10">
+                        <select id="slc_type" name="slc_type" class="form-control">
+                            @foreach($typeOptions as $key => $value)
+                            <option value="{{ $key }}"> {{ $value }} </option>
+                            @endforeach;
+                        </select>    
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="slc_target">{{ trans('feedback_add.target') }}</label>
+                        <div class="fg-line col-sm-10">
+                        <select id="slc_target" name="slc_target" class="form-control">
+                            @foreach($targetOptions as $key => $value)
                                 <option value="{{ $key }}"> {{ $value }} </option>
-                                @endforeach;
-                            </select>    
-                            </div>
+                            @endforeach;
+                        </select>    
                         </div>
-                    </div>
                     </div>
 
-                    <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="slc_target">{{ trans('feedback_add.target') }}</label>
-                            <div class="fg-line">
-                            <select id="slc_target" name="slc_target" class="form-control">
-                                @foreach($targetOptions as $key => $value)
-                                    <option value="{{ $key }}"> {{ $value }} </option>
-                                @endforeach;
-                            </select>    
-                            </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="subject">{{ trans('feedback_add.subject') }}</label>
+                        <div class="fg-line col-sm-10">
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="{{ trans('feedback_add.subject') }}">
                         </div>
-                    </div>
                     </div>
 
-                    <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label class="control-label" for="subject">{{ trans('feedback_add.subject') }}</label>
-                            <div class="fg-line">
-                            <input type="text" id="subject" name="subject" class="form-control" placeholder="{{ trans('feedback_add.subject') }}">
-                            </div>
-                        </div>
-                    </div>
-                    </div>
 
-                    <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label class="control-label" for="contents">{{ trans('feedback_add.content') }}</label>
-                            <div class="fg-line">
-                            <textarea type="text" id="contents" name="contents" rows="5" class="form-control" placeholder="{{ trans('feedback_add.content') }}"></textarea>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="contents">{{ trans('feedback_add.content') }}</label>
+                        <div class="fg-line col-sm-10">
+                        <textarea type="text" id="contents" name="contents" rows="5" class="form-control" placeholder="{{ trans('feedback_add.content') }}"></textarea>
                         </div>
                     </div>
-                    </div>
-                        <button type="submit" class="btn btn-primary btn-sm m-t-10">{{ trans('app.btn_send_text') }}</button>
+                        <button type="submit" class="btn btn-primary" style="margin-left:50%">{{ trans('app.btn_send_text') }}</button>
                 </form>
 
                 </div>

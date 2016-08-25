@@ -6,25 +6,33 @@
  */
 -->
 @extends('layouts.master')
+
+@section('styles')
+<link href="{{ URL::asset('public/theme/css/tasks.css') }}" rel="stylesheet">  
+@stop
+
 @section('content')
-<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
-<div class='content'>
-    <ul class='ulli'>
-        <li class="faqli">
-        
+<!--<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}"> -->
+<div class='row'>
+    <div class="col-lg-12">        
             @if($flat==0)
-                <h1 class="title">
-                    Hỏi Đáp FAQ
-                </h1>
-                     @foreach ($getfaq1 as $getfaq1s) 
+                <section class="panel panel-default">
+                <header class="panel-heading" style="border-radius:0">
+                  <b>Hỏi Đáp FAQ</b>
+                </header>
+
+                <div class="panel-body">
+                    <ul class='ulli'>
+                <div class="faqli">
+                @foreach ($getfaq1 as $getfaq1s) 
 
                     @if(@admin==0)
-                    <div class="boxfaq">
+                    <li class="boxfaq" style="padding:10px">
 
-                        <div class="imgquestion"> 
+                        <div class="task-title imgquestion" style="display:inline-block"> 
                             <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
                         </div>
-                        <div class="questionhv">
+                        <div class="questionhv" style="display:inline-block; padding-left:10px">
 
                             <a class='afaq' href="faq/detal/{{$getfaq1s->id}}">{{ $getfaq1s->faqquestion }}</a>
                             <br>    
@@ -35,9 +43,9 @@
                             </a> 
                         </div>
                     
-                </div>
-                @else($admin==1)
-                    <div class="boxfaq">
+                    </li>
+                    @else($admin==1)
+                    <li class="boxfaq">
 
                         <div class="imgquestion"> 
                             <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
@@ -71,14 +79,23 @@
                                 Các tin đã Xóa
                             </a> 
                                 &nbsp;||
-                            </div>
                         </div>
+                    </li>
                 @endif
                     @endforeach
+                    </div>   
+                    </ul>
+                </div>
+                </section>
             @elseif($flat==1)
-                <h1 class="title">
-                    Các FAQ đã xóa
-                </h1>
+                <section class="panel panel-default">
+                <header class="panel-heading" style="border-radius:0">
+                  <b>Các FAQ đã xóa</b>
+                </header>
+
+                <div class="panel-body">
+                    <ul class='ulli'>
+                <div class="faqli">
                 @foreach ($faqdelget as $infofaq)
                     <div class="box">
                             <div class="question">
@@ -105,13 +122,20 @@
                                     </a>
                             </div>
                     </div>
-                    @endforeach       
+                    @endforeach   
+                     </div>   
+                    </ul>
+                    </div>
+                    </section>    
                 @elseif($flat==-1)
-                    
-                <h1 class="title">
-                    Không có FAQ đã xóa
-                </h1>
+                    <section class="panel panel-default">
+                    <header class="panel-heading" style="border-radius:0">
+                      <b>Không có FAQ đã xóa</b>
+                    </header>
 
+                    <div class="panel-body">
+                        <ul class='ulli'>
+                    <div class="faqli">
             @endif
             @if($flat==2)
                 <h1 class="title">
@@ -158,10 +182,11 @@
                         </div>
                     
                     @endforeach
-
+                    </div>   
+                    </ul>
+                    </div>
+                    </section>  
             @endif
-        </li>   
-    </ul>
-        
+    </div>        
 </div>
 @stop

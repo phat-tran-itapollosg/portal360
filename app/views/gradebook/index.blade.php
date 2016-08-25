@@ -4,33 +4,34 @@
 
 @section('styles')
 <link href="{{ URL::asset('public/css/Spinner.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ URL::asset('public/css/gradebook_index.css') }}" rel="stylesheet" type="text/css"> 
+<!--<link href="{{ URL::asset('public/css/gradebook_index.css') }}" rel="stylesheet" type="text/css"> -->
 <link href="{{ URL::asset('public/css/select2.css') }}" rel="stylesheet" type="text/css"> 
 
 @stop
 
 @section('content')
-
-
-    <div class="row">
-    <div class="container">
-        <div class="fielter">
-            <label class="bold">{{trans('gradebook_index.lbl_class_name')}} : </label>
-            <select id='class_id' class="class_id">
-                <option value="">--None--</option>
-                @foreach($classes as $class)
-                    <option value="{{$class->id}}">{{$class->name}}</option>
-                @endforeach
+ 
+    <div id="gradebook-filter" class="fielter">
+        <div class="form-group">
+            <label class="control-label">{{trans('gradebook_index.lbl_class_name')}}: </label>
+            <div class="" style="display:inline">
+            <select id='class_id' class="class_id styled hasCustomSelect" style="width:150px">
+            <option value="">--None--</option>
+            @foreach($classes as $class)
+                <option value="{{$class->id}}">{{$class->name}}</option>
+            @endforeach
             </select>
+            </div>
         </div>
+    </div>
+    <div class="row">
         <div class="col-lg-12">
-            <section class="panel" style="margin-top:20px;margin-bottom:0px">
-                <center>
-                    <header class="panel-heading">
-                        {{ trans('app.lbl_gradebook_index') }}
-                    </header>
-                </center>
-          </section>
+            <section class="panel panel-default">
+            <header class="panel-heading" style="border-radius:0">
+              <b>{{ trans('app.lbl_gradebook_index') }}</b>
+            </header>
+
+            <div class="panel-body" style="display:none">
             <div class="gradebook_content overflow-auto" style="margin-top:0px">
 
             </div>
@@ -53,9 +54,9 @@
                     </div>
                 </div>
             </div>
-        </div>        
-    </div>
-    
+            </div>
+            </section>
+        </div>
 </div>
 
 @stop

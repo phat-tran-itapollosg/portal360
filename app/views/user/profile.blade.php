@@ -46,9 +46,11 @@
             </aside>
       </aside>
       <aside class="profile-info col-lg-9">
-          <section class="panel">
+              <section class="panel panel-default">
+              <header class="panel-heading" style="border-radius:0">
+                <b>{{ trans('user_change_password.page_title') }}</b>
+              </header>
               <div class="panel-body bio-graph-info">
-                  <h1>Edit Profile</h1>
                   <form id="form-profile" action="{{ URL::to('user/saveProfile') }}" method="post" class="form-horizontal" role="form">
                       <div class="form-group">
                           <label  class="col-lg-2 control-label"><b>{{ trans('user_profile.customer_id') }}</b></label>

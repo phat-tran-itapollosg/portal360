@@ -283,7 +283,7 @@ ul.sidebar-menu li a{
     text-decoration: none;
     display: block;
     padding: 15px 0 15px 10px;
-    font-size: 12px;
+    font-size: 14px;
     outline: none;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -310,6 +310,7 @@ ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:fo
 ul.sidebar-menu li a i {
     font-size: 15px;
     padding-right: 6px;
+    width: 20px;
 }
 
 ul.sidebar-menu li a:hover i, ul.sidebar-menu li a:focus i {

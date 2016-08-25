@@ -22,7 +22,7 @@
             $lang = trans('gradebook_index');
             // print_r($lang);
             $html = "";
-            $html = "<table id = 'gradebook_content' class = 'table table-striped' width='100%'>
+            $html = "<table id = 'gradebook_content' class = 'table table-bordered table-hover table-striped table-vmiddle' width='100%'>
             <thead>
             <tr>
             <td ><b>".$lang['lbl_no']."</b></td>            

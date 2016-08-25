@@ -8,15 +8,13 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <section class="panel">
-                <center>
-                    <header class="panel-heading">
-                        {{ trans('feedback_index.page_title') }}
-                    </header>  
-                </center>
-                
-                <table class="table table-striped" style="border-collapse:inherit">
+    <div class="col-lg-12">
+        <section class="panel panel-default">  
+        <header class="panel-heading" style="border-radius:0">
+            <b>{{ trans('feedback_index.page_title') }}</b>
+        </header>
+        <div class="panel-body">                  
+                <table class="table table-striped table-bordered table-hover" style="border-collapse:inherit">
                     <thead>
                         <tr>
                             <th><b>{{ trans('feedback_index.subject') }}</b></th>
@@ -45,8 +43,10 @@
                         @endforeach
                     </tbody>
               </table>
-          </section>
+            </div>
         </div>
+        </section>
+    </div>
     </div>
 @stop
 

@@ -8,7 +8,57 @@
 
 @section('content')
 <!-- page start-->
-      <div class="row">      
+      <div class="row">
+        <div class="col-lg-12">
+            <section class="panel panel-default">  
+            <header class="panel-heading" style="border-radius:0">
+                <b>{{ trans('enrollment_index.page_title') }}</b>
+            </header>
+
+            <div class="panel-body">
+            <div class="card">
+            <div class="card-body card-padding overflow-auto">
+                <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+                    <thead>
+                        <tr>
+                            <th>{{trans('enrollment_index.no')}}</th>
+                            <th>{{trans('enrollment_index.class')}}</th>
+                            <th>{{trans('enrollment_index.start_date')}}</th>
+                            <th>{{trans('enrollment_index.end_date')}}</th>
+                            <th>{{trans('enrollment_index.total_amount')}}</th>
+                            <th>{{trans('enrollment_index.ending_balance')}}</th>
+                            <th>{{trans('enrollment_index.total_hour')}}</th>
+                            <th>{{trans('enrollment_index.ending_hour')}}</th>
+                            <th>{{trans('enrollment_index.ec')}}</th>
+                            <th>{{trans('enrollment_index.center')}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($enrollents as $key => $enrollment)
+                            <tr>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $enrollment->class_name }} </td>
+                                <td>{{ SugarUtil::formatDate($enrollment->start_date) }} </td>
+                                <td>{{ SugarUtil::formatDate($enrollment->end_date) }} </td>
+                                <td>{{ $enrollment->total_amount }} </td>
+                                <td>{{ $enrollment->balance }} </td>
+                                <td>{{ $enrollment->total_hour }} </td>
+                                <td>{{ $enrollment->balance_hour }} </td>
+                                <td>{{ $enrollment->ec_name }} </td>
+                                <td>{{ $enrollment->center }} </td>       
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table> 
+            </div>
+            </div>
+            </div>
+            </section>
+        </div>
+
+    </div>
+    
+    <!-- 
         <div class="col-lg-4">
                 @foreach($enrollents as $key => $enrollment)
                 @if ($key % 3 === 0)
@@ -158,7 +208,8 @@
                 </div>
                 @endif
                 @endforeach
-        </div>              
+        </div>    
+        -->          
       </div>
 
   <!-- page end-->

@@ -126,9 +126,9 @@ a:hover {
 }
 
 .form-horizontal .control-label {
-    font-weight: 300;
+    font-weight: 700;
     font-size: 14px;
-    text-align: left;
+    text-align: right;
 }
 
 input, textarea, select, button {
@@ -295,9 +295,9 @@ ul {
 /*collapse*/
 
 .panel-default > .panel-heading {
-    background-color: #FFFFFF;
+    background-color: #2A3542;
     border-color: #DDDDDD;
-    color: #797979;
+    color: #ffffff;
 }
 
 /*nav inverse*/

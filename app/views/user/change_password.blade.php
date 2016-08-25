@@ -8,50 +8,49 @@
 
 @section('content')
     
-    <div class="container">
-        <div class="block-header">
-            <h2>{{ trans('user_change_password.page_title') }}</h2>
-        </div>
-        
-        <div class="card">
-            <div class="card-body card-padding">
-                <form id="form-change-password" action="{{ URL::to('user/savePassword') }}" method="post">
-                    <div class="row">
-                        <div class="col-sm-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel panel-default">
+            <header class="panel-heading" style="border-radius:0">
+              <b>{{ trans('user_change_password.page_title') }}</b>
+            </header>
+            
+            <div class="panel-body">
+                <div class="card">
+                    <div class="card-body card-padding">
+                        <form id="form-change-password" class="form-horizontal" action="{{ URL::to('user/savePassword') }}" method="post">
                             <div class="form-group">
-                                <label class="control-label">{{ trans('user_change_password.current_password') }}</label>
-                                <div class="fg-line">
+                                <label class="col-sm-2 control-label">{{ trans('user_change_password.current_password') }}</label>
+                                <div class="col-sm-10">
                                     <input type="password" id="current_password" name="current_password" class="form-control" placeholder="{{ trans('user_change_password.current_password') }}" value="{{ $current_password }}">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-sm-4">
+
+                            
+
                             <div class="form-group">
-                                <label class="control-label">{{ trans('user_change_password.new_password') }}</label>
-                                <div class="fg-line">
+                                <label class="col-sm-2 control-label">{{ trans('user_change_password.new_password') }}</label>
+                                <div class="col-sm-10">
                                     <input type="password" id="new_password" name="new_password" class="form-control" placeholder="{{ trans('user_change_password.new_password') }}" value="{{ $new_password }}">
                                 </div>
                             </div>
-                        </div>
-                    </div>
+
                     
-                    <div class="row">
-                        <div class="col-sm-4">
+
                             <div class="form-group">
-                                <label class="control-label">{{ trans('user_change_password.confirm_password') }}</label>
-                                <div class="fg-line">
+                                <label class="col-sm-2 control-label">{{ trans('user_change_password.confirm_password') }}</label>
+                                <div class="col-sm-10">
                                     <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="{{ trans('user_change_password.confirm_password') }}" value="{{ $confirm_password }}">
                                 </div>
                             </div>
-                        </div>
+
+                            
+                            <button type="submit" class="btn btn-primary" style="margin-left:50%">{{ trans('app.btn_save_text') }}</button>
+                        </form>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-sm m-t-10">{{ trans('app.btn_save_text') }}</button>
-                </form>
+                </div>
             </div>
+        </section>
         </div>
     </div>
 

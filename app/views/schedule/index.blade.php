@@ -12,10 +12,14 @@
      <!-- page start-->
               <div class="row">          
                   <aside class="col-lg-12">
-                      <section class="panel">
-                          <div class="panel-body">
-                              <div id="calendar" class="has-toolbar"></div>
-                          </div>
+                      <section class="panel panel-default">  
+                      <header class="panel-heading" style="border-radius:0">
+                          <b>{{ trans('app.schedule') }}</b>
+                      </header>
+                      
+                      <div class="panel-body">
+                          <div id="calendar" class="has-toolbar"></div>
+                      </div>
                       </section>
                   </aside>
               </div>
