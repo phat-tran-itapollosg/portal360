@@ -17,9 +17,44 @@ class NewsController extends BaseController
     protected $layout = 'layouts.master';
     public function Getnews()
     {
-    	
+
+    	$getnews= DB::table('alpha_news')
+            ->join('alpha_category','cid', '=','alpha_news.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_news.ndelete',0)
+            ->Where('alpha_category.cdelete',0)
+            ->get();
+
+        	//var_dump($getnews);
+        if($getnews!=null)
+        {
+            $this->layout->content = View::make('news.news')->with(array('getnews'=>$getnews));
+            //return View::make('home.index')->with(array('feed'=>$feed));
+        }
+        else
+            {
+                echo 'khong co du lieu';
+            }
     	//var_dump($user->id);
-    	$this->layout->content = View::make('news.index');
+    }
+    protected function Getdetal($id)
+    {
+    	$Getdetal= DB::table('alpha_news')
+            ->join('alpha_category','cid', '=','alpha_news.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_news.ndelete',0)
+            ->Where('alpha_news.id',$id)
+            ->Where('alpha_category.cdelete',0)
+            ->get();
+    	if($Getdetal!=null)
+        {
+            $this->layout->content = View::make('news.detal')->with(array('Getdetal'=>$Getdetal));
+            //return View::make('home.index')->with(array('feed'=>$feed));
+        }
+        else
+            {
+                echo 'khong co du lieu';
+            }
     }
 
 }

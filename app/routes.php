@@ -74,7 +74,7 @@
         Route::post('/category/edit/data/','CategoryController@CategoryEditAdd');
         // Routes news
         Route::get('/news', 'NewsController@Getnews');
-
+        Route::get('/news/detal/{id}','NewsController@Getdetal');
     });
 
     // Routes that dont't need to be checked for authentication

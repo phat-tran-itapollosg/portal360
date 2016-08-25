@@ -71,6 +71,13 @@
             </li>
 
             <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('/news') }}" class="dcjq-parent">
+                    <i class="fa fa-question"></i>
+                    <span>News</span>
+                </a>
+            </li>
+
+            <li class="sub-menu dcjq-parent-li">
                 <a href="#" class="dcjq-parent">
                     <i class="fa fa-cogs"></i>
                     <span>{{ trans('app.feedback') }}</span>
