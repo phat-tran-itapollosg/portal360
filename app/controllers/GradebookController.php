@@ -22,7 +22,8 @@
             $lang = trans('gradebook_index');
             // print_r($lang);
             $html = "";
-            $html = "<table id = 'gradebook_content' class = 'table table-bordered table-hover table-striped table-vmiddle' width='100%'>
+            $html = "<table id = 'gradebook_content' class = 'table table-striped' width='100%'>
+// [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
             <thead>
             <tr>
             <td ><b>".$lang['lbl_no']."</b></td>            
@@ -144,7 +145,9 @@
                 ";
             }
 
-            if(!empty($result) && !empty($result['certificate_type']) && $result['certificate_type'] != 'Fail') {
+
+            if(!empty($result) && !empty($result->certificate_type) && $result->certificate_type != 'Fail') {
+// [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
                 $url = Config::get('app.url')."/gradebook/viewCertificate?class_id=$class_id";
                 $total_result .= "
                 <hr>
@@ -164,7 +167,14 @@
             $classID = Input::get('class_id');             
             $data = SugarUtil::getCertificate($classID);   
             //  'https://view.officeapps.live.com/op/view.aspx?src='.$GLOBALS['sugar_config']['site_url'].'/'.$file;       
-            // return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url);           
-            return Redirect::to('https://view.officeapps.live.com/op/view.aspx?src='.$data->file_url);           
+
+            // return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url); 
+            if(isset($data->file_url)) {         
+                return Redirect::to('https://view.officeapps.live.com/op/view.aspx?src='.$data->file_url);           
+            } else {
+                echo "<h2>Had error! Try again!</h2>";
+                die;
+            }
+// [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
         }
     }

@@ -12,15 +12,15 @@
     */
 
 
-    
+// =======
     Route::get('/', function() {
         return Redirect::to('/schedule/index');
     });
-    
     Route::get('/home', function() {
         return Redirect::to('/schedule/index');
     });
-    
+
+//>>>>>>> [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
     // Routes that need to be checked for authentication
     Route::group(array('before' => 'auth'), function() {
         Route::get('/home/index', 'HomeController@index');
@@ -52,6 +52,7 @@
         Route::get('/gradebook/index', 'GradebookController@index');
         Route::post('/gradebook/getGradebookDetail', 'GradebookController@getGradebookDetail');
         Route::get('/gradebook/viewCertificate', 'GradebookController@viewCertificate');
+//<<<<<<< 1e1413e10f011dfebcc6b900cffce8e8da2906d0
 
         // Routes FAQ, Category
         Route::get('/faq', 'FaqController@getFag');//->name('getFag')
@@ -75,6 +76,8 @@
         // Routes news
         Route::get('/news', 'NewsController@Getnews');
         Route::get('/news/detal/{id}','NewsController@Getdetal');
+//=======
+//>>>>>>> [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
     });
 
     // Routes that dont't need to be checked for authentication

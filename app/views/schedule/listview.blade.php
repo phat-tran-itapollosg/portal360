@@ -8,6 +8,7 @@
 
 @section('content')
     
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
     <div class="row">
         <div class="col-lg-12">
             <section class="panel panel-default">  
@@ -18,6 +19,7 @@
             <div class="card">
             <div class="card-body card-padding overflow-auto">
                 <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
                     <thead>                                   
                         <tr>
                             <th><b>{{ trans('schedule_listview.class_name') }}</b></th>                             
@@ -42,9 +44,11 @@
                     </tbody>
                 </table>    
             </div>
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
             </div>
             </div>
         </section>
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
         </div>
     </div>
 

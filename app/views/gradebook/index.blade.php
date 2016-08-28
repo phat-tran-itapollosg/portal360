@@ -4,12 +4,16 @@
 
 @section('styles')
 <link href="{{ URL::asset('public/css/Spinner.css') }}" rel="stylesheet" type="text/css">
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 <!--<link href="{{ URL::asset('public/css/gradebook_index.css') }}" rel="stylesheet" type="text/css"> -->
+
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 <link href="{{ URL::asset('public/css/select2.css') }}" rel="stylesheet" type="text/css"> 
 
 @stop
 
 @section('content')
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
  
     <div id="gradebook-filter" class="fielter">
         <div class="form-group">
@@ -34,6 +38,8 @@
             <div class="panel-body" style="display:none">
             <div class="gradebook_content overflow-auto" style="margin-top:0px">
 
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
+
             </div>
             <div class="gradebook_result overflow-auto">
 
@@ -54,9 +60,12 @@
                     </div>
                 </div>
             </div>
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
             </div>
             </section>
         </div>
+
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 </div>
 
 @stop

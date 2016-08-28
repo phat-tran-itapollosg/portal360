@@ -3,6 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="Mosaddek">
@@ -26,30 +27,39 @@
         <link href="{{ URL::asset('public/theme/css/style-responsive.css" rel="stylesheet') }}" />
 
 
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
         <!-- old
         <meta charset="utf-8">
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ $app_title }} - @yield('title')</title>
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300">
         <link rel="shortcut icon" href="{{ URL::asset('public/img/favicon_apollo.png') }}">
+ 1e1413e10f011dfebcc6b900cffce8e8da2906d0
         -->
         <!-- Vendor CSS -->
         <!-- old
+ [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
         <link href="{{ URL::asset('public/vendors/bower_components/animate.css/animate.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet">        
+ 1e1413e10f011dfebcc6b900cffce8e8da2906d0
         -->
         <!-- CSS -->
         <!-- old
+ [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
         <link href="{{ URL::asset('public/vendors/datatables/media/css/jquery.dataTables.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/app.min.1.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/app.min.2.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/css/styles.css') }}" rel="stylesheet">
+ 1e1413e10f011dfebcc6b900cffce8e8da2906d0
         -->
         <!-- Page specific styles -->
         
+
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
         @yield('styles')
         
         <script type="text/javascript">
@@ -61,6 +71,7 @@
         </script>
         
         {{ ViewUtil::renderJsLanguage('app') }}
+<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
     
     </head>
     <body lang="{{ App::getLocale() }}">
@@ -90,6 +101,8 @@
 
     <!--common script for all pages-->
     <script src="{{ URL::asset('public/theme/js/common-scripts.js') }}"></script>
+
+<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
         @yield('scripts')
     </body>
 </html>

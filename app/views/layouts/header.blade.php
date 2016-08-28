@@ -1,3 +1,4 @@
+ <!-- 1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 <!--header start-->
 <header id="header" class="header white-bg clearfix">
       <div class="sidebar-toggle-box">
@@ -27,3 +28,5 @@
     </div>
 </header>
 <!--header end-->
+
+<!--  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->

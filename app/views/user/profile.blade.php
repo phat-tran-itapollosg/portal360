@@ -6,6 +6,7 @@
         
 @stop
 
+<!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 @section('content')   
 <!-- page start-->
   <div class="row">
@@ -101,6 +102,7 @@
   </div>
 
   <!-- page end-->
+<!--  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 @stop
 
 @section('scripts')
@@ -109,7 +111,9 @@
     
     <script src="{{ URL::asset('public/vendors/jquery-validate/jquery.validate.min.js') }}"></script>
     <script src="{{ URL::asset('public/js/user_profile.js') }}"></script>
+<!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
     <script src="{{ URL::asset('public/theme/assets/jquery-knob/js/jquery.knob.js') }}"></script>
+<!--  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 
     @if(Session::has('flash_message'))
         <script type="text/javascript">

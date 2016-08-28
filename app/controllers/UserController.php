@@ -236,8 +236,9 @@
 
             $passwordParams = array(
                 'session' => $session->id,     // #1fix by Trung Nguyen 2016.06.07
-                'current_password' => Input::get('current_password'),    
-                'new_password' => Input::get('new_password'),    
+                'current_password' => md5(Input::get('current_password')),    
+                'new_password' => md5(Input::get('new_password')),    
+//  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
             );
 
             $result = $this->client->call(SugarMethod::CHANGE_PASSWORD, $passwordParams);
@@ -246,7 +247,8 @@
             if($result == null) {
                 Session::flash('error_message', trans('user_change_password.update_password_failed_error_msg'));
             }
-            else if($result->status == 'Error') {
+            else if(isset($result->status) && $result->status == 'Error') {
+//  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
                 Session::flash('error_message', trans('user_change_password.current_password_not_correct_error_msg'));    
             } 
             else {

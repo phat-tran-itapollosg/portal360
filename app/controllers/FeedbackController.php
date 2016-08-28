@@ -18,11 +18,12 @@
             $typeOptions = ($locale == "vi")? $appListStrings->full_relate_feedback_list_for_vn : $appListStrings->full_relate_feedback_list;
             $statusOptions = ($locale == "vi")? $appListStrings->status_feedback_list_for_vn : $appListStrings->status_feedback_list;
             $none = '-';
-            $appListStrings->jfeedback_slc_target_list->$none = '';
+            //$appListStrings->jfeedback_slc_target_list->$none = '';
             $data = array(
                 'feedbacks' => $feedbacks,
                 'types' => $typeOptions,
-                'targets' => $appListStrings->jfeedback_slc_target_list,
+                //'targets' => $appListStrings->jfeedback_slc_target_list,
+//  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
                 'statuses' => $statusOptions,
             );            
             return View::make('feedback.index')->with($data);
@@ -59,7 +60,8 @@
                 'name' => Input::get('subject'),
                 'type_feedback_list' => 'Customer',
                 'relate_feedback_list' => Input::get('slc_type'),
-                'slc_target' => Input::get('slc_target'),
+                //'slc_target' => Input::get('slc_target'),
+// [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
                 'status' => 'New',
                 // 'priority' => 'P1', // High
                 'description' => Input::get('contents'),

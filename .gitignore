@@ -10,3 +10,7 @@ composer.lock
 Thumbs.db
 /.svn/*
 /apollo_portal/*
+=======
+.idea/
+.svn/
+

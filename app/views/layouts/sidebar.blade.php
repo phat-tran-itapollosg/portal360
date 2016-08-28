@@ -1,3 +1,4 @@
+<!-- 1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 <aside >
     <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
         <!-- sidebar menu start-->
@@ -90,4 +91,5 @@
         </ul>
         <!-- sidebar menu end-->
     </div>
+<!--  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 </aside>

@@ -11,7 +11,6 @@
         <!-- Vendor CSS -->
         <link href="{{ URL::asset('public/vendors/bower_components/animate.css/animate.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css') }}" rel="stylesheet">
-        
         <!-- Page specific styles -->
         @yield('styles')
         
