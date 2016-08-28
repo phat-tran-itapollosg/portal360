@@ -145,8 +145,6 @@
                 ";
             }
 
-
-
             if(!empty($result) && !empty($result->certificate_type) && $result->certificate_type != 'Fail') {
 // [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
 
@@ -169,8 +167,6 @@
             $classID = Input::get('class_id');             
             $data = SugarUtil::getCertificate($classID);   
             //  'https://view.officeapps.live.com/op/view.aspx?src='.$GLOBALS['sugar_config']['site_url'].'/'.$file;       
-
-
             // return Redirect::to('https://docs.google.com/viewer?url='.$data->file_url); 
             if(isset($data->file_url)) {         
                 return Redirect::to('https://view.officeapps.live.com/op/view.aspx?src='.$data->file_url);           

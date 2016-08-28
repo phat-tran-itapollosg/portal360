@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-    
 <!-- 1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
     <div class="row">
         <div class="col-lg-12">
@@ -77,5 +76,6 @@
             Notification.notify('{{ Session::get('success_message') }}', 'success');
         </script>
     @endif
-         
+
 @stop
+

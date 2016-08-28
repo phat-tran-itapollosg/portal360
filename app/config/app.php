@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost/apolloportal',
+	'url' => 'http://alphateam.tech/',
 
     // For RSS at home page. Added by Hieu Nguyen on 2016-03-15
     'rss_url' => '',
@@ -226,10 +226,10 @@ return array(
 
 	),
 	'service_survey' => array(
-		'serviceUrl' =>'http://localhost/apollosurvey/',
-		'remotecontrol' =>'http://localhost/apollosurvey/index.php?r=admin/remotecontrol',
-		'surveyURL' =>'http://localhost/apollosurvey/index.php?r=/survey/index/sid/',
-		'username' =>'admin',
-		'password' =>'123456',
+		'serviceUrl'      =>'http://survey.alphateam.tech/',
+		'remotecontrol'   =>'http://survey.alphateam.tech/index.php?r=admin/remotecontrol',
+		'surveyURL'       =>'http://survey.alphateam.tech/index.php?r=/survey/index/sid/',
+		'username'        =>'admin',
+		'password'        =>'123456',
 	)
 );

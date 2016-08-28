@@ -31,7 +31,7 @@ return array(
     'btn_delete_text' => 'Xóa',
     'btn_close_text' => 'Đóng',
     'lbl_gradebook_index' => 'Bảng điểm',
-     'schedule_calendar' => 'Xem dạng lịch',
+    'schedule_calendar' => 'Xem dạng lịch',
     'schedule_listview' => 'Xem danh sách',
     'survey' => 'Khảo sát',
 );

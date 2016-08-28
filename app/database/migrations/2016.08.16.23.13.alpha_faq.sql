@@ -30,7 +30,7 @@ CREATE TABLE `alpha_faq` (
   `id` int(11) NOT NULL,
   `faqquestion` varchar(10000) COLLATE utf16_unicode_ci NOT NULL,
   `faqreply` mediumtext COLLATE utf16_unicode_ci NOT NULL,
-  `faqdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `faqdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `faqdelete` tinyint(4) NOT NULL DEFAULT '0',
   `iduser` int(11) DEFAULT NULL,
   `idcate` int(11) NOT NULL

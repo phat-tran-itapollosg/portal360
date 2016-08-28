@@ -13,4 +13,5 @@ Thumbs.db
 =======
 .idea/
 .svn/
+app/storage/logs/*
 
