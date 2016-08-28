@@ -33,4 +33,5 @@ return array(
     'lbl_gradebook_index' => 'Bảng điểm',
      'schedule_calendar' => 'Xem dạng lịch',
     'schedule_listview' => 'Xem danh sách',
+    'survey' => 'Khảo sát',
 );

@@ -33,4 +33,5 @@ return array(
     'lbl_gradebook_index' => 'Gradebook',
     'schedule_calendar' => 'Calendar View',
     'schedule_listview' => 'List View',
+    'survey' => 'Survey',
 );
