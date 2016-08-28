@@ -21,7 +21,6 @@
         </header>
         <div class="panel-body">
                 <ul class='ulli'>
-                <div class="faqli">
                 @foreach ($getnews as $getnewsv) 
 
                     <li class="boxfaq" style="padding:10px">
@@ -36,14 +35,16 @@
                             Danh mục:    
                             <a class='afaq' href="faq/category/{{$getnewsv->idcate}}">
 
-                                    {{$getnewsv->ccontent}}
+                                    {{$getnewsv->ccontents}}
                             </a> 
                         </div>
-                      <div style="float: right; ">
-                                {{$getnewsv->ndate}}
-                            </div>
+                        <div style="float: right; ">
+                            {{$getnewsv->ndate}}
+                        </div>
                     </li>
                 @endforeach
+                </ul>
+        </div>
       </section>
     </div>
   </div>

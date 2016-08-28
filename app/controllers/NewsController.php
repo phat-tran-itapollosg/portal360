@@ -19,10 +19,10 @@ class NewsController extends BaseController
     {
 
     	$getnews= DB::table('alpha_news')
-            ->join('alpha_category','cid', '=','alpha_news.idcate')
+            ->join('alpha_ncategory','nid', '=','alpha_news.idcate')
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
             ->where('alpha_news.ndelete',0)
-            ->Where('alpha_category.cdelete',0)
+            ->Where('alpha_ncategory.cdelete',0)
             ->get();
 
         	//var_dump($getnews);
@@ -40,11 +40,11 @@ class NewsController extends BaseController
     protected function Getdetal($id)
     {
     	$Getdetal= DB::table('alpha_news')
-            ->join('alpha_category','cid', '=','alpha_news.idcate')
+            ->join('alpha_ncategory','nid', '=','alpha_news.idcate')
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
             ->where('alpha_news.ndelete',0)
             ->Where('alpha_news.id',$id)
-            ->Where('alpha_category.cdelete',0)
+            ->Where('alpha_ncategory.cdelete',0)
             ->get();
     	if($Getdetal!=null)
         {
