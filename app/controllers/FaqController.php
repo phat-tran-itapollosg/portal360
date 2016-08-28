@@ -95,10 +95,21 @@ class FaqController extends BaseController
         
     }
     // insert new FAQ
+    protected function up(){
+        return View::make('faq.uploadfile');
+        return var_dump(Input::get());
+    }
+    protected function updata(){
+        echo "updata";
+        return var_dump(Input::get());
+    }
     protected function addFagdata()
     {
         //Còn lưu thêm session user
         // 'iduser'=> session id user
+        var_dump(Input::get());
+
+        /*
         if (Request::isMethod('post'))
         {
             
@@ -116,6 +127,7 @@ class FaqController extends BaseController
             return Redirect::to('/faq');
         }
             return $this->Fagadd();
+        */
     }
     protected function editFag($id)
     {
