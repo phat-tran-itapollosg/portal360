@@ -30,7 +30,7 @@
                     <li class="boxfaq" style="padding:10px">
 
                         <div class="task-title imgquestion" style="display:inline-block"> 
-                            <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
+                                <img style=" width: 60px; height: 60px " src="{{URL::asset('public/images/')}}/{{ $getfaq1s->img}}"/> 
                         </div>
                         <div class="questionhv" style="display:inline-block; padding-left:10px">
 
