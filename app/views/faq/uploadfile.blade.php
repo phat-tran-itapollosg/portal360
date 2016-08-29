@@ -71,12 +71,12 @@ $(function () {
         done: function (e, data) {
 
 
-            var url= data.result.files[0].url.split("public");
+            var url= data.result.files[0].url.split("images");
 
             $.ajax({
               url: "<?php echo URL::asset('/updatajson'); ?>",
               method: "POST",
-              data: { id : "{{$id->id}}" ,url : "public"+url[1]},
+              data: { id : "{{$id->id}}" ,url : url[1]},
               dataType: "json"
             }).done(function( msg ) {
                   $( "#log" ).html( msg );
