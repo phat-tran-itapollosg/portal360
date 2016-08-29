@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<query cmd="login">
+	<auth>
+		<organization_code></organization_code>
+		<password>abc123</password>
+	</auth>
+	<user>
+		<login>hungmn_apollo</login>
+		<password>w7vubOvqX</password>
+		<email>hungmn@outlook.com</email>
+		<first_name>Hung</first_name>
+		<first_name_alphabet>Hung</first_name_alphabet>
+		<first_name_local>Hung</first_name_local>
+		<last_name>Nguyen</last_name>
+		<last_name_alphabet>Nguyen</last_name_alphabet>
+		<last_name_local>Nguyen</last_name_local>
+		</user>
+	<course>
+		<course_code>APOLLO-PE6</course_code>
+		<group_code>TEST_GROUP</group_code>
+		<start_date>2016-08-29</start_date>
+		<end_date>2016-09-13</end_date>
+		<access_end_date>2016-09-13</access_end_date>
+	</course>
+</query>

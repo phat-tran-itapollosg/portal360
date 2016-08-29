@@ -73,8 +73,15 @@
 
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('/news') }}" class="dcjq-parent">
-                    <i class="fa fa-question"></i>
+                    <i class="fa fa-book"></i>
                     <span>News</span>
+                </a>
+            </li>
+
+            <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('/elearning') }}" class="dcjq-parent">
+                    <i class="fa fa-sign-in"></i>
+                    <span>E-Learning</span>
                 </a>
             </li>
 
@@ -87,15 +94,6 @@
                     <li><a href="{{ URL::to('/feedback/add') }}">{{ trans('app.send_feedback') }}</a></li>
                     <li><a href="{{ URL::to('/feedback/index') }}">{{ trans('app.history_feedback') }}</a></li>
                 </ul>
-            </li>
-
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('/survey') }}" class="dcjq-parent">
-                    <i class="fa fa-list"></i>
-                    <span>{{ trans('app.survey') }}</span>
-                  <!-- <span class="dcjq-icon"></span> -->
-                </a> 
-                
             </li>
         </ul>
         <!-- sidebar menu end-->
