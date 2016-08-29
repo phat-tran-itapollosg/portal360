@@ -1,7 +1,7 @@
 <?php namespace Montoya\BMI;
 
 use Illuminate\Support\ServiceProvider;
-
+use view;
 class BMIServiceProvider extends ServiceProvider {
 
   /**
@@ -18,10 +18,14 @@ class BMIServiceProvider extends ServiceProvider {
    */
   public function boot()
   {
-    include __DIR__ . '/routes.php';
+
 
     $this->package('montoya/bmi');
+    include __DIR__ . '/routes.php';
 
+    include __DIR__.'/Config/config.php';
+    include __DIR__.'/Config/view.php';
+    //$this->loadViewsFrom(__DIR__.'/../View', 'courier');
     
   }
 
