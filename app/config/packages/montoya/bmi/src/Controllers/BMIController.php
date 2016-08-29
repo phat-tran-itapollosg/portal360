@@ -1,6 +1,7 @@
 <?php
 
 namespace Montoya\BMI\Controllers;
+
 use DB;
 use Illuminate\Support\Facades\Validator;
 //use Illuminate\Support\Facades\Redirect;
@@ -11,9 +12,25 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 class BMIController extends \BaseController
 {
-    protected $layout = 'layout.layout_master';
+    protected $layout = 'layout.layout_master'; layou moi
 
     public function index()
+
+/*
+use View;
+//use Illuminate\Support\Facades\Validator;
+//use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\bmi;
+//use Illuminate\Http\Response;
+//use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+class BMIController extends \BaseController
+{
+    public $layout = 'layouts.master'; nay cai cu
+/**
+    public function index($request)
+    */
 
     {
     	$this->layout->content =  \View::make('packages.index');
@@ -244,6 +261,7 @@ class BMIController extends \BaseController
 */
     protected function updatajson()
     {
+
         $id = Input::get('id');
         $url= Input::get('url');
         var_dump(Input::get());
