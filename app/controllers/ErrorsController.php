@@ -16,14 +16,25 @@ class ErrorsController extends BaseController {
     |--------------------------------------------------------------------------
     */
 
-    public function error($code) {
+    public function error($code, $messenger) {
+        // var_dump($messenger);
+        // die();
+        
         switch ($code) {
             case 404:
-                $this->layout->content = View::make('errors.404');
+                $ms = 'Something went wrong or that page doesn’t exist yet.';
+                if(isset($messenger) && !empty($messenger)){
+                    $ms = $messenger;
+                }
+                $this->layout->content = View::make('errors.404')->with(array('messenger'=>$ms));
                 break;
 
             default:
-                $this->layout->content = View::make('errors.500');
+                $ms = 'Looks like Something went wrong.';
+                if(isset($messenger) && !empty($messenger)){
+                    $ms = $messenger;
+                }
+                $this->layout->content = View::make('errors.500')->with(array('messenger'=>$ms));
                 break;
         }
     }

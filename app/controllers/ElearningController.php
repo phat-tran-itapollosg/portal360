@@ -82,8 +82,8 @@ class ElearningController extends BaseController
         // cach 2
         $session = Session::get('session');
         $contact = Session::get('contact');
-
-        $filename = app_path()."\storage\xml\apollo.xml"; 
+        $ds =  DIRECTORY_SEPARATOR;
+        $filename = app_path().$ds."storage".$ds."xml".$ds."apollo.xml"; 
         $handle = fopen($filename, "r"); 
         $XPost = fread($handle, filesize($filename)); 
         fclose($handle); 
@@ -93,7 +93,9 @@ class ElearningController extends BaseController
         curl_setopt($ch, CURLOPT_URL, $url); // set url to post to 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // return into a variable 
         curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: text/xml")); 
-        curl_setopt($ch, CURLOPT_HEADER, 1); 
+        // curl_setopt($ch, CURLOPT_HEADER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, false);
+ 
         curl_setopt($ch, CURLOPT_TIMEOUT, 40); // times out after 4s 
         curl_setopt($ch, CURLOPT_POSTFIELDS, $XPost); // add POST fields 
         curl_setopt($ch, CURLOPT_POST, 1); 
@@ -104,18 +106,31 @@ class ElearningController extends BaseController
 
         if (empty($result)) { 
            // some kind of an error happened 
-           die(curl_error($ch)); 
+           // die(curl_error($ch)); 
+           return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => curl_error($ch)]);
            curl_close($ch); // close cURL handler 
+           // exit();
         } else { 
            $info = curl_getinfo($ch); 
            curl_close($ch); // close cURL handler 
            if (empty($info['http_code'])) { 
-                   die("No HTTP code was returned"); 
+                   // die("No HTTP code was returned"); 
+                   return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => "No HTTP code was returned"]);
+                   // exit();
            } else { 
-            
+                // print_r($result); //contains response from server 
+                $xml = new SimpleXMLElement($result);
+                if(isset($xml->url_start[0]) && !empty($xml->url_start[0])){
+                  header("Location: ".$xml->url_start[0]);
+                    exit();  
+                }else{
+                    return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result]);
+                }
+                // print_r($xml->url_start[0]);
+                
            } 
         } 
-        echo $result; //contains response from server 
-
+        
+        // echo $xml;
     }
 }

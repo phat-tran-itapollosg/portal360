@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <query cmd="login">
 	<auth>
-		<organization_code></organization_code>
-		<password>abc123</password>
+		<organization_code>APOLLO</organization_code>
+		<password>w7vubOvqX</password>
 	</auth>
 	<user>
 		<login>hungmn_apollo</login>
-		<password>w7vubOvqX</password>
+		<password>@p123456</password>
 		<email>hungmn@outlook.com</email>
 		<first_name>Hung</first_name>
 		<first_name_alphabet>Hung</first_name_alphabet>
