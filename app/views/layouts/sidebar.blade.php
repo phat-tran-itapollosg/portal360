@@ -79,7 +79,7 @@
             </li>
 
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('/elearning') }}" class="dcjq-parent">
+                <a href="{{ URL::to('/elearning') }}" class="dcjq-parent" target="_blank">
                     <i class="fa fa-sign-in"></i>
                     <span>E-Learning</span>
                 </a>
