@@ -10,15 +10,41 @@
 <link href="{{ URL::asset('public/theme/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet">     
 <link href="{{ URL::asset('public/theme/css/style.css') }}" rel="stylesheet">     
 <link href="{{ URL::asset('public/theme/css/style-responsive.css') }}" rel="stylesheet">     
+<style type="text/css">
+    #login_content{
+        background: url({{ URL::asset('public/img/bg_girl.jpg') }}) no-repeat;
+        background-color: #e59886;
+        padding-bottom: 55px;
+    }    
+    .form-signin{
+        margin-top: 0!important;
+        
+    }
     
+    #login_content #wrapper{
+        margin-top: 0!important;
+        padding-top: 50px!important;
+        padding-left: 150px!important;
+    }
+    .login-footer{
+        background-color: #e59886!important;
+    }
+    .login-footer .footer-top{
+        display: none;
+    }
+    body{
+        background-color: #e59886!important;
+    }
+
+</style>
 <!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 @stop
 
 @section('content')
 <div id = 'header_image'>
-    <a href="{{Config::get('app.url')}}">
+    <!-- <a href="{{Config::get('app.url')}}">
         <img src="../public/img/apollo_portal_poster.png" height="auto" width="100%">
-    </a>
+    </a> -->
 </div>
 <div id = "login_content">
     <div id="wrapper">
@@ -66,7 +92,7 @@
 <!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
     </div>
 </div>
-<div id="footer">
+<div id="footer" class="login-footer">
     @include('layouts.footer')
     </div>
 @stop
