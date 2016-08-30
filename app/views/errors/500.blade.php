@@ -13,7 +13,7 @@
           <i class="icon-500"></i>
           <h1>Ouch!</h1>
           <h2>500 Page Error</h2>
-          <h4>Looks like Something went wrong. </p\h4>
+          <h4>{{$messenger}}</p\h4>
       </section>
 	</div>
 	

@@ -15,7 +15,7 @@
           <i class="icon-404"></i>
           <h1>404</h1>
           <h2>Page not found</h2>
-          <h4>Something went wrong or that page doesn’t exist yet.</h4>
+          <h4>{{$messenger}}</h4>
       </section>
 	</div>
 	
