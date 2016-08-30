@@ -52,7 +52,6 @@
             </div>
         </section>
 <!--  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
-
         </div>
     </div>
 
@@ -76,6 +75,3 @@
             Notification.notify('{{ Session::get('success_message') }}', 'success');
         </script>
     @endif
-
-@stop
-
