@@ -41,5 +41,4 @@
     </h1>
     @endif
 </div>
-</div>
 @stop

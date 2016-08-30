@@ -54,13 +54,17 @@
         Route::get('/faq', 'FaqController@getFag');//->name('getFag')
         Route::get('/faq/detal/{id}','FaqController@getdetal');
 
-        
         // Routes news
         Route::get('/news', 'NewsController@Getnews');
         Route::get('/news/detal/{id}','NewsController@Getdetal');
 
         // Routes Elearning
         Route::get('/elearning', 'ElearningController@process');
+
+        
+
+
+
     });
 
     // Routes that dont't need to be checked for authentication
@@ -69,10 +73,4 @@
         Route::any('/user/logout', 'UserController@logout');
         Route::get('/user/switchLanguage', 'UserController@switchLanguage');
     });
-    Route::get('/up1','FaqController@up1');
-    
-    Route::get('/up','FaqController@up');
-    Route::post('/updata','FaqController@updata');
-    
-    Route::post('/updatajson','FaqController@updatajson');
     

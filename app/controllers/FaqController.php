@@ -68,6 +68,7 @@ class FaqController extends BaseController
         $this->layout->content = view::make('faq.faqdetal')->with(array(
                                                         'detal'=>$getdetal));
     }
+    /*
     public function delFagget()
     {
         $getfaq = DB::table('alpha_faq')
@@ -124,7 +125,7 @@ class FaqController extends BaseController
             return Redirect::to('/faq');
         }
             return $this->Fagadd();
-        */
+        
     }
     protected function editFag($id)
     {
@@ -200,7 +201,56 @@ class FaqController extends BaseController
         return $this->getFag();
      }
 
-     protected function updatajson()
+
+   
+    /*
+    protected function upload_img_data()
+    {
+        $id = Input::get('id');
+        $url= Input::get('url');
+        error_reporting(E_ALL | E_STRICT);
+        require(app_path().'/helpers/'.'UploadHandler.php');
+        $upload_handler = new UploadHandler();
+        
+        if(isset( $txtr) && !empty($txtr))
+        {
+            //$data = array('img'=>'url');
+
+            var_dump(Input::get());
+            $Update = DB::table('alpha_faq')
+                ->Where('id',$id)
+                ->update($data);
+            
+            
+            if($Update)
+            {
+
+                return Redirect::to('/faq/edit/$id;');
+            }
+            header('Content-type: application/json');
+                echo json_encode(array(
+                    'error'=>FALSE, 
+                    'data' => $url,
+                    'message'=>'Thành công'
+                ));
+            exit();
+        }
+        else
+        {   
+
+            header('Content-type: application/json');
+            echo json_encode(array(
+                'error'=>TRUE, 
+                'data' => NULL,
+                'message'=>'Không có Id Hoặc Url'
+            ));
+            exit(); 
+        }
+
+    }
+
+
+    protected function updatajson()
     {
         $id = Input::get('id');
         $url= Input::get('url');
@@ -269,9 +319,4 @@ class FaqController extends BaseController
         //     return $uploader->get_response();
         // }
         //var_dump($upload_handler);
-    }
-    protected function up1()
-    {
-         return View::make('faq.up1');
-    }
 }

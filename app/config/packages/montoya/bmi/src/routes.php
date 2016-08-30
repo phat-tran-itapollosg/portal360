@@ -2,6 +2,7 @@
 
 Route::group(['namespace' => 'Montoya\BMI\Controllers', 'prefix' => 'alpha/admin'], function () {
 
+
     Route::get('/', ['as' => 'bmi_path', 'uses' => 'BMIController@index']);
 
     //route admin faq

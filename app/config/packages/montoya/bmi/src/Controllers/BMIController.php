@@ -12,25 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 class BMIController extends \BaseController
 {
-    protected $layout = 'layout.layout_master'; layou moi
+    protected $layout = 'layout.layout_master'; 
 
     public function index()
-
-/*
-use View;
-//use Illuminate\Support\Facades\Validator;
-//use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\bmi;
-//use Illuminate\Http\Response;
-//use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-class BMIController extends \BaseController
-{
-    public $layout = 'layouts.master'; nay cai cu
-/**
-    public function index($request)
-    */
 
     {
     	$this->layout->content =  \View::make('packages.index');
@@ -135,6 +119,7 @@ class BMIController extends \BaseController
                                                              ));
 
     }
+
     protected function updateimg()
     {
 
@@ -203,9 +188,9 @@ class BMIController extends \BaseController
                 ->where('id',$id)
                 ->orderBy('id', 'desc')
                 ->first();
-
-        
-
+    }
+    public function listeditfaq()
+    {
         //$GetId = $GetId+1;        
         return View::make('faq.uploadfile')->with(array('id'=>$GetId));
        // return var_dump(Input::get());
@@ -420,22 +405,176 @@ class BMIController extends \BaseController
         $idcate = Input::get('idcate');
         if(isset($title) && isset($contents) && isset($idcate) && !empty($txttitle) && !empty($txtcontents) && !empty($idcate))
         {
-            $data = array(
-            'faqquestion' => Input::get('txtq'),
-            'faqreply' => Input::get('txtr'),
-            'idcate' => Input::get('idcate'),
-            'img'   => 'favicon_apollo.png'
-            );
-            $insert = DB::table('alpha_faq')->insert($data); 
-        } 
 
-        else {
-            # code...
-            $loi = 'Vui lòng nhập đầy đủ dữ liệu tiêu đề, nội dung của News <br> Vui lòng nhập lại
-            <a href="../../faq/add" > Nhập FAQ </a> ';
-            $this->layout->content = \View::make('packages.error')->with(array('loi'=>$loi));
-        
+       // Chú ý khi load dữ liệu nào đó bên portal thì dùng \
+       //var_dump(\Session::get('session'));
+        $GetDelListfaq= DB::table('alpha_faq')
+            ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_faq.faqdelete',0)
+            ->Where('alpha_category.cdelete',0)
+            ->orderBy('faqdate', 'desc')
+            ->get();
+        if($GetDelListfaq!=null)
+        {
+            
+            $faq_da_xoa=0;
+           $this->layout->layout_content = View::make('packages.listedit')->with(array('GetDelListfaq'=>$GetDelListfaq));
+            //return View::make('home.index')->with(array('feed'=>$feed));
         }
+        else
+            {
+                //echo 'khong co du lieu';
+                return Redirect::to('/faq/add');
+            }
+       
+    }
+
+    /*
+   
+    
+    public function delFagget()
+    {
+        $getfaq = DB::table('alpha_faq')
+                        ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
+            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+                        ->where('alpha_faq.faqdelete',1)
+                        ->Where('alpha_category.cdelete',0)
+                        ->orderBy('faqdate', 'desc')
+                        ->get();
+       
+        if($getfaq!=null){
+            $this->layout->layou_content = view::make('packages.faqdelget')->with(array('faqdelget' => $getfaq));
+        }
+    }
+    protected function editFag($id)
+    {
+            //echo $id;
+            if($id!=null)
+            {
+                $getInfoFag = DB::table('alpha_faq')->where('id', $id)->get();
+                foreach ($getInfoFag as $getfaqs)
+                {
+                   $idcate= $getfaqs->idcate;
+                   //var_dump($idcate);
+                }
+                
+                $getCategoryed = DB::table('alpha_category')
+                                ->where('cid',$idcate)
+                                ->get();
+                $getCategory = DB::table('alpha_category')                
+                                ->where('cdelete',0)
+                                ->get();
+                //echo Input::get('id');
+            //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
+                $this->layout->content = view::make('packages.faqedit')->with(array(
+                                                            'infofaq'=>$getInfoFag,
+                                                            'cate'=>$getCategory,
+                                                            'selected'=>$getCategoryed
+                                                             ));
+            }
 
     }
+    protected function editFagdata()
+     {
+         
+        // var_dump(Input::get());
+        $id = Input::get('id');
+        //echo $id;
+        //var_dump(Input::get('idcate'));
+        $Update = DB::table('alpha_faq')
+                ->Where('id',$id)
+                ->update(array('faqquestion'=>Input::get('txtq'),
+                            'faqreply'=>Input::get('txtr'),
+                            'idcate'=>Input::get('idcate'),
+                            'faqdelete'=>0,
+                          ));
+              
+         //DB::table('users')->update(array('votes' => 1));
+        //$getInfoFag = DB::table('alpha_faq')->where('id', Input::get('id'))->get();
+        //$getdel = 0;
+        //return view::make('faq.faq')->with(array('faq'=>$getInfoFag,'getdel'=>$getdel));
+    
+        return Redirect::to('/faq');
+     }
+    protected function delFagdata($id)
+    {
+        $DeleteData = DB::table('alpha_faq')
+                ->Where('id',$id)
+                ->update(array('faqdelete'=>1));
+        //var_dump($id);
+        //delFagget
+        //return $this->delFagget();
+        //return view('faq.faqdelget',['faqdelget' => $getfaq]);
+        
+        return Redirect::to('/faq/del/get');
+    }
+    protected function redelFagdata(Request $request)
+     {
+        $Redata= DB::table('alpha_faq')
+                ->Where('id',$request->input('id'))
+                ->update(['faqquestion'=>$request->input('txtq'),
+                          'faqreply'=>$request->input('txtr'),
+                          'faqdelete'=>0,
+                          ]);
+        
+        return $this->getFag();
+     }
+
+     //test upload img
+
+    // insert new FAQ
+
+    protected function upload_img($id){
+            
+        
+        $GetId= DB::table('alpha_faq')
+                ->where('id',$id)
+                ->orderBy('id', 'desc')
+                ->first();
+
+        
+
+        //$GetId = $GetId+1;        
+        return View::make('packages.uploadfile')->with(array('id'=>$GetId));
+       // return var_dump(Input::get());
+
+
+    }
+    protected function updatajson()
+    {
+        $id = Input::get('id');
+        $url= Input::get('url');
+        var_dump(Input::get());
+        if( isset($id)  && isset($url) && !empty($id) && !empty($url) )
+        {
+            $Update = DB::table('alpha_faq')
+                ->Where('id',$id)
+                ->update(array('img' => $url));
+            //$data = array('img'=>'url');
+
+            header('Content-type: application/json');
+                echo json_encode(array(
+                    'error'=>FALSE, 
+                    'data' => $url,
+                    'message'=>'thanh cong',
+                ));
+            exit();
+            
+
+        }
+
+        else
+        {
+           header('Content-type: application/json');
+            echo json_encode(array(
+                'error'=>TRUE, 
+                'data' => NULL,
+                'message'=>'khong Id hoac Url'
+            ));
+        exit(); 
+        }
+        
+    }*/
+  }    
 }

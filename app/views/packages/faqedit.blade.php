@@ -5,7 +5,6 @@
  *
  */
 -->
-
 @extends('layout.layout_master')
 @section('layout_content')
     <link rel="stylesheet" href="{{ URL::asset('public/css/css.css') }}">
@@ -27,10 +26,7 @@
     <div class="box">
         <Form action="{{URL::asset('/faq/edit/data/')}}" method="post">
         <table align="center">
-        <tr>
-            <td><label class="lbfaq">Hình đại diện</label></td>
-            <td> <a href="../upload-images"> Upload </a></td>
-        </tr>
+            
         <tr>
             <div>
                 <td>
@@ -47,11 +43,19 @@
                     @endforeach
                 </select>
                 <a class='afaq' href="{{URL::asset('/category/get')}}">
-                   Thêm Category 
                 </td>
             </div>
         </tr>
-            
+        <tr>
+        <div class="question">
+            <td>
+                 <label class="lbfaq"> Thêm Hình Đại diện </label>
+            </td>
+            <td style="margin: 5px; float: left; background-color: #0F192A; margin-left: 20px ; padding: 8px " >
+                <a href="../upload/images/{{$infofaq->id}}">Upload hình đại diện</a>
+            </td>
+        </div>
+        </tr>
         <tr>
             <div class="question">
                 <td>
@@ -128,6 +132,4 @@
             //Handle event send done;
         } )
 </script>
-
-
 @stop

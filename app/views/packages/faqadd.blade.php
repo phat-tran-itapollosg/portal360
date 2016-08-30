@@ -21,7 +21,8 @@
         Hỏi Đáp FAQ thêm câu hỏi mới
     </h1>
         <table align="center" >
-        <form action="{{URL::asset('alpha/admin/faq/add/data')}}" method="post">
+        
+        <form action="{{URL::asset('alpha/admin/faq/add/data')}}" name="form" method="post">
         <!-- {!! Form::open(array('url' => '/faq/add/data', 'method' => 'post'))!!} -->
         <tr>
             <div class="question">
@@ -113,4 +114,3 @@
 
 
 @stop
-
