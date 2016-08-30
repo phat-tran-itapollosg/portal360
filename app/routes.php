@@ -54,21 +54,7 @@
         Route::get('/faq', 'FaqController@getFag');//->name('getFag')
         Route::get('/faq/detal/{id}','FaqController@getdetal');
 
-        Route::get('/faq/edit/{id}', 'FaqController@editFag');//->name('editFag')
-        Route::get('faq/del/data/{id}', 'FaqController@delFagdata');
-        Route::get('faq/del/get', 'FaqController@delFagget');//->name('delFagget')
-        Route::get('/faq/add', 'FaqController@Fagadd');
-        Route::get('category/get', 'CategoryController@Categoryget');
-        Route::get('category/edit/{id}', 'CategoryController@CategoryEdit');
-        Route::get('category/dele/{id}', 'CategoryController@CategoryDelete');
-        Route::get('category/del/get','CategoryController@CategoryDelGet');
-        Route::get('faq/category/{idcate}','FaqController@GetFaqCategory');
         
-        Route::post('/faq/add/data', 'FaqController@addFagdata');
-        Route::post('/faq/edit/data', 'FaqController@editFagdata');
-        Route::post('/faq/re/del','FaqController@redelFagdata');
-        Route::post('/category/add/data','CategoryController@Categoryadd');
-        Route::post('/category/edit/data/','CategoryController@CategoryEditAdd');
         // Routes news
         Route::get('/news', 'NewsController@Getnews');
         Route::get('/news/detal/{id}','NewsController@Getdetal');
