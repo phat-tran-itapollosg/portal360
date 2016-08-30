@@ -406,27 +406,21 @@ class BMIController extends \BaseController
         if(isset($title) && isset($contents) && isset($idcate) && !empty($txttitle) && !empty($txtcontents) && !empty($idcate))
         {
 
-       // Chú ý khi load dữ liệu nào đó bên portal thì dùng \
-       //var_dump(\Session::get('session'));
-        $GetDelListfaq= DB::table('alpha_faq')
-            ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
-            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
-            ->where('alpha_faq.faqdelete',0)
-            ->Where('alpha_category.cdelete',0)
-            ->orderBy('faqdate', 'desc')
-            ->get();
-        if($GetDelListfaq!=null)
-        {
-            
-            $faq_da_xoa=0;
-           $this->layout->layout_content = View::make('packages.listedit')->with(array('GetDelListfaq'=>$GetDelListfaq));
-            //return View::make('home.index')->with(array('feed'=>$feed));
+             $data = array(
+            'ntitle' => Input::get('txtq'),
+            'ncontent' => Input::get('txtr'),
+            'idcate' => Input::get('idcate'),
+            'img'   => 'favicon_apollo.png'
+            );
+            $insert = DB::table('alpha_news')->insert($data); } 
+
+        else {
+            # code...
+            $loi = 'Vui lòng nhập đầy đủ dữ liệu câu hỏi và câu trả lời của FAQ <br> Vui lòng nhập lại
+            <a href="../../news/add" > Nhập NEWS </a> ';
+            $this->layout->content = \View::make('packages.error')->with(array('loi'=>$loi));
         }
-        else
-            {
-                //echo 'khong co du lieu';
-                return Redirect::to('/faq/add');
-            }
+        }
        
     }
 

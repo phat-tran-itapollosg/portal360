@@ -52,6 +52,7 @@
         
         @yield('layout_styles')
         
+        <!--
         <script type="text/javascript">
             var APP_URL = '{{ URL::to('/') }}';
             var locale = '{{ App::getLocale() }}';
@@ -61,12 +62,12 @@
         </script>
         
         {{ ViewUtil::renderJsLanguage('app') }}
-    
+    -->
     </head>
     <body lang="{{ App::getLocale() }}">
     <section id="container">
         @include('packages.layout_header')
-        ddddddddddddddddddd
+
         @include('packages.layout_sidebar')
 
         <section id="main-content">

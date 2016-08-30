@@ -12,14 +12,6 @@
             <!-- user login dropdown start-->
             <li class="dropdown">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <!-- @if(Session::get('contact')->picture != '')
-                    <img src="{{ Config::get('app.service_config.server_url') }}/index.php?entryPoint=getAvatar&id={{Session::get('contact')->picture}}&type=SugarFieldImage&isTempFile=1" alt="" style="height:29px;">
-                     @else
-                    <img src="{{ URL::asset('public/img/customer-avatar.png') }}" alt="" style="height:29px;">
-                     @endif
-
-                    <span class="username">{{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }}</span>
-                    -->
                   <span> Wellcome to Admin alphateam </span>
                 </a>
             </li>

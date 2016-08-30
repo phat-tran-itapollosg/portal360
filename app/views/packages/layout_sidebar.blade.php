@@ -6,36 +6,13 @@
                 <div class="profile-menu">
                   <a href="{{ URL::to('user/profile') }}">
                       <div class="profile-pic">
-                          <!--
-                          @if(Session::get('contact')->picture != '')
-                              <img src="" alt="">
-                          @else
-                              <img src="" alt="">
-                          @endif
-                          -->
                           Admin Prolife
                       </div>
-                      <!--
-                      <div class="profile-info">
-                          {{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }} ({{ Session::get('user')->user_name }})
-                          <i class="zmdi zmdi-caret-down"></i>
-                      </div>
-                      -->
                   </a>
 
                   <ul class="main-menu">
-                  <!--
-                      <li>
-                          <a id="menu-profile" href="{{ URL::to('user/profile') }}"><i class="zmdi zmdi-account"></i> {{ trans('app.view_profile') }}</a>
-                      </li>
-                      <li>
-                          <a id="menu-change-password" href="{{ URL::to('user/changePassword') }}"><i class="zmdi zmdi-lock"></i> {{ trans('app.change_password') }}</a>
-                      </li>
-                      <li>
-                          <a id="menu-logout" href="{{ URL::to('user/logout') }}"><i class="zmdi zmdi-lock-open"></i> {{ trans('app.logout') }}</a>
-                      </li>
-                  </ul>
-                  -->
+
+                  
               </div>
             </li>
             <li>
