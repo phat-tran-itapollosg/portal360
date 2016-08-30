@@ -92,7 +92,7 @@ label.error {
 }
 
 .footer-top {
-    background-image: url(../../public/img/waveUp3.png);
+    /*background-image: url(../../public/img/waveUp3.png);*/
     background-repeat: repeat;
     height: 50px;
 }
