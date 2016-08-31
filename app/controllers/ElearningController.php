@@ -20,15 +20,15 @@ class ElearningController extends BaseController
         $contact = Session::get('contact');
         $serviceConfig = Config::get('app.service_elearning');
         $user = array(
-            'login'                 => 'hungmn_apollo',
-            'password'              => '@p123456',
-            'email'                 =>  'hungmn@outlook.com',  
-            'first_name'            =>  'Hung', 
-            'first_name_alphabet'   =>  'Hung',   
-            'first_name_local'      =>  'Hung',   
-            'last_name'             =>  'Nguyen',   
-            'last_name_alphabet'    =>  'Nguyen',   
-            'last_name_local'       =>  'Nguyen',   
+            'login'                 => 'yoshin',
+            'password'              => 'your_password',
+            'email'                 =>  'yoshin+apollo@reallyenglish.com',  
+            'first_name'            =>  'Michael', 
+            'first_name_alphabet'   =>  'Michael',   
+            'first_name_local'      =>  'Michael',   
+            'last_name'             =>  'Schenker',   
+            'last_name_alphabet'    =>  'Schenker',   
+            'last_name_local'       =>  'Schenker',   
         );
         $xml_data ='<?xml version="1.0"?>
         <query cmd="login">
@@ -56,7 +56,23 @@ class ElearningController extends BaseController
             </course>
           </query>';
 
-        
+//         yoshin
+// your_password
+// yoshin+apollo@reallyenglish.com
+// Michael
+// Michael
+// Michael
+// Schenker
+// Schenker
+// Schenker
+
+
+// APOLLO-PE6
+// TEST_GROUP
+// 2016-08-01
+// 2016-12-31
+// 2016-12-31
+
         // var_dump($xml_data);die();
         $url = $serviceConfig['remoteUrl'];//"https://re.reallyenglish.com/teachatapollo/sso"; 
         $ch = curl_init(); // initialize curl handle 
