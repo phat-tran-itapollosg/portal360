@@ -14,31 +14,37 @@
     @if($flat==1) 
     <section class="panel panel-default">
             <header class="panel-heading" style="border-radius:0">
-                <b> 
-                    Các FAQ đã xóa
-                </b>
+                <h1>
+                    <b> 
+                        Các NEWS đã xóa
+                    </b>
+                </h1>
             </header>
 
-            @foreach ($faqdelget as $faqdelget)       
+            @foreach ($newsdelget as $newsdelget)       
             <div style=" padding: 10px;  ">
-                <img width="60px" height="60px" src="{{URL::asset('public/img/faq/')}}/{{$faqdelget->img}}"> 
+                <img width="60px" height="60px" src="{{URL::asset('public/img/faq/')}}/{{$newsdelget->img}}"> 
 
-                <a class='afaq' href="../../faq/edit/{{$faqdelget->id}}">
+                <a class='afaq' href="../../news/edit/{{$newsdelget->id}}">
                    <span style=" margin-left: 10px "> 
-                        {{ $faqdelget->faqquestion }}
+                        {{ $newsdelget->newstitle }}
                    </span>
                 </a> 
                     <span class="label label-default" style=" margin-left: 20px ">
-                        {{ $faqdelget->faqdate }}
+                        {{ $newsdelget->ncontents }}
                     </span>
             </div>
             <div style=" background-color: #F1F2F7; padding: 4px " ></div>
             @endforeach
     </section>
     @else
-    <h1 class="title">
-        Không có FAQ nào đã xóa
-    </h1>
+    <header class="panel-heading" style="border-radius:0; text-align: center; ">
+        <h1>
+            <b> 
+                Không có FAQ nào đã xóa
+            </b>
+        </h1>
+    </header>
     @endif
 </div>
 </div>

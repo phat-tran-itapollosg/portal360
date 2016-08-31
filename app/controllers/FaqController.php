@@ -95,13 +95,10 @@ class FaqController extends BaseController
         
     }
     // insert new FAQ
-    protected function up(){
-        return View::make('faq.uploadfile');
-        return var_dump(Input::get());
-    }
-    protected function updata(){
-        echo "updata";
-        return var_dump(Input::get());
+    protected function up()
+    {
+        return View::make('faq.up');
+        //return var_dump(Input::get());
     }
     protected function addFagdata()
     {
@@ -202,4 +199,79 @@ class FaqController extends BaseController
         
         return $this->getFag();
      }
+
+     protected function updatajson()
+    {
+        $id = Input::get('id');
+        $url= Input::get('url');
+        var_dump(Input::get());
+        if( isset($id)  && isset($url) && !empty($id) && !empty($url) )
+        {
+            //$Update = DB::table('alpha_faq')
+            //    ->Where('id',$id)
+            //    ->update(array('img' => $url));
+            
+
+            header('Content-type: application/json');
+                echo json_encode(array(
+                    'error'=>FALSE, 
+                    'data' => $url,
+                    'message'=>'thanh cong',
+                ));
+            exit();
+            
+
+        }
+
+        else
+        {
+           header('Content-type: application/json');
+            echo json_encode(array(
+                'error'=>TRUE, 
+                'data' => NULL,
+                'message'=>'khong Id hoac Url'
+            ));
+        exit(); 
+        }
+        
+    }
+      
+    protected function updata(){
+
+
+
+        error_reporting(E_ALL | E_STRICT);
+        require(app_path().'/helpers/'.'UploadHandler.php');
+        return $upload_handler = new UploadHandler();
+        
+         var_dump(Input::get());  
+        //return var_dump(Input::get());  
+        //return Json(new {msg="Successfully added "+person.Name });
+        //echo (Input::get('postimg'));
+        //$data[]=array('url' => Input::get('file')->url);
+        //$insert = DB::table('img_test')->insert($data);
+        //var_dump($insert);
+        //$Redata= DB::table('img_test')
+        //return View::make('faq.uploadfile');
+        // echo "Hien"; echo "<br>";
+        // public function action_index($folder = null)
+        // {
+        //     //if ( ! Request::ajax())
+        //         //return;
+        //     //Bundle::start('juploader');
+        //     $uploader = IoC::resolve('Uploader');
+        //     $uploader
+        //         ->with_uploader('Uploader\DatabaseUploadHandler')
+        //         //->with_uploader('Uploader\DbIdUploadHandler')
+        //         ->with_argument('1')
+        //         ->with_option('script_url' , URL::to_action('juploader::dbupload@index'))
+        //         ->Start();
+        //     return $uploader->get_response();
+        // }
+        //var_dump($upload_handler);
+    }
+    protected function up1()
+    {
+         return View::make('faq.up1');
+    }
 }

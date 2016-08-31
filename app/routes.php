@@ -69,3 +69,10 @@
         Route::any('/user/logout', 'UserController@logout');
         Route::get('/user/switchLanguage', 'UserController@switchLanguage');
     });
+    Route::get('/up1','FaqController@up1');
+    
+    Route::get('/up','FaqController@up');
+    Route::post('/updata','FaqController@updata');
+    
+    Route::post('/updatajson','FaqController@updatajson');
+    

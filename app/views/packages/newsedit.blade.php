@@ -19,13 +19,13 @@
     <section class="panel panel-default">
             <header class="panel-heading" style="border-radius:0">
                 <b> 
-                    Chỉnh sửa FAQ
+                    Chỉnh sửa NEWS
                 </b>
             </header>
 
     @foreach ($infofaq as $infofaq)
     <div class="box">
-        <Form action="{{URL::asset('/faq/edit/data/')}}" method="post">
+        <Form action="{{URL::asset('alpha/admin/news/edit/data')}}" method="post">
         <table align="center">
         <tr>
             <td><label class="lbfaq">Hình đại diện</label></td>
@@ -39,11 +39,11 @@
                 <td class='right'>
                     <select name="idcate">
                     @foreach($selected as $sel)
-                        <option value="{{$sel->cid}}">{{$sel->ccontent}}</option>
+                        <option value="{{$sel->nid}}">{{$sel->ccontents}}</option>
                     @endforeach
                     
                     @foreach($cate as $cates)
-                        <option value="{{$cates->cid}}">{{$cates->ccontent}}</option>
+                        <option value="{{$cates->nid}}">{{$cates->ccontents}}</option>
                     @endforeach
                 </select>
                 <a class='afaq' href="{{URL::asset('/category/get')}}">
@@ -55,13 +55,13 @@
         <tr>
             <div class="question">
                 <td>
-                         <label class="lbfaq">Câu hỏi: </label>
+                         <label class="lbfaq"> Tiêu đề: </label>
                 </td>
                 <td>
-                        <input style="float:left" class="lbfaq" type="text" name="txtq" value=" {{$infofaq->faqquestion}}">
+                        <input style="float:left" class="lbfaq" type="text" name="txttitle" value=" {{$infofaq->    ntitle}}">
                            
 
-                    <label class="lbfaq" style="float:left" >__ID Câu hỏi {{$infofaq->id}} </label>
+                    <label class="lbfaq" style="float:left" >__ID NEWS {{$infofaq->id}} </label>
 
                     <input class="lbfaq" type="text" name="id" value="{{$infofaq->id}}" hidden />
                         
@@ -71,20 +71,20 @@
         <tr>
             <div class="question" >
             <td>
-                <label class="lbfaq">Câu trả lời </label>
+                <label class="lbfaq"> Nội dung tin </label>
                 
             </td>
             <td class='right'>
                 <!--
-                <textarea class="textarear" cols="1" required  name="txtr" >
-                            {{$infofaq->faqreply}}
+                <textarea class="textarear" cols="1" required  name="txtcontent" >
+                            {{$infofaq->    ncontent}}
                 </textarea>
                 -->
-                <textarea id='txtr' name='txtr' >
-                            {{$infofaq->faqreply}}
+                <textarea id='txtcontent' name='txtcontent' >
+                            {{$infofaq->ntitle}}
                         </textarea>
                         <script type="text/javascript">
-                                 CKEDITOR.replace( 'txtr',
+                                 CKEDITOR.replace( 'txtcontent',
                                  {
                                   customConfig : 'config.js',
                                   toolbar : 'simple'
@@ -98,22 +98,14 @@
         </table>
         <div class="submittable" >
                 <input type="submit" value=" Lưu lại bảng sửa ">
-                ||
-                <a class='afaq' href="{{URL::asset('/faq/add')}}">
-                   Thêm Câu Hỏi    
-                </a>|||
-                <a class='afaq' href="{{URL::asset('/faq')}}">
-                   Quay lại trang FAQ   
-                </a>
-        </div>
-                
+        </div>        
         </Form>
     </div>
     @endforeach   
 </div>
 <script>
-    var data = CKEDITOR.instances.txtr.getData();
-     var inputValue = $("#txtr").html;     
+    var data = CKEDITOR.instances.txtcontent.getData();
+     var inputValue = $("#txtcontent").html;     
         $.ajax( {
             type : "POST",
             cache : false,

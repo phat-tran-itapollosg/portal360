@@ -267,8 +267,8 @@ public function delFagget()
         //echo "updata";
         error_reporting(E_ALL | E_STRICT);
         require(app_path().'/helpers/'.'UploadHandler.php');
-        $upload_handler = new UploadHandler();
-        //var_dump($_FILES) ; 
+        $upload_handler = new \UploadHandler();
+        var_dump($_FILES) ; 
 
         //return var_dump(Input::get());  
         //return Json(new {msg="Successfully added "+person.Name });
