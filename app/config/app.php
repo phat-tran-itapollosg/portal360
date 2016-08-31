@@ -231,5 +231,20 @@ return array(
 		'surveyURL'       =>'http://survey.alphateam.tech/index.php?r=/survey/index/sid/',
 		'username'        =>'admin',
 		'password'        =>'123456',
+	),
+	'service_elearning' => array(
+		'remoteUrl'      =>'https://re.reallyenglish.com/teachatapollo/sso',
+		'auth'   =>array(
+			'organization_code' => 'APOLLO',
+			'password' => 'w7vubOvqX',
+		),
+		'course'       =>array(
+			'course_code' => 'APOLLO-PE6',
+            'group_code' => 'TEST_GROUP',
+            'start_date' =>  '2016-08-01',  
+            'end_date' =>  '2016-12-31', 
+            'access_end_date' =>  '2016-12-31'   
+		),
+
 	)
 );

@@ -15,92 +15,65 @@ class ElearningController extends BaseController
 {
     public function process()
     {
-        /* change info of xml
-        $dom=new DOMDocument();
-        $dom->load(app_path()."\storage\xml\default.xml");
-        var_dump($dom);die;
-        //var_dump($dom);die;
-        $root=$dom->documentElement;
 
-        $nodesToDelete=array();
-
-        $login=$root->getElementsByTagName('login')->item(0)->nodeValue = "locpt";
-        $session = Session::get('contact');
-
-        $id = $session->id;
-        $dom->save(app_path()."\storage\xml\\".$id.".xml");
-        */
-
-
-        /* cach 1:
         $session = Session::get('session');
         $contact = Session::get('contact');
+        $serviceConfig = Config::get('app.service_elearning');
+        $user = array(
+            'login'                 => 'hungmn_apollo',
+            'password'              => '@p123456',
+            'email'                 =>  'hungmn@outlook.com',  
+            'first_name'            =>  'Hung', 
+            'first_name_alphabet'   =>  'Hung',   
+            'first_name_local'      =>  'Hung',   
+            'last_name'             =>  'Nguyen',   
+            'last_name_alphabet'    =>  'Nguyen',   
+            'last_name_local'       =>  'Nguyen',   
+        );
         $xml_data ='<?xml version="1.0"?>
         <query cmd="login">
             <auth>
-                <organization_code>APOLLO</organization_code>
-                <password>abc123</password>
+                <organization_code>'.$serviceConfig['auth']['organization_code'].'</organization_code>
+                <password>'.$serviceConfig['auth']['password'].'</password>
             </auth>
             <user>
-                <login>hungmn_apollo</login>
-                <password>w7vubOvqX</password>
-                <email>hungmn@outlook.com</email>
-                <first_name>Hung</first_name>
-                <first_name_alphabet>Hung</first_name_alphabet>
-                <first_name_local>Hung</first_name_local>
-                <last_name>Nguyen</last_name>
-                <last_name_alphabet>Nguyen</last_name_alphabet>
-                <last_name_local>Nguyen</last_name_local>
+                <login>'.$user['login'].'</login>
+                <password>'.$user['password'].'</password>
+                <email>'.$user['email'].'</email>
+                <first_name>'.$user['first_name'].'</first_name>
+                <first_name_alphabet>'.$user['first_name_alphabet'].'</first_name_alphabet>
+                <first_name_local>'.$user['first_name_local'].'</first_name_local>
+                <last_name>'.$user['last_name'].'</last_name>
+                <last_name_alphabet>'.$user['last_name_alphabet'].'</last_name_alphabet>
+                <last_name_local>'.$user['last_name_local'].'</last_name_local>
             </user>
             <course>
-                <course_code>APOLLO-PE6</course_code>
-                <group_code>TEST_GROUP</group_code>
-                <start_date>2016-08-01</start_date>    
-                <end_date>2016-12-31</end_date>
-                <access_end_date>2016-12-31</access_end_date>
+                <course_code>'.$serviceConfig['course']['course_code'].'</course_code>
+                <group_code>'.$serviceConfig['course']['group_code'].'</group_code>
+                <start_date>'.$serviceConfig['course']['start_date'].'</start_date>    
+                <end_date>'.$serviceConfig['course']['end_date'].'</end_date>
+                <access_end_date>'.$serviceConfig['course']['access_end_date'].'</access_end_date>
             </course>
           </query>';
 
-        $curl = curl_init();
-    
-        curl_setopt($curl, CURLOPT_URL, "https://re.reallyenglish.com/teachatapollo/sso");
-         curl_setopt($curl, CURLOPT_POSTFIELDS,
-                    "xmlRequest=" . $xml_data);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 300);
-        $data = curl_exec($curl);
-        curl_close($curl);
-
-        //convert the XML result into array
-        $array_data = json_decode(json_encode(simplexml_load_string($data)), true);
-
-        print_r('<pre>');
-        print_r($array_data);
-        print_r('</pre>');*/
-
         
-        // cach 2
-        $session = Session::get('session');
-        $contact = Session::get('contact');
-        $ds =  DIRECTORY_SEPARATOR;
-        $filename = app_path().$ds."storage".$ds."xml".$ds."apollo.xml"; 
-        $handle = fopen($filename, "r"); 
-        $XPost = fread($handle, filesize($filename)); 
-        fclose($handle); 
-        $url = "https://re.reallyenglish.com/teachatapollo/sso"; 
+        // var_dump($xml_data);die();
+        $url = $serviceConfig['remoteUrl'];//"https://re.reallyenglish.com/teachatapollo/sso"; 
         $ch = curl_init(); // initialize curl handle 
-        curl_setopt($ch, CURLOPT_VERBOSE, 1); // set url to post to 
-        curl_setopt($ch, CURLOPT_URL, $url); // set url to post to 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // return into a variable 
-        curl_setopt($ch, CURLOPT_HTTPHEADER, Array("Content-Type: text/xml")); 
-        // curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_HEADER, false);
- 
-        curl_setopt($ch, CURLOPT_TIMEOUT, 40); // times out after 4s 
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $XPost); // add POST fields 
-        curl_setopt($ch, CURLOPT_POST, 1); 
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_data);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                                       'Content-type: application/xml', 
+                                       'Content-length: ' . strlen($xml_data)
+                                     ));
 
         $result = curl_exec($ch); // run the whole process 
 
@@ -119,18 +92,16 @@ class ElearningController extends BaseController
                    // exit();
            } else { 
                 // print_r($result); //contains response from server 
+                // print_r($info); //contains response from server 
+                // exit();
                 $xml = new SimpleXMLElement($result);
                 if(isset($xml->url_start[0]) && !empty($xml->url_start[0])){
                   header("Location: ".$xml->url_start[0]);
                     exit();  
                 }else{
                     return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result]);
-                }
-                // print_r($xml->url_start[0]);
-                
+                }                
            } 
         } 
-        
-        // echo $xml;
     }
 }
