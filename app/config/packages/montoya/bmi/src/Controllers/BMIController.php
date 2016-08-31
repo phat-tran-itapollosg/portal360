@@ -398,7 +398,7 @@ class BMIController extends \BaseController
     {
         //var_dump(Input::get());
         $title = Input::get('txttitle');
-        $contents = Input:get('txtcontents');
+        $contents = Input::get('txtcontents');
         $idcate = Input::get('idcate');
         if(isset($title) && isset($contents) && isset($idcate) && !empty($txttitle) && !empty($txtcontents) && !empty($idcate))
         {

@@ -3,6 +3,35 @@
 	<auth>
 		<organization_code>APOLLO</organization_code>
 		<password>w7vubOvqX</password>
+<<<<<<< HEAD
+=======
+	</auth>
+	<user>
+		<login>hcm8-1608y018986</login>
+		<password>portaljunior2016</password>
+		<email>lam.hoang@apollo.edu.vn</email>
+		<first_name>Nhi</first_name>
+		<first_name_alphabet>Nhi</first_name_alphabet>
+		<first_name_local>Nhi</first_name_local>
+		<last_name>Nguyen</last_name>
+		<last_name_alphabet>Nguyen</last_name_alphabet>
+		<last_name_local>Nguyen</last_name_local>
+		</user>
+	<course>
+		<course_code>APOLLO-PE6</course_code>
+		<group_code>TEST_GROUP</group_code>
+		<start_date>2016-08-01</start_date>
+		<end_date>2016-12-31</end_date>
+		<access_end_date>2016-12-31</access_end_date>
+	</course>
+</query>
+
+<!--<?xml version="1.0"?> bản cũ )) 
+<query cmd="login">
+	<auth>
+		<organization_code></organization_code>
+		<password>abc123</password>
+>>>>>>> add apollo.xml , service.json
 	</auth>
 	<user>
 		<login>hungmn_apollo</login>
@@ -23,3 +52,4 @@
 		<access_end_date>2016-09-13</access_end_date>
 	</course>
 </query>
+-->
