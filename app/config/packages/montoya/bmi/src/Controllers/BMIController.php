@@ -403,13 +403,14 @@ class BMIController extends \BaseController
         $title = Input::get('txttitle');
         $contents = Input::get('txtcontents');
         $idcate = Input::get('idcate');
-        if(isset($title) && isset($contents) && isset($idcate) && !empty($txttitle) && !empty($txtcontents) && !empty($idcate))
+        var_dump(Input::get());
+        if(isset($title) && isset($contents) && isset($idcate) && !empty($title) && !empty($contents) && !empty($idcate))
         {
 
              $data = array(
-            'ntitle' => Input::get('txtq'),
-            'ncontent' => Input::get('txtr'),
-            'idcate' => Input::get('idcate'),
+            'ntitle' => $title,
+            'ncontent' => $contents,
+            'idcate' => $idcate,
             'img'   => 'favicon_apollo.png'
             );
             $insert = DB::table('alpha_news')->insert($data); } 
@@ -570,5 +571,4 @@ class BMIController extends \BaseController
         }
         
     }*/
-  }    
-}
+  
