@@ -2,6 +2,7 @@
 /vendor
 /public/vendors
 /app/config/app.php
+/app/config/database.php
 composer.phar
 composer.lock
 .env.*.php
