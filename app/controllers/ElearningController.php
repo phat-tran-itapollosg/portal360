@@ -18,17 +18,30 @@ class ElearningController extends BaseController
 
         $session = Session::get('session');
         $contact = Session::get('contact');
+        // $user = Session::get('user');
+         // var_dump($user);
+        // print_r('==================================================================================');
+        // print_r($contact->password_generated);
+        // print_r('==================================================================================');
+        // print_r($contact->portal_name);
+        // print_r('==================================================================================');
+        // print_r($contact->first_name);
+        // print_r('==================================================================================');
+        // print_r($contact->last_name);
+        // print_r('==================================================================================');
+        // print_r($contact->email1);
+         // die();
         $serviceConfig = Config::get('app.service_elearning');
         $user = array(
-            'login'                 => 'yoshin',
-            'password'              => 'your_password',
-            'email'                 =>  'yoshin+apollo@reallyenglish.com',  
-            'first_name'            =>  'Michael', 
-            'first_name_alphabet'   =>  'Michael',   
-            'first_name_local'      =>  'Michael',   
-            'last_name'             =>  'Schenker',   
-            'last_name_alphabet'    =>  'Schenker',   
-            'last_name_local'       =>  'Schenker',   
+            'login'                 => $contact->portal_name,//'yoshin',
+            'password'              => $contact->password_generated,//'your_password',
+            'email'                 =>  $contact->email1,//'yoshin+apollo@reallyenglish.com',  
+            'first_name'            =>  $contact->first_name,//'Michael', 
+            'first_name_alphabet'   =>  $contact->first_name,//'Michael',   
+            'first_name_local'      =>  $contact->first_name,//'Michael',   
+            'last_name'             =>  $contact->last_name,//'Schenker',   
+            'last_name_alphabet'    =>  $contact->last_name,//'Schenker',   
+            'last_name_local'       =>  $contact->last_name,//'Schenker',   
         );
         $xml_data ='<?xml version="1.0"?>
         <query cmd="login">
