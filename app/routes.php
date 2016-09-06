@@ -61,7 +61,13 @@
         // Routes Elearning
         Route::get('/elearning', 'ElearningController@process');
 
-        
+        // Routes Elearning
+        Route::get('/elearning', 'ElearningController@process');
+
+        //[Ersoshaly] Routes Survey
+        Route::get('/survey', 'SurveyController@index');
+        Route::get('/survey/index', 'SurveyController@index');
+        Route::get('/survey/dosurvey/{id}', ['as' => 'Survey.dosurvey', 'uses' => 'SurveyController@dosurvey']);        
 
 
 
