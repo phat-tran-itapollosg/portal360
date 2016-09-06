@@ -83,11 +83,19 @@ class SurveyController extends BaseController
                         $this->alphaSurveyClient->release_session_key( $sessionKey );
                         header("Location: ".$surveyURL);
                         exit;
+                    }else{
+                        // var_dump($result['status']);
+                        // die();
+                        return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
                     }
                 }                
+            }else{
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
             }
+        }else{
+             return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
-        return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+        
                        
     }
 }
