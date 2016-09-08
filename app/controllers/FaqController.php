@@ -68,6 +68,7 @@ class FaqController extends BaseController
         $this->layout->content = view::make('faq.faqdetal')->with(array(
                                                         'detal'=>$getdetal));
     }
+}
     /*
     public function delFagget()
     {

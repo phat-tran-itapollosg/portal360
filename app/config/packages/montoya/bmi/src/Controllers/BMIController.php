@@ -184,15 +184,25 @@ class BMIController extends \BaseController
     protected function upload_img($id){
             
         
+        var_dump($id);
+        error_reporting(E_ALL | E_STRICT);
+        require(app_path().'/helpers/'.'UploadHandler.php');
+        $upload_handler = new \UploadHandler();
+        
+        var_dump($upload_handler);
+        var_dump($_FILES) ; 
+       
+
         $GetId= DB::table('alpha_faq')
                 ->where('id',$id)
                 ->orderBy('id', 'desc')
                 ->first();
+        return \View::make('packages.uploadfile')->with(array('id' => $GetId));
     }
     public function listeditfaq()
     {
         //$GetId = $GetId+1;        
-        return View::make('faq.uploadfile')->with(array('id'=>$GetId));
+        //return View::make('faq.uploadfile')->with(array('id'=>$GetId));
        // return var_dump(Input::get());
 
 

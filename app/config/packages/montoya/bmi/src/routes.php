@@ -35,6 +35,12 @@ Route::group(['namespace' => 'Montoya\BMI\Controllers', 'prefix' => 'alpha/admin
     Route::get('news/add', 'BMIController@newsadd');
     Route::post('news/add/data', 'BMIController@newsadddata');
 
+    //up image
+    Route::get('faq/upload/images/{id}','BMIController@upload_img');
+    Route::post('updata','BMIController@updata');
+    Route::post('updatajson','BMIController@updatajson');
+    Route::get('updata/index.php','BMIController@updata');
+
     Route::get('category/get', 'CategoryController@Categoryget');
     Route::get('category/edit/{id}', 'CategoryController@CategoryEdit');
     Route::get('category/dele/{id}', 'CategoryController@CategoryDelete');

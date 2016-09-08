@@ -27,6 +27,7 @@ return array(
 	*/
 
 	'url' => 'http://alphateam.tech/',
+	//'url' => 'http://localhost/apollo_portal',
 
     // For RSS at home page. Added by Hieu Nguyen on 2016-03-15
     'rss_url' => '',
@@ -37,6 +38,7 @@ return array(
         'custom_service' => true,   // Use custom service in custom folder or not
         'root_username' => 'webservice',
         'root_password' => '57ee62e7ce2ba75fac974faa3eae09e0',  // MD5
+        //'root_password' => 'dc483e80a7a0bd9ef71d8cf973673924',
     ),
     // End for webservice
     
@@ -157,7 +159,11 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
         'Illuminate\Workbench\WorkbenchServiceProvider',
-        'Montoya\BMI\BMIServiceProvider',
+        //'Montoya\BMI\BMIServiceProvider',
+        'Creolab\LaravelModules\ServiceProvider',
+        'App\Modules\Content\ContentServiceProvider',
+    	'App\Modules\Content\AnotherServiceProvider',
+    	'App\Modules\Faq\FaqServiceProvider'
 
 	),
 
