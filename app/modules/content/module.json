@@ -2,7 +2,7 @@
 	"enabled":  true,
 	"provider": [
 		"App\\Modules\\Content\\ContentServiceProvider",
-		"App\\Modules\\Content\\AnotherServiceProvider",
+		//"App\\Modules\\Content\\AnotherServiceProvider",
 		
 	],
 	"include": [

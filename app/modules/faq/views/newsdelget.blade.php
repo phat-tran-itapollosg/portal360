@@ -14,11 +14,9 @@
     @if($flat==1) 
     <section class="panel panel-default">
             <header class="panel-heading" style="border-radius:0">
-                <h1>
-                    <b> 
-                        Các NEWS đã xóa
-                    </b>
-                </h1>
+                <b> 
+                    Các News đã xóa
+                </b>
             </header>
 
             @foreach ($newsdelget as $newsdelget)       
@@ -27,25 +25,20 @@
 
                 <a class='afaq' href="../../news/edit/{{$newsdelget->id}}">
                    <span style=" margin-left: 10px "> 
-                        {{ $newsdelget->newstitle }}
+                        {{ $newsdelget->ntitle }}
                    </span>
                 </a> 
-                    <span class="label label-default" style=" margin-left: 20px ">
-                        {{ $newsdelget->ncontents }}
+                    <span class="label label-danger" style=" margin-left: 2px;">
+                        <a style=" color: white " href="../../news/redel/{{ $newsdelget->id }}"> Phục hồi </a>
                     </span>
             </div>
             <div style=" background-color: #F1F2F7; padding: 4px " ></div>
             @endforeach
     </section>
     @else
-    <header class="panel-heading" style="border-radius:0; text-align: center; ">
-        <h1>
-            <b> 
-                Không có FAQ nào đã xóa
-            </b>
-        </h1>
-    </header>
+    <h1 class="title">
+        Không có News nào đã xóa
+    </h1>
     @endif
-</div>
 </div>
 @stop

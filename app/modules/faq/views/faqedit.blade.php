@@ -24,7 +24,7 @@
 
     @foreach ($infofaq as $infofaq)
     <div class="box">
-        <Form action="{{URL::asset('/faq/edit/data/')}}" method="post">
+        <Form action="{{URL::asset('alpha/admin/faq/edit/data/')}}" method="post">
         <table align="center">
             
         <tr>

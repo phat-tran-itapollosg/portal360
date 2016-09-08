@@ -15,11 +15,15 @@
 
     <script  language="javascript"  src="{{ URL::asset('public/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('public/ckeditor/samples/js/sample.js') }}"></script>
-
-
-    <h1 class="title">
-        Thêm News mới
-    </h1>
+<div class='row'>
+    <div class="col-lg-12">  
+    <section class="panel panel-default">
+                <header class="panel-heading" style="border-radius:0">
+                    <b>
+                       
+                        Thêm News mới
+                    </b>
+                </header>
         <table align="center" >
         <form action="{{URL::asset('alpha/admin/news/add/data')}}" method="post">
         <!-- {!! Form::open(array('url' => '/news/add/data', 'method' => 'post'))!!} -->
@@ -81,18 +85,15 @@
         <div class="submittable" >
                 <input type="submit" value='Lưu lại FAQ'><br>
                 <!--{!! Form::submit(' Lưu lại FAQ ')!!}-->
-                ||
-                <a class='afaq' href="{{URL::asset('/faq/add')}}">
-                   Thêm Câu Hỏi    
-                </a>|||
-                <a class='afaq' href="{{URL::asset('/faq')}}">
-                   Quay lại trang FAQ   
-                </a>
+               
         </div>
         </form>
         <!--{!! Form::close() !!}-->
          
     </div>
+</section>
+</div>
+</div>
 <script>
     var data = CKEDITOR.instances.txtr.getData();
      var inputValue = $("#txtcontents").html;     
@@ -110,7 +111,7 @@
             //Handle event send done;
         } )
 
-
+</script>
 
 @stop
 

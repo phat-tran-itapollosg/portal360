@@ -82,13 +82,7 @@
         <div class="submittable" >
                 <input type="submit" value='Lưu lại FAQ'><br>
                 <!--{!! Form::submit(' Lưu lại FAQ ')!!}-->
-                ||
-                <a class='afaq' href="{{URL::asset('/faq/add')}}">
-                   Thêm Câu Hỏi    
-                </a>|||
-                <a class='afaq' href="{{URL::asset('/faq')}}">
-                   Quay lại trang FAQ   
-                </a>
+                
         </div>
         </form>
         <!--{!! Form::close() !!}-->

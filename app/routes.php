@@ -11,7 +11,8 @@
     |
     */
 
-
+    //include('modules/content/routes.php');
+    //include('modules/shop/routes.php');
     Route::get('/', function() {
         return Redirect::to('/schedule/index');
     });

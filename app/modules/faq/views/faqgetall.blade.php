@@ -30,6 +30,9 @@
                     <span class="label label-default" style=" margin-left: 20px ">
                         {{ $faqdelget->faqdate }}
                     </span>
+                    <span class="label label-danger" style=" margin-left: 2px;">
+                        <a style=" color: white " href="faq/del/{{ $faqdelget->id }}"> Xóa </a>
+                    </span>
             </div>
             <div style=" background-color: #F1F2F7; padding: 4px " ></div>
             @endforeach

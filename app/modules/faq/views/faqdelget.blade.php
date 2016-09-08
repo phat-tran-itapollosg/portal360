@@ -21,7 +21,7 @@
 
             @foreach ($faqdelget as $faqdelget)       
             <div style=" padding: 10px;  ">
-                <img width="60px" height="60px" src="{{URL::asset('public/img/faq/')}}/{{$faqdelget->img}}"> 
+                <img width="60px" height="60px" src="{{URL::asset('public/img/news/')}}/{{$faqdelget->img}}"> 
 
                 <a class='afaq' href="../../faq/edit/{{$faqdelget->id}}">
                    <span style=" margin-left: 10px "> 
@@ -30,6 +30,9 @@
                 </a> 
                     <span class="label label-default" style=" margin-left: 20px ">
                         {{ $faqdelget->faqdate }}
+                    </span>
+                    <span class="label label-danger" style=" margin-left: 2px;">
+                        <a style=" color: white " href="../../faq/redel/{{ $faqdelget->id }}"> Phục hồi </a>
                     </span>
             </div>
             <div style=" background-color: #F1F2F7; padding: 4px " ></div>

@@ -8,37 +8,31 @@
 @extends('layout.layout_master')
 @section('layout_content')
 
-<!--<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}"> -->
+<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}"> 
 <div class='row'>
     <div class="col-lg-12">  
     <section class="panel panel-default">
                 <header class="panel-heading" style="border-radius:0">
-                  <b>Hỏi Đáp FAQ</b>
+                    <b>
+                        NEWS
+                    </b>
                 </header>
-
-                <div class="panel-body">
-                    <ul class='ulli'>
-                <div class="faqli">
                 @foreach ($getfaq1 as $getfaq1s) 
-                    <li class="boxfaq" style="padding:10px">
+                <div style=" padding: 10px;  ">
+                    <img width="60px" height="60px" src="{{URL::asset('public/img/news')}}/{{$getfaq1s->img}}"> 
 
-                        <div class="task-title imgquestion" style="display:inline-block"> 
-                            <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
-                        </div>
-                        <div class="questionhv" style="display:inline-block; padding-left:10px">
-
-                            <a class='afaq' href="news/edit/{{$getfaq1s->id}}">{{ $getfaq1s->ntitle }}</a>
-                            <br>     
-                            <a class='afaq' href="faq/category/{{$getfaq1s->idcate}}">
-
-                                    {{$getfaq1s->ccontents}}
-                            </a> 
-                        </div>
-                    
-                    </li>
+                    <a class='afaq' href="news/edit/{{$getfaq1s->id}}">
+                       <span style=" margin-left: 10px "> 
+                            {{ $getfaq1s->ntitle }}
+                       </span>
+                    </a> 
+                        <span class="label label-danger" style=" margin-left: 2px;">
+                            <a style=" color: white " href="news/del/{{ $getfaq1s->id }}"> Xóa </a>
+                        </span>
+                </div>
+                <div style=" background-color: #F1F2F7; padding: 4px " ></div>
                 @endforeach
-                    </div>   
-                    </ul>
-	</div>
 	</section>
+    </div>
+</div>
 @stop

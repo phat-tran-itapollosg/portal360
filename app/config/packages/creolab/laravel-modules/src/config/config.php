@@ -18,9 +18,10 @@ return array(
 	 * If the mode is set to 'auto', this setting will be discarded
 	 */
 	'modules' => array(
-		'auth'    => array('enabled' => true),
+		'auth'    => array('enabled' => false),
 		'content' => array('enabled' => false),
 		'shop'    => array('enabled' => true),
+		'faq'    => array('enabled' => true),
 	),
 
 	/**
@@ -38,6 +39,8 @@ return array(
 	/**
 	 * Debug mode
 	 */
-	'debug' => false,
+
+	//'debug' => false,
+	'debug' => true,
 
 );
