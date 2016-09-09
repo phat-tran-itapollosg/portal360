@@ -1,5 +1,0 @@
-<?php
-
-Route::get('admin/faq1', function() {
-	return View::make('faq::index');
-});

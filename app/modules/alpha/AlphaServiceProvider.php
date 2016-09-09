@@ -1,6 +1,6 @@
-<?php namespace App\Modules\Content;
+<?php namespace App\Modules\Alpha;
 
-class ContentServiceProvider extends \Illuminate\Support\ServiceProvider {
+class AlphaServiceProvider extends \Illuminate\Support\ServiceProvider {
 
 	public function register()
 	{
@@ -10,7 +10,7 @@ class ContentServiceProvider extends \Illuminate\Support\ServiceProvider {
 		$this->app->booting(function()
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Entry', 'App\Modules\Content\Facades\EntryFacade');
+			$loader->alias('Entry', 'App\Modules\Alpha\Facades\EntryFacade');
 		});
 	}
 

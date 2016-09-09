@@ -1,4 +1,6 @@
-<?php namespace App\Modules\Faq\Controllers;
+<?php 
+
+namespace App\Modules\Alpha\Controllers;
 
 use App, Entry, View;
 use Illuminate\Support\Facades\Input;
@@ -6,7 +8,7 @@ use Illuminate\Support\Facades\Input;
  * Content controller
  * @author Boris Strahija <bstrahija@gmail.com>
  */
-class FaqController extends \BaseController {
+class AlphaController extends \BaseController {
 	protected $layout = 'layout.layout_master'; 
 
     public function index()
@@ -27,7 +29,7 @@ class FaqController extends \BaseController {
         //var_dump($faqdelget);
        //return View::make('shop::index');
         if($faqdelget!=null){
-            $this->layout->content = View::make('faq::faqgetall')->with(array('faqdelget' => $faqdelget));
+            $this->layout->content = view::make('alpha::faq.faqgetall')->with(array('faqdelget' => $faqdelget));
     	}
     }
     protected function Fagadd()
@@ -37,7 +39,7 @@ class FaqController extends \BaseController {
                         ->get();
                         
         //$getdel=0;
-        $this->layout->content = \View::make('faq::faqadd')->with(array('cate'=>$getcate));
+        $this->layout->content = \view::make('alpha::faq.faqadd')->with(array('cate'=>$getcate));
         //return view::make('faq.faqadd');
         
     }
@@ -71,7 +73,7 @@ class FaqController extends \BaseController {
             # code...
             $loi = 'Vui lòng nhập đầy đủ dữ liệu câu hỏi và câu trả lời của FAQ <br> Vui lòng nhập lại
             <a href="../../faq/add" > Nhập FAQ </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
     }
     protected function delFag($id)
@@ -83,12 +85,12 @@ class FaqController extends \BaseController {
         {
         	 $loi = ' Xóa thành công '.'
             <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
         else
         {   $loi = ' Xóa không thành công '.'
             <a href="../../../../alpha/admin/faq" > Nhập FAQ </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
     }
 
@@ -103,11 +105,11 @@ class FaqController extends \BaseController {
         //var_dump($faqdelget);
        
         if($faqdelget!=null){
-            $this->layout->content = \view::make('faq::faqdelget')->with(array('faqdelget' => $faqdelget,
+            $this->layout->content = \view::make('alpha::faq.faqdelget')->with(array('faqdelget' => $faqdelget,
                 'flat'=>1));
         }else
         {
-            $this->layout->content = \view::make('faq::faqdelget')->with(array('faqdelget' => $faqdelget,
+            $this->layout->content = \view::make('alpha::faq.faqdelget')->with(array('faqdelget' => $faqdelget,
                 'flat'=>-1));
         }
     }
@@ -121,13 +123,13 @@ class FaqController extends \BaseController {
 	    {
 	    	 $loi = ' Phục hồi thành công '.'
 	        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 	    }
 	    else
 	    {   
 	    	$loi = ' Phục hồi không thành công '.'
 	        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 	    }
     }
 
@@ -149,7 +151,7 @@ class FaqController extends \BaseController {
                         ->get();
         //echo Input::get('id');
     //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
-        $this->layout->content = \view::make('faq::faqedit')->with(array(
+        $this->layout->content = \view::make('alpha::faq.faqedit')->with(array(
                                                     'infofaq'=>$getInfoFag,
                                                     'cate'=>$getCategory,
                                                     'selected'=>$getCategoryed
@@ -178,13 +180,13 @@ class FaqController extends \BaseController {
         	{
         		$loi = ' Lưu bản sửa thành công '.'
 		        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-		        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+		        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 	        }
         	else{
 
         	$loi = ' Lưu bản sửa không thành công '.'
 	        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 
         	}
     	}
@@ -193,7 +195,7 @@ class FaqController extends \BaseController {
     	{
     		$loi = ' Lưu bản sửa không thành công vui lòng nhập đủ dữ liệu '.'
 	        <a href="../../../../alpha/admin/news" > Trở lại FAQ </a> ';
-	        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
     	}
     }
     //controller news
@@ -206,7 +208,7 @@ class FaqController extends \BaseController {
             ->orderBy('alpha_news.ndate', 'DESC')
             ->get();
 
-         $this->layout->content = \view::make('faq::newslist')->with(
+         $this->layout->content = \view::make('alpha::newslist')->with(
             array('getfaq1'=>$getfaq1));
     }
 
@@ -219,12 +221,12 @@ class FaqController extends \BaseController {
         {
         	 $loi = ' Xóa thành công '.'
             <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
         else
         {   $loi = ' Xóa không thành công '.'
             <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
 
     }
@@ -237,12 +239,12 @@ class FaqController extends \BaseController {
         {
         	 $loi = ' Phục hồi thành công '.'
             <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
         else
         {   $loi = ' Phục hồi không thành công '.'
             <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
     }
 
@@ -256,11 +258,11 @@ class FaqController extends \BaseController {
             ->get();
 
         if($newsdelget!=null){
-            $this->layout->content = \view::make('faq::newsdelget')->with(array('newsdelget' => $newsdelget,
+            $this->layout->content = \view::make('alpha::newsdelget')->with(array('newsdelget' => $newsdelget,
                 'flat'=>1));
         }else
         {
-            $this->layout->content = \view::make('faq::newsdelget')->with(array('newsdelget' => $newsdelget,
+            $this->layout->content = \view::make('alpha::newsdelget')->with(array('newsdelget' => $newsdelget,
                 'flat'=>-1));
         }
     }
@@ -282,7 +284,7 @@ class FaqController extends \BaseController {
                                 ->get();
                 //echo Input::get('id');
             //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
-                $this->layout->content = \view::make('faq::newsedit')->with(array(
+                $this->layout->content = \view::make('alpha::newsedit')->with(array(
                                                             'infofaq'=>$getInfoFag,
                                                             'cate'=>$getCategory,
                                                             'selected'=>$getCategoryed
@@ -310,20 +312,20 @@ class FaqController extends \BaseController {
         	{
         		$loi = ' Lưu bản sửa thành công '.'
 		        <a href="../../../../alpha/admin/news" > Trở lại NEWS </a> ';
-		        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+		        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 	        }
         	else{
 
         	$loi = ' Lưu bản sửa không thành công '.'
 	        <a href="../../../../alpha/admin/news" > Trở lại NEWS </a> ';
-	        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
     		}
     	}
     	else
     	{
     		$loi = ' Lưu bản sửa không thành công vui lòng nhập đủ dữ liệu '.'
 	        <a href="../../../../alpha/admin/news" > Trở lại NEWS </a> ';
-	        $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
     		
     	}
     }
@@ -333,7 +335,7 @@ class FaqController extends \BaseController {
         $getcate = \DB::table('alpha_ncategory')
                         ->where('cdelete', 0)
                         ->get();
-        $this->layout->content= \View::make('faq::newsadd')->with(array('getcate'=>$getcate));
+        $this->layout->content= \view::make('alpha::newsadd')->with(array('getcate'=>$getcate));
     }
     protected function newsadddata()
     {
@@ -357,13 +359,13 @@ class FaqController extends \BaseController {
             {
             	$loi = 'Thêm News thành công
 	            <a href="../../news/add" > trở lại NEWS </a> ';
-	            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
             }
             else
             {
             	$loi = 'Thêm News không thành công
 	            <a href="../../news" > trở lại NEWS </a> ';
-	            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+	            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
             }
         } 
 
@@ -371,7 +373,7 @@ class FaqController extends \BaseController {
             # code...
             $loi = 'Vui lòng nhập đầy đủ dữ liệu câu hỏi và câu trả lời của News <br> Vui lòng nhập lại
             <a href="../../news/add" > Nhập NEWS </a> ';
-            $this->layout->content = \View::make('faq::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
         
        

@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Content\Facades;
+<?php namespace App\Modules\Alpha\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,6 +9,6 @@ class EntryFacade extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return new \App\Modules\Content\Models\Entry; }
+    protected static function getFacadeAccessor() { return new \App\Modules\Alpha\Models\Entry; }
 
 }
