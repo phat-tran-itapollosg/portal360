@@ -14,10 +14,17 @@
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      
                      <span>
-                       Wellcome to alpha Admin
+                       {{ $app_title }} - {{ $center_name_title }}
 
                      </span>
                 </a>
+                <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                    <!-- <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li> -->
+                    <!-- <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li> -->
+                    <!-- <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li> -->
+                    <li><a href="{{ URL::to('user/logout') }}"><i class="fa fa-key"></i> {{ trans('app.logout') }}</a></li>
+                </ul>
             </li>
             <!-- user login dropdown end -->
         </ul>

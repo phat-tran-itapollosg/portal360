@@ -4,37 +4,37 @@
          <ul class="sidebar-menu" id="nav-accordion">
           
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('alpha/admin/faq') }}">
+                <a href="{{ URL::to('admin/faq') }}">
                 <i class="fa fa-question"></i>
-                <span>Tất cả FAQ</span>
+                <span>{{ trans('faq.heading') }}</span>
                 </a>
             </li>
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('alpha/admin/faq/add') }}">
+            <!-- <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('admin/faq/add') }}">
                 <i class="fa fa-question"></i>
                 <span>Thêm FAQ</span>
                 </a>
             </li>
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('alpha/admin/faq/list/dele') }}">
+                <a href="{{ URL::to('admin/faq/list/dele') }}">
                 <i class="fa fa-question"></i>
                 <span>Các FAQ đã xóa</span>
                 </a>
-            </li>
+            </li> -->
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('alpha/admin/news') }}" >
+                <a href="{{ URL::to('admin/news') }}" >
                     <i class="fa fa-book"></i>
                     <span> Tất cả NEWS </span>
                 </a>
             </li>
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('alpha/admin/news/list/dele') }}" >
+                <a href="{{ URL::to('admin/news/list/dele') }}" >
                     <i class="fa fa-book"></i>
                     <span> NEWS Đã Xóa </span>
                 </a>
             </li>
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('alpha/admin/news/add') }}" >
+                <a href="{{ URL::to('admin/news/add') }}" >
                     <i class="fa fa-book"></i>
                     <span> Thêm NEWS </span>
                 </a>
