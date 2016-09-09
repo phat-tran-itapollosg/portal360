@@ -1,0 +1,1 @@
+ALTER TABLE  `alpha_faq` ADD  `img` TEXT NULL DEFAULT NULL ;
