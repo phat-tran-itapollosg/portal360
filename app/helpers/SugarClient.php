@@ -249,6 +249,42 @@
                 // Retrieve user info
                 $user = $this->retrieve($session->root_session_id, 'Users', $userId);
 
+                //var_dump($user);
+                //die();
+                if($user->is_admin == 1){
+                    // Retrieve contact info and user preference
+                    $contact = array();
+                    $preferences = $this->getUserPreferences($session->root_session_id, $user->id, 'global');                     
+                    if(empty($preferences->timezone)){
+                        $preferences->timezone = 'Asia/Ho_Chi_Minh';
+                    }
+                    if(empty($preferences->date_format)){
+                        if(empty($preferences->datef))
+                            $preferences->date_format = 'd/m/Y';
+                        else 
+                            $preferences->date_format = $preferences->datef;
+                    }
+                    if(empty($preferences->time_format)){
+                        if(empty($preferences->timef))
+                            $preferences->time_format = 'h:i A';
+                        else 
+                            $preferences->time_format = $preferences->timef;                     
+                    }
+                    if(empty($preferences->default_locale_name_format)){
+                        $preferences->default_locale_name_format = 's l f';
+                    }                    
+
+                    // Save login session
+                    Session::put('session', $session);
+                    Session::put('user', $user);
+                    Session::put('contact', $contact);
+                    Session::put('user_preferences', $preferences);
+
+                    // Return success status
+                    $status = 'success';
+
+                    return 'success_for_admin';
+                }
                 if($user->for_portal_only != 1) {
                     $status = 'not_for_portal';
                 } 

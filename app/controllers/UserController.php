@@ -93,7 +93,7 @@
                 $remember = Input::get('remember_me');
 
                 $result = $this->client->login($username, $password);
-
+                //die();
                 // Login success
                 if($result == 'success') {
                     // Get app list strings
@@ -124,6 +124,33 @@
                     }
 
                     return Redirect::to('schedule/index');
+                }else if($result == 'success_for_admin'){
+                    // Get app list strings
+                    $session = Session::get('session');
+
+                    $languageParams = array(
+                        'session' => $session->root_session_id, 
+                        'type' => 'app_list_strings', 
+                        'language' => (App::getLocale() == 'en') ? 'en_us' : 'vn_vn'
+                    );
+
+                    $language = $this->client->call(SugarMethod::GET_SUGAR_LANGUAGE, $languageParams);
+                    Session::put('app_list_strings', $language);
+
+                    // Redirect the user into the dashboard the login result is success
+                    if(!empty($remember) && !empty($username) && !empty($password)) {
+                            $cookie = Cookie::forever('remembered_user', array('username'=>$username, 'password'=>$password));
+                            //return Redirect::to('schedule/index')->withCookie($cookie);
+                        
+                    }
+                    // Remove the remember cookie if user does not tick on the remember checkbox
+                    // else {
+                    //     if(Input::cookie('remembered_user')) {
+                    //         return Redirect::to('schedule/index')->withCookie(Cookie::forget('remembered_user'));    
+                    //     }
+                    // }
+                    $serviceConfig = Config::get('app.service_admin');
+                    return Redirect::to($serviceConfig['url']);
                 }
 
                 // Show the login page with error message

@@ -28,8 +28,17 @@ App::before(function($request)
             Session::forget('user_preferences');
         } else {
             $student = Session::get('contact');
-            $app_title = $student->name;
-            $center_name_title = $student->team_name;
+            $user = Session::get('user');
+            if(isset($student) && !empty($student)){
+                $app_title = $student->name;
+                $center_name_title = $student->team_name;
+            }else if(isset($user) && !empty($user)){
+                $app_title = $user->name;
+                $center_name_title = $user->team_name;
+                //var_dump($user);
+                //die();
+            }
+            
         } 
     } 
     
