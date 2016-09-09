@@ -161,9 +161,10 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
         //'Montoya\BMI\BMIServiceProvider',
         'Creolab\LaravelModules\ServiceProvider',
-        'App\Modules\Content\ContentServiceProvider',
-    	'App\Modules\Content\AnotherServiceProvider',
-    	'App\Modules\Faq\FaqServiceProvider'
+        // 'App\Modules\Content\ContentServiceProvider',
+    	// 'App\Modules\Content\AnotherServiceProvider',
+    	// 'App\Modules\Faq\FaqServiceProvider',
+    	'App\Modules\Alpha\AlphaServiceProvider'
 
 	),
 
@@ -233,9 +234,9 @@ return array(
 
 	),
 	'service_survey' => array(
-		'serviceUrl'      =>'http://survey.alphateam.tech/',
-		'remotecontrol'   =>'http://survey.alphateam.tech/index.php?r=admin/remotecontrol',
-		'surveyURL'       =>'http://survey.alphateam.tech/index.php?r=/survey/index/sid/',
+		'serviceUrl'      =>'http://localhost/apollosurvey/',
+		'remotecontrol'   =>'http://localhost/apollosurvey/index.php?r=admin/remotecontrol',
+		'surveyURL'       =>'http://localhost/apollosurvey/index.php?r=/survey/index/sid/',
 		'username'        =>'admin',
 		'password'        =>'123456',
 	),
@@ -252,6 +253,11 @@ return array(
             'end_date' =>  '2016-12-31', 
             'access_end_date' =>  '2016-12-31'   
 		),
+
+	),
+	'service_admin' => array(
+		'url'      =>'http://localhost/apolloportal/admin/faq',
+		
 
 	)
 );
