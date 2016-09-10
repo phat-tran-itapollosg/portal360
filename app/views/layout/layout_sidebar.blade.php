@@ -24,21 +24,10 @@
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('admin/news') }}" >
                     <i class="fa fa-book"></i>
-                    <span> Tất cả NEWS </span>
+                    <span> {{ trans('news.heading') }} </span>
                 </a>
             </li>
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('admin/news/list/dele') }}" >
-                    <i class="fa fa-book"></i>
-                    <span> NEWS Đã Xóa </span>
-                </a>
-            </li>
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('admin/news/add') }}" >
-                    <i class="fa fa-book"></i>
-                    <span> Thêm NEWS </span>
-                </a>
-            </li>
+            
         </ul>
         <!-- sidebar menu end-->
     </div>
