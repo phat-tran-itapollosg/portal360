@@ -51,6 +51,7 @@
          <p class="text-center"> <button type="submit" class="btn btn-default">Submit</button> <a class="btn btn-default" href="{{URL::asset('/admin/faq')}}">Back</a></p>
         </form>
 </div>
+</section>
    
     @endforeach   
 </div>

@@ -208,7 +208,7 @@ class AlphaController extends \BaseController {
             ->orderBy('alpha_news.ndate', 'DESC')
             ->get();
 
-         $this->layout->content = \view::make('alpha::newslist')->with(
+         $this->layout->content = \view::make('alpha::news.newslist')->with(
             array('getfaq1'=>$getfaq1));
     }
 
@@ -258,11 +258,11 @@ class AlphaController extends \BaseController {
             ->get();
 
         if($newsdelget!=null){
-            $this->layout->content = \view::make('alpha::newsdelget')->with(array('newsdelget' => $newsdelget,
+            $this->layout->content = \view::make('alpha::news.newsdelget')->with(array('newsdelget' => $newsdelget,
                 'flat'=>1));
         }else
         {
-            $this->layout->content = \view::make('alpha::newsdelget')->with(array('newsdelget' => $newsdelget,
+            $this->layout->content = \view::make('alpha::news.newsdelget')->with(array('newsdelget' => $newsdelget,
                 'flat'=>-1));
         }
     }
@@ -284,7 +284,7 @@ class AlphaController extends \BaseController {
                                 ->get();
                 //echo Input::get('id');
             //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
-                $this->layout->content = \view::make('alpha::newsedit')->with(array(
+                $this->layout->content = \view::make('alpha::news.newsedit')->with(array(
                                                             'infofaq'=>$getInfoFag,
                                                             'cate'=>$getCategory,
                                                             'selected'=>$getCategoryed
@@ -297,6 +297,7 @@ class AlphaController extends \BaseController {
         $txttitle = Input::get('txttitle');
         $txtncontent = Input::get('txtcontent');
         $idcate = Input::get('idcate');
+        //var_dump(Input::get());
         if(isset($txttitle) && isset($txtncontent) && isset($idcate) && !empty($txttitle) && !empty($txtncontent) && !empty($idcate))
         {
         	if(
@@ -311,20 +312,20 @@ class AlphaController extends \BaseController {
 		        )
         	{
         		$loi = ' Lưu bản sửa thành công '.'
-		        <a href="../../../../alpha/admin/news" > Trở lại NEWS </a> ';
+		        <a href="../../../admin/news" > trở lại NEWS </a> ';
 		        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 	        }
         	else{
 
-        	$loi = ' Lưu bản sửa không thành công '.'
-	        <a href="../../../../alpha/admin/news" > Trở lại NEWS </a> ';
+        	$loi = ' Lưu không thành công '.'
+	        <a href="../../../admin/news" > trở lại NEWS </a> ';
 	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
     		}
     	}
     	else
     	{
-    		$loi = ' Lưu bản sửa không thành công vui lòng nhập đủ dữ liệu '.'
-	        <a href="../../../../alpha/admin/news" > Trở lại NEWS </a> ';
+    		$loi = 'Vui lòng nhập đủ dữ liệu '.'
+	        <a href="../../../admin/news" > trở lại NEWS </a> ';
 	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
     		
     	}
@@ -335,7 +336,7 @@ class AlphaController extends \BaseController {
         $getcate = \DB::table('alpha_ncategory')
                         ->where('cdelete', 0)
                         ->get();
-        $this->layout->content= \view::make('alpha::newsadd')->with(array('getcate'=>$getcate));
+        $this->layout->content= \view::make('alpha::news.newsadd')->with(array('getcate'=>$getcate));
     }
     protected function newsadddata()
     {
@@ -343,7 +344,7 @@ class AlphaController extends \BaseController {
         $title = Input::get('txttitle');
         $contents = Input::get('txtcontents');
         $idcate = Input::get('idcate');
-       // var_dump(Input::get());
+        //var_dump(Input::get());
         if(isset($title) && isset($contents) && isset($idcate) && !empty($title) && !empty($contents) && !empty($idcate))
         {
 
@@ -358,13 +359,13 @@ class AlphaController extends \BaseController {
             )
             {
             	$loi = 'Thêm News thành công
-	            <a href="../../news/add" > trở lại NEWS </a> ';
+	            <a href="../../../admin/news/add" > trở lại NEWS </a> ';
 	            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
             }
             else
             {
             	$loi = 'Thêm News không thành công
-	            <a href="../../news" > trở lại NEWS </a> ';
+	            <a href="../../../admin/news" > trở lại NEWS </a> ';
 	            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
             }
         } 
@@ -372,10 +373,9 @@ class AlphaController extends \BaseController {
         else {
             # code...
             $loi = 'Vui lòng nhập đầy đủ dữ liệu câu hỏi và câu trả lời của News <br> Vui lòng nhập lại
-            <a href="../../news/add" > Nhập NEWS </a> ';
+            <a href="../../../admin/news/add" > Nhập NEWS </a> ';
             $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
-        
        
     }
 

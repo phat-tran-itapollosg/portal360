@@ -25,6 +25,7 @@
         <link href="{{ URL::asset('public/theme/css/style.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/theme/css/style-responsive.css" rel="stylesheet') }}" />
 
+        <link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 
         <!-- old
         <meta charset="utf-8">

@@ -12,7 +12,7 @@ Route::group(['prefix' => 'admin'], function () {
     //delete faq
     Route::get('faq/del/{id}', 'App\Modules\Alpha\Controllers\AlphaController@delFag');
     Route::get('faq/list/dele','App\Modules\Alpha\Controllers\AlphaController@delFagget');
-  	Route::get('faq/redel/{id}','App\Modules\Alpha\Controllers\AlphaController@redel');
+  	//Route::get('faq/redel/{id}','App\Modules\Alpha\Controllers\AlphaController@redel');
 
     //edit data
     Route::get('faq/edit/{id}', 'App\Modules\Alpha\Controllers\AlphaController@editFag');//->name('editFag')
@@ -24,18 +24,21 @@ Route::group(['prefix' => 'admin'], function () {
     
     //NEws
     Route::get('news', 'App\Modules\Alpha\Controllers\AlphaController@newslist'); 
+
+     //add news
+    Route::get('news/add', 'App\Modules\Alpha\Controllers\AlphaController@newsadd');
+    Route::post('news/add/data', 'App\Modules\Alpha\Controllers\AlphaController@newsadddata');
+
     //del news
     Route::get('news/del/{id}','App\Modules\Alpha\Controllers\AlphaController@delnews');
-    Route::get('news/redel/{id}','App\Modules\Alpha\Controllers\AlphaController@redelnews');
+    //Route::get('news/redel/{id}','App\Modules\Alpha\Controllers\AlphaController@redelnews');
     Route::get('news/list/dele','App\Modules\Alpha\Controllers\AlphaController@delNewsget'); 
 
     //edit news
     Route::get('news/edit/{id}','App\Modules\Alpha\Controllers\AlphaController@newsedit');   
     Route::post('news/edit/data', 'App\Modules\Alpha\Controllers\AlphaController@editnewsdata');
 
-    //add news
-    Route::get('news/add', 'App\Modules\Alpha\Controllers\AlphaController@newsadd');
-    Route::post('news/add/data', 'App\Modules\Alpha\Controllers\AlphaController@newsadddata');
+   
 
     //up image
     Route::get('faq/upload/images/{id}','App\Modules\Alpha\Controllers\AlphaController@upload_img');

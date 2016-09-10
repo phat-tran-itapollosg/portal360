@@ -7,8 +7,6 @@
 -->
 @extends('layout.layout_master')
 @section('layout_content')
-
-<link rel="stylesheet" href="{{ URL::asset('public/css/css.css' )}}">
 <div class='row'>
     <div class="col-lg-12">  
     <section class="panel panel-default">
