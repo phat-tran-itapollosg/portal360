@@ -11,7 +11,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     //delete faq
     Route::get('faq/del/{id}', 'App\Modules\Alpha\Controllers\AlphaController@delFag');
-    Route::get('faq/list/dele','App\Modules\Alpha\Controllers\AlphaController@delFagget');
+    //Route::get('faq/list/dele','App\Modules\Alpha\Controllers\AlphaController@delFagget');
   	//Route::get('faq/redel/{id}','App\Modules\Alpha\Controllers\AlphaController@redel');
 
     //edit data
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin'], function () {
     //del news
     Route::get('news/del/{id}','App\Modules\Alpha\Controllers\AlphaController@delnews');
     //Route::get('news/redel/{id}','App\Modules\Alpha\Controllers\AlphaController@redelnews');
-    Route::get('news/list/dele','App\Modules\Alpha\Controllers\AlphaController@delNewsget'); 
+    //Route::get('news/list/dele','App\Modules\Alpha\Controllers\AlphaController@delNewsget'); 
 
     //edit news
     Route::get('news/edit/{id}','App\Modules\Alpha\Controllers\AlphaController@newsedit');   

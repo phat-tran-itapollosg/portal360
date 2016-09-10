@@ -84,12 +84,12 @@ class AlphaController extends \BaseController {
         if($DeleteData )
         {
         	 $loi = ' Xóa thành công '.'
-            <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
+            <a href="../../../admin/faq" > trở lại FAQ </a> ';
             $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
         else
         {   $loi = ' Xóa không thành công '.'
-            <a href="../../../../alpha/admin/faq" > Nhập FAQ </a> ';
+            <a href="../../../admin/faq" > nhập FAQ </a> ';
             $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
     }
@@ -179,13 +179,13 @@ class AlphaController extends \BaseController {
            	)
         	{
         		$loi = ' Lưu bản sửa thành công '.'
-		        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
+		        <a href="../../../admin/faq" > Trở lại FAQ </a> ';
 		        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 	        }
         	else{
 
         	$loi = ' Lưu bản sửa không thành công '.'
-	        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
+	        <a href="../../../admin/faq" > Trở lại FAQ </a> ';
 	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
 
         	}
@@ -194,7 +194,7 @@ class AlphaController extends \BaseController {
     	else
     	{
     		$loi = ' Lưu bản sửa không thành công vui lòng nhập đủ dữ liệu '.'
-	        <a href="../../../../alpha/admin/news" > Trở lại FAQ </a> ';
+	        <a href="../../../admin/faq" > Trở lại FAQ </a> ';
 	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
     	}
     }
@@ -220,12 +220,12 @@ class AlphaController extends \BaseController {
         if($DeleteData )
         {
         	 $loi = ' Xóa thành công '.'
-            <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
+            <a href="../../../admin/news" > trở lại NEWS </a> ';
             $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
         else
         {   $loi = ' Xóa không thành công '.'
-            <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
+            <a href="../../../admin/news" > trở lại NEWS </a> ';
             $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
 
