@@ -50,10 +50,10 @@ class AlphaController extends \BaseController {
         //var_dump(Input::get());
         $txtq = Input::get('txtq');
         $txtr = Input::get('txtr');
+        //var_dump(Input::get());
         //$url= Input::get('url');
         //$idcate = Input::get('idcate');
-        
-        if( isset( $txtr) && !empty($txtr) ){
+        if( isset( $txtr) && !empty($txtr) && isset($txtq) && !empty($txtq) ){
 
             
             $data = array(
@@ -65,16 +65,25 @@ class AlphaController extends \BaseController {
             $insert = \DB::table('alpha_faq')->insert($data); 
             if($insert)
             {
-            	return \Redirect::to('alpha/admin/faq');
+            	$loi = 'Thêm thành công
+                <a href="../../../admin/faq/add" > trở lại FAQ </a> ';
+                $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+            }
+            else
+            {
+                $loi = 'Thêm không thành công
+            <a href="../../../admin/faq/add" > trở lại FAQ </a> ';
+            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
             }
         } 
             
         else {
             # code...
-            $loi = 'Vui lòng nhập đầy đủ dữ liệu câu hỏi và câu trả lời của FAQ <br> Vui lòng nhập lại
-            <a href="../../faq/add" > Nhập FAQ </a> ';
+            $loi = 'nhập đầy đủ dữ liệu của FAQ
+            <a href="../../../admin/faq/add" > trở lại FAQ </a> ';
             $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
         }
+        
     }
     protected function delFag($id)
     {

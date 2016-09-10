@@ -8,5 +8,7 @@ return array(
 	'delete' => 'Xóa',
 	'updateImage' => 'Cập nhật hình ảnh',
 	'heading' => 'Câu hỏi thường gặp',
+	'category'=>'Danh mục',
+	'add'	=>'Thêm mới',
 	);
 ?>

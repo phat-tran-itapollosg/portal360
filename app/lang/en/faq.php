@@ -8,5 +8,6 @@ return array(
 	'delete' => 'Delete',
 	'updateImage' => 'Update Image',
 	'heading' => 'FAQ',
-	);
+	'category'=>'Category',
+	'add'	=>'Add news FAQ'
 ?>
