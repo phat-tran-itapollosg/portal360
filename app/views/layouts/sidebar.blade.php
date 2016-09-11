@@ -1,13 +1,15 @@
 <!-- 1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 <aside >
+@if(Session::get('contact') AND Session::get('contact')->last_name != '')
     <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
         <!-- sidebar menu start-->
+        
         <ul class="sidebar-menu" id="nav-accordion">
             <li>
                 <div class="profile-menu">
                   <a href="{{ URL::to('user/profile') }}">
                       <div class="profile-pic">
-                          @if(Session::get('contact')->picture != '')
+                          @if(Session::get('contact') AND Session::get('contact')->picture != '')
                               <img src="" alt="">
                           @else
                               <img src="" alt="">
@@ -15,8 +17,10 @@
                       </div>
 
                       <div class="profile-info">
+                      @if(Session::get('contact') AND Session::get('contact')->last_name != '')
                           {{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }} ({{ Session::get('user')->user_name }})
                           <i class="zmdi zmdi-caret-down"></i>
+                           @endif
                       </div>
                   </a>
 
@@ -113,7 +117,9 @@
                 </a> 
             </li>
         </ul>
+        
         <!-- sidebar menu end-->
     </div>
 <!--  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 </aside>
+@endif
