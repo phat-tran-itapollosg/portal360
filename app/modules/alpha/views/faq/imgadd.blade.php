@@ -76,13 +76,8 @@ $(function () {
               }
               //console.log('alpha.faq.updata',msg);
             }).fail(function( jqXHR, textStatus ) {
-
-                //console.log('alpha.faq.updata',textStatus);
-              //alert( "Request failed: " + textStatus );
+                window.location.href = "{{ URL::to(route('alpha.500')) }}";
             });
-            // $.each(data.result.files, function (index, file) {
-            //     $('<p/>').text(file.name).appendTo('#files');
-            // });
         },
         progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -90,9 +85,11 @@ $(function () {
                 'width',
                 progress + '%'
             );
+        },
+        fail: function () {
+            window.location.href = "{{ URL::to(route('alpha.500')) }}";
         }
-    }).prop('disabled', !$.support.fileInput)
-        .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    });
     
     
     

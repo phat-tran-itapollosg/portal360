@@ -37,7 +37,7 @@
                                     <td>{{$item->id}}</td>                                 
                                     <td class="text-center">
                                         
-                                        @if(($item->img) !='favicon_apollo.png' ) 
+                                        @if(!empty($item->img)) 
                                         <img height="64px" src="{{URL::asset('public/images')}}/{{$item->img}}">
                                         @else
                                         <img height="64px" src="{{ URL::asset('public/img/favicon_apollo.png') }}">
@@ -83,20 +83,11 @@
                                 <th class="text-center" width="5%"><b>#</b></th>                        
                                 <th class="text-center" ><b>{{ trans('faq.category') }}</b></th>
                                 
-                                <th width="5%"></th>   
+                                <th width="5%"><a type="button" class="btn btn-default btn-sm" href="{{ URL::to('admin/faq/category/add') }}" target="_blank">{{ trans('faq.addcategory') }}
+                                </a></th>   
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th>
-                            </th>
-                            <th>
-                            </th>
-                            <th>
-                                <a type="button" class="btn btn-default btn-sm" href="{{ URL::to('admin/faq/category/add') }}" target="_blank">{{ trans('faq.add') }}
-                                </a>
-                            </th>
-                        </tr>   
                         
                     @foreach($getCateFaq as $index => $item)
                                 
