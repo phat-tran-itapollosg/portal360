@@ -56,8 +56,13 @@
     }
     @media screen and (max-width: 780px) {
         #login_content .addition_info {
-            height: 200px;
+            height: 230px;
             text-align: center;
+        }
+    }
+    @media screen and (max-width: 760px) and (min-width: 500px) {
+        #login_content .sign-in {
+            padding-left: 25%;
         }
     }
     /*
@@ -81,7 +86,12 @@
     body{
         background: #e59886;
     }
-    
+    .change_lang{
+        text-align: right!important;
+    }
+    .change_lang a{
+        color: #fff!important;
+    }
 
 </style>
 @stop
@@ -110,11 +120,15 @@
         <div class="hidden-xs col-lg-4 col-md-4 col-sm-3">
         </div>
         <div class="sign-in col-lg-4 col-md-4 col-sm-5 col-xs-12">
-            <form class="form-signin" action="" method="post">
-                <div class="background-form">
-                    
-                </div>
+            <form class="form-signin" action="" method="post">               
                 <div class="login-wrap">
+                    <p class="change_lang">
+                        <span class="btn-group btn-group-xs" role="group" aria-label="Extra-small button group"> 
+                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=en" class="btn btn-default @if(App::getLocale() == 'en') btn-info @endif">English</a> 
+                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=vi" class="btn btn-default @if(App::getLocale() == 'vi') btn-info @endif" >Tiếng Việt</a>
+                        </span>
+                    </p>
+
                     <input type="text" id="username" class="form-control" placeholder="{{ trans('user_login.customer_id') }}" name="username" value="{{ $username }}" autofocus>
                     <input type="password" id="password" class="form-control" name="password" value="{{ $password }}" placeholder="{{ trans('user_login.password') }}">
                     <label class="checkbox">
@@ -122,14 +136,7 @@
                     </label>
                     <button class="btn btn-lg btn-login btn-block" type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}">{{ trans('user_login.login') }}</button>
                 </div>
-                <div class="change_lang">
-                    <span class="lang-en @if(App::getLocale() == 'en') active @endif">
-                        <a href="{{ URL::to('user/switchLanguage') }}?lang=en" hreflang="en" title="English"><span>English</span></a>
-                    </span> / 
-                    <span class="lang-vi @if(App::getLocale() == 'vi') active @endif">
-                        <a href="{{ URL::to('user/switchLanguage') }}?lang=vi" hreflang="vi" title="Tiếng Việt"><span>Tiếng Việt</span></a>
-                    </span>                  
-                </div>
+            
                 <div class="error">
                     @if($result == 'not_for_portal')
                     {{ trans('user_login.account_is_not_a_customer_error_msg') }}

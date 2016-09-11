@@ -19,5 +19,6 @@ return array(
     'lbl_detail' => 'Detail',
     'lbl_final_result' => 'Final Result',
     'lbl_certificate' => 'View Certificate',
+    'lbl_type_of_grade' => 'Type of Grade',
    
 );

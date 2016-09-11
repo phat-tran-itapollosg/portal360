@@ -6212,3 +6212,25 @@ header.blue-bg .search:focus {
     background: #fff;
     border-radius:4px;
 }
+
+.panel-body .wrapper-note{
+    padding: 20px 10px;
+}
+
+.panel-body .wrapper-note .attendant-note{
+    background-color: #6883a3;
+    width:50px;height:25px;
+}
+
+.panel-body .wrapper-note .absent-note{
+   background-color: #FF6C60;
+   width:50px;height:25px;
+}
+
+.panel-body .wrapper-note .note-item{
+   margin-bottom: 10px;
+}
+
+.panel-body .wrapper-note .note-item p{
+   margin-left:120%;
+}

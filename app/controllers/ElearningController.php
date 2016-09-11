@@ -18,6 +18,28 @@ class ElearningController extends BaseController
 
         $session = Session::get('session');
         $contact = Session::get('contact');
+
+        //  $params = array(
+        //     'session' => $session->root_session_id,
+        //     'student_id' => $contact->id,
+        // );
+
+        // $enrrolments = $this->client->call(SugarMethod::GET_ENROLLMENT_LIST, $params);
+        // //return $enrrolments;
+        // $data = array(
+        //     'enrollents' => $enrrolments,
+        // );
+
+        // $class_id = $_REQUEST;
+
+        // //if(isset($class_id) || !empty($class_id))
+        // {
+        //   //var_dump($class_id);die;
+        // }
+
+
+        // return View::make('elearning.index')->with($data);
+
         // $user = Session::get('user');
          // var_dump($user);
         // print_r('==================================================================================');
@@ -31,6 +53,7 @@ class ElearningController extends BaseController
         // print_r('==================================================================================');
         // print_r($contact->email1);
          // die();
+        
         $serviceConfig = Config::get('app.service_elearning');
         $user = array(
             'login'                 => $contact->portal_name,//'yoshin',
@@ -87,6 +110,8 @@ class ElearningController extends BaseController
 // 2016-12-31
 
         // var_dump($xml_data);die();
+
+        
         $url = $serviceConfig['remoteUrl'];//"https://re.reallyenglish.com/teachatapollo/sso"; 
         $ch = curl_init(); // initialize curl handle 
         curl_setopt($ch, CURLOPT_HEADER, false);
@@ -125,7 +150,8 @@ class ElearningController extends BaseController
                 // exit();
                 $xml = new SimpleXMLElement($result);
                 if(isset($xml->url_start[0]) && !empty($xml->url_start[0])){
-                  header("Location: ".$xml->url_start[0]);
+                  var_dump($xml->url_report[0]);die;
+                  header("Location: ".$xml->url_report[0]);
                     exit();  
                 }else{
                     return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result]);

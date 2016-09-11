@@ -39,9 +39,6 @@
             <div class="panel-body" style="display:none">
             <div class="gradebook_content overflow-auto" style="margin-top:0px">
 
-<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
-
-
             </div>
             <div class="gradebook_result overflow-auto">
 
@@ -62,13 +59,29 @@
                     </div>
                 </div>
             </div>
-<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
+
+            <div class="modal fade" id="type_detail" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header custom-modal-header">
+                            <h3 class="modal-title custom-modal-header"> {{trans('gradebook_index.lbl_markdetail')}}</h3>                                 
+                        </div>
+
+                        <div class="modal-body overflow-auto">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancel" class="btn" data-dismiss="modal">{{trans('app.btn_close_text')}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             </div>
             </section>
         </div>
-
-<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
-</div>
+    </div>
 
 @stop
 

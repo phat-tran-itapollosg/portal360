@@ -55,12 +55,17 @@ $(document).ready(function(){
     }
     getGradebookContent();
 
-//  1e1413e10f011dfebcc6b900cffce8e8da2906d0
     $(".panel-body").on("click",".btn_detail", function(){
-//  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
         var _this = $(this);
         var data = _this.attr('data');
         $("#gradebook_detail .modal-body").html(detail[data]);
         $('#gradebook_detail').modal("show");        
+    });
+
+    $(".panel-body").on("click",".grade_type", function(){
+        var _this = $(this);
+        var data = _this.attr('data');
+        $("#type_detail .modal-body").html(detail[data]);
+        $('#type_detail').modal("show");        
     });
 });

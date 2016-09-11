@@ -34,4 +34,5 @@ return array(
     'schedule_calendar' => 'Xem dạng lịch',
     'schedule_listview' => 'Xem danh sách',
     'survey' => 'Khảo sát',
+    'booking' => 'Tiến hành đăng ký',
 );

@@ -23,12 +23,12 @@
             // print_r($lang);
             $html = "";
             // [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
-            $html = "<table id = 'gradebook_content' class = 'table table-striped' width='100%'>
+            $html = "<table id = 'gradebook_content' class = 'table table-striped table-bordered table-hover table-vmiddle' width='100%'>
             <thead>
             <tr>
             <td ><b>".$lang['lbl_no']."</b></td>            
-            <td ><b>".$lang['lbl_name']."</b></td>            
-            <td ><b>".$lang['lbl_weight']."</b></td>
+            <td ><b>".$lang['lbl_name']."</b></td>
+            <td ><b>".$lang['lbl_type_of_grade']."</b></td>            
             <td ><b>".$lang['lbl_dateinput']."</b></td>
             <td ><b>".$lang['lbl_total_result']."</b></td>                      
             <td ><b>".$lang['lbl_center']."</b></td>            
@@ -39,6 +39,7 @@
             //$no = 0;
             //return count($gradebooks);
             $gradebooks = $datas->gradebooks;
+            var_dump($gradebooks);die;
             for($i = 0; $i < count($gradebooks); $i++) {  
                 $gradebook = $gradebooks[$i]; 
                 $detail = $gradebook->detail;
@@ -70,7 +71,7 @@
                 </tabel> 
 
                 <div class= 'overflow-auto'>
-                <table class = 'mark_detail table table-striped' width='100%'>
+                <table class = 'mark_detail table table-striped table-bordered table-hover table-vmiddle' width='100%'>
                 <thead>
                 <tr><th></th>";
                 $header_html = '';
@@ -113,7 +114,7 @@
                 $tr = "<tr>
                 <td class = 'center'>".($i+1)."</td>
                 <td>{$gradebook->name}</td>
-                <td>{$gradebook->weight}</td>                 
+                <td><a class='grade_type' data='".$i."'>Data test</a></td>                 
                 <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>                 
                 <td>".($gradebook->final_result * 100)."</td>                 
                 <td>{$gradebook->center_name}</td>                 
@@ -146,7 +147,6 @@
             }
 
             if(!empty($result) && !empty($result->certificate_type) && $result->certificate_type != 'Fail') {
-// [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
 
                 $url = Config::get('app.url')."/gradebook/viewCertificate?class_id=$class_id";
                 $total_result .= "

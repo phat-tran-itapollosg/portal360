@@ -34,4 +34,7 @@ return array(
     'schedule_calendar' => 'Calendar View',
     'schedule_listview' => 'List View',
     'survey' => 'Survey',
+    'booking' => 'Booking',
+    'booking_view' => 'View Booking',
+    'booking_history' => 'History Booking',
 );
