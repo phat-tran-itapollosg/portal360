@@ -30,6 +30,14 @@
                 </a>
             </li> 
             -->
+            </li>
+
+            <li class="sub-menu dcjq-parent-li">
+                <a href="{{ route('alpha.survey.index')}}" target="_blank">
+                    <i class="fa fa-book"></i>
+                    <span>{{ trans('app.login_to_survey') }}</span>
+                </a>
+            </li>
         </ul>
         <!-- sidebar menu end-->
     </div>
