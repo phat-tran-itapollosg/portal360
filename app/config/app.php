@@ -257,6 +257,7 @@ return array(
 	),
 	'service_admin' => array(
 		'url'      =>'http://localhost/apolloportal/admin/faq',
+		'onetTimeUrl'      =>'http://localhost/apollosurvey/admin/authentication/login?',
 		
 
 	)
