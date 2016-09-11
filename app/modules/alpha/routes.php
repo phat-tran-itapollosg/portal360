@@ -72,7 +72,13 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::post('faq/updatajson',[ 'as' => 'alpha.faq.updatajson', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajson']);
 
+
     //Route::post('updatajson', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajson']);
     //Route::get('updata/index.php', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updata']);
     Route::get('500', ['as' => 'alpha.500', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@error500']);
+
+    Route::get('/survey/index',['as' => 'alpha.survey.index', 'uses' => 'App\Modules\Alpha\Controllers\SurveyController@index']);
+
 });
+
+
