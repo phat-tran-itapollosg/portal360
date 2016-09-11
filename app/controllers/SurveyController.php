@@ -41,57 +41,68 @@ class SurveyController extends BaseController
     }
     public function index()
     {
-        $sessionKey = $this->createASessionKey();
-        $list_surveys = $this->alphaSurveyClient->list_surveys($sessionKey,null);
-        $this->alphaSurveyClient->release_session_key( $sessionKey );
-        // var_dump($list_surveys);
-        // die();
-        $this->layout->content = View::make('survey.index')->with(array('surveys'=>$list_surveys));
+        try {
+            $contact = Session::get('contact');
+            $sessionKey = $this->createASessionKey();
+            $list_surveys = $this->alphaSurveyClient->list_surveys($sessionKey,$contact->team_id);
+
+            $this->alphaSurveyClient->release_session_key( $sessionKey );
+            if(isset($list_surveys['status']) AND !empty($list_surveys['status'])){
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $list_surveys['status']]);
+            }else{
+                $this->layout->content = View::make('survey.index')->with(array('surveys'=>$list_surveys));
+            }
+        } catch (Exception $e) {
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $e->getMessage()]);
+        }        
     }
     public function dosurvey($id = NULL)
     {
-        $serviceConfig = Config::get('app.service_survey');
+        
 
         if(isset($id) && !empty($id)){
-            $contact = Session::get('contact');
-            if(!empty($contact)){
-                $aParticipantData = array( 
-                    'user'=>array(
-                        'firstname'=>$contact->first_name,
-                            'lastname'=>$contact->last_name,
-                            'email'=>$contact->email1,
-                            'language'=>'en',
-                ));
-
-                $sessionKey = $this->createASessionKey();
-                $result = $this->alphaSurveyClient->cpd_importParticipants($sessionKey,$aParticipantData);
-                if(isset($result['0'])){
+            try {
+                $serviceConfig = Config::get('app.service_survey');
+                $contact = Session::get('contact');
+                if(!empty($contact)){
                     $aParticipantData = array( 
                         'user'=>array(
                             'firstname'=>$contact->first_name,
                                 'lastname'=>$contact->last_name,
                                 'email'=>$contact->email1,
                                 'language'=>'en',
-                                'team_id'=>$contact->team_id,
-                                'student_id'=>$contact->id,
-                                'team_name'=>$contact->team_name,
-                                'participant_id'=>$result['0']['participant_id'],
                     ));
-                    $result = $this->alphaSurveyClient->add_participants($sessionKey,$id,$aParticipantData);
-                    if(!empty($result["user"]) && empty($result["user"]['errors'])){
-                        $surveyURL = $serviceConfig["surveyURL"].$id."/token/".$result["user"]['token'].'/lang/en/newtest/Y';
-                        $this->alphaSurveyClient->release_session_key( $sessionKey );
-                        header("Location: ".$surveyURL);
-                        exit;
-                    }else{
-                        // var_dump($result['status']);
-                        // die();
-                        return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
-                    }
-                }                
-            }else{
-                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
-            }
+
+                    $sessionKey = $this->createASessionKey();
+                    $result = $this->alphaSurveyClient->cpd_importParticipants($sessionKey,$aParticipantData);
+                    if(isset($result['0'])){
+                        $aParticipantData = array( 
+                            'user'=>array(
+                                'firstname'=>$contact->first_name,
+                                    'lastname'=>$contact->last_name,
+                                    'email'=>$contact->email1,
+                                    'language'=>'en',
+                                    'team_id'=>$contact->team_id,
+                                    'student_id'=>$contact->id,
+                                    'team_name'=>$contact->team_name,
+                                    'participant_id'=>$result['0']['participant_id'],
+                        ));
+                        $result = $this->alphaSurveyClient->add_participants($sessionKey,$id,$aParticipantData);
+                        if(!empty($result["user"]) && empty($result["user"]['errors'])){
+                            $surveyURL = $serviceConfig["surveyURL"].$id."/token/".$result["user"]['token'].'/lang/en/newtest/Y';
+                            $this->alphaSurveyClient->release_session_key( $sessionKey );
+                            header("Location: ".$surveyURL);
+                            exit;
+                        }else{
+                            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+                        }
+                    }                
+                }else{
+                    return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+                }
+            } catch (Exception $e) {
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $e->getMessage()]);
+            }  
         }else{
              return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
