@@ -18,15 +18,6 @@
 
 
 	<h1 class="title">
-       	@if($code == 'success.category')
-       		{{ trans('error.success.category') }}
-       	
-       	@elseif($code == 'error.category')
-       		{{ trans('error.error.category') }}
-
-       	@elseif($code == 'empty.category')
-       		{{ trans('error.empty.category') }}
-       	@endif
-    
+		Lỗi 500
     </h1>
  @stop

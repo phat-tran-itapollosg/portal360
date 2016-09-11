@@ -9,25 +9,27 @@
                 <span>{{ trans('faq.heading') }}</span>
                 </a>
             </li>
-            <!-- <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('admin/faq/add') }}">
+            <!--
+             <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('admin/faq/category') }}">
                 <i class="fa fa-question"></i>
-                <span>Thêm FAQ</span>
+                <span> {{ trans('faq.categoryfaq') }} </span>
                 </a>
-            </li>
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('admin/faq/list/dele') }}">
-                <i class="fa fa-question"></i>
-                <span>Các FAQ đã xóa</span>
-                </a>
-            </li> -->
+            </li>-->
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('admin/news') }}" >
                     <i class="fa fa-book"></i>
                     <span> {{ trans('news.heading') }} </span>
                 </a>
             </li>
-            
+            <!--
+            <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('admin/news/category') }}">
+                <i class="fa fa-book"></i>
+                <span>{{ trans('news.category') }} {{ trans('news.heading') }} </span>
+                </a>
+            </li> 
+            -->
         </ul>
         <!-- sidebar menu end-->
     </div>

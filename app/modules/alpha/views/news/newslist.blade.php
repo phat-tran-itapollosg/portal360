@@ -17,6 +17,7 @@
             <a class="btn btn-default btn-xs" target="_blank" href="{{ URL::to('admin/news/add') }}" role="button"><span class="glyphicon glyphicon-plus"></span></a>
         </header>
         <div class="panel-body">
+        <div class="col-lg-8">  
             <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
                     <thead>                                   
                         <tr>
@@ -51,10 +52,16 @@
                                         <span class="glyphicon glyphicon-cog"></span>
                                       </button>
                                       <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu-{{$item->id}}">
-                                        <li><a href="{{ URL::to('admin/news/edit') }}/{{$item->id}}" target="_blank">{{ trans('news.edit') }}</a></li>
-                                        <li><a href="{{ URL::to('admin/news/del') }}/{{$item->id}}" target="_blank">{{ trans('news.delete') }}</a></li>
+                                        <li><a href="{{ URL::to('admin/news/edit') }}/{{$item->id}}" target="_blank">{{ trans('news.edit') }}
+                                        </a></li>
+                                        <li>
+                                            <a onclick="confirmdelefaq({{$item->id}})" target="_blank">{{ trans('news.delete') }}
+                                            </a>
+                                        </li>
+                                        <li><a href="{{ URL::to('admin/news/add') }}" target="_blank">
+                                        {{ trans('news.add') }}
+                                        </a></li>
                                         <li><a href="" target="_blank">{{ trans('news.updateImage') }}</a></li>
-                                        
                                       </ul>
                                     </div>
                                 </td>
@@ -64,10 +71,81 @@
                         @endforeach
                     </tbody>
                 </table>   
+            </div>
+            <div class="col-lg-4">  
+                <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+            <thead>                                   
+                <tr>
+                    <th class="text-center" width="5%"><b>#</b></th>                        
+                    <th class="text-center" ><b>{{ trans('news.category') }}</b></th>
+                    
+                    <th width="5%"></th>   
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <th>
+                            </th>
+                            <th>
+                            </th>
+                            <th>
+                                <a type="button" class="btn btn-default btn-sm" href="{{ URL::to('admin/news/category/add') }}" target="_blank">{{ trans('faq.add') }}
+                                </a>
+                            </th>
+                        </tr>   
+                @foreach($getCategoryNews as $index => $item)
+                            
+                    <tr>
+                        <td>{{$item->nid}}</td>                                 
+                        <td class="text-left">
+                            {{ $item -> ccontents }}
+                        </td>
+                        <td class="text-center">
+                            <div class="dropdown">
+                              <button class="btn btn-default dropdown-toggle btn-sm" type="button" id="dropdownMenu-{{$item->nid}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <span class="glyphicon glyphicon-cog"></span>
+                              </button>
+                              <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu-{{$item->nid}}">
+                                <li><a href="{{ URL::to('admin/news/category/edit') }}/{{$item->nid}}" target="_blank">{{ trans('news.edit') }}</a></li>
+                                <li>
+                                    <a onclick="confirmdele({{$item->nid}});" target="_blank">{{ trans('news.delete') }}
+                                    </a>
+                                    
+                                </li>
+                                <li><a href="{{ URL::to('admin/news/category/add') }}" target="_blank">{{ trans('news.add') }}</a></li>
+                              </ul>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+            </div>
 
         </div>
         
 	</section>
     </div>
 </div>
+<script>
+    function confirmdele($id)
+    {
+        var note= confirm(" {{ trans('error.confirmdele') }} ");
+        if (note) 
+        {
+            window.location.href = "{{ URL::to('admin/news/category/del') }}/"+$id;
+             
+        }    
+    }
+    function confirmdelefaq($id)
+    {
+        var note= confirm(" {{ trans('error.confirmdele') }} ");
+        if (note) 
+        {
+            window.location.href = "{{ URL::to('admin/news/del') }}/"+$id;
+             
+        }   
+    }
+    
+</script>
 @stop

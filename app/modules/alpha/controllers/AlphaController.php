@@ -28,8 +28,15 @@ class AlphaController extends \BaseController {
                         ->get();
         //var_dump($faqdelget);
        //return View::make('shop::index');
+        $getCateFaq = \DB::table('alpha_category')
+                    ->where('cdelete',0)
+                    ->get();
         if($faqdelget!=null){
-            $this->layout->content = view::make('alpha::faq.faqgetall')->with(array('faqdelget' => $faqdelget));
+            $this->layout->content = view::make('alpha::faq.faqgetall')->with(array(
+                                                                                    'faqdelget' => $faqdelget,
+                                                                                    'getCateFaq'=>$getCateFaq
+
+                ));
     	}
     }
     protected function Fagadd()
@@ -65,86 +72,45 @@ class AlphaController extends \BaseController {
             $insert = \DB::table('alpha_faq')->insert($data); 
             if($insert)
             {
-            	$loi = 'Thêm thành công
-                <a href="../../../admin/faq/add" > trở lại FAQ </a> ';
-                $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+            	return \Redirect::to(route('alpha.faq.newslist'));
             }
             else
             {
-                $loi = 'Thêm không thành công
-            <a href="../../../admin/faq/add" > trở lại FAQ </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
             }
         } 
             
         else {
-            # code...
-            $loi = 'nhập đầy đủ dữ liệu của FAQ
-            <a href="../../../admin/faq/add" > trở lại FAQ </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
         }
         
     }
     protected function delFag($id)
     {
-        $DeleteData = \DB::table('alpha_faq')
-                ->Where('id',$id)
-                ->update(array('faqdelete'=>1));
-        if($DeleteData )
-        {
-        	 $loi = ' Xóa thành công '.'
-            <a href="../../../admin/faq" > trở lại FAQ </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+        if(isset($id) && !empty($id))
+        {       
+            $DeleteData = \DB::table('alpha_faq')
+                    ->Where('id',$id)
+                    ->update(array('faqdelete'=>1));
+            if($DeleteData )
+            {
+            	return \Redirect::to(route('alpha.faq.faq'));
+            }
+            else
+            {   
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+            }
         }
         else
-        {   $loi = ' Xóa không thành công '.'
-            <a href="../../../admin/faq" > nhập FAQ </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
-        }
-    }
-
-    public function delFagget()
-    {
-        $faqdelget = \DB::table('alpha_faq')
-                        ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
-                        //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
-                        ->where('alpha_faq.faqdelete',1)
-                        ->Where('alpha_category.cdelete',0)
-                        ->get();
-        //var_dump($faqdelget);
-       
-        if($faqdelget!=null){
-            $this->layout->content = \view::make('alpha::faq.faqdelget')->with(array('faqdelget' => $faqdelget,
-                'flat'=>1));
-        }else
         {
-            $this->layout->content = \view::make('alpha::faq.faqdelget')->with(array('faqdelget' => $faqdelget,
-                'flat'=>-1));
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
         }
-    }
-
-    protected function redel($id){
-
-		$DeleteData = \DB::table('alpha_faq')
-	            ->Where('id',$id)
-	            ->update(array('faqdelete'=>0));
-	    if($DeleteData )
-	    {
-	    	 $loi = ' Phục hồi thành công '.'
-	        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
-	    }
-	    else
-	    {   
-	    	$loi = ' Phục hồi không thành công '.'
-	        <a href="../../../../alpha/admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
-	    }
     }
 
     protected function editFag($id)
     {
     //echo $id;
+
         $getInfoFag = \DB::table('alpha_faq')->where('id', $id)->get();
         foreach ($getInfoFag as $getfaqs)
         {
@@ -187,26 +153,118 @@ class AlphaController extends \BaseController {
                           ))
            	)
         	{
-        		$loi = ' Lưu bản sửa thành công '.'
-		        <a href="../../../admin/faq" > Trở lại FAQ </a> ';
-		        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+        		return \Redirect::to(route('alpha.faq.faq'));
 	        }
-        	else{
+        	else
+            {
 
-        	$loi = ' Lưu bản sửa không thành công '.'
-	        <a href="../../../admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+        	   $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
 
         	}
     	}
-
     	else
     	{
-    		$loi = ' Lưu bản sửa không thành công vui lòng nhập đủ dữ liệu '.'
-	        <a href="../../../admin/faq" > Trở lại FAQ </a> ';
-	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+    		$this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
     	}
     }
+    //category faq
+    protected function getCategoryFaq()
+    {
+        $getCateFaq = \DB::table('alpha_category')
+                    ->where('cdelete',0)
+                    ->get();
+        //var_dump($getCateFaq);
+        $this->layout->content = \view::make('alpha::faq.categorydetall')->with(array('getCateFaq'=>$getCateFaq));
+    }
+
+    protected function addCategoryFaq()
+    {
+        //echo "Them ca tegory faq";
+        $this->layout->content=\view::make('alpha::faq.categoryadd');
+    }
+
+    protected function addCategoryFaqData()
+    {
+        $txtCategoryFaq = Input::get('txtCategoryFaq');
+        if(isset($txtCategoryFaq) && !empty($txtCategoryFaq))
+        {
+            $data=array('ccontent' => $txtCategoryFaq);
+
+            $insert = \DB::table('alpha_category')->insert($data);
+            if ($insert) {
+                return \Redirect::to(route('alpha.faq.faq'));
+            }
+            else
+            {
+                $this->layout->content=\View::make('alpha::error')->with(array('code'=>'error'));
+            } 
+        }
+        else
+        {
+            $this->layout->content=\View::make('alpha::error')->with(array('code'=>'empty'));
+        }
+        //var_dump(Input::get());
+    }
+
+    protected function editCategoryFaq($id)
+    {
+        $getEditCateFaq = \DB::table('alpha_category')
+                        ->where('cid',$id)
+                        ->get();
+        $this->layout->content= \view::make('alpha::faq.categoryedit')->with(array('getEditCateFaq'=>$getEditCateFaq));
+    }
+
+    protected function editCategoryFaqData()
+    {
+        $ccontent = Input::get('txtcontent');
+        $id = Input::get('id');
+       // var_dump(Input::get());
+        if(isset($id) && !empty($id) && isset($ccontent) && !empty($ccontent))
+        {
+            $editCategory = \DB::table('alpha_category')
+                        ->where('cid',$id)
+                        ->Update(array('ccontent'=>$ccontent));
+            if ($editCategory) {
+                //var_dump($editCategory);
+               return \Redirect::to(route('alpha.faq.faq'));
+            
+            }
+            else
+            {
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+            }
+        }
+        else
+        {
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+        }
+       
+    }
+
+    protected function delCategoryFaq($id)
+    {
+        if(isset($id) && !empty($id))
+        {
+
+        $delCategory = \DB::table('alpha_category')
+                    ->where('cid',$id)
+                    ->update(array('cdelete'=>1));
+
+            if ($delCategory) {
+                return \Redirect::to(route('alpha.faq.faq'));
+            
+            }
+            else
+            {
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+            }
+        }
+        else
+        {
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+        }
+    }
+
     //controller news
     protected function newslist(){
         $getfaq1= \DB::table('alpha_news')
@@ -216,69 +274,43 @@ class AlphaController extends \BaseController {
             ->Where('alpha_ncategory.cdelete',0)
             ->orderBy('alpha_news.ndate', 'DESC')
             ->get();
-
+        $getCategoryNews = \DB::table('alpha_ncategory')
+                    ->where('cdelete',0)
+                    ->get();
+       
          $this->layout->content = \view::make('alpha::news.newslist')->with(
-            array('getfaq1'=>$getfaq1));
+            array('getfaq1'=>$getfaq1,'getCategoryNews' =>$getCategoryNews));
     }
 
     protected function delnews($id)
     {
-    	$DeleteData = \DB::table('alpha_news')
-                ->Where('id',$id)
-                ->update(array('ndelete'=>1));
-        if($DeleteData )
+        if(isset($id) && !empty($id))
         {
-        	 $loi = ' Xóa thành công '.'
-            <a href="../../../admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+        	$DeleteData = \DB::table('alpha_news')
+                    ->Where('id',$id)
+                    ->update(array('ndelete'=>1));
+            if($DeleteData )
+            {
+            	return \Redirect::to(route('alpha.news.newslist'));
+            }
+            else
+            {   
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+            }
         }
         else
-        {   $loi = ' Xóa không thành công '.'
-            <a href="../../../admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
-        }
-
-    }
-    protected function redelnews($id)
-    {
-    	$DeleteData = \DB::table('alpha_news')
-                ->Where('id',$id)
-                ->update(array('ndelete'=>0));
-        if($DeleteData )
         {
-        	 $loi = ' Phục hồi thành công '.'
-            <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
-        }
-        else
-        {   $loi = ' Phục hồi không thành công '.'
-            <a href="../../../../alpha/admin/news" > trở lại NEWS </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
         }
     }
 
-    public function delNewsget()
-    {
-        $newsdelget= \DB::table('alpha_news')
-            ->join('alpha_ncategory','nid', '=', 'alpha_news.idcate')
-            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
-            ->where('alpha_news.ndelete',1)
-            ->Where('alpha_ncategory.cdelete',0)
-            ->get();
-
-        if($newsdelget!=null){
-            $this->layout->content = \view::make('alpha::news.newsdelget')->with(array('newsdelget' => $newsdelget,
-                'flat'=>1));
-        }else
-        {
-            $this->layout->content = \view::make('alpha::news.newsdelget')->with(array('newsdelget' => $newsdelget,
-                'flat'=>-1));
-        }
-    }
     protected function newsedit($id)
     {
 
-        $getInfoFag = \DB::table('alpha_news')->where('id', $id)->get();
+        if(isset($id) && !empty($id))
+        {
+
+            $getInfoFag = \DB::table('alpha_news')->where('id', $id)->get();
                 foreach ($getInfoFag as $getfaqs)
                 {
                    $idcate= $getfaqs->idcate;
@@ -298,6 +330,11 @@ class AlphaController extends \BaseController {
                                                             'cate'=>$getCategory,
                                                             'selected'=>$getCategoryed
                                                              ));
+        }
+        else
+        {
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+        }
 
     }
     protected function editnewsdata()
@@ -320,22 +357,17 @@ class AlphaController extends \BaseController {
 		                          ))
 		        )
         	{
-        		$loi = ' Lưu bản sửa thành công '.'
-		        <a href="../../../admin/news" > trở lại NEWS </a> ';
-		        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+        		return \Redirect::to(route('alpha.news.newslist'));
 	        }
-        	else{
+        	else
+            {
 
-        	$loi = ' Lưu không thành công '.'
-	        <a href="../../../admin/news" > trở lại NEWS </a> ';
-	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+        	   $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
     		}
     	}
     	else
     	{
-    		$loi = 'Vui lòng nhập đủ dữ liệu '.'
-	        <a href="../../../admin/news" > trở lại NEWS </a> ';
-	        $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+    		$this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
     		
     	}
     }
@@ -367,25 +399,160 @@ class AlphaController extends \BaseController {
             $insert = \DB::table('alpha_news')->insert($data)
             )
             {
-            	$loi = 'Thêm News thành công
-	            <a href="../../../admin/news/add" > trở lại NEWS </a> ';
-	            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+            	return \Redirect::to(route('alpha.news.newslist'));
             }
             else
             {
-            	$loi = 'Thêm News không thành công
-	            <a href="../../../admin/news" > trở lại NEWS </a> ';
-	            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+            	$this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
             }
         } 
 
         else {
-            # code...
-            $loi = 'Vui lòng nhập đầy đủ dữ liệu câu hỏi và câu trả lời của News <br> Vui lòng nhập lại
-            <a href="../../../admin/news/add" > Nhập NEWS </a> ';
-            $this->layout->content = \view::make('alpha::error')->with(array('loi'=>$loi));
+           $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
         }
        
+    }
+
+
+    //category news
+    protected function getCategoryNews()
+    {
+        $getCateFaq = \DB::table('alpha_ncategory')
+                    ->where('cdelete',0)
+                    ->get();
+        $this->layout->content = \view::make('alpha::news.categorydetall')->with(array('getCateFaq'=>$getCateFaq));
+    }
+
+    protected function addCategoryNews()
+    {
+        $this->layout->content=\view::make('alpha::news.categoryadd');
+        //$this->layout->content = \view::make('alpha::news.categoryadd');
+    }
+
+    protected function addCategoryNewsData()
+    {
+        //var_dump(Input::get());
+        $txtCategoryFaq = Input::get('txtCategoryNews');
+        if(isset($txtCategoryFaq) && !empty($txtCategoryFaq))
+        {
+            $data=array('ccontents' => $txtCategoryFaq);
+
+            $insert = \DB::table('alpha_ncategory')->insert($data);
+            if ($insert) {
+                return \Redirect::to(route('alpha.news.newslist'));
+            }
+            else
+            {
+                $this->layout->content=\View::make('alpha::error')->with(array('code'=>'error'));
+            } 
+        }
+        else
+        {
+            $this->layout->content=\View::make('alpha::error')->with(array('code'=>'empty'));
+        }
+    }
+
+    protected function editCategoryNews($id)
+    {
+        $getEditCateFaq = \DB::table('alpha_ncategory')
+                        ->where('nid',$id)
+                        ->get();
+        $this->layout->content= \view::make('alpha::news.categoryedit')->with(array('getEditCateFaq'=>$getEditCateFaq));
+    }
+
+    protected function editCategoryNewsData()
+    {
+        $ccontent = Input::get('txtcontent');
+        $id = Input::get('id');
+       // var_dump(Input::get());
+        if(isset($id) && !empty($id) && isset($ccontent) && !empty($ccontent))
+        {
+            $editCategory = \DB::table('alpha_ncategory')
+                        ->where('nid',$id)
+                        ->Update(array('ccontents'=>$ccontent));
+            if ($editCategory) {
+                //var_dump($editCategory);
+                return \Redirect::to(route('alpha.news.newslist'));
+            
+            }
+            else
+            {
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+            }
+        }
+        else
+        {
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+        }
+       
+    }
+
+    protected function delCategoryNews($id)
+    {
+        if(isset($id) && !empty($id))
+        {
+
+        $delCategory = \DB::table('alpha_ncategory')
+                    ->where('nid',$id)
+                    ->update(array('cdelete'=>1));
+
+            if ($delCategory) {
+                //var_dump($editCategory);
+               return \Redirect::to(route('alpha.news.newslist'));
+            
+            }
+            else
+            {
+                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+            }
+        }
+        else
+        {
+            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+        }
+    }
+
+
+    //add images
+    protected function updateimg($id)
+    {
+
+
+        $this->layout->content=\view::make('alpha::faq.imgadd')->with(array('id' => $id));
+    }
+    protected function updatajson()
+    {
+        $id = Input::get('id');
+        $url= Input::get('url');
+        //var_dump(Input::get());
+        if( isset($id)  && isset($url) && !empty($id) && !empty($url) )
+        {
+            
+            if (\DB::table('alpha_faq')
+                ->Where('id',$id)
+                ->update(array('img' => $url))
+            ){
+                return \Response::json(array('result' => TRUE));
+            }else{
+                return \Response::json(array('result' => FALSE));
+            }
+
+        }else{
+            return \Response::json(array('result' => FALSE));
+        }
+    }
+      
+    protected function updata(){
+
+        error_reporting(E_ALL | E_STRICT);
+        require(app_path().'/helpers/'.'UploadHandler.php');
+        $upload_handler = new \UploadHandler();
+       // var_dump(Input::get());
+        exit();
+    }
+    protected function error500()
+    {
+        $this->layout->content=\view::make('alpha::500');
     }
 
  }

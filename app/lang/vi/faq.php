@@ -9,6 +9,8 @@ return array(
 	'updateImage' => 'Cập nhật hình ảnh',
 	'heading' => 'Câu hỏi thường gặp',
 	'category'=>'Danh mục',
+	'categoryfaq'=>'Danh mục FAQ' ,
 	'add'	=>'Thêm mới',
+	'submit'	=>'Lưu lại',
 	);
 ?>

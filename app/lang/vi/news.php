@@ -12,5 +12,6 @@ return array(
 	'back'	=> ' Quay trở lại ',
 	'contents'	=> 'Nội dung',
 	'category'	=> 'Danh mục',
+	
 	);
 ?>

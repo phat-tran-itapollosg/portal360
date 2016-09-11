@@ -9,5 +9,7 @@ return array(
 	'updateImage' => 'Update Image',
 	'heading' => 'FAQ',
 	'category'=>'Category',
-	'add'	=>'Add news FAQ'
+	'categoryfaq' = 'Category FAQ',
+	'add'	=>'Add news FAQ',
+	'submit'	=>'Update',
 ?>
