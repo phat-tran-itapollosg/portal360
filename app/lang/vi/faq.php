@@ -12,5 +12,6 @@ return array(
 	'categoryfaq'=>'Danh mục FAQ' ,
 	'add'	=>'Thêm mới',
 	'submit'	=>'Lưu lại',
+	'addcategory' => 'Thêm Danh mục'
 	);
 ?>
