@@ -37,4 +37,5 @@ return array(
     'booking' => 'Booking',
     'booking_view' => 'View Booking',
     'booking_history' => 'History Booking',
+    'login_to_survey' => 'Login To Survey',
 );
