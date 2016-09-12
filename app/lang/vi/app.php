@@ -2,8 +2,8 @@
 
 return array(
 
-    'app_title' => 'CHƯƠNG TRÌNH BÁO CÁO TRỰC TUYẾN DÀNH CHO PHỤ HUYNH',
-    'company_name' => 'APOLLO JUNIOR',
+    'app_title' => 'CỔNG THÔNG TIN HỌC VIÊN APOLLO 360',
+    'company_name' => 'APOLLO 360',
     'spinner_text' => 'Vui lòng đợi...',
     'view_profile' => 'Thông tin cá nhân',
     'change_password' => 'Đổi mật khẩu',
