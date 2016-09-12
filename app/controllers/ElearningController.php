@@ -150,8 +150,8 @@ class ElearningController extends BaseController
                 // exit();
                 $xml = new SimpleXMLElement($result);
                 if(isset($xml->url_start[0]) && !empty($xml->url_start[0])){
-                  var_dump($xml->url_report[0]);die;
-                  header("Location: ".$xml->url_report[0]);
+                  //var_dump($xml->url_report[0]);die;
+                    header("Location: ".$xml->url_start[0]);
                     exit();  
                 }else{
                     return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result]);
