@@ -10,14 +10,27 @@
     | and give it the Closure to execute when that URI is requested.
     |
     */
-
+    
     //include('modules/content/routes.php');
     //include('modules/shop/routes.php');
     Route::get('/', function() {
-        return Redirect::to('/schedule/index');
+        $service_admin = Config::get('app.service_admin');
+        if(Session::get('contact') AND !empty(Session::get('contact'))){
+            return Redirect::to('schedule/index');
+        }else{
+            return Redirect::to($service_admin['url']);
+        }
+
+        // return Redirect::to('/schedule/index');
     });
     Route::get('/home', function() {
-        return Redirect::to('/schedule/index');
+        // return Redirect::to('/schedule/index');
+        $service_admin = Config::get('app.service_admin');
+        if(Session::get('contact') AND !empty(Session::get('contact'))){
+            return Redirect::to('schedule/index');
+        }else{
+            return Redirect::to($service_admin['url']);
+        }
     });
     Route::group(array('before' => 'auth'), function() {
         Route::get('/home/index', 'HomeController@index');

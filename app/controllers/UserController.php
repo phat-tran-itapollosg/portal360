@@ -11,6 +11,7 @@
 
         // Render the login page
         public function login() {
+            $service_admin = Config::get('app.service_admin');
             if(isset($_REQUEST['MSID']) && $_REQUEST['MSID']) {                
                 $params = array(
                     'session_id' => $_REQUEST['MSID'],
@@ -61,12 +62,26 @@
                 Session::put('user', $user);
                 Session::put('contact', $contact);
                 Session::put('user_preferences', $preferences);
-                return Redirect::to('schedule/index');
+                if(isset($contact) AND !empty($contact)){
+                    return Redirect::to('schedule/index');
+                }else{
+                    return Redirect::to($service_admin['url']);
+                }
+                
             }
 
             // Redirect the user into the dashboard right away if he already logged in   
             if(Session::get('session')) {
-                return Redirect::to('schedule/index');
+                //return Redirect::to('schedule/index');
+                $contact = Session::get('contact');
+               // var_dump($contact);
+               // die();
+                if(Session::get('contact') AND !empty(Session::get('contact'))){
+                    return Redirect::to('schedule/index');
+                }else{
+                    return Redirect::to($service_admin['url']);
+                }
+
             }
 
             // User accessed the login page
@@ -149,8 +164,8 @@
                     //         return Redirect::to('schedule/index')->withCookie(Cookie::forget('remembered_user'));    
                     //     }
                     // }
-                    $serviceConfig = Config::get('app.service_admin');
-                    return Redirect::to($serviceConfig['url']);
+                    
+                    return Redirect::to($service_admin['url']);
                 }
 
                 // Show the login page with error message
