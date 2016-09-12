@@ -234,9 +234,9 @@ return array(
 
 	),
 	'service_survey' => array(
-		'serviceUrl'      =>'http://localhost/apollosurvey/',
-		'remotecontrol'   =>'http://localhost/apollosurvey/index.php?r=admin/remotecontrol',
-		'surveyURL'       =>'http://localhost/apollosurvey/index.php?r=/survey/index/sid/',
+		'serviceUrl'      =>'http://survey.alphateam.tech/',
+		'remotecontrol'   =>'http://survey.alphateam.tech/admin/remotecontrol',
+		'surveyURL'       =>'http://survey.alphateam.tech/survey/index/sid/',
 		'username'        =>'admin',
 		'password'        =>'123456',
 	),
@@ -246,9 +246,16 @@ return array(
 			'organization_code' => 'APOLLO',
 			'password' => 'w7vubOvqX',
 		),
+		// 'course'       =>array(
+		// 	'course_code' => 'APOLLO-PE6',
+  //           'group_code' => 'TEST_GROUP',
+  //           'start_date' =>  '2016-08-01',  
+  //           'end_date' =>  '2016-12-31', 
+  //           'access_end_date' =>  '2016-12-31'   
+		// ),
 		'course'       =>array(
-			'course_code' => 'APOLLO-PE6',
-            'group_code' => 'TEST_GROUP',
+			'course_code' => 'APOLLO-360-FLEXI',
+            'group_code' => 'INTERMEDIATE',
             'start_date' =>  '2016-08-01',  
             'end_date' =>  '2016-12-31', 
             'access_end_date' =>  '2016-12-31'   
@@ -256,8 +263,8 @@ return array(
 
 	),
 	'service_admin' => array(
-		'url'      =>'http://localhost/apolloportal/admin/faq',
-		'onetTimeUrl'      =>'http://localhost/apollosurvey/admin/authentication/login?',
+		'url'      =>'http://alphateam.tech/admin/faq',
+		'onetTimeUrl'      =>'http://survey.alphateam.tech/admin/authentication/login?',
 		
 
 	)
