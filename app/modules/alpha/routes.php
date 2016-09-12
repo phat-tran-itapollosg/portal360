@@ -1,88 +1,86 @@
 <?php
 
-Route::group(['prefix' => 'admin'], function () {
-	Route::get('faq', ['as' => 'alpha.faq.faq', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@faq']);
+Route::group(array('prefix' => 'admin','before' => 'auth','namespace' => 'App\Modules\Alpha\Controllers'), function () {
+
+	Route::get('faq', ['as' => 'alpha.faq.faq', 'uses' => 'AlphaController@faq']);
 	
 	//add faq
-	Route::get('faq/add', ['as' => 'alpha.faq.Fagadd', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@Fagadd']);
-    Route::post('faq/add/data', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@addFagdata']);
+	Route::get('faq/add', ['as' => 'alpha.faq.Fagadd', 'uses' => 'AlphaController@Fagadd']);
+    Route::post('faq/add/data', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@addFagdata']);
 
     //delete faq
-    Route::get('faq/del/{id}', ['as' => 'alpha.faq.delFag', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@delFag']);
-    //Route::get('faq/list/dele', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@delFagget']);
-  	//Route::get('faq/redel/{id}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@redel']);
+    Route::get('faq/del/{id}', ['as' => 'alpha.faq.delFag', 'uses' => 'AlphaController@delFag']);
+    //Route::get('faq/list/dele', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@delFagget']);
+  	//Route::get('faq/redel/{id}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@redel']);
 
     //edit data faq
-    Route::get('faq/edit/{id}', ['as' => 'alpha.faq.editFag', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editFag']);
+    Route::get('faq/edit/{id}', ['as' => 'alpha.faq.editFag', 'uses' => 'AlphaController@editFag']);
 
     
 
-    Route::post('faq/edit/data', ['as' => 'alpha.faq.editFagdata', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editFagdata']);
+    Route::post('faq/edit/data', ['as' => 'alpha.faq.editFagdata', 'uses' => 'AlphaController@editFagdata']);
 
     //category faq
 
-   // Route::get('faq/category', ['as' => 'alpha.faq.getCategoryFaq', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@getCategoryFaq']);
+   // Route::get('faq/category', ['as' => 'alpha.faq.getCategoryFaq', 'uses' => 'AlphaController@getCategoryFaq']);
 
-    Route::get('faq/category/add', ['as' => 'alpha.faq.addCategoryFaq', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@addCategoryFaq']);
+    Route::get('faq/category/add', ['as' => 'alpha.faq.addCategoryFaq', 'uses' => 'AlphaController@addCategoryFaq']);
 
-    Route::post('faq/category/add/data',['as' => 'alpha.faq.addCategoryFaqData','uses' => 'App\Modules\Alpha\Controllers\AlphaController@addCategoryFaqData']);
+    Route::post('faq/category/add/data',['as' => 'alpha.faq.addCategoryFaqData','uses' => 'AlphaController@addCategoryFaqData']);
 
-    Route::get('faq/category/edit/{id}', ['as' => 'alpha.faq.editCategoryFaq', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editCategoryFaq']);
-    Route::get('faq/category/del/{id}', ['as' => 'alpha.faq.delCategoryFaq', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@delCategoryFaq']);
-    Route::post('faq/category/del/data', ['as' => 'alpha.faq.editCategoryFaqData', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editCategoryFaqData']);
+    Route::get('faq/category/edit/{id}', ['as' => 'alpha.faq.editCategoryFaq', 'uses' => 'AlphaController@editCategoryFaq']);
+    Route::get('faq/category/del/{id}', ['as' => 'alpha.faq.delCategoryFaq', 'uses' => 'AlphaController@delCategoryFaq']);
+    Route::post('faq/category/del/data', ['as' => 'alpha.faq.editCategoryFaqData', 'uses' => 'AlphaController@editCategoryFaqData']);
 
-    //Route::post('/faq/re/del', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@redelFagdata']);
-    //Route::get('faq/category/{idcate}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@GetAlphaCategory']);
+    //Route::post('/faq/re/del', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@redelFagdata']);
+    //Route::get('faq/category/{idcate}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@GetAlphaCategory']);
     
     //NEws
-    Route::get('news', ['as' => 'alpha.news.newslist', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@newslist']); 
+    Route::get('news', ['as' => 'alpha.news.newslist', 'uses' => 'AlphaController@newslist']); 
 
      //add news
-    Route::get('news/add', ['as' => 'alpha.news.newsadd', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@newsadd']);
-    Route::post('news/add/data', ['as' => 'alpha.news.newsadddata', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@newsadddata']);
+    Route::get('news/add', ['as' => 'alpha.news.newsadd', 'uses' => 'AlphaController@newsadd']);
+    Route::post('news/add/data', ['as' => 'alpha.news.newsadddata', 'uses' => 'AlphaController@newsadddata']);
 
     //del news
-    Route::get('news/del/{id}', ['as' => 'alpha.news.delnews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@delnews']);
-    //Route::get('news/redel/{id}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@redelnews']);
-    //Route::get('news/list/dele', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@delNewsget']); 
+    Route::get('news/del/{id}', ['as' => 'alpha.news.delnews', 'uses' => 'AlphaController@delnews']);
+    //Route::get('news/redel/{id}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@redelnews']);
+    //Route::get('news/list/dele', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@delNewsget']); 
 
     //edit news
-    Route::get('news/edit/{id}', ['as' => 'alpha.news.newsedit', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@newsedit']);   
-    Route::post('news/edit/data', ['as' => 'alpha.news.editnewsdata', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editnewsdata']);
+    Route::get('news/edit/{id}', ['as' => 'alpha.news.newsedit', 'uses' => 'AlphaController@newsedit']);   
+    Route::post('news/edit/data', ['as' => 'alpha.news.editnewsdata', 'uses' => 'AlphaController@editnewsdata']);
 
    //category news
 
-    //Route::get('news/category', ['as' => 'alpha.news.getCategoryNews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@getCategoryNews']);
+    //Route::get('news/category', ['as' => 'alpha.news.getCategoryNews', 'uses' => 'AlphaController@getCategoryNews']);
 
-    Route::get('news/category/add', ['as' => 'alpha.news.addCategoryNews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@addCategoryNews']);
+    Route::get('news/category/add', ['as' => 'alpha.news.addCategoryNews', 'uses' => 'AlphaController@addCategoryNews']);
 
-    Route::post('news/category/add/data',['as' => 'alpha.news.addCategoryNewsData','uses' => 'App\Modules\Alpha\Controllers\AlphaController@addCategoryNewsData']);
+    Route::post('news/category/add/data',['as' => 'alpha.news.addCategoryNewsData','uses' => 'AlphaController@addCategoryNewsData']);
 
 
-    Route::get('news/category/edit/{id}', ['as' => 'alpha.faq.editCategoryNews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editCategoryNews']);
-    Route::get('news/category/del/{id}', ['as' => 'alpha.faq.delCategoryNews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@delCategoryNews']);
-    Route::post('news/category/del/data', ['as' => 'alpha.faq.editCategoryNewsData', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@editCategoryNewsData']);
+    Route::get('news/category/edit/{id}', ['as' => 'alpha.faq.editCategoryNews', 'uses' => 'AlphaController@editCategoryNews']);
+    Route::get('news/category/del/{id}', ['as' => 'alpha.faq.delCategoryNews', 'uses' => 'AlphaController@delCategoryNews']);
+    Route::post('news/category/del/data', ['as' => 'alpha.faq.editCategoryNewsData', 'uses' => 'AlphaController@editCategoryNewsData']);
 
     //up image
-    Route::get('faq/upload/images/{id}', ['as' => 'alpha.faq.updateimg', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updateimg']);
+    Route::get('faq/upload/images/{id}', ['as' => 'alpha.faq.updateimg', 'uses' => 'AlphaController@updateimg']);
 
-    Route::post('faq/updata',[ 'as' => 'alpha.faq.updata','uses' => 'App\Modules\Alpha\Controllers\AlphaController@updata']);
+    Route::post('faq/updata',[ 'as' => 'alpha.faq.updata','uses' => 'AlphaController@updata']);
 
-    Route::post('faq/updatajson',[ 'as' => 'alpha.faq.updatajson', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajson']);
+    Route::post('faq/updatajson',[ 'as' => 'alpha.faq.updatajson', 'uses' => 'AlphaController@updatajson']);
+
+    Route::get('news/upload/images/{id}', ['as' => 'alpha.news.updateimgnews', 'uses' => 'AlphaController@updateimgnews']);
+
+    Route::post('news/updata',[ 'as' => 'alpha.news.updata','uses' => 'AlphaController@updata']);
+
+    Route::post('news/updatajson',[ 'as' => 'alpha.news.updatajsonnews', 'uses' => 'AlphaController@updatajsonnews']);
+
+    Route::get('500', ['as' => 'alpha.500', 'uses' => 'AlphaController@error500']);
 
 
-    Route::get('news/upload/images/{id}', ['as' => 'alpha.news.updateimgnews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updateimgnews']);
-
-    Route::post('news/updata',[ 'as' => 'alpha.news.updata','uses' => 'App\Modules\Alpha\Controllers\AlphaController@updata']);
-
-    Route::post('news/updatajson',[ 'as' => 'alpha.news.updatajsonnews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajsonnews']);
-
-
-    //Route::post('updatajson', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajson']);
-    //Route::get('updata/index.php', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updata']);
-    Route::get('500', ['as' => 'alpha.500', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@error500']);
-
-    Route::get('/survey/index',['as' => 'alpha.survey.index', 'uses' => 'App\Modules\Alpha\Controllers\SurveyController@index']);
+    Route::get('/survey/index',['as' => 'alpha.survey.index', 'uses' => 'SurveyController@index']);
 
 });
 
