@@ -39,7 +39,7 @@
     }
 
     #login_content .addition_info{
-        background: #2980B9;
+        background: #41cac0;
         height: 100px; 
         width:100%;
         font-family: cursive;
@@ -56,8 +56,11 @@
     }
     @media screen and (max-width: 780px) {
         #login_content .addition_info {
-            height: 230px;
+            height: 230px!important;
             text-align: center;
+        }
+        .addition-info-row{
+            position: relative!important;
         }
     }
     @media screen and (max-width: 760px) and (min-width: 500px) {
@@ -65,26 +68,10 @@
             padding-left: 25%;
         }
     }
-    /*
-    .form-signin{
-        margin-top: 0!important;
-        
-    }
-    
-    #login_content #wrapper{
-        margin-top: 0!important;
-        padding-top: 50px!important;
-        padding-left: 150px!important;
-    }
-    .login-footer{
-        background-color: #e59886!important;
-    }
-    .login-footer .footer-top{
-        display: none;
-    }
-    */
+
     body{
         background: #e59886;
+        overflow-x: hidden;
     }
     .change_lang{
         text-align: right!important;
@@ -92,7 +79,17 @@
     .change_lang a{
         color: #fff!important;
     }
-
+    .addition_info{
+        height: 45px!important;
+        padding: 0 20px 0 50px!important;
+    }
+    .addition-info-row{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        bottom:0;
+        position: fixed;
+    }
 </style>
 @stop
 
@@ -120,8 +117,11 @@
         <div class="hidden-xs col-lg-4 col-md-4 col-sm-3">
         </div>
         <div class="sign-in col-lg-4 col-md-4 col-sm-5 col-xs-12">
-            <form class="form-signin" action="" method="post">               
+            <form class="form-signin" action="" method="post">
+            <h2 class="form-signin-heading">{{ trans('user_login.login') }}</h2>     
+                     
                 <div class="login-wrap">
+
                     <p class="change_lang">
                         <span class="btn-group btn-group-xs" role="group" aria-label="Extra-small button group"> 
                             <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=en" class="btn btn-default @if(App::getLocale() == 'en') btn-info @endif">English</a> 
@@ -132,22 +132,23 @@
                     <input type="text" id="username" class="form-control" placeholder="{{ trans('user_login.customer_id') }}" name="username" value="{{ $username }}" autofocus>
                     <input type="password" id="password" class="form-control" name="password" value="{{ $password }}" placeholder="{{ trans('user_login.password') }}">
                     <label class="checkbox">
-                        <input type="checkbox" id="remember_me" name="remember_me" value="1">{{ trans('user_login.remember_me') }}
+                        <input type="checkbox" id="remember_me" name="remember_me" value="1"> {{ trans('user_login.remember_me') }}
                     </label>
-                    <button class="btn btn-lg btn-login btn-block" type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}">{{ trans('user_login.login') }}</button>
-                </div>
-            
-                <div class="error">
+                    <p >
                     @if($result == 'not_for_portal')
                     {{ trans('user_login.account_is_not_a_customer_error_msg') }}
                     @elseif($result == 'login_failed')
                     {{ trans('user_login.login_failed_error_msg') }}
                     @endif
+                </p> 
+                    <button class="btn btn-lg btn-login btn-block" type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}">{{ trans('user_login.login') }}</button>
                 </div>
+            
+                
             </form>            
         </div>
     </div>
-    <div class="row">
+    <div class="row addition-info-row">
         <div class="addition_info" style="">
             
              <div class="info col-lg-2 col-md-2 col-sm-2 col-xs-12">
