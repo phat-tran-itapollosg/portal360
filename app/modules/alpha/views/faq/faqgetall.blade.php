@@ -65,7 +65,7 @@
                                             <li><a href="{{ route('alpha.faq.updateimg',$item->id ) }}" target="_blank">{{ trans('faq.updateImage') }}</a></li>
                                             <li>
                                             </li>
-                                            <li><a href=" {{URL::to('admin/faq/category')}} " target="_blank">{{ trans('faq.category') }}</a></li>
+                                            <li><a href=" {{URL::to(route('alpha.faq.Fagadd'))}} " target="_blank">{{ trans('faq.add') }}</a></li>
                                           </ul>
                                         </div>
                                     </td>

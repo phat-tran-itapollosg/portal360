@@ -37,9 +37,9 @@
                                 <td class="text-center">
                                     
                                     @if(!empty($item->img)) 
-                                    <img height="64px" src="{{URL::asset('public/img/news')}}/{{$item->img}}">
+                                    <img height="64px" src="{{URL::asset('public/images')}}/{{$item->img}}">
                                     @else
-                                    <img height="64px" src="{{ URL::asset('public/img/news/favicon_apollo.png') }}">
+                                    <img height="64px" src="{{ URL::asset('public/img/favicon_apollo.png') }}">
                                     @endif
                                    
                                 </td>
@@ -61,7 +61,7 @@
                                         <li><a href="{{ URL::to('admin/news/add') }}" target="_blank">
                                         {{ trans('news.add') }}
                                         </a></li>
-                                        <li><a href="" target="_blank">{{ trans('news.updateImage') }}</a></li>
+                                        <li><a href=" {{ URL::to(route('alpha.news.updateimgnews',$item->id))}} " target="_blank">{{ trans('news.updateImage') }}</a></li>
                                       </ul>
                                     </div>
                                 </td>
