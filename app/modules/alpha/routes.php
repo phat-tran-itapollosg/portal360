@@ -66,11 +66,16 @@ Route::group(['prefix' => 'admin'], function () {
     //up image
     Route::get('faq/upload/images/{id}', ['as' => 'alpha.faq.updateimg', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updateimg']);
 
-    //Route::post('faq/imagesupdata', ['as' => 'alpha.faq.imagesupdata', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@imagesupdata']);
-
     Route::post('faq/updata',[ 'as' => 'alpha.faq.updata','uses' => 'App\Modules\Alpha\Controllers\AlphaController@updata']);
 
     Route::post('faq/updatajson',[ 'as' => 'alpha.faq.updatajson', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajson']);
+
+
+    Route::get('news/upload/images/{id}', ['as' => 'alpha.news.updateimgnews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updateimgnews']);
+
+    Route::post('news/updata',[ 'as' => 'alpha.news.updata','uses' => 'App\Modules\Alpha\Controllers\AlphaController@updata']);
+
+    Route::post('news/updatajson',[ 'as' => 'alpha.news.updatajsonnews', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajsonnews']);
 
 
     //Route::post('updatajson', ['as' => 'alpha.faq.dosurvey', 'uses' => 'App\Modules\Alpha\Controllers\AlphaController@updatajson']);

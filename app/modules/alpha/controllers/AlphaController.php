@@ -66,13 +66,12 @@ class AlphaController extends \BaseController {
             $data = array(
             'faqquestion' => Input::get('txtq'),
             'faqreply' => Input::get('txtr'),
-            'idcate' => Input::get('idcate'),
-            'img'   => 'favicon_apollo.png'
+            'idcate' => Input::get('idcate')
             );
             $insert = \DB::table('alpha_faq')->insert($data); 
             if($insert)
             {
-            	return \Redirect::to(route('alpha.faq.newslist'));
+            	return \Redirect::to(route('alpha.faq.faq'));
             }
             else
             {
@@ -392,8 +391,7 @@ class AlphaController extends \BaseController {
              $data = array(
             'ntitle' => $title,
             'ncontent' => $contents,
-            'idcate' => $idcate,
-            'img'   => 'favicon_apollo.png'
+            'idcate' => $idcate
             );
             if(
             $insert = \DB::table('alpha_news')->insert($data)
@@ -517,9 +515,14 @@ class AlphaController extends \BaseController {
     protected function updateimg($id)
     {
 
-
         $this->layout->content=\view::make('alpha::faq.imgadd')->with(array('id' => $id));
     }
+
+    protected function updateimgnews($id)
+    {
+        $this->layout->content=\view::make('alpha::news.imgadd')->with(array('id' => $id));
+    }
+
     protected function updatajson()
     {
         $id = Input::get('id');
@@ -541,7 +544,28 @@ class AlphaController extends \BaseController {
             return \Response::json(array('result' => FALSE));
         }
     }
-      
+     
+    protected function updatajsonnews()
+    {
+        $id = Input::get('id');
+        $url= Input::get('url');
+        //var_dump(Input::get());
+        if( isset($id)  && isset($url) && !empty($id) && !empty($url) )
+        {
+            
+            if (\DB::table('alpha_news')
+                ->Where('id',$id)
+                ->update(array('img' => $url))
+            ){
+                return \Response::json(array('result' => TRUE));
+            }else{
+                return \Response::json(array('result' => FALSE));
+            }
+
+        }else{
+            return \Response::json(array('result' => FALSE));
+        }
+    } 
     protected function updata(){
 
         error_reporting(E_ALL | E_STRICT);
