@@ -161,11 +161,14 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
         //'Montoya\BMI\BMIServiceProvider',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         'Creolab\LaravelModules\ServiceProvider',
         // 'App\Modules\Content\ContentServiceProvider',
     	// 'App\Modules\Content\AnotherServiceProvider',
     	// 'App\Modules\Faq\FaqServiceProvider',
     	'App\Modules\Alpha\AlphaServiceProvider'
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
