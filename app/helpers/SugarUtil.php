@@ -75,6 +75,27 @@
 
             $result = $client->call(SugarMethod::GET_RELATIONSHIPS, $relationshipsParams);
             $feddbacks = $client->toSimpleObjectList($result->entry_list);
+			
+			  //TEST API - Get Data By Entry Point - By Lap Nguyen
+        $data_params = array(
+            'session'   =>  $session->root_session_id,
+            'function'  =>  'getTeamList',
+            'param'     =>  '',
+        );
+        $result = $client->call('entryPoint', $data_params);
+
+        $data_params = array(
+            'session'   =>  $session->root_session_id,
+            'function'  =>  'getSessionBooking',
+            'param'     =>  array(
+                'student_id'=>'173fd695-524d-dc26-7a50-5710d3fbbeea',
+                'start'     =>'2016-09-12',
+                'end'       =>'2016-10-04',
+                'class_type'=>'',
+            ),
+        );
+        $result = $client->call('entryPoint', $data_params);
+        //END: Test API
 
             return $feddbacks;  
         }

@@ -71,7 +71,7 @@
                 'is_portal' => 1,
                 'assigned_user_id' => $contact->assigned_user_id,
                 'team_id' => $contact->team_id,
-                'team_set_id' => $contact->team_set_id,
+                'team_set_id' => $contact->team_id,
             );
 
             $result = $this->client->save($session->root_session_id, 'J_Feedback', '', $data);
