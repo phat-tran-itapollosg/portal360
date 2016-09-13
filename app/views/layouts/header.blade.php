@@ -5,7 +5,7 @@
           <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
     <!--logo start-->
-    <a href="index.html" class="logo">Apollo<span>360</span></a>
+    <a href="{{ URL::to('/home') }}" class="logo">Apollo<span>360</span></a>
     <!--logo end-->
     @if(Session::get('contact') AND Session::get('contact')->last_name != '')
     <div class="top-nav ">
