@@ -148,7 +148,7 @@
             </form>            
         </div>
     </div>
-    <div class="row addition-info-row">
+<!--     <div class="row addition-info-row">
         <div class="addition_info" style="">
             
              <div class="info col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -169,7 +169,7 @@
             <div class="info col-lg-2 col-md-2 col-sm-2 col-xs-12">
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 
