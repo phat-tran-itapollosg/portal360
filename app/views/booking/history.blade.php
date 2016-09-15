@@ -32,17 +32,17 @@
                 </tr>
             </thead>
             <tbody>
-                 <!--@foreach($enrollents as $key => $booking) -->
-                  <tr>
-                      <td>Skill</td>
-                      <td>6:00 - 8:00</td>
-                      <td>............ </td>
-                      <td>.............</td>
-                      <td>Monday</td>
-                      <td>68 </td>
-                      <td>Pham Ngoc Thach</td>       
-                  </tr>
-              <!--@endforeach-->
+                 @foreach($session_booking as $key => $booking)
+                    <tr>
+                        <td>{{ $booking['class_name'] }}</td>
+                        <td>{{ $booking['week_date'] }}</td>
+                        <td>{{ $booking['subject'] }} </td>
+                        <td>{{ $booking['teacher_name'] }}</td>
+                        <td>{{ $booking['date_start'] }}</td>
+                        <td>{{ $booking['room_name'] }}</td>
+                        <td>{{ $booking['center_name'] }}</td>       
+                    </tr>
+                @endforeach
             </tbody>
         </table> 
     </div>
