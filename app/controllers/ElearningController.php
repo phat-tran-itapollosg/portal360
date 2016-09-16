@@ -13,58 +13,54 @@
 
 class ElearningController extends BaseController
 {
-    public function process()
-    {
+    protected $layout = 'layouts.master';
 
+    public function index()
+    {
+        $elearnings = array(
+            array(
+            'course_name' => 'Beginner Lesson 1',
+            'sso_code' => 'APOLLO_B1L1'
+            ),
+             array(
+            'course_name' => 'Beginner Lesson 2',
+            'sso_code' => 'APOLLO_B1L2'
+            ),array(
+            'course_name' => 'Beginner Lesson 3',
+            'sso_code' => 'APOLLO_B1L3'
+            ),array(
+            'course_name' => 'Beginner Lesson 4',
+            'sso_code' => 'APOLLO_B1L4'
+            ),array(
+            'course_name' => 'Beginner Lesson 5',
+            'sso_code' => 'APOLLO_B1L5'
+            )
+        );  
+    
+        return View::make('elearning.index')->with(array('elearnings'=>$elearnings));
+        exit();
+    }
+    public function login()
+    {
+        if(isset($_REQUEST['sso_code']) AND !empty($_REQUEST['sso_code'])){
+
+
+        // var_dump($_REQUEST['sso_code']);
+        // die();
         $session = Session::get('session');
         $contact = Session::get('contact');
-
-        //  $params = array(
-        //     'session' => $session->root_session_id,
-        //     'student_id' => $contact->id,
-        // );
-
-        // $enrrolments = $this->client->call(SugarMethod::GET_ENROLLMENT_LIST, $params);
-        // //return $enrrolments;
-        // $data = array(
-        //     'enrollents' => $enrrolments,
-        // );
-
-        // $class_id = $_REQUEST;
-
-        // //if(isset($class_id) || !empty($class_id))
-        // {
-        //   //var_dump($class_id);die;
-        // }
-
-
-        // return View::make('elearning.index')->with($data);
-
-        // $user = Session::get('user');
-         // var_dump($user);
-        // print_r('==================================================================================');
-        // print_r($contact->password_generated);
-        // print_r('==================================================================================');
-        // print_r($contact->portal_name);
-        // print_r('==================================================================================');
-        // print_r($contact->first_name);
-        // print_r('==================================================================================');
-        // print_r($contact->last_name);
-        // print_r('==================================================================================');
-        // print_r($contact->email1);
-         // die();
         
         $serviceConfig = Config::get('app.service_elearning');
         $user = array(
-            'login'                 => $contact->portal_name,//'yoshin',
-            'password'              => $contact->password_generated,//'your_password',
-            'email'                 =>  $contact->email1,//'yoshin+apollo@reallyenglish.com',  
-            'first_name'            =>  $contact->first_name,//'Michael', 
-            'first_name_alphabet'   =>  $contact->first_name,//'Michael',   
-            'first_name_local'      =>  $contact->first_name,//'Michael',   
-            'last_name'             =>  $contact->last_name,//'Schenker',   
-            'last_name_alphabet'    =>  $contact->last_name,//'Schenker',   
-            'last_name_local'       =>  $contact->last_name,//'Schenker',   
+            'login'                 => $contact->portal_name,
+            'password'              => $contact->password_generated,
+            'email'                 =>  $contact->email1,
+            'first_name'            =>  $contact->first_name,
+            'first_name_alphabet'   =>  $contact->first_name,
+            'first_name_local'      =>  $contact->first_name,
+            'last_name'             =>  $contact->last_name,
+            'last_name_alphabet'    =>  $contact->last_name,
+            'last_name_local'       =>  $contact->last_name,
         );
         $xml_data ='<?xml version="1.0"?>
         <query cmd="login">
@@ -84,36 +80,16 @@ class ElearningController extends BaseController
                 <last_name_local>'.$user['last_name_local'].'</last_name_local>
             </user>
             <course>
-                <course_code>'.$serviceConfig['course']['course_code'].'</course_code>
+                <course_code>'.$_REQUEST['sso_code'].'</course_code>
                 <group_code>'.$serviceConfig['course']['group_code'].'</group_code>
                 <start_date>'.$serviceConfig['course']['start_date'].'</start_date>    
                 <end_date>'.$serviceConfig['course']['end_date'].'</end_date>
                 <access_end_date>'.$serviceConfig['course']['access_end_date'].'</access_end_date>
             </course>
           </query>';
-
-//         yoshin
-// your_password
-// yoshin+apollo@reallyenglish.com
-// Michael
-// Michael
-// Michael
-// Schenker
-// Schenker
-// Schenker
-
-
-// APOLLO-PE6
-// TEST_GROUP
-// 2016-08-01
-// 2016-12-31
-// 2016-12-31
-
-        // var_dump($xml_data);die();
-
         
-        $url = $serviceConfig['remoteUrl'];//"https://re.reallyenglish.com/teachatapollo/sso"; 
-        $ch = curl_init(); // initialize curl handle 
+        $url = $serviceConfig['remoteUrl'];
+        $ch = curl_init(); 
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -130,33 +106,29 @@ class ElearningController extends BaseController
                                      ));
 
         $result = curl_exec($ch); // run the whole process 
-
         if (empty($result)) { 
            // some kind of an error happened 
-           // die(curl_error($ch)); 
            return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => curl_error($ch)]);
            curl_close($ch); // close cURL handler 
-           // exit();
         } else { 
-           $info = curl_getinfo($ch); 
-           curl_close($ch); // close cURL handler 
-           if (empty($info['http_code'])) { 
+            $info = curl_getinfo($ch); 
+            curl_close($ch); // close cURL handler 
+            if (empty($info['http_code'])) { 
                    // die("No HTTP code was returned"); 
                    return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => "No HTTP code was returned"]);
-                   // exit();
-           } else { 
-                // print_r($result); //contains response from server 
-                // print_r($info); //contains response from server 
-                // exit();
+            } else { 
                 $xml = new SimpleXMLElement($result);
                 if(isset($xml->url_start[0]) && !empty($xml->url_start[0])){
-                  //var_dump($xml->url_report[0]);die;
                     header("Location: ".$xml->url_start[0]);
                     exit();  
                 }else{
                     return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result]);
                 }                
-           } 
+            } 
+        }
+        }else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>404]);
         } 
+        exit(); 
     }
 }

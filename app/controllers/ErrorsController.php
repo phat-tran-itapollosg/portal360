@@ -16,7 +16,7 @@ class ErrorsController extends BaseController {
     |--------------------------------------------------------------------------
     */
 
-    public function error($code, $messenger) {
+    public function error($code, $messenger = NULL) {
         // var_dump($messenger);
         // die();
         

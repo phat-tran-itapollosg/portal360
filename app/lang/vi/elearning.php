@@ -5,6 +5,7 @@ return array(
 	'count_students' => 'Sinh viên',
 	'count_courses' => 'Khóa học',
 	'count_lessons' => 'Bài học',
-	
+	'form_heading' => 'Vui lòng chọn lớp học của bạn',
+	'form_label' => 'Lớp học'
 	);
 ?>

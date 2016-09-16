@@ -73,7 +73,9 @@
         Route::get('/news/detal/{id}','NewsController@Getdetal');
 
         // Routes Elearning
-        Route::get('/elearning', 'ElearningController@process');
+        Route::get('/elearning', ['as' => 'elearning.default', 'uses' =>'ElearningController@index']);
+        Route::get('/elearning/index', ['as' => 'elearning.index', 'uses' =>'ElearningController@index']);
+        Route::get('/elearning/login', ['as' => 'elearning.login', 'uses' =>'ElearningController@login']);
 
         // Routes Booking
         Route::get('/booking', 'BookingController@index');
