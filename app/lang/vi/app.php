@@ -36,4 +36,5 @@ return array(
     'survey' => 'Khảo sát',
     'booking' => 'Tiến hành đăng ký',
     'login_to_survey' => 'Quản Lý Khảo Sát',
+    'elearning' => 'Học Trực Tuyến',
 );

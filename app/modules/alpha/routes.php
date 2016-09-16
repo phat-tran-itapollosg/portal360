@@ -83,5 +83,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth','namespace' => 'App\Mo
     Route::get('/survey/index',['as' => 'alpha.survey.index', 'uses' => 'SurveyController@index']);
 
 });
+Route::group(array('prefix' => 'admin','namespace' => 'App\Modules\Alpha\Controllers'), function () {
 
-
+    Route::get('/elearning/index',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@index']);
+    Route::get('/elearning',['as' => 'alpha.elearning', 'uses' => 'ElearningController@index']);
+    Route::get('/elearning/retrieve',['as' => 'alpha.elearning.retrieve', 'uses' => 'ElearningController@retrieve']);
+});

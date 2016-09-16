@@ -248,9 +248,11 @@ return array(
 	),
 	'service_elearning' => array(
 		'remoteUrl'      =>'https://re.reallyenglish.com/teachatapollo/sso',
+		'retrievingUrl'      =>'https://re.reallyenglish.com/api/v1/organizations/2509/classrooms/',
 		'auth'   =>array(
 			'organization_code' => 'APOLLO',
 			'password' => 'w7vubOvqX',
+			'api_key' => '374cb2ebfe74bd4fec17d0dffb1023c6c4676c3a35a93d20f830ea56ade0039a',
 		),
 		// 'course'       =>array(
 		// 	'course_code' => 'APOLLO-PE6',
@@ -275,3 +277,11 @@ return array(
 
 	)
 );
+// Password for Login
+
+// w7vubOvqX
+
+// API key for retrieving study data
+
+// 374cb2ebfe74bd4fec17d0dffb1023c6c4676c3a35a93d20f830ea56ade0039a
+// "https://re.reallyenglish.com/api/v1/organizations/2509/classrooms/{Y}.json?page={Z}
