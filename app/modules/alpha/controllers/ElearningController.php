@@ -63,6 +63,7 @@ class ElearningController extends \BaseController {
 
         $serviceConfig = \Config::get('app.service_elearning');
         $url = $serviceConfig['retrievingUrl']."20130.json?page=".$page;//"https://re.reallyenglish.com/teachatapollo/sso"; 
+        // var_dump($url);die();
         $ch = curl_init(); // initialize curl handle 
         curl_setopt($ch, CURLOPT_HEADER, false);
         // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -427,5 +428,52 @@ class ElearningController extends \BaseController {
         }
     }
 
+    protected function getClassRoom()
+    {
+        $getClassRoom = \DB::table('alpha_classroom')
+                        ->join('alpha_students','alpha_classroom_id', '=', 'alpha_classroom.classroom_id')
+                        ->orderBy('alpha_classroom.id')
+                        ->get();
+        //var_dump($getClassRoom);
+        $this->layout->content = \view::make('alpha::elearning.classroom')
+                                ->with(array('getClassRoom' => $getClassRoom,'i'=>1));
+    }
+    protected function getCourses($id)
+    {
+        $getIdClassRoom = \DB::table('alpha_students')
+                        ->select('alpha_classroom_id')
+                        ->where('student_id',$id)
+                        ->get();
+        foreach ($getIdClassRoom as $getIdClassRoom)
+                {
+                   $getIdClassRoom= $getIdClassRoom->alpha_classroom_id;
+                   
+                }
+        $GetNameClass = \DB::table('alpha_classroom')
+                      ->select('name')
+                      ->where('classroom_id',$getIdClassRoom)
+                      ->get();
+        foreach ($GetNameClass as $GetNameClass)
+                {
+                   $GetNameClass= $GetNameClass->name;
+                   
+                }
+
+        $getCourses = \DB::table('alpha_students')
+                    ->join('alpha_courses','alpha_student_id','=','alpha_students.student_id')     
+                    ->where('alpha_student_id',$id)
+                    ->get();
+         $this->layout->content = \view::make('alpha::elearning.courses')
+                                ->with(array('getCourses' => $getCourses,'GetNameClass'=> $GetNameClass));
+    }   
+    protected function GetLessions($id)
+    {
+        $GetLessonsByID = \DB::table('alpha_lessons')
+                        ->where('alpha_student_id',$id)
+                        ->get();
+        //var_dump($GetLessonsByID);
+        //die();
+        $this->layout->content = \view::make('alpha::elearning.lessons')->with(array('GetLessonsByID' => $GetLessonsByID));
+    }
 }
 

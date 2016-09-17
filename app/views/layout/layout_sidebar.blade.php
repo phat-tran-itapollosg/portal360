@@ -44,6 +44,12 @@
                     <span>{{ trans('app.elearning') }}</span>
                 </a>
             </li>
+            <li class="sub-menu dcjq-parent-li">
+                <a href="{{ route('alpha.elearning.getClassRoom')}}" target="_blank">
+                    <i class="glyphicon glyphicon-tag"></i>
+                    <span>{{ trans('elearning.elearning1') }}</span>
+                </a>
+            </li>
         </ul>
         <!-- sidebar menu end-->
     </div>
