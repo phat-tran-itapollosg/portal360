@@ -12,5 +12,9 @@ class AlphaClassroom extends Eloquent {
 	 */
 	protected $table = 'alpha_classroom';
 	public $timestamps  = false;
-	protected $primaryKey = 'classroom_id';
+	protected $primaryKey = 'alpha_classroom_id';
+	public function students()
+    {
+        return $this->hasMany('AlphaStudents', 'alpha_classroom_id', 'alpha_classroom_id');
+    }
 }

@@ -12,5 +12,14 @@ class AlphaCourses extends Eloquent {
 	 */
 	protected $table = 'alpha_courses';
 	public $timestamps  = false;
-	protected $primaryKey = 'course_id';
+	protected $primaryKey = 'alpha_course_id';
+	public function lessons()
+    {
+        return $this->hasMany('AlphaLessons', 'alpha_course_id', 'alpha_course_id');
+    }
+    public function student()
+    {
+        return $this->hasOne('AlphaStudents', 'alpha_student_id', 'alpha_student_id');
+    }
+
 }
