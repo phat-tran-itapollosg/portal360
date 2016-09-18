@@ -2,7 +2,12 @@
     <div id="sidebar" class="nav-collapse " tabindex="5000" style="overflow: hidden; outline: none;">
         <!-- sidebar menu start-->
          <ul class="sidebar-menu" id="nav-accordion">
-          
+            <li class="sub-menu dcjq-parent-li">
+                <a href="{{ URL::to('admin/news') }}" >
+                    <i class="fa fa-book"></i>
+                    <span> {{ trans('news.heading') }} </span>
+                </a>
+            </li>
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('admin/faq') }}">
                 <i class="fa fa-question"></i>
@@ -16,12 +21,7 @@
                 <span> {{ trans('faq.categoryfaq') }} </span>
                 </a>
             </li>-->
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('admin/news') }}" >
-                    <i class="fa fa-book"></i>
-                    <span> {{ trans('news.heading') }} </span>
-                </a>
-            </li>
+            
             <!--
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('admin/news/category') }}">
@@ -39,17 +39,17 @@
                 </a>
             </li>
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ route('alpha.elearning')}}" target="_blank">
+                <a href="#" class="dcjq-parent">
                     <i class="glyphicon glyphicon-tag"></i>
                     <span>{{ trans('app.elearning') }}</span>
-                </a>
+                <span class="dcjq-icon"></span></a>
+                <ul class="sub" style="display: none;">
+                    <li><a href="{{ route('alpha.elearning.retrieve',[20130])}}" target="_blank">{{ trans('elearning.retrieve_study_record') }} </a>(20130)</li>
+                    <li><a href="{{ route('alpha.elearning.index')}}">{{ trans('elearning.classroom') }}</a></li>
+                </ul>
             </li>
-            <li class="sub-menu dcjq-parent-li">
-                <a href="{{ route('alpha.elearning.getClassRoom')}}" target="_blank">
-                    <i class="glyphicon glyphicon-tag"></i>
-                    <span>{{ trans('elearning.elearning1') }}</span>
-                </a>
-            </li>
+            
+            
         </ul>
         <!-- sidebar menu end-->
     </div>

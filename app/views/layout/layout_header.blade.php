@@ -4,7 +4,7 @@
           <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
     <!--logo start-->
-    <a href="index.html" class="logo">Apollo<span>360</span></a>
+    <a href="{{ route('alpha.news.newslist')}}" class="logo">Apollo<span>360</span></a>
     <!--logo end-->
     <div class="top-nav ">
         <!--search & user info start-->
