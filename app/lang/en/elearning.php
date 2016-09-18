@@ -6,7 +6,7 @@ return array(
 	'count_courses' => 'Course',
 	'count_lessons' => 'Lesson',
 	'form_heading' => 'Please select your class',
-	'form_label' => 'Class'
+	'form_label' => 'Class',
 	'classroom_name'=> 'Class Name',
 	'classroom_date'=> 'Class Create',
 	'students'		=> 'Student',
@@ -28,5 +28,18 @@ return array(
 	'lessons_created_at'	=> 'Create Date',
 	'lessons_score'	=> 'Score Lessons',
 	'elearning1'	=> 'Elearning Test',
+	'retrieve_study_record'	=> 'Retrieve Study Record',
+	'classroom_heading'	=> 'Classroom',
+	'classroom_updated_at'	=> 'Updated At',
+	'classroom_created_at'	=> 'Created At',
+	'classroom_total_pages'	=> 'Total Pages',
+	'classroom_per_page'	=> 'Per Page',
+	'classroom_id'	=> 'Classroom ID ',
+	'students_login'	=> 	'Login',
+	'students_first_name'	=> 	'First Name',
+	'students_last_name'	=> 	'Last Name',
+	'students_email'	=> 	'Email',
+	'lessons_submitted'	=> 'Submitted',
+	'classroom_time_retrieve'	=> 'Time Retrieve',
 	);
 ?>

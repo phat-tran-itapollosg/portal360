@@ -2,8 +2,8 @@
 
 return array(
 
-    'app_title' => 'PARENT\'S ONLINE REPORTING',
-    'company_name' => 'APOLLO JUNIOR',
+    'app_title' => 'APOLLO ENGLISH 360 PORTAL', 
+    'company_name' => 'APOLLO 360',
     'spinner_text' => 'Please wait...',
     'view_profile' => 'View Profile',
     'change_password' => 'Change Password',

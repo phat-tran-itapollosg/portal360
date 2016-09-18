@@ -6,7 +6,7 @@ return array(
 	'count_courses' => 'Khóa học',
 	'count_lessons' => 'Bài học',
 	'form_heading' => 'Vui lòng chọn lớp học của bạn',
-	'form_label' => 'Lớp học'
+	'form_label' => 'Lớp học',
 	'classroom_name'=> 'Tên Phòng',
 	'classroom_date'=> 'Ngày tạo',
 	'students'		=> 'Học Sinh',
@@ -28,5 +28,19 @@ return array(
 	'lessons_created_at'	=> 'Ngày tạo',
 	'lessons_score'	=> 'Số bài học',
 	'elearning1'	=> 'Elearning Test',
+	'retrieve_study_record'	=> 'Retrieve Study Record',
+	'classroom_heading'	=> 'Classroom',
+	'classroom_updated_at'	=> 'Updated At',
+	'classroom_created_at'	=> 'Created At',
+	'classroom_total_pages'	=> 'Total Pages',
+	'classroom_per_page'	=> 'Per Page',
+	'classroom_id'	=> 'Classroom ID ',
+	'students_login'	=> 	'Login',
+	'students_first_name'	=> 	'First Name',
+	'students_last_name'	=> 	'Last Name',
+	'students_email'	=> 	'Email',
+	'lessons_submitted'	=> 'Submitted',
+	'classroom_time_retrieve'	=> 'Time Retrieve',
+
 	);
 ?>
