@@ -8,15 +8,21 @@
 @extends('layout.layout_master')
 @section('layout_content')
 <div class='row'>
+<div class="col-lg-12">  
+<ol class="breadcrumb">
+                  <li><a href="{{ route('alpha.elearning.index')}}">{{ trans('elearning.classroom_heading') }}</a></li>
+                  <li><a href="{{ route('alpha.elearning.student', [$record->classroom->id])}}">{{$record->classroom->name}}</a></li>
+                  <li>{{$record->first_name}}</li>
+                </ol>
+                </div>
+</div>
+
+<div class='row'>
     <div class="col-lg-12">  
     <section class="panel panel-default">
-            <header class="panel-heading" style="border-radius:0">
+            <header class="panel-heading" >
                 <b> 
-                        {{ trans('elearning.courses_heading') }} 
-                        @foreach($getCourses as $index=>$item )
-                            {{ $item->first_name }}&nbsp{{ $item->last_name }}
-
-                        @endforeach
+                        {{ trans('elearning.courses_heading') }}
                 </b>
                 
                 
@@ -25,44 +31,47 @@
             <div class="col-md-12">
                     <table  id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
                         <thead>                                   
-                            <tr style=" height: 55px ">
+                            <tr >
                                 <th class="text-center" width="5%"><b>#</b></th> 
-                                 <th class="text-center" width="20%">
+                                 <th class="text-center" >
                                  <b>{{ trans('elearning.course_name') }} </b>
                                  </th>                            
                                 <th class="text-center" width="20%"><b>{{ trans('elearning.courses_created_at') }}</b></th>
                                 <th class="text-center" width="20%"><b>{{ trans('elearning.courses_end_date') }}</b></th>
-                                <th class="text-center" width="20%">
+                                <th class="text-center" width="10%">
                                     <b> 
                                         {{ trans('elearning.payment_status') }}
                                      </b>
                                  </th>
-                                <th class="text-center" >
-                                    <b>
-                                    {{ trans('elearning.classroom_name') }}
-                                    </b>
+                                <th class="text-center" width="5%">
+                                    <b> 
+                                        {{ trans('elearning.lessons') }}
+                                     </b>
+                                </th>
+                                <th class="text-center" width="5%">
+                                    
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($getCourses as $index=>$item )
-                            <tr style=" height: 55px ">
-                                <th class="text-center" width="5%">
-                                    {{ $item->alpha_course_id }}
-                                </th>                             
-                                <th class="text-center" width="20%">
-                                    <a href="{{ URL::asset(route('alpha.elearning.lessions',$item->alpha_student_id)) }}">
+                        @foreach($record->courses as $index=>$item )
+                            <tr >
+                                <td class="text-center" >
+                                    {{ $item->id }}
+                                </td>                             
+                                <td class="text-left" >
+                                    
                                         {{ $item->course_name }}
-                                    </a>
-                                </th>
-                                <th class="text-center" width="20%">
+                                    
+                                </td>
+                                <td class="text-center" >
                                     {{ $item->created_at }}
-                                </th>
+                                </td>
                                 
-                                <th class="text-center" width="20%">
+                                <td class="text-center" >
                                     {{ $item->end_date }}
-                                </th>
-                                <th class="text-center" >
+                                </td>
+                                <td class="text-center" >
                                     @if(($item->payment_status)==0)
                                     <span class="label label-danger">
                                         {{ trans('elearning.payment_status_flase') }}
@@ -73,10 +82,21 @@
                                             {{ trans('elearning.payment_status_true') }}
                                         </span>
                                     @endif
-                                </th>      
-                                <th class="text-center" width="20%">
-                                    {{ $GetNameClass }}
-                                </th>                  
+                                </td>   
+                                <td class="text-center" >
+                                    {{ $item->lessons->count() }}
+                                </td>   
+                                <td class="text-center" >
+                                    <div class="dropdown">
+                                      <button id="course-{{ $item->id }}" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-xs">
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                        
+                                      </button>
+                                      <ul class="dropdown-menu pull-right" aria-labelledby="course-{{ $item->id }}">                                
+                                        <li><a href="{{ route('alpha.elearning.lession', [$item->id])}}" target="_blank">{{ trans('elearning.lessons') }}</a></li>
+                                      </ul>
+                                    </div>
+                                </td>                  
                             </tr>
                         @endforeach
 

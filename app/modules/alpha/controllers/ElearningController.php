@@ -11,58 +11,61 @@ use Illuminate\Support\Facades\Input;
 class ElearningController extends \BaseController {
 	protected $layout = 'layout.layout_master'; 
 
-    public function retrieve(){
-
-        $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array());
-    }
     public function index(){
-
-        $result = $this->retrievecourse(1);
-        $count_students = 0;
-        $count_courses = 0;
-        $count_lessons = 0;
-                // var_dump('<pre>');
-                // var_dump($result["data"]);
-                // var_dump('</pre>');
-                // die();
-        if($result['error'] == FALSE){
-            if(intval($result['total_pages']) > 1){
-                for ($i=1; $i < $result['total_pages']; $i++) { 
-                    $result = $this->retrievecourse( $i + 1);
-                    $count_students = intval($result['count_students']);
-                    $count_courses = intval($result['count_courses']);
-                    $count_lessons = intval($result['count_lessons']);
+        $Classroom = \AlphaClassroom::all();
+        $this->layout->content = \view::make('alpha::elearning.index')->with(array('Classroom' => $Classroom));
+    }
+    public function retrieve_result($id = NULL){
+        if(isset($id) && !empty($id)){
+            $result = $this->retrievecourse($id,1);
+            $count_students = 0;
+            $count_courses = 0;
+            $count_lessons = 0;
+                    // var_dump('<pre>');
+                    // var_dump($result["data"]);
+                    // var_dump('</pre>');
+                    // die();
+            if($result['error'] == FALSE){
+                if(intval($result['total_pages']) > 1){
+                    for ($i=1; $i < $result['total_pages']; $i++) { 
+                        $result = $this->retrievecourse($id, $i + 1);
+                        $count_students = intval($result['count_students']);
+                        $count_courses = intval($result['count_courses']);
+                        $count_lessons = intval($result['count_lessons']);
+                    }
+                    // var_dump($count_students);
+                    // var_dump($count_courses);
+                    // var_dump($count_lessons);
+                    // die();
+                    $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array(
+                        'classroom' => $result['classroom'],
+                        'count_students' => $count_students,
+                        'count_courses' => $count_courses,
+                        'count_lessons' => $count_lessons,
+                        ));
+                }else{
+                    // classroom
+                    
+                    $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array(
+                        'classroom' => $result["data"]['classroom'],
+                        'count_students' => $result["data"]['count_students'],
+                        'count_courses' => $result["data"]['count_courses'],
+                        'count_lessons' => $result["data"]['count_lessons'],
+                        ));
+                    // var_dump($result);
+                    // die();
                 }
-                // var_dump($count_students);
-                // var_dump($count_courses);
-                // var_dump($count_lessons);
-                // die();
-                $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array(
-                    'classroom' => $result['classroom'],
-                    'count_students' => $count_students,
-                    'count_courses' => $count_courses,
-                    'count_lessons' => $count_lessons,
-                    ));
             }else{
-                // classroom
-                
-                $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array(
-                    'classroom' => $result["data"]['classroom'],
-                    'count_students' => $result["data"]['count_students'],
-                    'count_courses' => $result["data"]['count_courses'],
-                    'count_lessons' => $result["data"]['count_lessons'],
-                    ));
-                // var_dump($result);
-                // die();
+                return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result['messenger']]);
             }
         }else{
-            return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result['messenger']]);
+             return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
     }
-    public function retrievecourse($page){
+    public function retrievecourse($id,$page){
 
         $serviceConfig = \Config::get('app.service_elearning');
-        $url = $serviceConfig['retrievingUrl']."20130.json?page=".$page;//"https://re.reallyenglish.com/teachatapollo/sso"; 
+        $url = $serviceConfig['retrievingUrl'].$id.".json?page=".$page;//"https://re.reallyenglish.com/teachatapollo/sso"; 
         // var_dump($url);die();
         $ch = curl_init(); // initialize curl handle 
         curl_setopt($ch, CURLOPT_HEADER, false);
@@ -122,7 +125,7 @@ class ElearningController extends \BaseController {
                         "login" => $students['login'],
                         "first_name" => $students['first_name'],
                         "email" => $students['email'],
-                        "alpha_classroom_id" => $AlphaClassroom->classroom_id
+                        "alpha_classroom_id" => $AlphaClassroom->alpha_classroom_id
                         );
 
                     $AlphaStudents = $this->studentfindAndCreate($student);
@@ -146,8 +149,8 @@ class ElearningController extends \BaseController {
                             "linking" => $courses['linking'],
                             "course_session_id" => $courses['course_session_id'],
                             "id" => $courses['id'],
-                            "alpha_classroom_id" => $AlphaClassroom->classroom_id,
-                            "alpha_student_id" => $AlphaStudents->student_id
+                            "alpha_classroom_id" => $AlphaClassroom->alpha_classroom_id,
+                            "alpha_student_id" => $AlphaStudents->alpha_student_id
                             );
 
                         $AlphaCourses = $this->coursefindAndCreate($course);
@@ -173,8 +176,8 @@ class ElearningController extends \BaseController {
                                 "id" => $lessons['id'],
                                 "score" => $lessons['score'],
                                 "alpha_course_id" => $AlphaCourses->alpha_course_id,
-                                "alpha_classroom_id" => $AlphaClassroom->classroom_id,
-                                "alpha_student_id" => $AlphaStudents->student_id
+                                "alpha_classroom_id" => $AlphaClassroom->alpha_classroom_id,
+                                "alpha_student_id" => $AlphaStudents->alpha_student_id
                                 );
 
                             $AlphaLessons = $this->lessonfindAndCreate($lesson);
@@ -249,6 +252,9 @@ class ElearningController extends \BaseController {
                     $created_at = new \DateTime($classroom['created_at']);
                     $Class->created_at = $created_at->format('Y-m-d H:i:s');
 
+                    $time_retrieve = new \DateTime();
+                    $Class->time_retrieve = $time_retrieve->format('Y-m-d H:i:s');
+
                     $Class->total_pages = $classroom['total_pages'];
             		$Class->per_page = $classroom['per_page'];
             		$Class->save();
@@ -262,6 +268,9 @@ class ElearningController extends \BaseController {
             }else{
                 $Class->total_pages = $classroom['total_pages'];
                 $Class->per_page = $classroom['per_page'];
+                $time_retrieve = new \DateTime();
+                $Class->time_retrieve = $time_retrieve->format('Y-m-d H:i:s');
+
                 $Class->save();
             }
         	return $Class;
@@ -323,6 +332,41 @@ class ElearningController extends \BaseController {
 
             if($record == NULL){
                 $record = new \AlphaCourses;
+                $record->course_name = $course['course_name'];
+
+                $updated_at = new \DateTime($course['updated_at']);   
+                $record->updated_at = $updated_at->format('Y-m-d H:i:s');
+
+                $access_end_date = new \DateTime($course['access_end_date']); 
+                $record->access_end_date = $access_end_date->format('Y-m-d H:i:s');
+
+                $created_at = new \DateTime($course['created_at']); 
+                $record->created_at = $created_at->format('Y-m-d H:i:s');
+
+                $end_date = new \DateTime($course['end_date']); 
+                $record->end_date = $end_date->format('Y-m-d H:i:s');
+
+                $start_date = new \DateTime($course['start_date']); 
+                $record->start_date = $start_date->format('Y-m-d H:i:s');
+
+                $access_start_date = new \DateTime($course['access_start_date']); 
+                $record->access_start_date = $access_start_date->format('Y-m-d H:i:s');
+
+                $record->course_session_id = $course['course_session_id'];
+                $record->id = $course['id'];
+                $record->payment_status = $course['payment_status'];
+                $record->classroom_id = $course['classroom_id'];
+                $record->member_id = $course['member_id'];
+                $record->linking = $course['linking'];
+                $record->course_type = $course['course_type'];
+                
+                
+                $record->parent_id = $course['parent_id'];
+                $record->registration_item_id = $course['registration_item_id'];
+                $record->alpha_student_id = $course['alpha_student_id'];
+                $record->alpha_classroom_id = $course['alpha_classroom_id'];
+                $record->save();
+            }else{
                 $record->course_name = $course['course_name'];
 
                 $updated_at = new \DateTime($course['updated_at']);   
@@ -421,6 +465,39 @@ class ElearningController extends \BaseController {
                 $record->alpha_student_id = $lesson['alpha_student_id'];
                 $record->alpha_classroom_id = $lesson['alpha_classroom_id'];
                 $record->save();
+            }else{
+                $record->graded = $lesson['graded'];
+                $record->score = $lesson['score'];
+                $record->skill = $lesson['skill'];
+                $record->passed = $lesson['passed'];
+                $record->status = $lesson['status'];
+                $record->session_id = $lesson['session_id'];
+                $record->unit_type = $lesson['unit_type'];
+                $record->id = $lesson['id'];
+                $record->level = $lesson['level'];
+
+                $created_at = new \DateTime($lesson['created_at']); 
+                $record->created_at = $created_at->format('Y-m-d H:i:s');
+
+                $updated_at = new \DateTime($lesson['updated_at']); 
+                $record->updated_at = $updated_at->format('Y-m-d H:i:s');
+
+                $submitted = new \DateTime($lesson['submitted']); 
+                $record->submitted = $submitted->format('Y-m-d H:i:s');
+
+
+                $record->time = $lesson['time'];
+                $record->grade = $lesson['grade'];
+                $record->unit_id = $lesson['unit_id'];
+                
+                
+                $record->title = $lesson['title'];
+                $record->title_local = $lesson['title_local'];
+                $record->passed_in_course = $lesson['passed_in_course'];
+                $record->alpha_course_id = $lesson['alpha_course_id'];
+                $record->alpha_student_id = $lesson['alpha_student_id'];
+                $record->alpha_classroom_id = $lesson['alpha_classroom_id'];
+                $record->save();
             }
             return $record;
         }else{
@@ -428,52 +505,41 @@ class ElearningController extends \BaseController {
         }
     }
 
-    protected function getClassRoom()
+    protected function studentsOfClass($id = NULL)
     {
-        $getClassRoom = \DB::table('alpha_classroom')
-                        ->join('alpha_students','alpha_classroom_id', '=', 'alpha_classroom.classroom_id')
-                        ->orderBy('alpha_classroom.id')
-                        ->get();
-        //var_dump($getClassRoom);
-        $this->layout->content = \view::make('alpha::elearning.classroom')
-                                ->with(array('getClassRoom' => $getClassRoom,'i'=>1));
+        if(!empty($id)){
+            $record = \AlphaClassroom::where('id' , $id)
+            ->first();
+            $this->layout->content = \view::make('alpha::elearning.classroom')
+                                ->with(array('classroom' => $record));
+        }else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+        }
+        
+        
     }
-    protected function getCourses($id)
+    protected function coursesOfStudents($id)
     {
-        $getIdClassRoom = \DB::table('alpha_students')
-                        ->select('alpha_classroom_id')
-                        ->where('student_id',$id)
-                        ->get();
-        foreach ($getIdClassRoom as $getIdClassRoom)
-                {
-                   $getIdClassRoom= $getIdClassRoom->alpha_classroom_id;
-                   
-                }
-        $GetNameClass = \DB::table('alpha_classroom')
-                      ->select('name')
-                      ->where('classroom_id',$getIdClassRoom)
-                      ->get();
-        foreach ($GetNameClass as $GetNameClass)
-                {
-                   $GetNameClass= $GetNameClass->name;
-                   
-                }
-
-        $getCourses = \DB::table('alpha_students')
-                    ->join('alpha_courses','alpha_student_id','=','alpha_students.student_id')     
-                    ->where('alpha_student_id',$id)
-                    ->get();
-         $this->layout->content = \view::make('alpha::elearning.courses')
-                                ->with(array('getCourses' => $getCourses,'GetNameClass'=> $GetNameClass));
+        if(!empty($id)){
+            $record = \AlphaStudents::where('alpha_student_id' , $id)
+            ->first();
+            $this->layout->content = \view::make('alpha::elearning.courses')
+                                ->with(array('record' => $record));
+        }else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+        }
     }   
-    protected function GetLessions($id)
+    protected function lessionsOfCourse($id)
     {
-        $GetLessonsByID = \DB::table('alpha_lessons')
-                        ->where('alpha_student_id',$id)
-                        ->get();
-        //var_dump($GetLessonsByID);
-        //die();
-        $this->layout->content = \view::make('alpha::elearning.lessons')->with(array('GetLessonsByID' => $GetLessonsByID));
+        if(!empty($id)){
+            $record = \AlphaCourses::where('id' , $id)
+            ->first();
+            $this->layout->content = \view::make('alpha::elearning.lessons')
+                                ->with(array('record' => $record));
+        }else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+        }
+
     }
 }
 
