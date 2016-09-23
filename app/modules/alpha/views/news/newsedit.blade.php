@@ -28,10 +28,6 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Danh mục</label>
                 <select name="idcate" class="form-control">
-                        @foreach($selected as $sel)
-                            <option value ="{{ $sel->nid }}">{{$sel->ccontents}}</option>
-                        @endforeach
-                        
                         @foreach($cate as $cates)
                             <option value ="{{ $cates->nid }}">{{$cates->ccontents}}</option>
                         @endforeach

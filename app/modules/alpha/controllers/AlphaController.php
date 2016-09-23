@@ -282,7 +282,8 @@ class AlphaController extends \BaseController {
                     ->where('cdelete',0)
                     ->get();
         */
-        
+        $getfaq1 = \AlphaNews::where('ndelete',0)->orderBy('ndate','desc')->get();
+        $getCategoryNews = \AlphaNewsCategory::where('cdelete',0)->get();
          $this->layout->content = \view::make('alpha::news.newslist')->with(
             array('getfaq1'=>$getfaq1,'getCategoryNews' =>$getCategoryNews));
     }
@@ -315,25 +316,27 @@ class AlphaController extends \BaseController {
         if(isset($id) && !empty($id))
         {
 
-            $getInfoFag = \DB::table('alpha_news')->where('id', $id)->get();
+                /*
+                 $getInfoFag = \DB::table('alpha_news')->where('id', $id)->get();
                 foreach ($getInfoFag as $getfaqs)
                 {
                    $idcate= $getfaqs->idcate;
                    //var_dump($idcate);
                 }
-                
                 $getCategoryed = \DB::table('alpha_ncategory')
                                 ->where('nid',$idcate)
                                 ->get();
                 $getCategory = \DB::table('alpha_ncategory')                
                                 ->where('cdelete',0)
                                 ->get();
-                //echo Input::get('id');
-            //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
+                */
+
+                $get_category_by_id_news = \AlphaNews::where('id',$id)->get();
+                $getCategory = \AlphaNewsCategory::where('cdelete',0)->get();
                 $this->layout->content = \view::make('alpha::news.newsedit')->with(array(
-                                                            'infofaq'=>$getInfoFag,
+                                                            'infofaq'=>$get_category_by_id_news,
                                                             'cate'=>$getCategory,
-                                                            'selected'=>$getCategoryed
+                                                            //'selected'=>$getCategory
                                                              ));
         }
         else
@@ -379,9 +382,8 @@ class AlphaController extends \BaseController {
     protected function newsadd()
     {
 
-        $getcate = \DB::table('alpha_ncategory')
-                        ->where('cdelete', 0)
-                        ->get();
+       
+        $getcate = \AlphaNewsCategory::where('cdelete',0)->get();
         $this->layout->content= \view::make('alpha::news.newsadd')->with(array('getcate'=>$getcate));
     }
     protected function newsadddata()
@@ -421,9 +423,7 @@ class AlphaController extends \BaseController {
     //category news
     protected function getCategoryNews()
     {
-        $getCateFaq = \DB::table('alpha_ncategory')
-                    ->where('cdelete',0)
-                    ->get();
+        $getCateFaq = \AlphaNewsCategory::where('cdelete',0)->get();    
         $this->layout->content = \view::make('alpha::news.categorydetall')->with(array('getCateFaq'=>$getCateFaq));
     }
 
@@ -458,9 +458,8 @@ class AlphaController extends \BaseController {
 
     protected function editCategoryNews($id)
     {
-        $getEditCateFaq = \DB::table('alpha_ncategory')
-                        ->where('nid',$id)
-                        ->get();
+        
+        $getEditCateFaq = \AlphaNewsCategory::where('nid',$id)->get();
         $this->layout->content= \view::make('alpha::news.categoryedit')->with(array('getEditCateFaq'=>$getEditCateFaq));
     }
 
