@@ -19,6 +19,7 @@ class AlphaController extends \BaseController {
     
     protected function faq()
     {
+        /*
         $faqdelget = \DB::table('alpha_faq')
                         ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
                         //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
@@ -37,18 +38,19 @@ class AlphaController extends \BaseController {
                                                                                     'getCateFaq'=>$getCateFaq
 
                 ));
-    	}
+    	}*/
+        
+        $recordAlphaFaq =  \AlphaFaq::where('faqdelete',0)->orderBy('faqdate','desc')->get();
+        $getCateFaq = \AlphaFaqCategory::where('cdelete',0)->get();
+        $this->layout->content = view::make('alpha::faq.faqgetall')->with(array('faqdelget' =>$recordAlphaFaq,
+
+                                                                                'getCateFaq'=> $getCateFaq));
+
     }
     protected function Fagadd()
     {
-        $getcate = \DB::table('alpha_category')
-                        ->where('cdelete', 0)
-                        ->get();
-                        
-        //$getdel=0;
+        $getcate = \AlphaFaqCategory::where('cdelete',0)->get();       
         $this->layout->content = \view::make('alpha::faq.faqadd')->with(array('cate'=>$getcate));
-        //return view::make('faq.faqadd');
-        
     }
     protected function addFagdata()
     {
@@ -169,10 +171,7 @@ class AlphaController extends \BaseController {
     //category faq
     protected function getCategoryFaq()
     {
-        $getCateFaq = \DB::table('alpha_category')
-                    ->where('cdelete',0)
-                    ->get();
-        //var_dump($getCateFaq);
+        $getCateFaq = \AlphaFaqCategory::where('cdelete',0)->get();
         $this->layout->content = \view::make('alpha::faq.categorydetall')->with(array('getCateFaq'=>$getCateFaq));
     }
 
@@ -207,10 +206,15 @@ class AlphaController extends \BaseController {
 
     protected function editCategoryFaq($id)
     {
-        $getEditCateFaq = \DB::table('alpha_category')
-                        ->where('cid',$id)
-                        ->get();
-        $this->layout->content= \view::make('alpha::faq.categoryedit')->with(array('getEditCateFaq'=>$getEditCateFaq));
+        if(!empty($id))
+        {
+            $getEditCateFaq = \AlphaFaqCategory::where('cid',$id)->get();  
+            $this->layout->content= \view::make('alpha::faq.categoryedit')->with(array('getEditCateFaq'=>$getEditCateFaq));
+        }
+        else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+        }
+
     }
 
     protected function editCategoryFaqData()
@@ -266,6 +270,7 @@ class AlphaController extends \BaseController {
 
     //controller news
     protected function newslist(){
+        /*
         $getfaq1= \DB::table('alpha_news')
             ->join('alpha_ncategory','nid', '=', 'alpha_news.idcate')
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
@@ -276,7 +281,8 @@ class AlphaController extends \BaseController {
         $getCategoryNews = \DB::table('alpha_ncategory')
                     ->where('cdelete',0)
                     ->get();
-       
+        */
+        
          $this->layout->content = \view::make('alpha::news.newslist')->with(
             array('getfaq1'=>$getfaq1,'getCategoryNews' =>$getCategoryNews));
     }

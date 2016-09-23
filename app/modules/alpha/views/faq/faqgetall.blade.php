@@ -22,18 +22,19 @@
                     <table  id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
                         <thead>                                   
                             <tr style=" height: 55px ">
+
                                 <th class="text-center" width="5%"><b>#</b></th>                             
                                 <th class="text-center" width="20%"><b>{{ trans('faq.img') }}</b></th>
                                 <th class="text-center" ><b>{{ trans('faq.faqquestion') }}</b></th>
                                 <th class="text-center" width="10%"><b>{{ trans('faq.faqdate') }}</b></th>
                                 
-                                <th width="5%"></th>   
+                                <th width="5%"></th>  
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($faqdelget as $index => $item)
-                                
                                 <tr>
+                                    
                                     <td>{{$item->id}}</td>                                 
                                     <td class="text-center">
                                         
