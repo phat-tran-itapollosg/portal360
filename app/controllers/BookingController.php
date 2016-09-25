@@ -35,19 +35,17 @@ class BookingController extends BaseController {
             ),
         );
         $result = $client->call('entryPoint', $data_params);
-        $jValueList=array();
-        foreach ($result as $key => $value) {
-            if($key=='value_list')
-            {
-                $jValueList = $value;
-            }
+       
+        if(intval($result->success) == 0)
+        {
+            return App::make("ErrorsController")->callAction("error", ['code'=>500]);
         }
-        $aData = json_decode($jValueList,true);
-        $data = array(
-            'session_booking' => $aData,
-        );
-
-        return View::make('booking.index')->with($data);
+        else
+        {
+            $booking = json_decode($result->value_list, true);
+            return View::make('booking.index')->with(array('booking'=>(array)$booking));
+            exit();
+        }
     }
 
     public function history()

@@ -17,6 +17,9 @@
     </header>
 
     <div class="panel-body">
+    @if (empty($booking) OR count($booking) <=0 OR $booking == '[]')
+      <h4><p class="text-center">{{ trans('elearning.could_not_find') }}</p></h4>
+    @else
     <div class="card">
     <div class="card-body card-padding overflow-auto">
         <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
@@ -45,9 +48,9 @@
                 @endforeach
             </tbody>
         </table> 
-    </div>
-
-    </div>
+    </div> <!-- end card-body -->
+    </div> <!-- end card -->
+    @endif
     </div>
     </section>
 </div>
