@@ -22,17 +22,20 @@
                 </b>
             </header>
 <div class="panel-body">
-    @foreach ($infofaq as $infofaq)
+    
     <form action="{{URL::asset('admin/faq/edit/data/')}}" method="post">
           <div class="form-group">
             <label for="exampleInputEmail1">Danh mục</label>
             <select name="idcate" class="form-control">
-                    @foreach($selected as $sel)
-                        <option value="{{$sel->cid}}">{{$sel->ccontent}}</option>
-                    @endforeach
-                    
+
                     @foreach($cate as $cates)
+                    
+                      @if($cates->cid == $infofaq->idcate)
+                        <option value="{{$cates->cid}}" selected>{{$cates->ccontent}}</option>
+                      @else
                         <option value="{{$cates->cid}}">{{$cates->ccontent}}</option>
+                      @endif
+
                     @endforeach
                 </select>
           </div>
@@ -53,7 +56,7 @@
 </div>
 </section>
    
-    @endforeach   
+   
 </div>
 <script type="text/javascript">
          CKEDITOR.replace( 'txtr',

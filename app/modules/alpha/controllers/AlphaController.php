@@ -19,26 +19,6 @@ class AlphaController extends \BaseController {
     
     protected function faq()
     {
-        /*
-        $faqdelget = \DB::table('alpha_faq')
-                        ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
-                        //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
-                        ->where('alpha_faq.faqdelete',0)
-                        ->Where('alpha_category.cdelete',0)
-                        ->orderBy('alpha_faq.faqdate', 'DESC')
-                        ->get();
-        //var_dump($faqdelget);
-       //return View::make('shop::index');
-        $getCateFaq = \DB::table('alpha_category')
-                    ->where('cdelete',0)
-                    ->get();
-        if($faqdelget!=null){
-            $this->layout->content = view::make('alpha::faq.faqgetall')->with(array(
-                                                                                    'faqdelget' => $faqdelget,
-                                                                                    'getCateFaq'=>$getCateFaq
-
-                ));
-    	}*/
         
         $recordAlphaFaq =  \AlphaFaq::where('faqdelete',0)->orderBy('faqdate','desc')->get();
         $getCateFaq = \AlphaFaqCategory::where('cdelete',0)->get();
@@ -49,40 +29,40 @@ class AlphaController extends \BaseController {
     }
     protected function Fagadd()
     {
+        
         $getcate = \AlphaFaqCategory::where('cdelete',0)->get();       
         $this->layout->content = \view::make('alpha::faq.faqadd')->with(array('cate'=>$getcate));
     }
     protected function addFagdata()
     {
-        //Còn lưu thêm session user
-        // 'iduser'=> session id user
-        //var_dump(Input::get());
+        $iduser = \Session::get('user')->modified_user_id;
         $txtq = Input::get('txtq');
         $txtr = Input::get('txtr');
-        //var_dump(Input::get());
-        //$url= Input::get('url');
-        //$idcate = Input::get('idcate');
+        $idcate = Input::get('idcate');
+
+
         if( isset( $txtr) && !empty($txtr) && isset($txtq) && !empty($txtq) ){
 
-            
-            $data = array(
-            'faqquestion' => Input::get('txtq'),
-            'faqreply' => Input::get('txtr'),
-            'idcate' => Input::get('idcate')
-            );
-            $insert = \DB::table('alpha_faq')->insert($data); 
-            if($insert)
+            $AlphaFaq = new \AlphaFaq;
+            $AlphaFaq->faqquestion = $txtq;
+            $AlphaFaq->faqreply = $txtr;
+            $AlphaFaq->idcate = $idcate;
+            $AlphaFaq->iduser = $iduser;
+
+            if($AlphaFaq->save())
             {
-            	return \Redirect::to(route('alpha.faq.faq'));
+                return \Redirect::to(route('alpha.faq.faq'));
             }
             else
             {
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
             }
+        
+
         } 
             
         else {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
         
     }
@@ -90,43 +70,32 @@ class AlphaController extends \BaseController {
     {
         if(isset($id) && !empty($id))
         {       
-            $DeleteData = \DB::table('alpha_faq')
-                    ->Where('id',$id)
-                    ->update(array('faqdelete'=>1));
-            if($DeleteData )
+            // $DeleteData = \DB::table('alpha_faq')
+            //         ->Where('id',$id)
+            //         ->update(array('faqdelete'=>1));
+
+            $DeleteData = \AlphaFaq::find($id);
+            $DeleteData->faqdelete = 1;
+            if($DeleteData->save())
             {
             	return \Redirect::to(route('alpha.faq.faq'));
             }
             else
             {   
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
             }
         }
         else
         {
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
     }
 
     protected function editFag($id)
     {
-    //echo $id;
-
-        $getInfoFag = \DB::table('alpha_faq')->where('id', $id)->get();
-        foreach ($getInfoFag as $getfaqs)
-        {
-           $idcate = $getfaqs->idcate;
-           //var_dump($idcate);
-        }
-        
-        $getCategoryed = \DB::table('alpha_category')
-                        ->where('cid',$idcate)
-                        ->get();
-        $getCategory = \DB::table('alpha_category')                
-                        ->where('cdelete',0)
-                        ->get();
-        //echo Input::get('id');
-    //return view('faq.faqedit',['infofaq'=>$getInfoFag]);
+        $getInfoFag = \AlphaFaq::where('id' , $id)->first();
+        $getCategoryed = $getInfoFag->idcate;
+        $getCategory = \AlphaFaqCategory::where('cdelete',0)->get();
         $this->layout->content = \view::make('alpha::faq.faqedit')->with(array(
                                                     'infofaq'=>$getInfoFag,
                                                     'cate'=>$getCategory,
@@ -139,33 +108,30 @@ class AlphaController extends \BaseController {
         $txtq = Input::get('txtq');
         $txtr = Input::get('txtr');
         $idcate = Input::get('idcate');
-        //var_dump(Input::get());
         $id = Input::get('id');
         if(isset($txtq) && isset($txtr) && isset($idcate) && !empty($txtq) && !empty($txtr) && !empty($idcate))
         {
-        	if(
-        	$Update = \DB::table('alpha_faq')
-                ->Where('id',$id)
-                ->update(array('faqquestion'=>$txtq,
-                            'faqreply'=>$txtr,
-                            'idcate'=>$idcate,
-                            'faqdelete'=>0,
-                            'faqdate'=>$now = new \DateTime(),
-                          ))
-           	)
+            $Update = \AlphaFaq::find($id);
+            $Update->faqquestion = $txtq;
+            $Update->faqreply = $txtr;
+            $Update->idcate = $idcate;
+            $Update->faqdelete = 0;
+            $Update->faqdate = new \DateTime();
+
+            if($Update->save())
         	{
         		return \Redirect::to(route('alpha.faq.faq'));
 	        }
         	else
             {
 
-        	   $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+        	   return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
 
         	}
     	}
     	else
     	{
-    		$this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+    		return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
     	}
     }
     //category faq
@@ -177,7 +143,6 @@ class AlphaController extends \BaseController {
 
     protected function addCategoryFaq()
     {
-        //echo "Them ca tegory faq";
         $this->layout->content=\view::make('alpha::faq.categoryadd');
     }
 
@@ -186,22 +151,21 @@ class AlphaController extends \BaseController {
         $txtCategoryFaq = Input::get('txtCategoryFaq');
         if(isset($txtCategoryFaq) && !empty($txtCategoryFaq))
         {
-            $data=array('ccontent' => $txtCategoryFaq);
-
-            $insert = \DB::table('alpha_category')->insert($data);
-            if ($insert) {
+            $UpdateCategory = new \AlphaFaqCategory;
+            $UpdateCategory ->ccontent = $txtCategoryFaq;
+            if ($UpdateCategory->save()) 
+            {
                 return \Redirect::to(route('alpha.faq.faq'));
             }
             else
             {
-                $this->layout->content=\View::make('alpha::error')->with(array('code'=>'error'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
             } 
         }
         else
         {
-            $this->layout->content=\View::make('alpha::error')->with(array('code'=>'empty'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
-        //var_dump(Input::get());
     }
 
     protected function editCategoryFaq($id)
@@ -221,25 +185,29 @@ class AlphaController extends \BaseController {
     {
         $ccontent = Input::get('txtcontent');
         $id = Input::get('id');
-       // var_dump(Input::get());
         if(isset($id) && !empty($id) && isset($ccontent) && !empty($ccontent))
         {
+            /*
             $editCategory = \DB::table('alpha_category')
                         ->where('cid',$id)
                         ->Update(array('ccontent'=>$ccontent));
-            if ($editCategory) {
-                //var_dump($editCategory);
+                        */
+            $editCategory = \AlphaFaqCategory::find($id);
+            $editCategory->ccontent = $ccontent;
+
+            if ($editCategory->save()) 
+            {
                return \Redirect::to(route('alpha.faq.faq'));
             
             }
             else
             {
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
             }
         }
         else
         {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
        
     }
@@ -248,40 +216,32 @@ class AlphaController extends \BaseController {
     {
         if(isset($id) && !empty($id))
         {
-
+        /*
         $delCategory = \DB::table('alpha_category')
                     ->where('cid',$id)
                     ->update(array('cdelete'=>1));
+        */
 
-            if ($delCategory) {
+            $delCategory = \AlphaFaqCategory::find($id);
+            $delCategory->cdelete = 1;
+            if ($delCategory->save()) {
                 return \Redirect::to(route('alpha.faq.faq'));
             
             }
             else
             {
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
             }
         }
         else
         {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
         }
     }
 
     //controller news
-    protected function newslist(){
-        /*
-        $getfaq1= \DB::table('alpha_news')
-            ->join('alpha_ncategory','nid', '=', 'alpha_news.idcate')
-            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
-            ->where('alpha_news.ndelete',0)
-            ->Where('alpha_ncategory.cdelete',0)
-            ->orderBy('alpha_news.ndate', 'DESC')
-            ->get();
-        $getCategoryNews = \DB::table('alpha_ncategory')
-                    ->where('cdelete',0)
-                    ->get();
-        */
+    protected function newslist()
+    {
         $getfaq1 = \AlphaNews::where('ndelete',0)->orderBy('ndate','desc')->get();
         $getCategoryNews = \AlphaNewsCategory::where('cdelete',0)->get();
          $this->layout->content = \view::make('alpha::news.newslist')->with(
@@ -292,56 +252,39 @@ class AlphaController extends \BaseController {
     {
         if(isset($id) && !empty($id))
         {
-        	$DeleteData = \DB::table('alpha_news')
-                    ->Where('id',$id)
-                    ->update(array('ndelete'=>1));
-            if($DeleteData )
+            $DeleteData = \AlphaNews::find($id);
+            $DeleteData->ndelete = 1;
+            if($DeleteData->save())
             {
             	return \Redirect::to(route('alpha.news.newslist'));
             }
             else
             {   
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);            
             }
         }
         else
         {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
         }
     }
 
     protected function newsedit($id)
     {
-
         if(isset($id) && !empty($id))
-        {
-
-                /*
-                 $getInfoFag = \DB::table('alpha_news')->where('id', $id)->get();
-                foreach ($getInfoFag as $getfaqs)
-                {
-                   $idcate= $getfaqs->idcate;
-                   //var_dump($idcate);
-                }
-                $getCategoryed = \DB::table('alpha_ncategory')
-                                ->where('nid',$idcate)
-                                ->get();
-                $getCategory = \DB::table('alpha_ncategory')                
-                                ->where('cdelete',0)
-                                ->get();
-                */
-
-                $get_category_by_id_news = \AlphaNews::where('id',$id)->get();
-                $getCategory = \AlphaNewsCategory::where('cdelete',0)->get();
-                $this->layout->content = \view::make('alpha::news.newsedit')->with(array(
-                                                            'infofaq'=>$get_category_by_id_news,
-                                                            'cate'=>$getCategory,
-                                                            //'selected'=>$getCategory
-                                                             ));
+        {       
+            $infonews = \AlphaNews::where('id' , $id)->first();
+            $getCategoryed = $infonews->idcate;
+            $getCategory = \AlphaNewsCategory::where('cdelete',0)->get();
+            $this->layout->content = \view::make('alpha::news.newsedit')->with(array(
+                                                    'infonews'=>$infonews,
+                                                    'cate'=>$getCategory,
+                                                    'selected'=>$getCategoryed
+                                                     ));
         }
         else
         {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
         }
 
     }
@@ -351,31 +294,27 @@ class AlphaController extends \BaseController {
         $txttitle = Input::get('txttitle');
         $txtncontent = Input::get('txtcontent');
         $idcate = Input::get('idcate');
-        //var_dump(Input::get());
         if(isset($txttitle) && isset($txtncontent) && isset($idcate) && !empty($txttitle) && !empty($txtncontent) && !empty($idcate))
         {
-        	if(
-		        $Update = \DB::table('alpha_news')
-		                ->Where('id',$id)
-		                ->update(array('ntitle'=>$txttitle,
-		                            'ncontent'=>$txtncontent,
-		                            'idcate'=>$idcate,
-		                            'ndelete'=>0,
-		                            'ndate' => $now = new \DateTime()
-		                          ))
-		        )
+            $UpdateNews = \AlphaNews::find($id);
+            $UpdateNews->ntitle = $txttitle;
+            $UpdateNews->ncontent = $txtncontent ;
+            $UpdateNews->idcate = $idcate ;
+            $UpdateNews->ndelete = 0;
+            $UpdateNews->ndate = new \DateTime();
+        	if($UpdateNews->save())
         	{
         		return \Redirect::to(route('alpha.news.newslist'));
 	        }
         	else
             {
 
-        	   $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+        	   return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
     		}
     	}
     	else
     	{
-    		$this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+    		return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
     		
     	}
     }
@@ -388,33 +327,28 @@ class AlphaController extends \BaseController {
     }
     protected function newsadddata()
     {
-        //var_dump(Input::get());
         $title = Input::get('txttitle');
         $contents = Input::get('txtcontents');
         $idcate = Input::get('idcate');
-        //var_dump(Input::get());
         if(isset($title) && isset($contents) && isset($idcate) && !empty($title) && !empty($contents) && !empty($idcate))
         {
+            $InsertNews = new \AlphaNews;
+            $InsertNews->ntitle = $title;
+            $InsertNews->ncontent = $contents;
+            $InsertNews->idcate = $idcate;
 
-             $data = array(
-            'ntitle' => $title,
-            'ncontent' => $contents,
-            'idcate' => $idcate
-            );
-            if(
-            $insert = \DB::table('alpha_news')->insert($data)
-            )
+            if($InsertNews->save())
             {
             	return \Redirect::to(route('alpha.news.newslist'));
             }
             else
             {
-            	$this->layout->content = \view::make('alpha::error')->with(array('code'=>'error'));
+            	return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
             }
         } 
 
         else {
-           $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty'));
+           return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
         }
        
     }
@@ -430,29 +364,27 @@ class AlphaController extends \BaseController {
     protected function addCategoryNews()
     {
         $this->layout->content=\view::make('alpha::news.categoryadd');
-        //$this->layout->content = \view::make('alpha::news.categoryadd');
     }
 
     protected function addCategoryNewsData()
     {
-        //var_dump(Input::get());
         $txtCategoryFaq = Input::get('txtCategoryNews');
         if(isset($txtCategoryFaq) && !empty($txtCategoryFaq))
         {
-            $data=array('ccontents' => $txtCategoryFaq);
+            $InsertNewsCategory = new \AlphaNewsCategory;
+            $InsertNewsCategory ->ccontents = $txtCategoryFaq;
 
-            $insert = \DB::table('alpha_ncategory')->insert($data);
-            if ($insert) {
+            if ($InsertNewsCategory->save()) {
                 return \Redirect::to(route('alpha.news.newslist'));
             }
             else
             {
-                $this->layout->content=\View::make('alpha::error')->with(array('code'=>'error'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']); 
             } 
         }
         else
         {
-            $this->layout->content=\View::make('alpha::error')->with(array('code'=>'empty'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']); 
         }
     }
 
@@ -467,25 +399,23 @@ class AlphaController extends \BaseController {
     {
         $ccontent = Input::get('txtcontent');
         $id = Input::get('id');
-       // var_dump(Input::get());
         if(isset($id) && !empty($id) && isset($ccontent) && !empty($ccontent))
         {
-            $editCategory = \DB::table('alpha_ncategory')
-                        ->where('nid',$id)
-                        ->Update(array('ccontents'=>$ccontent));
-            if ($editCategory) {
-                //var_dump($editCategory);
+            $editCategory = \AlphaNewsCategory::find($id);
+            $editCategory->ccontents = $ccontent;
+            if ($editCategory->save()) 
+            {
                 return \Redirect::to(route('alpha.news.newslist'));
             
             }
             else
             {
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']); 
             }
         }
         else
         {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']); 
         }
        
     }
@@ -494,24 +424,21 @@ class AlphaController extends \BaseController {
     {
         if(isset($id) && !empty($id))
         {
-
-        $delCategory = \DB::table('alpha_ncategory')
-                    ->where('nid',$id)
-                    ->update(array('cdelete'=>1));
-
-            if ($delCategory) {
-                //var_dump($editCategory);
+            $delCategoryNews = \AlphaNewsCategory::find($id);
+            $delCategoryNews->cdelete = 1;
+            if ($delCategoryNews->save()) 
+            {
                return \Redirect::to(route('alpha.news.newslist'));
             
             }
             else
             {
-                $this->layout->content = \view::make('alpha::error')->with(array('code'=>'error.category'));
+                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']); 
             }
         }
         else
         {
-            $this->layout->content = \view::make('alpha::error')->with(array('code'=>'empty.category'));
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']); 
         }
     }
 
@@ -532,14 +459,12 @@ class AlphaController extends \BaseController {
     {
         $id = Input::get('id');
         $url= Input::get('url');
-        //var_dump(Input::get());
         if( isset($id)  && isset($url) && !empty($id) && !empty($url) )
         {
-            
-            if (\DB::table('alpha_faq')
-                ->Where('id',$id)
-                ->update(array('img' => $url))
-            ){
+            $UpdateimgFAQ = \AlphaFaq::find($id);
+            $UpdateimgFAQ->img = $url;
+            if ($UpdateimgFAQ->save())
+            {
                 return \Response::json(array('result' => TRUE));
             }else{
                 return \Response::json(array('result' => FALSE));
@@ -554,16 +479,17 @@ class AlphaController extends \BaseController {
     {
         $id = Input::get('id');
         $url= Input::get('url');
-        //var_dump(Input::get());
         if( isset($id)  && isset($url) && !empty($id) && !empty($url) )
         {
+            $UpdateimgNews = \AlphaNews::find($id);
+            $UpdateimgNews->img = $url;
             
-            if (\DB::table('alpha_news')
-                ->Where('id',$id)
-                ->update(array('img' => $url))
-            ){
+            if ($UpdateimgNews->save())
+            {
                 return \Response::json(array('result' => TRUE));
-            }else{
+            }
+            else
+            {
                 return \Response::json(array('result' => FALSE));
             }
 
@@ -576,7 +502,6 @@ class AlphaController extends \BaseController {
         error_reporting(E_ALL | E_STRICT);
         require(app_path().'/helpers/'.'UploadHandler.php');
         $upload_handler = new \UploadHandler();
-       // var_dump(Input::get());
         exit();
     }
     protected function error500()

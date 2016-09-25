@@ -10,8 +10,5 @@ class AlphaFaqCategory extends Eloquent {
 	protected $table = 'alpha_category';
 	public $timestamps  = false;
 	protected $primaryKey = 'cid';
-	public function get_faq_by_id()
-    {
-        return $this->hasMany('AlphaFaq', 'idcate', 'cid');
-    }
+	
 }

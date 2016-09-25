@@ -9,6 +9,9 @@ class AlphaFaq extends Eloquent {
 	 */
 	protected $table = 'alpha_faq';
 	public $timestamps  = false;
-	protected $primaryKey = 'idcate';
-
+	protected $primaryKey = 'id';
+	public function categories()
+    {
+        return $this->hasOne('AlphaFaqCategory', 'cid', 'idcate');
+    }
 }
