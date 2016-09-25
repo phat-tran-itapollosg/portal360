@@ -23,9 +23,11 @@ class NewsController extends BaseController
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
             ->where('alpha_news.ndelete',0)
             ->Where('alpha_ncategory.cdelete',0)
+            ->orderBy('ndate','DESC')
             ->get();
 
-        	//var_dump($getnews);
+        	// var_dump($getnews);
+         //    die();
         if($getnews!=null)
         {
             $this->layout->content = View::make('news.news')->with(array('getnews'=>$getnews));
@@ -45,10 +47,11 @@ class NewsController extends BaseController
             ->where('alpha_news.ndelete',0)
             ->Where('alpha_news.id',$id)
             ->Where('alpha_ncategory.cdelete',0)
+            ->orderBy('ndate','DESC')
             ->get();
     	if($Getdetal!=null)
         {
-            $this->layout->content = View::make('news.detal')->with(array('Getdetal'=>$Getdetal));
+            $this->layout->content = View::make('news.newsdetal')->with(array('Getdetal'=>$Getdetal));
             //return View::make('home.index')->with(array('feed'=>$feed));
         }
         else

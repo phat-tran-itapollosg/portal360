@@ -17,7 +17,7 @@
     <div class="col-lg-12">  
       <section class="panel panel-default">
         <header class="panel-heading" style="border-radius:0; text-align: center; ">
-          <b>News</b>
+          <b> {{ trans('news.heading') }} </b>
         </header>
         <div class="panel-body">
                 <ul class='ulli'>
@@ -26,13 +26,17 @@
                     <li class="boxfaq" style="padding:10px">
 
                         <div class="task-title imgquestion" style="display:inline-block"> 
-                            <img src="{{URL::asset('public/img/faq/favicon_apollo.png')}}"> 
+                            @if(!empty($getnewsv->img)) 
+                                    <img  width="64px" src="{{URL::asset('public/images')}}/{{$getnewsv->img}}">
+                            @else
+                                    <img  width="64px"  src="{{ URL::asset('public/img/favicon_apollo.png') }}">
+                            @endif
                         </div>
                         <div class="questionhv" style="display:inline-block; padding-left:10px">
 
                             <a class='afaq' href="news/detal/{{$getnewsv->id}}">{{ $getnewsv->ntitle }}</a>
                             <br>    
-                            Danh mục:    
+                            {{ trans('news.category') }}   
                             <a class='afaq' href="faq/category/{{$getnewsv->idcate}}">
 
                                     {{$getnewsv->ccontents}}
