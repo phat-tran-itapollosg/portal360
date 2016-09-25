@@ -17,6 +17,10 @@
             </header>
 
             <div class="panel-body">
+               
+                @if (empty($elearnings) OR count($elearnings) <=0 OR $elearnings == '[]')
+                  <h4><p class="text-center">{{ trans('elearning.could_not_find') }}</p></h4>
+                @else
                 <h4><p class="text-center">{{ trans('elearning.form_heading') }}</p></h4>
                 <form class="form-horizontal" action="{{ route('elearning.login') }}" method="GET">
                   <div class="form-group">
@@ -25,7 +29,7 @@
                     <div class="col-sm-4">
                       <select name="sso_code" class="form-control">
                         @foreach($elearnings as $key => $value)
-                        <option value="{{ $value['sso_code'] }}">{{ $value['course_name'] }}</option>
+                        <option value="{{ $key }}">{{ $value }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -35,7 +39,8 @@
                       <p class="text-center"><button type="submit" class="btn btn-default">{{ trans('user_login.login') }}</button></p>
                     </div>
                   </div>
-                </form>              
+                </form> 
+                @endif             
             </div>
         </section>
     </div>

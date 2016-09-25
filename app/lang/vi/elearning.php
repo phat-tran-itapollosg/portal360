@@ -41,6 +41,7 @@ return array(
 	'students_email'	=> 	'Email',
 	'lessons_submitted'	=> 'Submitted',
 	'classroom_time_retrieve'	=> 'Time Retrieve',
+	'could_not_find'	=> 'Không thể tìm thấy lớp học của bạn',
 
 	);
 ?>

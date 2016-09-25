@@ -41,5 +41,6 @@ return array(
 	'students_email'	=> 	'Email',
 	'lessons_submitted'	=> 'Submitted',
 	'classroom_time_retrieve'	=> 'Time Retrieve',
+	'could_not_find'	=> 'Could not find or load your class',
 	);
 ?>

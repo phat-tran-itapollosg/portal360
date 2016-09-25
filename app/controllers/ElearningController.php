@@ -17,28 +17,58 @@ class ElearningController extends BaseController
 
     public function index()
     {
-        $elearnings = array(
-            array(
-            'course_name' => 'Beginner Lesson 1',
-            'sso_code' => 'APOLLO_B1L1'
+        // $elearnings = array(
+        //     array(
+        //     'course_name' => 'Beginner Lesson 1',
+        //     'sso_code' => 'APOLLO_B1L1'
+        //     ),
+        //      array(
+        //     'course_name' => 'Beginner Lesson 2',
+        //     'sso_code' => 'APOLLO_B1L2'
+        //     ),array(
+        //     'course_name' => 'Beginner Lesson 3',
+        //     'sso_code' => 'APOLLO_B1L3'
+        //     ),array(
+        //     'course_name' => 'Beginner Lesson 4',
+        //     'sso_code' => 'APOLLO_B1L4'
+        //     ),array(
+        //     'course_name' => 'Beginner Lesson 5',
+        //     'sso_code' => 'APOLLO_B1L5'
+        //     )
+        // );  
+        $serviceConfig = Config::get('app.service_config');
+        $serverUrl = $serviceConfig['server_url'];
+        $customService = $serviceConfig['custom_service'];
+        $rootUsername = $serviceConfig['root_username'];
+        $rootPassword = $serviceConfig['root_password'];
+
+        $client = new SugarClient($serverUrl, $customService, $rootUsername, $rootPassword);
+
+        $session = Session::get('session');
+        $contact = Session::get('contact');
+
+        $params = array(
+            'session' => $session->root_session_id,
+            'student_id' => $contact->id,
+        );
+
+        $data_params = array(
+            'session'   =>  $session->root_session_id,
+            'function'  =>  'getSSOCode',
+            'param'     =>  array(
+                'student_id'=>$params['student_id'], //data test: 173fd695-524d-dc26-7a50-5710d3fbbeea
             ),
-             array(
-            'course_name' => 'Beginner Lesson 2',
-            'sso_code' => 'APOLLO_B1L2'
-            ),array(
-            'course_name' => 'Beginner Lesson 3',
-            'sso_code' => 'APOLLO_B1L3'
-            ),array(
-            'course_name' => 'Beginner Lesson 4',
-            'sso_code' => 'APOLLO_B1L4'
-            ),array(
-            'course_name' => 'Beginner Lesson 5',
-            'sso_code' => 'APOLLO_B1L5'
-            )
-        );  
-    
-        return View::make('elearning.index')->with(array('elearnings'=>$elearnings));
-        exit();
+        );
+        $result = $client->call('entryPoint', $data_params);
+
+        if(intval($result->success) == 0){
+            return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+        }else{
+            $elearnings = json_decode($result->value_list, true);
+            return View::make('elearning.index')->with(array('elearnings'=>(array)$elearnings));
+            exit();
+        }   
+        
     }
     public function login()
     {
