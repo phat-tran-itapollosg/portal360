@@ -39,7 +39,7 @@
                                     <td class="text-center">
                                         
                                         @if(!empty($item->img)) 
-                                        <img height="64px" src="{{URL::asset('public/images')}}/{{$item->img}}">
+                                        <img width="64px" src="{{URL::asset('public/images')}}/{{$item->img}}">
                                         @else
                                         <img height="64px" src="{{ URL::asset('public/img/favicon_apollo.png') }}">
                                         @endif
