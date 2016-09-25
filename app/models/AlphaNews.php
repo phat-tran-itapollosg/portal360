@@ -8,11 +8,11 @@ class AlphaNews extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'alpha_news';
-	public $timestamps  = true;
+	public $timestamps  = false;
 	protected $primaryKey = 'id';
-	public function get_category_by_id_news()
+    public function categories()
     {
-        return $this->hasMany('AlphaNewsCategory', 'idcate', 'nid');
+        return $this->hasOne('AlphaNewsCategory', 'idcate', 'nid');
     }
 
 }

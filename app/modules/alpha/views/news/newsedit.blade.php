@@ -23,31 +23,35 @@
 
             </header>
     <div class="panel-body">
-        @foreach ($infofaq as $infofaq)
             <form action="{{URL::asset('admin/news/edit/data')}}" method="post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Danh mục</label>
                 <select name="idcate" class="form-control">
-                        @foreach($cate as $cates)
-                            <option value ="{{ $cates->nid }}">{{$cates->ccontents}}</option>
-                        @endforeach
+                @foreach($cate as $cates)
+
+                    @if( $cates->nid == $infonews->idcate)
+                        <option value="{{$cates->nid}}" selected>{{$cates->ccontents}}</option>
+                      @else
+                        <option value="{{$cates->nid}}">{{$cates->ccontents}}</option>
+                      @endif
+                      
+                @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">{{ trans('news.title') }}</label>
-                <input class="form-control text-left" type="text" name="txttitle" value=" {{$infofaq->ntitle}}">
-                 <input class="lbfaq" type="text" name="id" value="{{$infofaq->id}}" hidden />
+                <input class="form-control text-left" type="text" name="txttitle" value=" {{$infonews->ntitle}}">
+                 <input class="lbfaq" type="text" name="id" value="{{$infonews->id}}" hidden />
               </div>
               <div class="form-group">
                 <label for="exampleInputFile">{{ trans('news.contents') }}</label>
                 <textarea class="form-control" id='txtcontent' name='txtcontent' >
-                                {{$infofaq->ncontent}}
+                                {{$infonews->ncontent}}
                 </textarea>
               </div>
               
              <p class="text-center"> <button type="submit" class="btn btn-default"> {{ trans('news.submit') }} </button> <a class="btn btn-default" href="{{URL::asset('/admin/news')}}">{{ trans('news.back') }}  </a></p>
             </form>
-        @endforeach
     </div>
     </section>
 </div>
