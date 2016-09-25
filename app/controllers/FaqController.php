@@ -24,15 +24,15 @@ class FaqController extends BaseController
         
         $getfaq1= DB::table('alpha_faq')
             ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
-            //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
             ->where('alpha_faq.faqdelete',0)
             ->Where('alpha_category.cdelete',0)
+            ->orderBy('faqdate','DESC')
             ->get();
         if($getfaq1!=null)
         {
             
             $getdel=0;
-            $this->layout->content = View::make('faq.faq')->with(array('flat'=>0,'admin'=>0,'getfaq1'=>$getfaq1));
+            $this->layout->content = View::make('faq.faq')->with(array('getfaq1'=>$getfaq1));
             //return View::make('home.index')->with(array('feed'=>$feed));
         }
         else
@@ -63,6 +63,7 @@ class FaqController extends BaseController
             ->where('alpha_faq.faqdelete',0)
             ->Where('alpha_category.cdelete',0)
             ->Where('alpha_faq.id',$id)
+            ->orderBy('faqdate','DESC')
             //->groupBy('alpha_category.idcate')
             ->get();
         $this->layout->content = view::make('faq.faqdetal')->with(array(

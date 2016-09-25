@@ -12,6 +12,7 @@ return array(
 	'categoryfaq' => 'Category FAQ',
 	'add'	=>'Add news FAQ',
 	'submit'	=>'Update',
-	'addcategory' => 'Add Category'
+	'addcategory' => 'Add Category',
+	'date'	=> 'Date',
 	);
 ?>
