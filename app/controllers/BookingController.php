@@ -29,12 +29,13 @@ class BookingController extends BaseController {
             'function'  =>  'getSessionBooking',
             'param'     =>  array(
                 'student_id'=>'173fd695-524d-dc26-7a50-5710d3fbbeea', //data test: 173fd695-524d-dc26-7a50-5710d3fbbeea
-                'start'     =>'2016-09-12',
-                'end'       =>'2016-10-04',
-                'class_type'=>'',
+                'start'     =>'2016-09-09',
+                'end'       =>'2016-12-12',
+                'class_type'=>"Connect Event",
             ),
         );
         $result = $client->call('entryPoint', $data_params);
+
        
         if(intval($result->success) == 0)
         {
@@ -46,6 +47,7 @@ class BookingController extends BaseController {
             return View::make('booking.index')->with(array('booking'=>(array)$booking));
             exit();
         }
+
     }
 
     public function history()
@@ -71,9 +73,9 @@ class BookingController extends BaseController {
             'function'  =>  'getSessionBooking',
             'param'     =>  array(
                 'student_id'=>$params['student_id'], //data test: 173fd695-524d-dc26-7a50-5710d3fbbeea
-                'start'     =>'2016-09-12',
-                'end'       =>'2016-10-04',
-                'class_type'=>'',
+                // 'start'     =>'2016-09-12',
+                // 'end'       =>'2016-10-04',
+                // 'class_type'=>'',
             ),
         );
         $result = $client->call('entryPoint', $data_params);
@@ -84,7 +86,8 @@ class BookingController extends BaseController {
                 $jValueList = $value;
             }
         }
-        $aData = json_decode($jValueList,true);
+        // $aData = json_decode($jValueList,true);
+        $aData = json_decode($result->value_list, true);
         $data = array(
             'session_booking' => $aData,
         );
