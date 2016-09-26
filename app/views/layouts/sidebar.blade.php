@@ -25,8 +25,8 @@
                     <span>{{ trans('app.booking') }}</span>
                 <span class="dcjq-icon"></span></a>
                 <ul class="sub" style="display: none;">
-                    <li><a href="{{ URL::to('/booking') }}">{{ trans('app.booking_view') }}</a></li>
-                    <li><a href="{{ URL::to('/booking/history') }}">{{ trans('app.booking_history') }}</a></li>
+                    <li><a href="{{ URL::to('/booking') }}" class="text-capitalize">{{ trans('app.booking_view') }}</a></li>
+                    <li><a href="{{ URL::to('/booking/history') }}" class="text-capitalize">{{ trans('app.booking_history') }}</a></li>
                 </ul>
             </li>
             <li class="sub-menu dcjq-parent-li">

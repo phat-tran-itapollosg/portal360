@@ -37,4 +37,6 @@ return array(
     'booking' => 'Tiến hành đăng ký',
     'login_to_survey' => 'Quản Lý Khảo Sát',
     'elearning' => 'Học Trực Tuyến',
+    'booking_view' => 'xem đăng ký',
+    'booking_history' => 'lịch sử đăng ký'
 );

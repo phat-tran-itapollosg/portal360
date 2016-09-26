@@ -1,7 +1,8 @@
 <?php
 
 return array(
-    'page_title' => 'BOOKING',
+    'page_title' => 'đăng ký',
+    'page_title_history' => 'lịch sử đăng ký',
     'type' => 'Loại',
     'schedule' => 'Lịch',
     'topic' => 'Chủ đề',
@@ -9,4 +10,16 @@ return array(
     'date' => 'Ngày',
     'room' => 'Phòng',
     'center' => 'Trung tâm',
+    'class' => 'Lớp',
+    'start_time' => 'Bắt Đầu',
+    'end_time' => 'Kết Thúc',
+    'remain_seat' => 'Còn Lại',
+    'total_seat' => 'Tổng',
+    'could_not_find' => 'Không thể tìm thấy thông tin',
+    'day_name' => 'Thời gian',
+    'booking' => 'Đăng Ký',
+    'detail' => 'Chi Tiết',
+    'close' => 'Đóng',
+    'cancel' => 'Hủy Bỏ',
+    'view' => 'Xem',
 );

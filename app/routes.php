@@ -78,7 +78,8 @@
         Route::get('/elearning/login', ['as' => 'elearning.login', 'uses' =>'ElearningController@login']);
 
         // Routes Booking
-        Route::get('/booking', 'BookingController@index');
+        Route::get('/booking', ['as' => 'Booking.index', 'uses' => 'BookingController@index']);
+        Route::post('/booking', ['as' => 'Booking.index', 'uses' => 'BookingController@index']);
         Route::get('/booking/history', 'BookingController@history');
 
         //[Ersoshaly] Routes Survey
@@ -87,7 +88,8 @@
         Route::get('/survey/dosurvey/{id}', ['as' => 'Survey.dosurvey', 'uses' => 'SurveyController@dosurvey']);        
 
 
-
+        Route::get('/booking/submit/{id}', ['as' => 'Booking.submit', 'uses' => 'BookingController@submit']);
+        Route::get('/booking/cancel/{id}', ['as' => 'Booking.cancel', 'uses' => 'BookingController@cancel']);
     });
 
     // Routes that dont't need to be checked for authentication
