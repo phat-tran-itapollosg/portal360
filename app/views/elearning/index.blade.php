@@ -22,14 +22,14 @@
                   <h4><p class="text-center">{{ trans('elearning.could_not_find') }}</p></h4>
                 @else
                 <h4><p class="text-center">{{ trans('elearning.form_heading') }}</p></h4>
-                <form class="form-horizontal" action="{{ route('elearning.login') }}" method="GET">
+                <form class="form-horizontal" action="{{ route('elearning.login') }}" method="GET" target="_blank">
                   <div class="form-group">
                     
                     <label for="" class="col-sm-4 control-label">{{ trans('elearning.form_label') }}</label>
                     <div class="col-sm-4">
                       <select name="sso_code" class="form-control">
                         @foreach($elearnings as $key => $value)
-                        <option value="{{ $key }}">{{ $value }}</option>
+                        <option value="{{ $key }}">{{ $value['class_room_name'] }}</option>
                         @endforeach
                       </select>
                     </div>
