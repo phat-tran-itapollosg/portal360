@@ -14,7 +14,7 @@
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                      
                      <span>
-                       {{ $app_title }} - {{ $center_name_title }}
+                       {{ $app_title }}
 
                      </span>
                 </a>

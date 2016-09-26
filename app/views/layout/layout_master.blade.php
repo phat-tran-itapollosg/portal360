@@ -24,7 +24,7 @@
 
         <link href="{{ URL::asset('public/theme/css/style.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/theme/css/style-responsive.css" rel="stylesheet') }}" />
-
+        <link href="{{ URL::asset('public/css/alpha.styles.css" rel="stylesheet') }}" />
 
         <!-- old
         <meta charset="utf-8">
@@ -56,7 +56,7 @@
     
     </head>
     <body lang="{{ App::getLocale() }}">
-    <section id="container">
+    <section id="container" class="sidebar-closed">
         @include('layout.layout_header')
 
         @include('layout.layout_sidebar')
