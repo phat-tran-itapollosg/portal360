@@ -23,12 +23,12 @@
             <thead>
                 <tr>
                     <th>{{trans('booking_index.type')}}</th>
-                    <th>{{trans('booking_index.schedule')}}</th>
+                    <th  class=".visible-xs-block, hidden-xs">{{trans('booking_index.schedule')}}</th>
                     <th>{{trans('booking_index.topic')}}</th>
-                    <th>{{trans('booking_index.teacher')}}</th>
+                    <th  class=".visible-xs-block, hidden-xs">{{trans('booking_index.teacher')}}</th>
                     <th>{{trans('booking_index.date')}}</th>
-                    <th>{{trans('booking_index.room')}}</th>
-                    <th>{{trans('booking_index.center')}}</th>
+                    <th  class=".visible-xs-block, hidden-xs">{{trans('booking_index.room')}}</th>
+                    <th  class=".visible-xs-block, hidden-xs">{{trans('booking_index.center')}}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -36,12 +36,12 @@
                  @foreach($session_booking as $key => $booking)
                     <tr>
                         <td>{{ $booking['type'] }}</td>
-                        <td>{{ $booking['schedule_time'] }}</td>
+                        <td  class=".visible-xs-block, hidden-xs">{{ $booking['schedule_time'] }}</td>
                         <td>{{ $booking['topic_name'] }} </td>
-                        <td>{{ $booking['teacher_name'] }}</td>
+                        <td  class=".visible-xs-block, hidden-xs">{{ $booking['teacher_name'] }}</td>
                         <td>{{ $booking['day_name'] }}<br>{{ $booking['schedule_date'] }}</td>
-                        <td>{{ $booking['room_name'] }}</td>
-                        <td>{{ $booking['center_name'] }}</td>       
+                        <td  class=".visible-xs-block, hidden-xs">{{ $booking['room_name'] }}</td>
+                        <td  class=".visible-xs-block, hidden-xs">{{ $booking['center_name'] }}</td>       
                         <td><a class="btn btn-default btn-xs" href="{{ route('Booking.cancel',[  $booking['session_id']  ]) }}" role="button" target="_blank">{{trans('booking_index.cancel')}}</a></td>
                     </tr>
                 @endforeach
