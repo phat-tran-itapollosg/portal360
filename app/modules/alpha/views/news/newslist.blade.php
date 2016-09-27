@@ -18,24 +18,22 @@
         </header>
         <div class="panel-body">
         <div class="col-lg-8">  
-            <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+            <h3>{{ trans('news.heading') }} </h3>
+            <table id="data-table" class=" table table-bordered table-hover table-striped">
                     <thead>                                   
                         <tr>
                             <th class="text-center" width="5%"><b>#</b></th>                             
                             <th class="text-center" width="20%"><b>{{ trans('news.img') }}</b></th>
                             <th class="text-center" ><b>{{ trans('news.title') }}</b></th>
                             <th class="text-center .visible-xs-block, hidden-xs" width="10%"><b>{{ trans('news.date') }}</b></th>
-                            
                             <th width="5%"></th>   
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($getfaq1 as $index => $item)
-                            
                             <tr>
                                 <td>{{$item->id}}</td>                                 
                                 <td class="text-center">
-                                    
                                     @if(!empty($item->img)) 
                                     <img height="64px" src="{{URL::asset('public/images')}}/{{$item->img}}">
                                     @else
@@ -64,23 +62,24 @@
                                         <li><a href=" {{ URL::to(route('alpha.news.updateimgnews',$item->id))}} " target="_blank">{{ trans('news.updateImage') }}</a></li>
                                       </ul>
                                     </div>
-                                </td>
-              
+                                </td>         
                             </tr>
-                           
                         @endforeach
                     </tbody>
                 </table>   
             </div>
             <div class="col-lg-4">  
-                <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+                <h3>{{ trans('news.category') }} </h3>
+                <table id="data-table" class="table table-bordered table-hover table-striped">
             <thead>                                   
                 <tr>
                     <th class="text-center" width="5%"><b>#</b></th>                        
                     <th class="text-center" ><b>{{ trans('news.category') }}</b></th>
                     
-                    <th width="5%"><a type="button" class="btn btn-default btn-sm" href="{{ URL::to('admin/news/category/add') }}" target="_blank">{{ trans('faq.add') }}
-                                </a></th>   
+                    <th width="5%">
+                        <a type="button" class="btn btn-default btn-sm" href="{{ URL::to('admin/news/category/add') }}" target="_blank">{{ trans('faq.add') }}
+                        </a>
+                    </th>   
                 </tr>
             </thead>
             <tbody>
