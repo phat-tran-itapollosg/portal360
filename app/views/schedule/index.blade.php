@@ -4,6 +4,25 @@
 
 @section('styles')
     <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet">
+<style type="text/css">
+      @media screen and (orientation:landscape){
+
+         }
+      @media screen and (orientation:portrait){
+        .panel-body .wrapper-note .note-item{
+           margin-bottom: 10px;
+           width:100%;
+        }
+
+        .panel-body .wrapper-note .note-item p{
+           margin-left:5px;
+           color: #fff;
+           font-weight: bold;
+           padding-top: 2px;
+        }
+     }
+</style>
+     
 
 @stop
 
@@ -19,6 +38,7 @@
                       
                       <div class="panel-body">
                       <div class="wrapper-note">
+                          <h3>{{ trans('app.notes') }}</h3>
                           <div class="attendant-note note-item">
                             <p>Attendant</p>
                           </div>

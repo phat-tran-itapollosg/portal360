@@ -20,7 +20,7 @@
                     <img src="{{ URL::asset('public/img/customer-avatar.png') }}" alt="" style="height:29px;">
                      @endif
                       @if(Session::get('contact') AND Session::get('contact')->last_name != '')
-                    <span class="username">{{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }}</span>
+                    <span class="username">{{ Session::get('contact')->first_name }}</span>
                     @endif
                 </a>
                 <ul class="dropdown-menu extended logout">

@@ -28,12 +28,12 @@
                             <th>{{trans('enrollment_index.class')}}</th>
                             <th>{{trans('enrollment_index.start_date')}}</th>
                             <th>{{trans('enrollment_index.end_date')}}</th>
-                            <th>{{trans('enrollment_index.total_amount')}}</th>
-                            <th>{{trans('enrollment_index.ending_balance')}}</th>
-                            <th>{{trans('enrollment_index.total_hour')}}</th>
-                            <th>{{trans('enrollment_index.ending_hour')}}</th>
-                            <th>{{trans('enrollment_index.ec')}}</th>
-                            <th>{{trans('enrollment_index.center')}}</th>
+                            <th class="hidden-xs">{{trans('enrollment_index.total_amount')}}</th>
+                            <th class="hidden-xs">{{trans('enrollment_index.ending_balance')}}</th>
+                            <th class="hidden-xs">{{trans('enrollment_index.total_hour')}}</th>
+                            <th class="hidden-xs hidden-sm">{{trans('enrollment_index.ending_hour')}}</th>
+                            <th class="hidden-xs hidden-sm">{{trans('enrollment_index.ec')}}</th>
+                            <th class="hidden-xs hidden-sm">{{trans('enrollment_index.center')}}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,12 +43,12 @@
                                 <td>{{ $enrollment->class_name }} </td>
                                 <td>{{ SugarUtil::formatDate($enrollment->start_date) }} </td>
                                 <td>{{ SugarUtil::formatDate($enrollment->end_date) }} </td>
-                                <td>{{ $enrollment->total_amount }} </td>
-                                <td>{{ $enrollment->balance }} </td>
-                                <td>{{ $enrollment->total_hour }} </td>
-                                <td>{{ $enrollment->balance_hour }} </td>
-                                <td>{{ $enrollment->ec_name }} </td>
-                                <td>{{ $enrollment->center }} </td>       
+                                <td class="hidden-xs">{{ $enrollment->total_amount }} </td>
+                                <td class="hidden-xs">{{ $enrollment->balance }} </td>
+                                <td class="hidden-xs">{{ $enrollment->total_hour }} </td>
+                                <td class="hidden-xs hidden-sm">{{ $enrollment->balance_hour }} </td>
+                                <td class="hidden-xs hidden-sm">{{ $enrollment->ec_name }} </td>
+                                <td class="hidden-xs hidden-sm">{{ $enrollment->center }} </td>       
                             </tr>
                         @endforeach
                     </tbody>

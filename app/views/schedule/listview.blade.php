@@ -25,9 +25,9 @@
                             <th><b>{{ trans('schedule_listview.class_name') }}</b></th>                             
                             <th data-type="timedate"><b>{{ trans('schedule_listview.start_date') }}</b></th>
                             <th data-type="timedate"><b>{{ trans('schedule_listview.ent_date') }}</b></th>
-                            <th><b>{{ trans('schedule_listview.duration') }}</b></th>
-                            <th><b>{{ trans('schedule_listview.teacher_name') }}</b></th>
-                            <th><b>{{ trans('schedule_listview.room') }}</b></th>   
+                            <th class="hidden-xs"><b>{{ trans('schedule_listview.duration') }}</b></th>
+                            <th class="hidden-xs"><b>{{ trans('schedule_listview.teacher_name') }}</b></th>
+                            <th class="hidden-xs"><b>{{ trans('schedule_listview.room') }}</b></th>   
                         </tr>
                     </thead>
                     <tbody>
@@ -36,9 +36,9 @@
                                 <td>{{ $schedule->class_name }}</td>                                 
                                 <td>{{ SugarUtil::formatDate($schedule->date_start) }}</td>
                                 <td>{{ SugarUtil::formatDate($schedule->date_end) }}</td>
-                                <td>{{ $schedule->duration }}</td>
-                                <td>{{ $schedule->teacher_name }}</td>
-                                <td>{{ $schedule->room_name }}</td>
+                                <td class="hidden-xs">{{ $schedule->duration }}</td>
+                                <td class="hidden-xs">{{ $schedule->teacher_name }}</td>
+                                <td class="hidden-xs">{{ $schedule->room_name }}</td>
                             </tr>
                         @endforeach
                     </tbody>
