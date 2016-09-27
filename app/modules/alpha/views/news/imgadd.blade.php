@@ -59,23 +59,24 @@ $(function () {
         formData: {script: 'tan phat'},
         done: function (e, data) {
 
-
+            console.log('alpha.faq.updata',data);
             var url= data.result.files[0].url.split("images");
-            // console.log('alpha.faq.updata',url);
+            
             $.ajax({
               url: " {{URL::to(route('alpha.news.updatajsonnews'))}} ",
               method: "POST",
               data: { id : "{{$id}}" ,url : url[1]},
               dataType: "json"
             }).done(function( msg ) {
-              $( "#log" ).html( msg );
+              // $( "#log" ).html( msg );
               if(msg.result == true){
                 window.location.href = "{{ URL::to(route('alpha.news.newslist')) }}";
               }else{
                 window.location.href = "{{ URL::to(route('alpha.500')) }}";
               }
-              //console.log('alpha.faq.updata',msg);
+              console.log('alpha.faq.updata',msg);
             }).fail(function( jqXHR, textStatus ) {
+                console.log('alpha.faq.updata',jqXHR, textStatus);
                 window.location.href = "{{ URL::to(route('alpha.500')) }}";
             });
         },
@@ -87,6 +88,7 @@ $(function () {
             );
         },
         fail: function () {
+            console.log('alpha.faq.updata',jqXHR, textStatus);
             window.location.href = "{{ URL::to(route('alpha.500')) }}";
         }
     });
