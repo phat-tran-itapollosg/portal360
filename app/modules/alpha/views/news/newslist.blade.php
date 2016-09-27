@@ -24,7 +24,7 @@
                             <th class="text-center" width="5%"><b>#</b></th>                             
                             <th class="text-center" width="20%"><b>{{ trans('news.img') }}</b></th>
                             <th class="text-center" ><b>{{ trans('news.title') }}</b></th>
-                            <th class="text-center" width="10%"><b>{{ trans('news.date') }}</b></th>
+                            <th class="text-center .visible-xs-block, hidden-xs" width="10%"><b>{{ trans('news.date') }}</b></th>
                             
                             <th width="5%"></th>   
                         </tr>
@@ -44,7 +44,7 @@
                                    
                                 </td>
                                 <td class="text-left">{{ $item->ntitle }}</td>
-                                <td class="text-center">{{ $item->ndate }}</td>
+                                <td class="text-center .visible-xs-block, hidden-xs">{{ $item->ndate }}</td>
                                 <td class="text-center">
                                 
                                 <div class="dropdown">
