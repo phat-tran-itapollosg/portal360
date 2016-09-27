@@ -20,34 +20,27 @@
           <b> {{ trans('news.heading') }} </b>
         </header>
         <div class="panel-body">
-                <ul class='ulli'>
-                @foreach ($getnews as $getnewsv) 
-
-                    <li class="boxfaq" style="padding:10px">
-
-                        <div class="task-title imgquestion" style="display:inline-block"> 
-                            @if(!empty($getnewsv->img)) 
-                                    <img  width="64px" src="{{URL::asset('public/images')}}/{{$getnewsv->img}}">
-                            @else
-                                    <img  width="64px"  src="{{ URL::asset('public/img/favicon_apollo.png') }}">
-                            @endif
-                        </div>
-                        <div class="questionhv" style="display:inline-block; padding-left:10px">
-
-                            <a class='afaq' href="news/detal/{{$getnewsv->id}}">{{ $getnewsv->ntitle }}</a>
-                            <br>    
-                            {{ trans('news.category') }}   
-                            <a class='afaq' href="faq/category/{{$getnewsv->idcate}}">
-
-                                    {{$getnewsv->ccontents}}
-                            </a> 
-                        </div>
-                        <div style="float: right; ">
-                            {{$getnewsv->ndate}}
-                        </div>
-                    </li>
+            @foreach ($getnews as $getnewsv) 
+            <div class="media">
+              <div class="media-left">
+                <a href="news/detal/{{$getnewsv->id}}">
+                    @if(!empty($getnewsv->img)) 
+                            <img  width="64px" src="{{URL::asset('public/images')}}/{{$getnewsv->img}}">
+                    @else
+                            <img  width="64px"  src="{{ URL::asset('public/img/favicon_apollo.png') }}">
+                    @endif
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">
+                    <a href="news/detal/{{$getnewsv->id}}">
+                        {{ $getnewsv->ntitle }}
+                    </a>
+                </h4>
+                    <span class="label label-default">{{$getnewsv->ccontents}}</span>
+              </div>
+            </div>
                 @endforeach
-                </ul>
         </div>
       </section>
     </div>
