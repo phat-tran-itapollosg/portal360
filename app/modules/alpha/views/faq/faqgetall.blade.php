@@ -19,7 +19,8 @@
             </header>
             <div class="panel-body">
             <div class="col-md-8">
-                    <table  id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+                    <h3>{{ trans('faq.heading') }} </h3>
+                    <table  id="data-table" class=" table table-bordered table-hover table-striped ">
                         <thead>                                   
                             <tr style=" height: 55px ">
 
@@ -78,6 +79,7 @@
                     </table> 
                 </div>  
                 <div class="col-md-4">
+                    <h3>{{ trans('faq.category') }} </h3>
                     <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
                         <thead>                                   
                             <tr style=" height: 58px " >
