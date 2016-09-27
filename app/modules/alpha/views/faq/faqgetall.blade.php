@@ -26,7 +26,7 @@
                                 <th class="text-center" width="5%"><b>#</b></th>                             
                                 <th class="text-center" width="20%"><b>{{ trans('faq.img') }}</b></th>
                                 <th class="text-center" ><b>{{ trans('faq.faqquestion') }}</b></th>
-                                <th class="text-center" width="10%"><b>{{ trans('faq.faqdate') }}</b></th>
+                                <th class="text-center .visible-xs-block, hidden-xs" width="10%"><b>{{ trans('faq.faqdate') }}</b></th>
                                 
                                 <th width="5%"></th>  
                             </tr>
@@ -46,7 +46,7 @@
                                        
                                     </td>
                                     <td class="text-left">{{ $item->faqquestion }}</td>
-                                    <td class="text-center">{{ $item->faqdate }}</td>
+                                    <td class="text-center .visible-xs-block, hidden-xs">{{ $item->faqdate }}</td>
                                     <td class="text-center">
                                     
                                     <div class="dropdown">
