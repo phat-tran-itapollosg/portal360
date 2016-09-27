@@ -75,3 +75,4 @@
             Notification.notify('{{ Session::get('success_message') }}', 'success');
         </script>
     @endif
+@stop

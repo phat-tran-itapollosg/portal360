@@ -96,6 +96,8 @@
     <script src="{{ URL::asset('public/theme/js/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ URL::asset('public/theme/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('public/theme/js/respond.min.js') }}" ></script>
+    <script src="{{ URL::asset('public/vendors/bootstrap-growl/bootstrap-growl.min.js') }}"></script>
+    <script src="{{ URL::asset('public/js/notification.js') }}"></script>
 
     <!--right slidebar-->
     <script src="{{ URL::asset('public/theme/js/slidebars.min.js') }}"></script>
