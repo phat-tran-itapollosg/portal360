@@ -23,13 +23,13 @@
                     <thead>
                         <tr>
                             <th><b>{{ trans('feedback_index.subject') }}</b></th>
-                            <th><b>{{ trans('feedback_index.type') }}</b></th>
-                            <th><b>{{ trans('feedback_index.receiver') }}</b></th>  
+                            <th ><b>{{ trans('feedback_index.type') }}</b></th>
+                            <th class=".visible-xs-block, hidden-xs"><b>{{ trans('feedback_index.receiver') }}</b></th>  
                             <th data-type="timedate"><b>{{ trans('feedback_index.sent_date') }}</b></th>
-                            <th><b>{{ trans('feedback_index.status') }}</b></th>
-                            <th><b>{{ trans('feedback_index.content') }}</b></th>
-                            <th><b>{{ trans('feedback_index.resolution') }}</b></th>
-                            <th data-type="timedate"><b>{{ trans('feedback_index.resolved_date') }}</b></th>
+                            <th class=".visible-xs-block, hidden-xs"><b>{{ trans('feedback_index.status') }}</b></th>
+                            <th class=".visible-xs-block, hidden-xs"><b>{{ trans('feedback_index.content') }}</b></th>
+                            <th class=".visible-xs-block, hidden-xs"><b>{{ trans('feedback_index.resolution') }}</b></th>
+                            <th class=".visible-xs-block, hidden-xs" data-type="timedate"><b>{{ trans('feedback_index.resolved_date') }}</b></th>
                             
                         </tr>
                     </thead>
@@ -41,15 +41,15 @@
                             <tr>
                                 <td>{{ $feedback->name }}</td>
                                 <td>{{ $types->{$feedback->relate_feedback_list} }}</td>
-                                <td>{{ $feedback->receiver }}</td>
+                                <td class=".visible-xs-block, hidden-xs">{{ $feedback->receiver }}</td>
                                 <td>{{ SugarUtil::formatDate($feedback->date_entered) }}</td>
-                                <td>{{ isset($statuses->{$feedback->status})?$statuses->{$feedback->status}:$feedback->status }}</td>
+                                <td class=".visible-xs-block, hidden-xs">{{ isset($statuses->{$feedback->status})?$statuses->{$feedback->status}:$feedback->status }}</td>
 <!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
-                                <td>{{ $feedback->description }}</td>
-                                <td>{{ $feedback->feedback }}</td>
+                                <td class=".visible-xs-block, hidden-xs">{{ $feedback->description }}</td>
+                                <td class=".visible-xs-block, hidden-xs">{{ $feedback->feedback }}</td>
 
 <!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
-                                 <td>{{ SugarUtil::formatDate($feedback->resolved_date) }}</td>
+                                 <td class=".visible-xs-block, hidden-xs">{{ SugarUtil::formatDate($feedback->resolved_date) }}</td>
                             </tr>
                         @endforeach
                     </tbody>
