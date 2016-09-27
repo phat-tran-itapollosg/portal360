@@ -36,6 +36,8 @@ var Script = function () {
     $(function() {
         function responsiveView() {
             var wSize = $(window).width();
+            var hSize = $(window).height();
+            
             if (wSize <= 768) {
                 $('#container').addClass('sidebar-close');
                 $('#sidebar > ul').hide();
@@ -45,6 +47,7 @@ var Script = function () {
                 $('#container').removeClass('sidebar-close');
                 $('#sidebar > ul').show();
             }
+            $('#sidebar > ul').css({'min-height' : hSize+'px'});
         }
         $(window).on('load', responsiveView);
         $(window).on('resize', responsiveView);

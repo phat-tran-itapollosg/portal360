@@ -76,7 +76,7 @@
     
     </head>
     <body lang="{{ App::getLocale() }}">
-    <section id="container" class="sidebar-closed">
+    <section id="container" >
         @include('layouts.header')
 
         @include('layouts.sidebar')

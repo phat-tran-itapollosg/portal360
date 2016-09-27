@@ -16,7 +16,7 @@
     }
     #login_content #logo_2{
         float: left;
-        margin: 10px 60px 60px 20px;
+        margin: 0px 60px 0px 20px;
     }
     #login_content .background{
         position: fixed;

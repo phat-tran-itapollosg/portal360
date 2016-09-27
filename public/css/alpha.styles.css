@@ -1,11 +1,12 @@
 @charset "UTF-8";
 
-.sidebar-closed #sidebar{
-	display: none;
-}
-.sidebar-close #sidebar{
-	top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
+// .sidebar-closed #sidebar{
+// 	display: none;
+// }
+// .sidebar-close #sidebar{
+// 	top: 0;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+// }
+
