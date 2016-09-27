@@ -55,7 +55,7 @@
                   <form id="form-profile" action="{{ URL::to('user/saveProfile') }}" method="post" class="form-horizontal" role="form">
                       <div class="form-group">
                           <label  class="col-lg-2 control-label"><b>{{ trans('user_profile.customer_id') }}</b></label>
-                          <div class="col-lg-10">
+                          <div class="col-lg-6">
                               <input type="text" id="customer_id" name="customer_id" class="form-control" placeholder="{{ trans('user_profile.customer_id') }}" value="{{ $user->user_name }}" disabled>
                           </div>
                       </div>
