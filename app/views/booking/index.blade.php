@@ -44,7 +44,8 @@
     @else
     <div class="card">
     <div class="card-body card-padding overflow-auto">
-        <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
+        @foreach($session_booking as $key => $booking)
+        <table id="data-table" class="datatable table table-bordered">
             <thead>
                 <tr>
                     <th>{{trans('booking_index.day_name')}}</th>
@@ -76,7 +77,8 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table> 
+        </table>
+        @endforeach
     </div> <!-- end card-body -->
     </div> <!-- end card -->
 
