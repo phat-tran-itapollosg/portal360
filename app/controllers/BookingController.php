@@ -14,8 +14,10 @@ class BookingController extends BaseController {
         $start = '';
         $end = '';
         $class_type = '';
+        $method = 'get';
         if(Input::get('start') && Input::get('end') && Input::get('class_type')) {
             //var_dump($booking);die();
+            $method = 'post';
             $start = Input::get('start');
             $end = Input::get('end');
             $class_type = Input::get('class_type');
@@ -64,6 +66,7 @@ class BookingController extends BaseController {
                     'start'=>$start,
                     'end'=>$end,
                     'class_type'=>$class_type,
+                    'method'=>$method,
                     ));
                 exit();
             }
@@ -76,6 +79,7 @@ class BookingController extends BaseController {
                 'start'=>$start,
                 'end'=>$end,
                 'class_type'=>$class_type,
+                'method'=>$method,
 
                 ));
             exit();

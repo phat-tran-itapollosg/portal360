@@ -17,7 +17,7 @@
     </header>
 
     <div class="panel-body">
-    <form class="form-inline" method="POST" accept="{{ route('Booking.index') }}">
+    <form class="form-inline" method="POST" action="{{ route('Booking.index') }}">
       <div class="form-group">
         <!-- <label for="exampleInputName2">Name</label> -->
         <label for="exampleInputName2">{{trans('booking_index.start_time')}}</label>
@@ -39,13 +39,13 @@
       <button type="submit" class="btn btn-primary">{{trans('booking_index.view')}}</button>
     </form>
     <hr>
-    @if (empty($session_booking) OR count($session_booking) <=0 OR $session_booking == '[]')
+    @if ((empty($session_booking) OR count($session_booking) <=0 OR $session_booking == '[]') AND $method == 'post' )
       <h4><p class="text-center">{{ trans('booking_index.could_not_find') }}</p></h4>
-    @else
+    @elseif($method == 'post')
     <div class="card">
     <div class="card-body card-padding overflow-auto">
-        @foreach($session_booking as $key => $booking)
-        <table id="data-table" class="datatable table table-bordered">
+        
+        <table id="data-table" class=" table table-bordered table-hover table-striped">
             <thead>
                 <tr>
                     <th>{{trans('booking_index.day_name')}}</th>
@@ -78,7 +78,7 @@
                 @endforeach
             </tbody>
         </table>
-        @endforeach
+        
     </div> <!-- end card-body -->
     </div> <!-- end card -->
 
