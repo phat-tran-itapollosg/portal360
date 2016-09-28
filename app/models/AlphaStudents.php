@@ -13,6 +13,7 @@ class AlphaStudents extends Eloquent {
 	protected $table = 'alpha_students';
 	public $timestamps  = false;
 	protected $primaryKey = 'alpha_student_id';
+	public $incrementing = false;
 	public function courses()
     {
         return $this->hasMany('AlphaCourses', 'alpha_student_id', 'alpha_student_id');

@@ -12,5 +12,6 @@ class AlphaLessons extends Eloquent {
 	 */
 	protected $table = 'alpha_lessons';
 	public $timestamps  = false;
-	protected $primaryKey = 'lesson_id';
+	protected $primaryKey = 'alpha_lesson_id';
+	public $incrementing = false;
 }
