@@ -90,6 +90,8 @@
 
         Route::get('/booking/submit/{id}', ['as' => 'Booking.submit', 'uses' => 'BookingController@submit']);
         Route::get('/booking/cancel/{id}', ['as' => 'Booking.cancel', 'uses' => 'BookingController@cancel']);
+        Route::get('/payment/', ['as' => 'Payment.index', 'uses' => 'PaymentController@index']);
+        Route::get('/payment/index', ['as' => 'Payment.index', 'uses' => 'PaymentController@index']);
     });
 
     // Routes that dont't need to be checked for authentication

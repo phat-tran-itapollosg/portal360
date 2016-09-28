@@ -14,9 +14,9 @@
                 </a>
             </li>
             <li class="sub-menu dcjq-parent-li">
-                <a href="{{ URL::to('/enrollment/index') }}" class="dcjq-parent">
+                <a href="{{ URL::to('/payment/index') }}" class="dcjq-parent">
                     <i class="fa fa-tasks"></i>
-                    <span>{{ trans('app.enrollment') }}</span>
+                    <span>{{ trans('payment.page_title') }}</span>
                 </a>
             </li>
             <li class="sub-menu dcjq-parent-li">
