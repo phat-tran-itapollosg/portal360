@@ -94,7 +94,6 @@ Route::group(array('prefix' => 'admin','before' => 'auth','namespace' => 'App\Mo
 });
 Route::group(array('prefix' => 'admin','namespace' => 'App\Modules\Alpha\Controllers'), function () {
 
-    Route::get('/elearning/retrievejson/{id}',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@retrieve_result_json']);
-    Route::post('/elearning/retrievejson/{id}',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@retrieve_result_json']);
+    Route::get('/elearning/retrievejson/{id}',['as' => 'alpha.elearning.retrievejson', 'uses' => 'ElearningController@retrieve_result_json']);
     
 });
