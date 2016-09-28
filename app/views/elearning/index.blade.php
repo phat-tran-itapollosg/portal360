@@ -29,7 +29,7 @@
                     <div class="col-sm-4">
                       <select name="sso_code" class="form-control">
                         @foreach($elearnings as $key => $value)
-                        <option value="{{ $key }}">{{ $value['class_room_name'] }}</option>
+                        <option value="{{ $key }}&{{ http_build_query($value, '', '&amp;') }}">{{ $value['class_room_name'] }}</option>
                         @endforeach
                       </select>
                     </div>
