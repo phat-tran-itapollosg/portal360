@@ -17,25 +17,7 @@ class ElearningController extends BaseController
 
     public function index()
     {
-        // $elearnings = array(
-        //     array(
-        //     'course_name' => 'Beginner Lesson 1',
-        //     'sso_code' => 'APOLLO_B1L1'
-        //     ),
-        //      array(
-        //     'course_name' => 'Beginner Lesson 2',
-        //     'sso_code' => 'APOLLO_B1L2'
-        //     ),array(
-        //     'course_name' => 'Beginner Lesson 3',
-        //     'sso_code' => 'APOLLO_B1L3'
-        //     ),array(
-        //     'course_name' => 'Beginner Lesson 4',
-        //     'sso_code' => 'APOLLO_B1L4'
-        //     ),array(
-        //     'course_name' => 'Beginner Lesson 5',
-        //     'sso_code' => 'APOLLO_B1L5'
-        //     )
-        // );  
+  
         $serviceConfig = Config::get('app.service_config');
         $serverUrl = $serviceConfig['server_url'];
         $customService = $serviceConfig['custom_service'];
@@ -77,8 +59,38 @@ class ElearningController extends BaseController
         if(isset($_REQUEST['sso_code']) AND !empty($_REQUEST['sso_code'])){
 
 
-        // var_dump($_REQUEST['sso_code']);
-        // die();
+        var_dump($_REQUEST);
+        $request = explode('&',$_REQUEST['sso_code'],2);
+        $sso_code = $request[0];
+        $Class = NULL ;
+        $session_id = NULL ;
+        if(count($request) == 2){
+            parse_str($request[1], $classroom);
+            if(
+                isset($classroom['class_room_id']) AND !empty($classroom['class_room_id'])
+                AND isset($classroom['class_room_name']) AND !empty($classroom['class_room_name'])
+                AND isset($classroom['session_id']) AND !empty($classroom['session_id'])
+                ){
+                $Class = \AlphaClassroom::where('id' , $classroom['class_room_id'])
+                ->first();
+                $session_id = $classroom['session_id'];
+                if($Class == NULL){
+                        $Class = new \AlphaClassroom;
+                        $Class->alpha_classroom_id = \AlphaUtil::create_guid();
+                        $Class->name = $classroom['class_room_name'];
+                        $Class->id = $classroom['class_room_id'];
+                        $Class->save();
+                }else{
+                    $Class->name = $classroom['class_room_name'];
+                    $Class->save();
+                }
+            }
+            //var_dump($output);
+        }
+        // var_dump();
+        
+        
+        //die();
         $session = Session::get('session');
         $contact = Session::get('contact');
         
@@ -94,6 +106,61 @@ class ElearningController extends BaseController
             'last_name_alphabet'    =>  $contact->last_name,
             'last_name_local'       =>  $contact->last_name,
         );
+        if($Class != NULL){
+            $record = \AlphaStudents::where(function ($query) use ($user,  $Class) {
+                return $query->where('login' , $user['login'])
+                        ->where('first_name', $user['first_name'])
+                        ->where('last_name', $user['last_name'])
+                        ->where('email', $user['email'])
+                        ->where('alpha_classroom_id', $Class->getKey())
+                        ->where('classroom_id', $Class->id);
+            })->orWhere(function ($query) use ($contact, $Class) {
+                return $query->where('sis_student_id' , $contact->id)
+                        ->where('classroom_id', $Class->id)
+                        ->where('alpha_classroom_id', $Class->getKey());
+            })//'sis_student_id', $contact->id
+            ->first();
+        }else{
+            $record = \AlphaStudents::where(function ($query) use ($user) {
+                return $query->where('login' , $user['login'])
+                        ->where('first_name', $user['first_name'])
+                        ->where('last_name', $user['last_name'])
+                        ->where('email', $user['email']);
+                        
+            })->orWhere('sis_student_id', $contact->id)
+            ->first();
+        }
+        if($record == NULL){
+            $record = new \AlphaStudents;
+            $record->alpha_student_id = \AlphaUtil::create_guid();
+            $record->login = $user['login'];
+            $record->login = $user['login'];
+            $record->first_name = $user['first_name'];
+            $record->last_name = $user['last_name'];
+            $record->email = $user['email'];
+            $record->sis_student_id = $contact->id;
+            $record->session_id = $session_id;
+            if($Class != NULL){
+                $record->alpha_classroom_id = $Class->getKey();
+                $record->classroom_id = $Class->id;
+            }
+            
+            $record->save();
+        }else{
+            $record->login = $user['login'];
+            $record->login = $user['login'];
+            $record->first_name = $user['first_name'];
+            $record->last_name = $user['last_name'];
+            $record->email = $user['email'];
+            $record->sis_student_id = $contact->id;
+            $record->session_id = $session_id;
+            if($Class != NULL){
+                $record->alpha_classroom_id = $Class->getKey();
+                $record->classroom_id = $Class->id;
+            }
+            $record->save();
+        }
+
         $xml_data ='<?xml version="1.0"?>
         <query cmd="login">
             <auth>
@@ -112,7 +179,7 @@ class ElearningController extends BaseController
                 <last_name_local>'.$user['last_name_local'].'</last_name_local>
             </user>
             <course>
-                <course_code>'.$_REQUEST['sso_code'].'</course_code>
+                <course_code>'.$sso_code.'</course_code>
                 <group_code>'.$serviceConfig['course']['group_code'].'</group_code>
                 <start_date>'.$serviceConfig['course']['start_date'].'</start_date>    
                 <end_date>'.$serviceConfig['course']['end_date'].'</end_date>
