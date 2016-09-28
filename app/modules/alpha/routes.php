@@ -82,10 +82,6 @@ Route::group(array('prefix' => 'admin','before' => 'auth','namespace' => 'App\Mo
 
     Route::get('/survey/index',['as' => 'alpha.survey.index', 'uses' => 'SurveyController@index']);
 
-
-});
-Route::group(array('prefix' => 'admin','namespace' => 'App\Modules\Alpha\Controllers'), function () {
-
     Route::get('/elearning',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@index']);
     Route::get('/elearning/index',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@index']);
     Route::get('/elearning/retrieve/{id}',['as' => 'alpha.elearning.retrieve', 'uses' => 'ElearningController@retrieve_result']);
@@ -94,4 +90,11 @@ Route::group(array('prefix' => 'admin','namespace' => 'App\Modules\Alpha\Control
     Route::get('/elearning/student/{id}',['as' => 'alpha.elearning.student', 'uses' => 'ElearningController@studentsOfClass']);
     Route::get('/elearning/course/{id}',['as' => 'alpha.elearning.course', 'uses' => 'ElearningController@coursesOfStudents']);
     Route::get('/elearning/lession/{id}',['as' => 'alpha.elearning.lession', 'uses' => 'ElearningController@lessionsOfCourse']);
+
+});
+Route::group(array('prefix' => 'admin','namespace' => 'App\Modules\Alpha\Controllers'), function () {
+
+    Route::get('/elearning/retrievejson/{id}',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@retrieve_result_json']);
+    Route::post('/elearning/retrievejson/{id}',['as' => 'alpha.elearning.index', 'uses' => 'ElearningController@retrieve_result_json']);
+    
 });

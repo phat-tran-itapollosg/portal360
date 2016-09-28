@@ -513,6 +513,94 @@ class ElearningController extends \BaseController {
         }
 
     }
+
+    public function retrieve_result_json($id = NULL){
+        if(isset($id) && !empty($id)
+           AND isset($_REQUEST['username']) AND !empty($_REQUEST['username'])
+           AND isset($_REQUEST['password']) AND !empty($_REQUEST['password'])
+        ){
+            //var_dump($_REQUEST);die();
+            $username = $_REQUEST['username'];
+            $password = $_REQUEST['password'];
+            // $remember = Input::get('remember_me');
+            $result = $this->client->login($username, $password);
+            if($result != 'success_for_admin'){
+                header('Content-type: application/json');
+                echo json_encode(array(
+                    'success'=>0,
+                    'notify'=>'Authorization Required'
+                ));
+                exit();
+            }
+            $result = $this->retrievecourse($id,1);
+            $count_students = 0;
+            $count_courses = 0;
+            $count_lessons = 0;
+            if($result['error'] == FALSE){
+                if(intval($result['total_pages']) > 1){
+                    for ($i=1; $i < $result['total_pages']; $i++) { 
+                        $result = $this->retrievecourse($id, $i + 1);
+                        $count_students = intval($result['count_students']);
+                        $count_courses = intval($result['count_courses']);
+                        $count_lessons = intval($result['count_lessons']);
+                    }
+                    // $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array(
+                    //     'classroom' => $result['classroom'],
+                    //     'count_students' => $count_students,
+                    //     'count_courses' => $count_courses,
+                    //     'count_lessons' => $count_lessons,
+                    //     ));
+                    header('Content-type: application/json');
+                    echo json_encode(array(
+                        'success'=>1,
+                        'notify'=>'Success',
+                        'value_list' => array(
+                            'classroom' => $result["data"]['classroom'],
+                            'count_students' => $result["data"]['count_students'],
+                            'count_courses' => $result["data"]['count_courses'],
+                            'count_lessons' => $result["data"]['count_lessons'],
+                        )
+                    ));
+                    exit();
+                }else{                    
+                    // $this->layout->content = \view::make('alpha::elearning.retrieve')->with(array(
+                    //     'classroom' => $result["data"]['classroom'],
+                    //     'count_students' => $result["data"]['count_students'],
+                    //     'count_courses' => $result["data"]['count_courses'],
+                    //     'count_lessons' => $result["data"]['count_lessons'],
+                    //     ));
+                    header('Content-type: application/json');
+                    echo json_encode(array(
+                        'success'=>1,
+                        'notify'=>'Success',
+                        'value_list' => array(
+                            'classroom' => $result["data"]['classroom'],
+                            'count_students' => $result["data"]['count_students'],
+                            'count_courses' => $result["data"]['count_courses'],
+                            'count_lessons' => $result["data"]['count_lessons'],
+                        )
+                    ));
+                    exit();
+                }
+            }else{
+                // return App::make("ErrorsController")->callAction("error", ['code'=>500,'messenger' => $result['messenger']]);
+                header('Content-type: application/json');
+                echo json_encode(array(
+                    'success'=>0,
+                    'notify'=>$result['messenger']
+                ));
+                exit();
+            }
+        }else{
+             // return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);
+            header('Content-type: application/json');
+            echo json_encode(array(
+                'success'=>0,
+                'notify'=>'Looks like Something went wrong.'
+            ));
+            exit();
+        }
+    }
 }
 
 // function \AlphaUtil::create_guid()
