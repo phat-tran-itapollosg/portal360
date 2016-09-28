@@ -37,12 +37,13 @@
                                 <th class="text-center" width="15%"><b>{{ trans('elearning.students_last_name') }}</b></th>
                                 <th class="text-center" width="15%"><b>{{ trans('elearning.students_email') }}</b></th>
                                 <th class="text-center" width="5%">{{ trans('elearning.courses_heading') }}</th>
+
                                 <th class="text-center" width="5%"></th>
 
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach( $classroom->students as $index => $item )
+                        @foreach( $students as $index => $item )
                             <tr>
                                 <td class="text-center" >
                                     {{ $index +1 }}
@@ -62,7 +63,7 @@
                                     {{ $item->email }}
                                 </td>
                                 <td class="text-center" >
-                                    {{ $item->courses->count() }}
+                                    {{ $item->courses()->where('alpha_delete', '=', '0')->count() }}
                                 </td>
 
                                 <td class="text-center" >

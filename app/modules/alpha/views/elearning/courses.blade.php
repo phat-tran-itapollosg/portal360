@@ -54,7 +54,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($record->courses as $index=>$item )
+                        @foreach($courses as $index=>$item )
                             <tr >
                                 <td class="text-center" >
                                     {{ $item->id }}
@@ -84,7 +84,7 @@
                                     @endif
                                 </td>   
                                 <td class="text-center" >
-                                    {{ $item->lessons->count() }}
+                                    {{ $item->lessons()->where('alpha_delete', '=', '0')->count() }}
                                 </td>   
                                 <td class="text-center" >
                                     <div class="dropdown">
@@ -93,7 +93,7 @@
                                         
                                       </button>
                                       <ul class="dropdown-menu pull-right" aria-labelledby="course-{{ $item->id }}">                                
-                                        <li><a href="{{ route('alpha.elearning.lession', [$item->id])}}" target="_blank">{{ trans('elearning.lessons') }}</a></li>
+                                        <li><a href="{{ route('alpha.elearning.lession', [$item->alpha_course_id])}}" target="_blank">{{ trans('elearning.lessons') }}</a></li>
                                       </ul>
                                     </div>
                                 </td>                  

@@ -88,7 +88,7 @@
                                     {{ $item->time_retrieve}}
                                 </td> 
                                 <td class="text-center" >
-                                    {{ $item->students->count()}}
+                                    {{ $item->students()->where('alpha_delete', '=', '0')->count()}}
                                 </td>  
                                 <td class="text-center" >
                                     <div class="dropdown">
@@ -98,7 +98,7 @@
                                       </button>
                                       <ul class="dropdown-menu pull-right" aria-labelledby="classroom-{{ $item->id }}">
                                         <li><a href="{{ route('alpha.elearning.retrieve', [$item->id])}}" target="_blank">{{ trans('elearning.retrieve_study_record') }}</a></li>
-                                        <li><a href="{{ route('alpha.elearning.student', [$item->id])}}" target="_blank">{{ trans('elearning.students') }}</a></li>
+                                        <li><a href="{{ route('alpha.elearning.student', [$item->alpha_classroom_id])}}" target="_blank">{{ trans('elearning.students') }}</a></li>
                                       </ul>
                                     </div>
 

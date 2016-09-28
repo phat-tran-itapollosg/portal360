@@ -61,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($record->lessons as $index => $item )
+                        @foreach($lessons as $index => $item )
                             <tr >
                                 <td class="text-center" >
                                     {{ $item->id }}
