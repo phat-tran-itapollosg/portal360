@@ -15,12 +15,12 @@
     td:nth-of-type(3):before { content: '{{trans('payment.total_amount')}} : '; } 
     td:nth-of-type(4):before { content: '{{trans('payment.payment_amount_mobi')}} : '; }
     td:nth-of-type(5):before { content: '{{trans('payment.freebalance_amount_mobi')}} : '; }
-    td:nth-of-type(6):before { content: '{{trans('payment.used_amount')}} : '; }
-    td:nth-of-type(7):before { content: '{{trans('payment.start_date')}} : '; }
+    td:nth-of-type(6):before { content: '{{trans('payment.used_amount_mobi')}} : '; }
+    td:nth-of-type(7):before { content: '{{trans('payment.start_date_mobi')}} : '; }
     td:nth-of-type(8):before { content: '{{trans('payment.payment_expired_date_mobi')}} : '; }
-    td:nth-of-type(9):before { content: '{{trans('payment.total_days')}} : '; }
-    td:nth-of-type(10):before { content: '{{trans('payment.ec_name')}} : '; }
-    td:nth-of-type(11):before { content: '{{trans('payment.center_name')}} : '; }
+    td:nth-of-type(9):before { content: '{{trans('payment.total_days_mobi')}} : '; }
+    td:nth-of-type(10):before { content: '{{trans('payment.ec_name_mobi')}} : '; }
+    td:nth-of-type(11):before { content: '{{trans('payment.center_name_mobi')}} : '; }
 
   }
   </style>
