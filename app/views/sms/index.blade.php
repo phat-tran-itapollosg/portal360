@@ -3,7 +3,19 @@
 @section('title', trans('sms_index.page_title'))
 
 @section('styles')
-   
+ <style>
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)
+ 
+    {
+    td:nth-of-type(1):before { content: '{{trans('sms_index.phone_number')}}'; } 
+    td:nth-of-type(2):before { content: '{{trans('sms_index.content')}} : '; } 
+    td:nth-of-type(3):before { content: '{{trans('sms_index.delivery_status')}} : '; } 
+    td:nth-of-type(4):before { content: '{{trans('sms_index.date')}} : '; }
+    
+  }
+  </style>  
 @stop
 
 @section('content')
