@@ -9,14 +9,19 @@ return array(
     'freebalance_amount' => 'Freebalance Amount',
     'freebalance_amount_mobi' => 'Freebalance',
     'used_amount' => 'Used Amount',
+    'used_amount_mobi' => 'Used Amount',
     'start_date' => 'Start Date',
+    'start_date_mobi' => 'Start Date',
     'payment_expired_date' => 'Payment Expired Date',
     'payment_expired_date_mobi' => 'Expired Date',
     'total_days' => 'Total Days',
+    'total_days_mobi' => 'Total Days',
     'remain_days' => 'Remain Days',
     'course_fee_name' => 'Course Fee Name',
     'ec_name' => 'EC',
+    'ec_name_mobi' => 'EC',
     'center_name' => 'Center',
+    'center_name_mobi'=>'Center',
 	);
 ?>
 
