@@ -14,4 +14,6 @@ return array(
     'lbl_endtime' => 'End Time',
     'lbl_teachername' => 'Teacher',
     'lbl_roomname' => 'Room',
+    'attendant' => 'Attendant',
+    'absent' => 'Absent',
 );

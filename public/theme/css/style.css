@@ -6233,4 +6233,5 @@ header.blue-bg .search:focus {
 
 .panel-body .wrapper-note .note-item p{
    margin-left:120%;
+   width: 100px;
 }

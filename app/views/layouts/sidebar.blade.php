@@ -77,14 +77,14 @@
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('/faq') }}" class="dcjq-parent">
                     <i class="fa fa-question"></i>
-                    <span>FAQ</span>
+                    <span>{{ trans('app.faq') }}</span>
                 </a>
             </li>
 
             <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('/news') }}" class="dcjq-parent">
                     <i class="fa fa-book"></i>
-                    <span>News</span>
+                    <span>{{ trans('app.news') }}</span>
                 </a>
             </li>
         </ul>

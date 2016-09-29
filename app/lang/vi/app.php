@@ -40,4 +40,6 @@ return array(
     'booking_view' => 'xem đăng ký',
     'booking_history' => 'lịch sử đăng ký',
     'notes' => 'Ghi chú',
+    'news' => 'Tin tức',
+    'faq' => 'Giải đáp',
 );

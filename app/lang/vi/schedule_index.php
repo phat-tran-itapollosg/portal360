@@ -15,4 +15,6 @@ return array(
     'lbl_endtime' => 'Giờ kết thúc',
     'lbl_teachername' => 'Giáo viên',
     'lbl_roomname' => 'Phòng học',
+    'attendant' => 'Tham dự',
+    'absent' => 'Vắng mặt',
 );

@@ -40,11 +40,11 @@
                       <div class="wrapper-note">
                           <h3>{{ trans('app.notes') }}</h3>
                           <div class="attendant-note note-item">
-                            <p>Attendant</p>
+                            <p>{{ trans('schedule_index.attendant') }}</p>
                           </div>
 
                           <div class="absent-note note-item">
-                              <p>Absent</p>
+                              <p class="clear">{{ trans('schedule_index.absent') }}</p>
                           </div>
                          </div>
                           <div id="calendar" class="has-toolbar"></div>
