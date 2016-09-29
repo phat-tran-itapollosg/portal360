@@ -4,8 +4,6 @@
 
 @section('styles')
 <!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
-
-@stop
 <style>
   @media 
   only screen and (max-width: 760px),
@@ -26,6 +24,8 @@
 
   }
   </style>
+@stop
+
 @section('content')
 <!-- page start-->
       <div class="row">
