@@ -6,7 +6,24 @@
 <!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 
 @stop
+<!-- <link href="{{ URL::asset('public/css/stylers.css') }}" rel="stylesheet">  -->
+<style>
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+  td:nth-of-type(1):before { content: '{{trans('enrollment_index.no')}} : '; } 
+    td:nth-of-type(2):before { content: '{{trans('enrollment_index.class')}} : '; } 
+    td:nth-of-type(3):before { content: '{{trans('enrollment_index.start_date')}} : '; }
+    td:nth-of-type(4):before { content: '{{trans('enrollment_index.end_date')}} : '; }
+    td:nth-of-type(5):before { content: '{{trans('enrollment_index.total_amount')}} : '; }
+    td:nth-of-type(6):before { content: '{{trans('enrollment_index.ending_balance_mobile')}} : '; }
+    td:nth-of-type(7):before { content: '{{trans('enrollment_index.total_hour')}} : '; }
+    td:nth-of-type(8):before { content: '{{trans('enrollment_index.ending_hour')}} : '; }
+    td:nth-of-type(9):before { content: '{{trans('enrollment_index.ec')}} : '; }
+    td:nth-of-type(10):before { content: '{{trans('enrollment_index.center')}} : '; }
 
+  }
+  </style>
 @section('content')
 <!-- page start-->
       <div class="row">
