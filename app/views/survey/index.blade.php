@@ -9,6 +9,17 @@
 
 @section('styles')
 <link href="{{ URL::asset('public/theme/css/tasks.css') }}" rel="stylesheet">  
+ <style>
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)
+ 
+    {
+    td:nth-of-type(1):before { content: '#'; } 
+    td:nth-of-type(2):before { content: '{{trans('survey.survey') }} : ' ;}
+    td:nth-of-type(3):before { content: '{{trans('survey.dosurvey')}} : ';  }   
+	}
+  </style>  
 @stop
 
 @section('content')
@@ -18,17 +29,18 @@
             
                 <section class="panel panel-default">
                 <header class="panel-heading" style="border-radius:0">
-                  <b>Survey</b>
+                  <b> {{ trans('survey.survey') }} </b>
                 </header>
                 
                 <div class="panel-body">
                 	<table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
 	                	<thead>                                   
 	                        <tr>
-	                            <th><b>#</b></th>                             
-	                            <th ><b>Survey</b></th>
-	                            
-	                            <th></th>   
+	                            <th>
+	                            	<b>#</b>
+	                            </th>            
+	                            <th>{{ trans('survey.survey') }}</th> 
+	                            <th>{{ trans('survey.dosurvey') }}</th> 
 	                        </tr>
 	                    </thead>
 	                    <tbody>
