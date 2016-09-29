@@ -4,11 +4,23 @@
 
 @section('styles')
         
+<style>
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    td:nth-of-type(1):before { content: '{{ trans('schedule_listview.class_name') }} : '; } 
+    td:nth-of-type(2):before { content: '{{ trans('schedule_listview.start_date') }} : '; } 
+    td:nth-of-type(3):before { content: '{{ trans('schedule_listview.ent_date') }} : '; }
+    td:nth-of-type(4):before { content: '{{ trans('schedule_listview.duration') }} : '; }
+    td:nth-of-type(5):before { content: '{{ trans('schedule_listview.teacher_name') }} : '; }
+    td:nth-of-type(6):before { content: '{{ trans('schedule_listview.room') }} : '; }
+
+  }
+  </style>
 @stop
 
 @section('content')
-    
-<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
+ 
     <div class="row">
         <div class="col-lg-12">
             <section class="panel panel-default">  
@@ -19,15 +31,14 @@
             <div class="card">
             <div class="card-body card-padding overflow-auto">
                 <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
-<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
                     <thead>                                   
                         <tr>
                             <th><b>{{ trans('schedule_listview.class_name') }}</b></th>                             
                             <th data-type="timedate"><b>{{ trans('schedule_listview.start_date') }}</b></th>
                             <th data-type="timedate"><b>{{ trans('schedule_listview.ent_date') }}</b></th>
-                            <th class="hidden-xs"><b>{{ trans('schedule_listview.duration') }}</b></th>
-                            <th class="hidden-xs"><b>{{ trans('schedule_listview.teacher_name') }}</b></th>
-                            <th class="hidden-xs"><b>{{ trans('schedule_listview.room') }}</b></th>   
+                            <th><b>{{ trans('schedule_listview.duration') }}</b></th>
+                            <th><b>{{ trans('schedule_listview.teacher_name') }}</b></th>
+                            <th><b>{{ trans('schedule_listview.room') }}</b></th>   
                         </tr>
                     </thead>
                     <tbody>
@@ -36,19 +47,17 @@
                                 <td>{{ $schedule->class_name }}</td>                                 
                                 <td>{{ SugarUtil::formatDate($schedule->date_start) }}</td>
                                 <td>{{ SugarUtil::formatDate($schedule->date_end) }}</td>
-                                <td class="hidden-xs">{{ $schedule->duration }}</td>
-                                <td class="hidden-xs">{{ $schedule->teacher_name }}</td>
-                                <td class="hidden-xs">{{ $schedule->room_name }}</td>
+                                <td>{{ $schedule->duration }}</td>
+                                <td>{{ $schedule->teacher_name }}</td>
+                                <td>{{ $schedule->room_name }}</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>    
             </div>
-<!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
             </div>
             </div>
         </section>
-<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
         </div>
     </div>
 

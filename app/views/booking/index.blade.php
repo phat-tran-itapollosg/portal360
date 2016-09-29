@@ -3,8 +3,17 @@
 @section('title', trans('booking_index.page_title'))
 
 @section('styles')
-<!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
-
+<style>
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    td:nth-of-type(1):before { content: '{{trans('booking_index.day_name')}} : '; } 
+    td:nth-of-type(2):before { content: '{{trans('booking_index.topic')}} : '; } 
+    td:nth-of-type(3):before { content: '{{trans('booking_index.remain_seat')}} : '; }
+    td:nth-of-type(4):before { content: '{{trans('booking_index.total_seat')}} : '; }
+    td:nth-of-type(5):before { content: ' '; }
+  }
+  </style>
 @stop
 
 @section('content')

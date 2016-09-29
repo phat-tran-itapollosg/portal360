@@ -39,4 +39,5 @@ return array(
     'booking_history' => 'History Booking',
     'login_to_survey' => 'Login To Survey',
     'elearning' => 'Elearning',
+    'notes' => 'Notes',
 );
