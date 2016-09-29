@@ -1,5 +1,16 @@
  <!-- 1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 <!--header start-->
+<style type="text/css">
+  .top-nav ul.top-menu li.dropdown p{
+    background-color: #fff;
+  }
+  ul.top-menu .dropdown-menu.extended li{
+    font-size: 12px;
+  }
+  ul.top-menu .dropdown-menu.extended li a{
+    border-bottom: none;
+  }
+</style>
 <header id="header" class="header white-bg clearfix">
       <div class="sidebar-toggle-box">
           <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
@@ -8,7 +19,7 @@
     <a href="{{ URL::to('/home') }}" class="logo">Apollo<span>360</span></a>
     <!--logo end-->
     @if(Session::get('contact') AND Session::get('contact')->last_name != '')
-    <div class="top-nav ">
+    <div class="top-nav">
         <!--search & user info start-->
         <ul class="nav pull-right top-menu">
             <!-- user login dropdown start-->
@@ -25,9 +36,10 @@
                 </a>
                 <ul class="dropdown-menu extended logout">
                     <div class="log-arrow-up"></div>
-                    <li><a href="{{ URL::to('user/profile') }}"><i class=" fa fa-suitcase"></i>{{ trans('app.view_profile') }}</a></li>
+                    <li><p><a href="{{ URL::to('user/profile') }}"><i class=" fa fa-suitcase"></i><br>{{ trans('app.view_profile') }}</a></p></li>
                     <!-- <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li> -->
-                    <li><a href="{{ URL::to('user/changePassword') }}"><i class="fa fa-bell-o"></i> {{ trans('app.change_password') }}</a></li>
+                    <li><p><a href="{{ URL::to('user/changePassword') }}""><i class="fa fa-bell-o"></i> <br>{{ trans('app.change_password') }}</a></p></li>
+                    <li><p><a href="{{ URL::to('user/switchLanguage') }}?lang=en" class="@if(App::getLocale() == 'en') hidden @endif"><i class="fa fa-exchange"></i><br>English</a><a href="{{ URL::to('user/switchLanguage') }}?lang=vi" class="@if(App::getLocale() == 'vi') hidden @endif"><i class="fa fa-exchange"></i><br>Tiếng Việt</a></p></li>
                     <li><a href="{{ URL::to('user/logout') }}"><i class="fa fa-key"></i> {{ trans('app.logout') }}</a></li>
                 </ul>
             </li>
