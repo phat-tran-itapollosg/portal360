@@ -6,7 +6,26 @@
 <!--  1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
 
 @stop
+<style>
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)
+ 
+    {
+    td:nth-of-type(1):before { content: '#'; } 
+    td:nth-of-type(2):before { content: '{{trans('payment.payment_type')}} : '; } 
+    td:nth-of-type(3):before { content: '{{trans('payment.total_amount')}} : '; } 
+    td:nth-of-type(4):before { content: '{{trans('payment.payment_amount_mobi')}} : '; }
+    td:nth-of-type(5):before { content: '{{trans('payment.freebalance_amount_mobi')}} : '; }
+    td:nth-of-type(6):before { content: '{{trans('payment.used_amount')}} : '; }
+    td:nth-of-type(7):before { content: '{{trans('payment.start_date')}} : '; }
+    td:nth-of-type(8):before { content: '{{trans('payment.payment_expired_date_mobi')}} : '; }
+    td:nth-of-type(9):before { content: '{{trans('payment.total_days')}} : '; }
+    td:nth-of-type(10):before { content: '{{trans('payment.ec_name')}} : '; }
+    td:nth-of-type(11):before { content: '{{trans('payment.center_name')}} : '; }
 
+  }
+  </style>
 @section('content')
 <!-- page start-->
       <div class="row">
@@ -33,8 +52,6 @@
                             <th>{{trans('payment.start_date')}}</th>
                             <th>{{trans('payment.payment_expired_date')}}</th>
                             <th>{{trans('payment.total_days')}}</th>
-                            <th>{{trans('payment.remain_days')}}</th>
-                            <th>{{trans('payment.course_fee_name')}}</th>
                             <th>{{trans('payment.ec_name')}}</th>
                             <th>{{trans('payment.center_name')}}</th>
                         </tr>
@@ -55,8 +72,6 @@
                                 <td>{{ SugarUtil::formatDate($payment['start_date']) }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['payment_expired_date']) }} </td>                              
                                 <td>{{ $payment['total_days'] }} </td>
-                                <td>{{ $payment['remain_days'] }} </td>
-                                <td>{{ $payment['course_fee_name'] }} </td>
                                 <td>{{ $payment['ec_name'] }} </td>
                                 <td>{{ $payment['center_name'] }} </td>       
                             </tr>
