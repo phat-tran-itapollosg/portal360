@@ -15,7 +15,7 @@
     td:nth-of-type(4):before { content: '{{trans('sms_index.date')}} : '; }
     
   }
-  </style>  
+  </style>    
 @stop
 
 @section('content')
