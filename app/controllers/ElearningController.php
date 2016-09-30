@@ -70,6 +70,7 @@ class ElearningController extends BaseController
 
         $Class = NULL ;
         $session_id = NULL ;
+        $classroom = NULL;
 
         if(count($request) == 2){
             parse_str($request[1], $classroom);
@@ -81,31 +82,13 @@ class ElearningController extends BaseController
                 AND isset($classroom['start_study']) AND !empty($classroom['start_study'])
                 AND isset($classroom['end_study']) AND !empty($classroom['end_study'])
                 ){
-
                 $group_code = $classroom['class_room_name'];
                 $start_study = $classroom['start_study'];
                 $end_access_date = $end_study = $classroom['end_study'];
-
-                $Class = \AlphaClassroom::where('id' , $classroom['class_room_id'])
-                ->first();
                 $session_id = $classroom['session_id'];
-                if($Class == NULL){
-                        $Class = new \AlphaClassroom;
-                        $Class->alpha_classroom_id = \AlphaUtil::create_guid();
-                        $Class->name = $classroom['class_room_name'];
-                        $Class->id = $classroom['class_room_id'];
-                        $Class->save();
-                }else{
-                    $Class->name = $classroom['class_room_name'];
-                    $Class->save();
-                }
             }
-            //var_dump($output);
         }
-        // var_dump();
-        
-        
-        //die();
+
         $session = Session::get('session');
         $contact = Session::get('contact');
         
@@ -121,60 +104,8 @@ class ElearningController extends BaseController
             'last_name_alphabet'    =>  $contact->last_name,
             'last_name_local'       =>  $contact->last_name,
         );
-        if($Class != NULL){
-            $record = \AlphaStudents::where(function ($query) use ($user,  $Class) {
-                return $query->where('login' , $user['login'])
-                        ->where('first_name', $user['first_name'])
-                        ->where('last_name', $user['last_name'])
-                        ->where('email', $user['email'])
-                        ->where('alpha_classroom_id', $Class->getKey())
-                        ->where('classroom_id', $Class->id);
-            })->orWhere(function ($query) use ($contact, $Class) {
-                return $query->where('sis_student_id' , $contact->id)
-                        ->where('classroom_id', $Class->id)
-                        ->where('alpha_classroom_id', $Class->getKey());
-            })//'sis_student_id', $contact->id
-            ->first();
-        }else{
-            $record = \AlphaStudents::where(function ($query) use ($user) {
-                return $query->where('login' , $user['login'])
-                        ->where('first_name', $user['first_name'])
-                        ->where('last_name', $user['last_name'])
-                        ->where('email', $user['email']);
-                        
-            })->orWhere('sis_student_id', $contact->id)
-            ->first();
-        }
-        if($record == NULL){
-            $record = new \AlphaStudents;
-            $record->alpha_student_id = \AlphaUtil::create_guid();
-            $record->login = $user['login'];
-            $record->login = $user['login'];
-            $record->first_name = $user['first_name'];
-            $record->last_name = $user['last_name'];
-            $record->email = $user['email'];
-            $record->sis_student_id = $contact->id;
-            $record->session_id = $session_id;
-            if($Class != NULL){
-                $record->alpha_classroom_id = $Class->getKey();
-                $record->classroom_id = $Class->id;
-            }
-            
-            $record->save();
-        }else{
-            $record->login = $user['login'];
-            $record->login = $user['login'];
-            $record->first_name = $user['first_name'];
-            $record->last_name = $user['last_name'];
-            $record->email = $user['email'];
-            $record->sis_student_id = $contact->id;
-            $record->session_id = $session_id;
-            if($Class != NULL){
-                $record->alpha_classroom_id = $Class->getKey();
-                $record->classroom_id = $Class->id;
-            }
-            $record->save();
-        }
+
+
 
         $xml_data ='<?xml version="1.0"?>
         <query cmd="login">
@@ -235,6 +166,82 @@ class ElearningController extends BaseController
             } else { 
                 $xml = new SimpleXMLElement($result);
                 if(isset($xml->url_start[0]) && !empty($xml->url_start[0])){
+                    if(
+                        isset($classroom['class_room_id']) AND !empty($classroom['class_room_id'])
+                        AND isset($classroom['class_room_name']) AND !empty($classroom['class_room_name'])
+                        AND isset($classroom['session_id']) AND !empty($classroom['session_id'])
+                        AND isset($classroom['start_study']) AND !empty($classroom['start_study'])
+                        AND isset($classroom['end_study']) AND !empty($classroom['end_study'])
+                        ){                       
+                    
+                        $Class = \AlphaClassroom::where('id' , $classroom['class_room_id'])->first();
+                        
+                        if($Class == NULL){
+                                $Class = new \AlphaClassroom;
+                                $Class->alpha_classroom_id = \AlphaUtil::create_guid();
+                                $Class->name = $classroom['class_room_name'];
+                                $Class->id = $classroom['class_room_id'];
+                                $Class->save();
+                        }else{
+                            $Class->name = $classroom['class_room_name'];
+                            $Class->save();
+                        }
+
+                        if($Class != NULL){
+                            $record = \AlphaStudents::where(function ($query) use ($user,  $Class) {
+                                return $query->where('login' , $user['login'])
+                                        ->where('first_name', $user['first_name'])
+                                        ->where('last_name', $user['last_name'])
+                                        ->where('email', $user['email'])
+                                        ->where('alpha_classroom_id', $Class->getKey())
+                                        ->where('classroom_id', $Class->id);
+                            })->orWhere(function ($query) use ($contact, $Class) {
+                                return $query->where('sis_student_id' , $contact->id)
+                                        ->where('classroom_id', $Class->id)
+                                        ->where('alpha_classroom_id', $Class->getKey());
+                            })//'sis_student_id', $contact->id
+                            ->first();
+                        }else{
+                            $record = \AlphaStudents::where(function ($query) use ($user) {
+                                return $query->where('login' , $user['login'])
+                                        ->where('first_name', $user['first_name'])
+                                        ->where('last_name', $user['last_name'])
+                                        ->where('email', $user['email']);
+                                        
+                            })->orWhere('sis_student_id', $contact->id)
+                            ->first();
+                        }
+                        if($record == NULL){
+                            $record = new \AlphaStudents;
+                            $record->alpha_student_id = \AlphaUtil::create_guid();
+                            $record->login = $user['login'];
+                            $record->login = $user['login'];
+                            $record->first_name = $user['first_name'];
+                            $record->last_name = $user['last_name'];
+                            $record->email = $user['email'];
+                            $record->sis_student_id = $contact->id;
+                            $record->session_id = $session_id;
+                            if($Class != NULL){
+                                $record->alpha_classroom_id = $Class->getKey();
+                                $record->classroom_id = $Class->id;
+                            }
+                            
+                            $record->save();
+                        }else{
+                            $record->login = $user['login'];
+                            $record->login = $user['login'];
+                            $record->first_name = $user['first_name'];
+                            $record->last_name = $user['last_name'];
+                            $record->email = $user['email'];
+                            $record->sis_student_id = $contact->id;
+                            $record->session_id = $session_id;
+                            if($Class != NULL){
+                                $record->alpha_classroom_id = $Class->getKey();
+                                $record->classroom_id = $Class->id;
+                            }
+                            $record->save();
+                        }
+                    }
                     header("Location: ".$xml->url_start[0]);
                     exit();  
                 }else{
