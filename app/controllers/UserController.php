@@ -279,7 +279,7 @@
             $passwordParams = array(
                 'session' => $session->id,     // #1fix by Trung Nguyen 2016.06.07
                 'current_password' => md5(Input::get('current_password')),    
-                'new_password' => md5(Input::get('new_password')),    
+                'new_password' => Input::get('new_password'),    
 //  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
 
             );
