@@ -59,18 +59,33 @@ class ElearningController extends BaseController
         if(isset($_REQUEST['sso_code']) AND !empty($_REQUEST['sso_code'])){
 
 
-        var_dump($_REQUEST);
+        //var_dump($_REQUEST);
         $request = explode('&',$_REQUEST['sso_code'],2);
+
         $sso_code = $request[0];
+        $group_code = '';
+        $start_study = '';
+        $end_study = '';
+        $end_access_date = '';
+
         $Class = NULL ;
         $session_id = NULL ;
+
         if(count($request) == 2){
             parse_str($request[1], $classroom);
+            //var_dump($classroom);die();
             if(
                 isset($classroom['class_room_id']) AND !empty($classroom['class_room_id'])
                 AND isset($classroom['class_room_name']) AND !empty($classroom['class_room_name'])
                 AND isset($classroom['session_id']) AND !empty($classroom['session_id'])
+                AND isset($classroom['start_study']) AND !empty($classroom['start_study'])
+                AND isset($classroom['end_study']) AND !empty($classroom['end_study'])
                 ){
+
+                $group_code = $classroom['class_room_name'];
+                $start_study = $classroom['start_study'];
+                $end_access_date = $end_study = $classroom['end_study'];
+
                 $Class = \AlphaClassroom::where('id' , $classroom['class_room_id'])
                 ->first();
                 $session_id = $classroom['session_id'];
@@ -180,13 +195,15 @@ class ElearningController extends BaseController
             </user>
             <course>
                 <course_code>'.$sso_code.'</course_code>
-                <group_code>'.$serviceConfig['course']['group_code'].'</group_code>
-                <start_date>'.$serviceConfig['course']['start_date'].'</start_date>    
-                <end_date>'.$serviceConfig['course']['end_date'].'</end_date>
-                <access_end_date>'.$serviceConfig['course']['access_end_date'].'</access_end_date>
+                <group_code>'.$group_code.'</group_code>
+                <start_date>'.$start_study.'</start_date>    
+                <end_date>'.$end_study.'</end_date>
+                <access_end_date>'.$end_access_date.'</access_end_date>
             </course>
           </query>';
-        
+
+        //$serviceConfig['course']['group_code']
+
         $url = $serviceConfig['remoteUrl'];
         $ch = curl_init(); 
         curl_setopt($ch, CURLOPT_HEADER, false);
