@@ -40,4 +40,6 @@ return array(
     'login_to_survey' => 'Login To Survey',
     'elearning' => 'Elearning',
     'notes' => 'Notes',
+    'news' => 'News',
+    'faq' => 'FAQ',
 );
