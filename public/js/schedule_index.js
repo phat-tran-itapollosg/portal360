@@ -61,12 +61,12 @@ $(function() {
         var calendar = $('#calendar');
         //Generate the Calendar
         calendar.fullCalendar({
-            header: {
-                left: 'prev,next today',
-                // center: 'title',
-                // right: 'listDay,listWeek,month'
-                // right: 'month,basicWeek,basicDay'
-            },
+            // header: {
+            //     left: 'prev,next today',
+            //     // center: 'title',
+            //     // right: 'listDay,listWeek,month'
+            //     // right: 'month,basicWeek,basicDay'
+            // },
             defaultView: 'listMonth',
 
             lang: locale,
