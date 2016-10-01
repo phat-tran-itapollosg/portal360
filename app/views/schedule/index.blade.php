@@ -3,7 +3,9 @@
 @section('title', trans('schedule_index.page_title'))
 
 @section('styles')
-    <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet">
+    <!-- <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet"> -->
+    <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet">
+    <!-- <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/fullcalendar.print.css') }}" rel="stylesheet"> -->
 <style type="text/css">
       @media screen and (orientation:landscape){
 
@@ -61,9 +63,10 @@
     <script type="text/javascript">
         var scheduleEvents = {{ json_encode($events) }};
     </script>
-    <script src="{{ URL::asset('public/js/schedule_index.js') }}"></script>
-    <script src="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/fullcalendar.min.js') }}"></script>
     
+    <script src="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/moment.min.js') }}"></script>
+    <script src="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ URL::asset('public/js/schedule_index.js') }}"></script>
 <!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
 
 @stop

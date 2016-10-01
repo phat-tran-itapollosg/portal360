@@ -2845,7 +2845,8 @@ ul.amounts li {
 
 .fc-state-active, .fc-state-active .fc-button-inner,
 .fc-state-hover, .fc-state-hover .fc-button-inner{
-    background:  #FF6C60 !important;
+    background:  #6883a3 !important;
+    // background:  #FF6C60 !important;
     color: #fff !important;
 }
 
