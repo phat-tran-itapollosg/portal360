@@ -16,7 +16,16 @@
 
 <!--   1e1413e10f011dfebcc6b900cffce8e8da2906d0 -->
  
-    <div id="gradebook-filter" class="fielter">
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel panel-default">
+            <header class="panel-heading" style="border-radius:0">
+              <b>{{ trans('app.lbl_gradebook_index') }}</b>
+            </header>
+
+            <div class="panel-body" >
+            <div id="gradebook-filter" class="fielter">
         <div class="form-group">
             <label class="control-label">{{trans('gradebook_index.lbl_class_name')}}: </label>
             <div class="" style="display:inline">
@@ -29,14 +38,6 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <section class="panel panel-default">
-            <header class="panel-heading" style="border-radius:0">
-              <b>{{ trans('app.lbl_gradebook_index') }}</b>
-            </header>
-
-            <div class="panel-body" style="display:none">
             <div class="gradebook_content overflow-auto" style="margin-top:0px">
 
             </div>

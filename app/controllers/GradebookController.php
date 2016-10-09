@@ -11,7 +11,6 @@
             $data = array(
                 'classes' => $class,
             );
-
             return View::make('gradebook.index')->with($data);
         }
 
@@ -39,7 +38,6 @@
             //$no = 0;
             //return count($gradebooks);
             $gradebooks = $datas->gradebooks;
-            var_dump($gradebooks);die;
             for($i = 0; $i < count($gradebooks); $i++) {  
                 $gradebook = $gradebooks[$i]; 
                 $detail = $gradebook->detail;
