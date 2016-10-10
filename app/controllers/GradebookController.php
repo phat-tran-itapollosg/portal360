@@ -38,9 +38,11 @@
             //$no = 0;
             //return count($gradebooks);
             $gradebooks = $datas->gradebooks;
+            //, echo json_encode($gradebooks);die;
             for($i = 0; $i < count($gradebooks); $i++) {  
                 $gradebook = $gradebooks[$i]; 
                 $detail = $gradebook->detail;
+
                 $detail_content = "<table class = 'gb_detail' width='100%'>
                 <tbody>
                 <tr>
@@ -112,7 +114,7 @@
                 $tr = "<tr>
                 <td class = 'center'>".($i+1)."</td>
                 <td>{$gradebook->name}</td>
-                <td><a class='grade_type' data='".$i."'>Data test</a></td>                 
+                <td><a class='grade_type' data='".$i."'>".$gradebook->type."</a></td>                 
                 <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>                 
                 <td>".($gradebook->final_result * 100)."</td>                 
                 <td>{$gradebook->center_name}</td>                 
