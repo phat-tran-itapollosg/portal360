@@ -111,10 +111,12 @@
                 "; 
                 // $detail_content = array(base64_encode($detail_content));
                 $detail_htmls[$i] = $detail_content;
+                $name_of_gradebook = explode('-',$gradebook->name);
+                $type_of_gradebook = $name_of_gradebook[count($name_of_gradebook) - 1];
                 $tr = "<tr>
                 <td class = 'center'>".($i+1)."</td>
                 <td>{$gradebook->name}</td>
-                <td><a class='grade_type' data='".$i."'>".$gradebook->type."</a></td>                 
+                <td><a class='grade_type' data='".$i."'>".$type_of_gradebook."</a></td>                 
                 <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>                 
                 <td>".($gradebook->final_result * 100)."</td>                 
                 <td>{$gradebook->center_name}</td>                 
