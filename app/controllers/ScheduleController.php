@@ -25,14 +25,7 @@
 
                 // The session is in the pass
                 if($todayDate > $focusDate) {
-                    // Student is present
-                    if($schedules[$i]->attendance_type == 'P') {
-                        $bgClass = 'textbg_bluelight';
-                    }
-                    // Student is absent
-                    else {
-                        $bgClass = 'textbg_redlight';
-                    }
+                        $bgClass = 'textbg_greenlight';
                 }
                 // The session is not started
                 else {

@@ -17,4 +17,6 @@ return array(
     'lbl_roomname' => 'Phòng học',
     'attendant' => 'Tham dự',
     'absent' => 'Vắng mặt',
+    'finished' => 'Kết thúc',
+    'not_stated' => 'Chưa diễn ra',
 );

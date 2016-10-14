@@ -5,6 +5,7 @@
 @section('styles')
     <!-- <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css') }}" rel="stylesheet"> -->
     <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/fullcalendar.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('public/css/styles.css') }}" rel="stylesheet">
     <!-- <link href="{{ URL::asset('public/theme/assets/fullcalendar/fullcalendar/fullcalendar.print.css') }}" rel="stylesheet"> -->
 <style type="text/css">
       @media screen and (orientation:landscape){
@@ -41,12 +42,12 @@
                       <div class="panel-body">
                       <div class="wrapper-note">
                           <h3>{{ trans('app.notes') }}</h3>
-                          <div class="attendant-note note-item">
-                            <p>{{ trans('schedule_index.attendant') }}</p>
+                          <div class="finished-note note-item">
+                            <p>{{ trans('schedule_index.finished') }}</p>
                           </div>
 
-                          <div class="absent-note note-item">
-                              <p class="clear">{{ trans('schedule_index.absent') }}</p>
+                          <div class="not-started-note note-item">
+                              <p class="clear">{{ trans('schedule_index.not_started') }}</p>
                           </div>
                          </div>
                           <div id="calendar" class="has-toolbar"></div>

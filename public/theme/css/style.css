@@ -6223,6 +6223,16 @@ header.blue-bg .search:focus {
     width:50px;height:25px;
 }
 
+.panel-body .wrapper-note .finished-note{
+    background-color: #27ae60;
+    width:50px;height:25px;
+}
+
+.panel-body .wrapper-note .not-started-note{
+   background-color: #e67e22;
+   width:50px;height:25px;
+}
+
 .panel-body .wrapper-note .absent-note{
    background-color: #FF6C60;
    width:50px;height:25px;

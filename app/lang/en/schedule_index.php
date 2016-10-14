@@ -16,4 +16,6 @@ return array(
     'lbl_roomname' => 'Room',
     'attendant' => 'Attendant',
     'absent' => 'Absent',
+    'finished' => 'Finished',
+    'not_started' => 'Not started',
 );
