@@ -77,7 +77,7 @@
                // var_dump($contact);
                // die();
                 if(Session::get('contact') AND !empty(Session::get('contact'))){
-                    return Redirect::to('schedule/index');
+                    return Redirect::to('news/index');
                 }else{
                     return Redirect::to($service_admin['url']);
                 }
@@ -128,17 +128,17 @@
                         // Save username and password into cookie
                         if(!empty($username) && !empty($password)) {
                             $cookie = Cookie::forever('remembered_user', array('username'=>$username, 'password'=>$password));
-                            return Redirect::to('schedule/index')->withCookie($cookie);
+                            return Redirect::to('news/index')->withCookie($cookie);
                         }
                     }
                     // Remove the remember cookie if user does not tick on the remember checkbox
                     else {
                         if(Input::cookie('remembered_user')) {
-                            return Redirect::to('schedule/index')->withCookie(Cookie::forget('remembered_user'));    
+                            return Redirect::to('news/index')->withCookie(Cookie::forget('remembered_user'));    
                         }
                     }
 
-                    return Redirect::to('schedule/index');
+                    return Redirect::to('news/index');
                 }else if($result == 'success_for_admin'){
                     // Get app list strings
                     $session = Session::get('session');
