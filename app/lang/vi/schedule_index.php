@@ -18,5 +18,5 @@ return array(
     'attendant' => 'Tham dự',
     'absent' => 'Vắng mặt',
     'finished' => 'Kết thúc',
-    'not_stated' => 'Chưa diễn ra',
+    'not_started' => 'Chưa diễn ra',
 );
