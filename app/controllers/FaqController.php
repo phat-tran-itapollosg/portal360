@@ -21,10 +21,19 @@ class FaqController extends BaseController
         //$getfaq = DB::table('alpha_faq')
         //                ->where('faqdelete', 0)
         //                ->get();
-        
+        $lang = App::getLocale();
+        if($lang == "en")
+        {
+            $lang = 1;
+        }
+        else
+        {
+            $lang = 0;
+        }
         $getfaq1= DB::table('alpha_faq')
             ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
             ->where('alpha_faq.faqdelete',0)
+            ->where('alpha_faq.lang',$lang)
             ->Where('alpha_category.cdelete',0)
             ->orderBy('faqdate','DESC')
             ->get();
@@ -57,17 +66,34 @@ class FaqController extends BaseController
     }
     public function getdetal($id)
     {
+        $lang = App::getLocale();
+        if($lang == "en")
+        {
+            $lang = 1;
+        }
+        else
+        {
+            $lang = 0;
+        }
         $getdetal= DB::table('alpha_faq')
             ->join('alpha_category','cid', '=', 'alpha_faq.idcate')
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
             ->where('alpha_faq.faqdelete',0)
+            ->where('alpha_faq.lang',$lang)
             ->Where('alpha_category.cdelete',0)
             ->Where('alpha_faq.id',$id)
             ->orderBy('faqdate','DESC')
             //->groupBy('alpha_category.idcate')
             ->get();
+        if(!empty($getdetal))
+        {
         $this->layout->content = view::make('faq.faqdetal')->with(array(
                                                         'detal'=>$getdetal));
+        }
+        else
+        {
+            return Redirect::to('/faq');
+        }
     }
 }
     /*

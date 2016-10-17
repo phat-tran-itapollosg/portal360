@@ -17,10 +17,20 @@ class NewsController extends BaseController
     protected $layout = 'layouts.master';
     public function Getnews()
     {
+        $lang = App::getLocale();
+        if($lang == "en")
+        {
+            $lang = 1;
+        }
+        else
+        {
+            $lang = 0;
+        }
 
     	$getnews= DB::table('alpha_news')
             ->join('alpha_ncategory','nid', '=','alpha_news.idcate')
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
+            ->where('alpha_news.lang',$lang)
             ->where('alpha_news.ndelete',0)
             ->Where('alpha_ncategory.cdelete',0)
             ->orderBy('ndate','DESC')
@@ -41,10 +51,21 @@ class NewsController extends BaseController
     }
     protected function Getdetal($id)
     {
+        $lang = App::getLocale();
+        if($lang == "en")
+        {
+            $lang = 1;
+        }
+        else
+        {
+            $lang = 0;
+        }
+
     	$Getdetal= DB::table('alpha_news')
             ->join('alpha_ncategory','nid', '=','alpha_news.idcate')
             //->select('alpha_faq.idcate','alpha_faq.id','alpha_category.ccontent')
             ->where('alpha_news.ndelete',0)
+            ->where('alpha_news.lang',$lang)
             ->Where('alpha_news.id',$id)
             ->Where('alpha_ncategory.cdelete',0)
             ->orderBy('ndate','DESC')
@@ -56,7 +77,7 @@ class NewsController extends BaseController
         }
         else
             {
-                echo 'khong co du lieu';
+                 return Redirect::to('/news');
             }
     }
 
