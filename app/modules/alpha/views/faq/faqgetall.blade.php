@@ -46,7 +46,21 @@
                                         @endif
                                        
                                     </td>
-                                    <td class="text-left">{{ $item->faqquestion }}</td>
+
+                                    <td class="text-left">
+                                    
+                                    @if(!empty($item->lang)) 
+                                        <span class="label label-success">
+                                        {{ trans('faq.en') }} 
+                                        </span>&nbsp;{{ $item->faqquestion }}
+                                    @else
+                                        <span class="label label-primary">
+                                        {{ trans('faq.vi') }} 
+                                        </span> &nbsp;{{ $item->faqquestion }}
+                                    @endif                                   
+                                    
+                                    
+                                    </td>
                                     <td class="text-center .visible-xs-block, hidden-xs">{{ $item->faqdate }}</td>
                                     <td class="text-center">
                                     

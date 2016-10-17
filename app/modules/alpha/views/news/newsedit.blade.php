@@ -43,6 +43,18 @@
                 <input class="form-control text-left" type="text" name="txttitle" value=" {{$infonews->ntitle}}">
                  <input class="lbfaq" type="text" name="id" value="{{$infonews->id}}" hidden />
               </div>
+
+          <div class="form-group">
+            <label for="lang">{{ trans('faq.lang') }}</label>
+            <label class="radio-inline">
+            <input type="radio" name="lang" id="lang-0" value="0" @if($infonews->lang == 0) checked="checked" @endif > {{ trans('faq.vi') }}
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="lang" id="lang-1" value="1" @if($infonews->lang == 1) checked="checked" @endif> {{ trans('faq.en') }}
+              </label>
+          </div>
+
+
               <div class="form-group">
                 <label for="exampleInputFile">{{ trans('news.contents') }}</label>
                 <textarea class="form-control" id='txtcontent' name='txtcontent' >

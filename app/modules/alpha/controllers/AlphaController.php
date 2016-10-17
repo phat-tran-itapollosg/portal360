@@ -39,8 +39,9 @@ class AlphaController extends \BaseController {
         $txtq = Input::get('txtq');
         $txtr = Input::get('txtr');
         $idcate = Input::get('idcate');
+        $lang = Input::get('lang');
 
-
+        //var_dump($lang);die();
         if( isset( $txtr) && !empty($txtr) && isset($txtq) && !empty($txtq) ){
 
             $AlphaFaq = new \AlphaFaq;
@@ -48,6 +49,7 @@ class AlphaController extends \BaseController {
             $AlphaFaq->faqreply = $txtr;
             $AlphaFaq->idcate = $idcate;
             $AlphaFaq->iduser = $iduser;
+            $AlphaFaq->lang = $lang;
 
             if($AlphaFaq->save())
             {
@@ -107,15 +109,20 @@ class AlphaController extends \BaseController {
     {
         $txtq = Input::get('txtq');
         $txtr = Input::get('txtr');
+
         $idcate = Input::get('idcate');
         $id = Input::get('id');
-        if(isset($txtq) && isset($txtr) && isset($idcate) && !empty($txtq) && !empty($txtr) && !empty($idcate))
+        $lang = Input::get('lang');
+        if(isset($txtq) && isset($txtr) && isset($idcate) 
+            && !empty($txtq) && !empty($txtr) && !empty($idcate)
+        )
         {
             $Update = \AlphaFaq::find($id);
             $Update->faqquestion = $txtq;
             $Update->faqreply = $txtr;
             $Update->idcate = $idcate;
             $Update->faqdelete = 0;
+            $Update->lang = $lang;
             $Update->faqdate = new \DateTime();
 
             if($Update->save())
@@ -294,6 +301,7 @@ class AlphaController extends \BaseController {
         $txttitle = Input::get('txttitle');
         $txtncontent = Input::get('txtcontent');
         $idcate = Input::get('idcate');
+        $lang = Input::get('lang');
         if(isset($txttitle) && isset($txtncontent) && isset($idcate) && !empty($txttitle) && !empty($txtncontent) && !empty($idcate))
         {
             $UpdateNews = \AlphaNews::find($id);
@@ -301,6 +309,7 @@ class AlphaController extends \BaseController {
             $UpdateNews->ncontent = $txtncontent ;
             $UpdateNews->idcate = $idcate ;
             $UpdateNews->ndelete = 0;
+            $UpdateNews->lang = $lang;
             $UpdateNews->ndate = new \DateTime();
         	if($UpdateNews->save())
         	{

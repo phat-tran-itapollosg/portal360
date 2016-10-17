@@ -35,20 +35,29 @@
                 <label for="exampleInputPassword1">{{ trans('faq.faqquestion') }}</label>
                 <input class="form-control text-left" type="text" name="txtq">
             </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">{{ trans('faq.faqreply') }}</label>
-                    <textarea class="form-control" id='txtr' name='txtr' >
+            <div class="form-group">
+                <label for="lang">{{ trans('faq.lang') }}</label>
+                <label class="radio-inline">
+                  <input type="radio" name="lang" id="lang-0" value="0" checked="checked"> {{ trans('faq.vi') }}
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="lang" id="lang-1" value="1"> {{ trans('faq.en') }}
+                </label>
+            </div>
+            <div class="form-group">
+            <label for="exampleInputFile">{{ trans('faq.faqreply') }}</label>
+            <textarea class="form-control" id='txtr' name='txtr' >
 
-                    </textarea>
-                    <script type="text/javascript">
-                             CKEDITOR.replace( 'txtr',
-                             {
-                              customConfig : 'config.js',
-                              toolbar : 'simple'
-                              })
+            </textarea>
+            <script type="text/javascript">
+                     CKEDITOR.replace( 'txtr',
+                     {
+                      customConfig : 'config.js',
+                      toolbar : 'simple'
+                      })
 
-                    </script> 
-                  </div>
+            </script> 
+            </div>
               
              <p class="text-center"> <button type="submit" class="btn btn-default"> {{ trans('news.submit') }} </button> <a class="btn btn-default" href="{{URL::asset('/admin/news')}}">{{ trans('news.back') }}  </a></p>
         </form>

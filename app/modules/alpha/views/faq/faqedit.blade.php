@@ -45,6 +45,15 @@
              <input class="lbfaq" type="text" name="id" value="{{$infofaq->id}}" hidden />
           </div>
           <div class="form-group">
+              <label for="lang">{{ trans('faq.lang') }}</label>
+              <label class="radio-inline">
+                <input type="radio" name="lang" id="lang-0" value="0" @if($infofaq->lang == 0) checked="checked" @endif > {{ trans('faq.vi') }}
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="lang" id="lang-1" value="1" @if($infofaq->lang == 1) checked="checked" @endif> {{ trans('faq.en') }}
+              </label>
+          </div>
+          <div class="form-group">
             <label for="exampleInputFile">{{ trans('faq.faqreply') }}</label>
             <textarea class="form-control" id='txtr' name='txtr' >
                             {{$infofaq->faqreply}}
