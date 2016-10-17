@@ -17,5 +17,5 @@ return array(
     'attendant' => 'Attendant',
     'absent' => 'Absent',
     'finished' => 'Finished',
-    'not_started' => 'Not started',
+    'not_started' => 'Not Started',
 );
