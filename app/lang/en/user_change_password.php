@@ -16,4 +16,6 @@ return array(
     'passwords_must_contain_at_least_1_lowercase_character' => 'Passwords must contain at least 1 lowercase character',
     'passwords_must_contain_at_least_1_number' => 'Passwords must contain at least 1 number',
     'passwords_must_contain_at_least_1_special_character' => 'Passwords must contain at least 1 special character ~!@#$%^*()_+=-{}|',
+    'passwords_must_be_at_least_6_characters_in_length' => 'Passwords must be at least 6 characters in length',
+    'passwords_not_contain_contain_special_character' => 'Passwords must not contain special character & < > \' "',
 );

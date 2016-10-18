@@ -66,10 +66,12 @@
 
         // Routes FAQ, Category
         Route::get('/faq', 'FaqController@getFag');//->name('getFag')
+        Route::get('/faq/index', 'FaqController@getFag');//->name('getFag')
         Route::get('/faq/detal/{id}','FaqController@getdetal');
 
         // Routes news
         Route::get('/news', 'NewsController@Getnews');
+        Route::get('/news/index', 'NewsController@Getnews');
         Route::get('/news/detal/{id}','NewsController@Getdetal');
 
         // Routes Elearning
@@ -79,6 +81,7 @@
 
         // Routes Booking
         Route::get('/booking', ['as' => 'Booking.index', 'uses' => 'BookingController@index']);
+        Route::get('/booking/index', ['as' => 'Booking.index', 'uses' => 'BookingController@index']);
         Route::post('/booking', ['as' => 'Booking.index', 'uses' => 'BookingController@index']);
         Route::get('/booking/history', 'BookingController@history');
 

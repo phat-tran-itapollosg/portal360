@@ -18,11 +18,11 @@
               <div class="panel-body" style="background-color: #efefef">
                 <b>{{ trans('user_change_password.apollo_password_policy') }}</b>
                 <ul style="padding-left: 10px; padding-top: 5px">
-                    <li>- {{ trans('user_change_password.passwords_must_be_at_least_8_characters_in_length') }}</li>
-                    <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_uppercase_character') }}</li>
-                    <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_lowercase_character') }}</li>
-                    <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_number') }}</li>
-                    <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_special_character') }}</li>
+                    <li>- {{ trans('user_change_password.passwords_must_be_at_least_6_characters_in_length') }}</li>
+                    <!-- <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_uppercase_character') }}</li> -->
+                    <!-- <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_lowercase_character') }}</li> -->
+                    <!-- <li>- {{ trans('user_change_password.passwords_must_contain_at_least_1_number') }}</li> -->
+                    <li>- {{ trans('user_change_password.passwords_not_contain_contain_special_character') }}</li>
                 </ul>
               </div>
             </div>

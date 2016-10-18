@@ -18,4 +18,6 @@ return array(
     'passwords_must_contain_at_least_1_lowercase_character' => 'Mật khẩu phải có ít nhất 1 ký tự in thường',
     'passwords_must_contain_at_least_1_number' => 'Mật khẩu phải có ít nhất 1 chữ số',
     'passwords_must_contain_at_least_1_special_character' => 'Mật khẩu phải có ít nhất 1 ký tự đặc biệt: ~!@#$%^*()_+=-{}|',
+    'passwords_must_be_at_least_6_characters_in_length' => 'Mật khẩu phải ít nhất 6 ký tự',
+    'passwords_not_contain_contain_special_character' => 'Mật khẩu không được chứa ký tự đặc biệt & < > \' "',
 );
