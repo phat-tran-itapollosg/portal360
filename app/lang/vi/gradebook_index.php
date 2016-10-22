@@ -19,4 +19,10 @@ return array(
     'lbl_final_result' => 'Kết quả cuối khóa', 
     'lbl_certificate' => 'Xem chứng chỉ',
     'lbl_type_of_grade' => 'Loại',
+    'Columns' => 'Cột',    
+    'Speaking' => 'Nói',
+    'Listening' => 'Nghe',
+    'Reading' => 'Đọc',
+    'Grammar' => 'Văn phạm',
+    'Total' => 'Tổng',
 );
