@@ -22,4 +22,5 @@ return array(
     'close' => 'Đóng',
     'cancel' => 'Hủy Bỏ',
     'view' => 'Xem',
+    'start_date_have_to_greater_than_or_equal_to' => 'Ngày bắt đầu phải lớn hơn hoặc bằng'
 );

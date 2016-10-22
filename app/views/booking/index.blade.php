@@ -30,7 +30,7 @@
       <div class="form-group">
         <!-- <label for="exampleInputName2">Name</label> -->
         <label for="exampleInputName2">{{trans('booking_index.start_time')}}</label>
-        <input type="date" class="form-control" id="form" name="start" placeholder="From" value="{{ $start }}">
+        <input type="date" class="form-control" id="form" min="{{$todayDate}}" name="start" placeholder="From" data-toggle="tooltip" title="{{trans('booking_index.start_date_have_to_greater_than_or_equal_to')}} {{$todayDateMDY}}" value="{{ $start }}">
       </div>
       <div class="form-group">
         <label for="exampleInputName2">{{trans('booking_index.end_time')}}</label>
@@ -152,5 +152,4 @@
 @stop
 
 @section('scripts')
-
 @stop

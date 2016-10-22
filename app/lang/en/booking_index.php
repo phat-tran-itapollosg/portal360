@@ -22,4 +22,5 @@ return array(
     'close' => 'Close',
     'cancel' => 'Cancel',
     'view' => 'View',
+    'start_date_have_to_greater_than_or_equal_to' => 'Start date have to greater than or equal to'
 );
