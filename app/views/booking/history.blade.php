@@ -55,7 +55,8 @@
                         <td>{{ $booking['day_name'] }}<br>{{ $booking['schedule_date'] }}</td>
                         <td>{{ $booking['room_name'] }}</td>
                         <td>{{ $booking['center_name'] }}</td>       
-                        <td><a class="btn btn-default btn-xs" href="{{ route('Booking.cancel',[  $booking['session_id']  ]) }}" role="button" target="_blank">{{trans('booking_index.cancel')}}</a></td>
+                        <!-- <td><a class="btn btn-default btn-xs" href="{{ route('Booking.cancel',[  $booking['session_id']  ]) }}" role="button" target="_blank">{{trans('booking_index.cancel')}}</a></td> -->
+                        <td><a class="btn btn-default btn-xs" onclick="return confirmdelete('{{ $booking["session_id"] }}');" role="button" target="_blank">{{trans('booking_index.cancel')}}</a></td>
                     </tr>
                 @endforeach
             </tbody>
@@ -73,4 +74,15 @@
 @section('scripts')
 
     <script src="{{ URL::asset('public/theme/assets/jquery-knob/js/jquery.knob.js') }}"></script>
+    <script type="text/javascript">
+        function confirmdelete($id)
+        {
+            var note= confirm(" {{ trans('error.confirmdele') }} ");
+            if (note) 
+            {
+                window.location.href = "{{ URL::to('booking/cancel') }}/"+$id;
+             
+            }   
+        }
+    </script>
 @stop
