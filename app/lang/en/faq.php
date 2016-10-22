@@ -13,6 +13,8 @@ return array(
 	'add'	=>'Add news FAQ',
 	'submit'	=>'Update',
 	'addcategory' => 'Add Category',
-	'date'	=> 'Date',
+	'lang'	=> 'Language',
+	'vi'	=> 'Vietnamese',
+	'en'	=> 'English',
 	);
 ?>

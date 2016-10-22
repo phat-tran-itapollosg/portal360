@@ -14,5 +14,8 @@ return array(
 	'submit'	=>'Lưu lại',
 	'addcategory' => 'Thêm Danh mục',
 	'date'	=> 'Ngày',
+	'lang'	=> 'Ngôn Ngữ',
+	'vi'	=> 'Tiếng Việt',
+	'en'	=> 'Tiếng Anh',
 	);
 ?>
