@@ -66,9 +66,7 @@ form.form-signin{
     margin: 0;
     padding:20px 15px;
     text-align: center;
-    background: #2980b9;
-    border-radius: 0px;
-    -webkit-border-radius: 5px 5px 0 0;
+    background: #1c9ad6;
     color: #fff;
     font-size: 18px;
     text-transform: uppercase;
@@ -78,7 +76,7 @@ form.form-signin{
 
 form.form-signin .login-wrap {
     border-style: solid;
-    border-color: #2980b9;
+    border-color: #1c9ad6;
     border-width: thin;
 }
 
@@ -87,7 +85,7 @@ form.form-signin .login-wrap {
 }
 .form-signin .checkbox {
     font-weight: normal;
-    color: #b6b6b6;
+    color: #747474;
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
 }
@@ -105,28 +103,41 @@ form.form-signin .login-wrap {
 }
 .form-signin input[type="text"], .form-signin input[type="password"] {
     margin-bottom: 15px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
     border: 1px solid #eaeaea;
     box-shadow: none;
     font-size: 12px;
 }
 
 .form-signin .btn-login {
-    background: #FF3642;
+    background: #ed1c24;
     color: #fff;
     text-transform: uppercase;
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
-    box-shadow: 0 4px #e56b60;
+    /*box-shadow: 0 4px #e56b60;*/
     margin-bottom: 20px;
+    border-radius: 0px;
+}
+.form-signin .change_lang .btn-info{
+    background-color: #1c9ad6;
+    border-color: #1c9ad6;
+    border-radius: 0px;
+}
+.form-signin .change_lang .btn-default{
+    background-color: #b3b3b3;
+    border-color: #b3b3b3;
+    border-radius: 0px;
 }
 
-.form-signin p {
+.form-signin p.change_lang {
     text-align: center;
     color: #b6b6b6;
     font-size: 16px;
     font-weight: 300;
+    margin-top: -12px;
+    padding-bottom: 15px;
 }
 
 .form-signin a {
@@ -138,7 +149,7 @@ form.form-signin .login-wrap {
 }
 
 .login-wrap {
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
 }
 
 .title-logo #logo img{

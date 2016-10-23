@@ -12,7 +12,7 @@
 <style type="text/css">
     
     #login_content div.row div.title-logo{
-        text-align: center;
+        text-align: right;
     }
     #login_content #logo_mobile{
 
@@ -29,7 +29,7 @@
     }
     #login_content form.form-signin
     {
-        margin: 20px;
+        margin-top: 20px;
     }
     #login_content .addition_info{
         background: #41cac0;
@@ -50,12 +50,25 @@
     #login_content{
         overflow-x: hidden;
     }
-    @media screen and (min-width: 780px) {
-       
+    @media screen and (max-width: 992px) {
+         #login_content div.row div.title-logo{
+        text-align: center;
     }
+ /*   }
     @media screen and (max-width: 767px) and (min-width: 500px) {
-       #login_content .background{
+ */     
+        #login_content{
+            position: relative;
+            width: 100%;
+            overflow-x: visible;
+        }
+        #login_content .background{
             position: absolute;
+            /*width: 100%;*/
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         .title-logo #logo img {
             position: inherit;
@@ -75,7 +88,7 @@
             max-width: none!important;
         }
     }
-    @media screen and (max-width: 499px){
+    /*@media screen and (max-width: 499px){
         .title-logo #logo img {
             position: inherit;
         }       
@@ -96,7 +109,7 @@
             margin: 0!important;
             max-width: none!important;
         }
-    }
+    }*/
 
     @media screen and (orientation:landscape) {
 
@@ -132,31 +145,44 @@
 
 @section('content')
 
-<div id = "login_content">
+<div id = "login_content" >
     <!-- <div class="background">
         <img src="{{ URL::asset('public/img/background-desktop.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 100%; height: auto"/>
     </div> -->
-    <div class="row background visible-md visible-lg">
+    <!-- Full-HD-Screen-1920-x-1080-px -->
+    <div class="row background visible-lg">
       <div class="col-xs-12 col-md-12">
         <a  class="thumbnail">
-          <img src="{{ URL::asset('public/img/background-desktop.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
+          <img src="{{ URL::asset('public/img/bg-full-hd.jpg') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="100%">
         </a>
       </div>
     </div>
-    <div class="row background visible-xs visible-sm">
+
+    <!-- Regular-Laptop-Screen-1336-x-768-px -->
+    <div class="row background visible-md">
       <div class="col-xs-12 col-md-12">
         <a  class="thumbnail">
-          <img src="{{ URL::asset('public/img/background-mobile.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
+          <img src="{{ URL::asset('public/img/bg-regular-desktop.jpg') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="100%">
         </a>
       </div>
     </div>
+
+    <!-- Mobile -->
+    <div class="row background visible-sm visible-xs">
+      <div class="col-xs-12 col-sm-12">
+        <a  class="thumbnail">
+          <img src="{{ URL::asset('public/img/bg-mobile.jpg') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" width="100%">
+        </a>
+      </div>
+    </div>
+    <div class="container">
     <div class="row middle_content">
         <div class="title-logo col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-xs visible-sm">
                 <div id="logo" class="">
                     <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 160px; height: auto"/>
                 </div>      
         </div>
-        <div class="sign-in col-lg3 col-md-3 col-sm-12 col-xs-12">
+        <div class="sign-in col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <form class="form-signin" action="" method="post">
             <h2 class="form-signin-heading">{{ trans('user_login.login') }}</h2>     
                      
@@ -164,8 +190,8 @@
 
                     <p class="change_lang">
                         <span class="btn-group btn-group-xs" role="group" aria-label="Extra-small button group"> 
-                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=en" class="btn btn-default @if(App::getLocale() == 'en') btn-info @endif">English</a> 
-                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=vi" class="btn btn-default @if(App::getLocale() == 'vi') btn-info @endif" >Tiếng Việt</a>
+                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=en" class="btn  @if(App::getLocale() == 'en') btn-info @else btn-default @endif">English</a> 
+                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=vi" class="btn @if(App::getLocale() == 'vi') btn-info @else btn-default @endif" >Tiếng Việt</a>
                         </span>
                     </p>
 
@@ -187,17 +213,13 @@
                 
             </form>            
         </div>
-        <!-- <div class="hidden-xs col-lg-5 col-md-6 col-sm-6">
-        </div> -->
-        <div class="title-logo col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-md visible-lg col-md-offset-6 col-lg-offset-6">
-                <div id="logo" class="">
-                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 160px; height: auto"/>
-                </div> 
-                <!-- <div id="description">
-
-                </div>           -->
-        </div>
         
+        <div class="title-logo col-lg-2 col-md-2 col-sm-12 col-xs-12 visible-md visible-lg col-md-offset-7 col-lg-offset-7">
+                <div id="logo" class="">
+                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 80%; height: auto"/>
+                </div> 
+        </div>
+        </div>
         
     </div>
 </div>
