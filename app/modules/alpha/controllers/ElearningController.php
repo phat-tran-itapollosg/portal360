@@ -83,14 +83,16 @@ class ElearningController extends \BaseController {
         } else { 
            $info = curl_getinfo($ch); 
            curl_close($ch); // close cURL handler 
-           if (empty($info['http_code'])) { 
+           //var_dump($info);
+           if (empty($info['http_code']) OR ($info['http_code'] == 404)) { 
                 return array(
                     'error' => TRUE,
                     'messenger' => "No HTTP code was returned"
                 );
            } else { 
                 $array = json_decode($result, true);
-
+                //var_dump($array);
+                //die();
                 $classroom = array(
                     "updated_at" => $array["updated_at"],
                     "created_at"=> $array["created_at"],
