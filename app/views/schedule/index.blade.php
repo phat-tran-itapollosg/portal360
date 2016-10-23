@@ -52,6 +52,47 @@
                          </div>
                           <div id="calendar" class="has-toolbar"></div>
                       </div>
+
+                      <div class="modal fade session_detail" id="session_detail" data-backdrop="static" data-keyboard="false">
+                          <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                  <div class="modal-header custom-modal-header">
+                                      <h3 class="modal-title custom-modal-header"> {{trans('schedule_index.detail')}}</h3>                                 
+                                  </div>
+
+                                  <div class="modal-body overflow-auto">
+                           <table class="schedule_detail" width="100%">
+                        <tbody>
+                        <tr class="schedule_detail_row">
+                          <td class="field"><b>{{trans('schedule_index.class')}}:&nbsp;</b></td>
+                          <td class="class_name"></td>
+                          <td class="field"><b>{{trans('schedule_index.duration')}}:&nbsp;</b></td>
+                          <td class="duration"></td>
+                        </tr>
+                        <tr class="schedule_detail_row">
+                          <td class="field"><b>{{trans('schedule_index.start_time')}}:&nbsp;</b></td>
+                          <td class="starttime"></td>
+                          <td class="field"><b>{{trans('schedule_index.end_time')}}:&nbsp;</b></td>
+                          <td class="endtime"></td>
+                        </tr>
+                        <tr class="schedule_detail_row">
+                          <td class="field"><b>{{trans('schedule_index.teacher')}}:&nbsp;</b></td>
+                          <td class="teacher_name"></td>
+                        </tr>
+                        </tbody>
+                         
+
+                        </table>
+                              </div>
+
+                              <div class="modal-footer">
+                                  <button type="button" id="btn-cancel" class="btn" data-dismiss="modal">{{trans('app.btn_close_text')}}</button>
+                              </div>
+                          </div>
+                          </div>
+                      </div>
+                      
+
                       </section>
                   </aside>
               </div>

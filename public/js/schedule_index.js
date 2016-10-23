@@ -1,6 +1,7 @@
 $(function() {
     
     function monthView() {
+
         var calendar = $('#calendar');
         //Generate the Calendar
         calendar.fullCalendar({

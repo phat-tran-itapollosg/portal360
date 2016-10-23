@@ -18,4 +18,11 @@ return array(
     'absent' => 'Absent',
     'finished' => 'Finished',
     'not_started' => 'Not Started',
+    'detail' => 'DETAIL',
+    'class' => 'Class',
+    'duration' => 'Duration',
+    'start_time' => 'Start time',
+    'end_time' => 'End time',
+    'teacher' => 'Teacher',
+
 );

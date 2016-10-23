@@ -206,9 +206,17 @@ table.dataTable {
     padding: 2px 5px !important;
 }
 .textbg_orange {
-    background: #f1d44a none repeat scroll 0 0 !important;
+    background: #e67e22 none repeat scroll 0 0 !important;
     border-radius: 2px !important;
     color: #fff !important;
     font-weight: bold !important;
     padding: 2px 5px !important;
+}
+
+.session_detail .field {
+    text-align: right;
+}
+
+.session_detail .schedule_detail_row {
+    height: 30px;
 }

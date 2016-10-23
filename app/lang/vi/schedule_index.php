@@ -19,4 +19,10 @@ return array(
     'absent' => 'Vắng mặt',
     'finished' => 'Kết thúc',
     'not_started' => 'Chưa diễn ra',
+    'detail' => 'CHI TIẾT BUỔI HỌC',
+    'class' => 'Lớp',
+    'duration' => 'Thời gian',
+    'start_time' => 'Giờ bắt đầu',
+    'end_time' => 'Giờ kết thúc',
+    'teacher' => 'Giáo viên',
 );
