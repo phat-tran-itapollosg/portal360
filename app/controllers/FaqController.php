@@ -47,7 +47,8 @@ class FaqController extends BaseController
         else
             {
                 //echo 'khong co du lieu';
-                return Redirect::to('/faq/add');
+                $this->layout->content = View::make('faq.faq')->with(array('getfaq1'=>array()));
+                //return Redirect::to('/faq/add');
             }
     }
 

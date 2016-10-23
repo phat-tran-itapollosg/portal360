@@ -45,7 +45,8 @@ class NewsController extends BaseController
         }
         else
             {
-                echo 'khong co du lieu';
+                $this->layout->content = View::make('news.news')->with(array('getnews'=>array()));
+                // echo 'khong co du lieu';
             }
     	//var_dump($user->id);
     }
