@@ -47,10 +47,13 @@
     #login_content .addition_info .info a{
        color: #ffffff;
     }
+    #login_content{
+        overflow-x: hidden;
+    }
     @media screen and (min-width: 780px) {
        
     }
-    @media screen and (max-width: 760px) and (min-width: 500px) {
+    @media screen and (max-width: 767px) and (min-width: 500px) {
        #login_content .background{
             position: absolute;
         }
@@ -63,8 +66,16 @@
         #login_content form.form-signin{
             position: inherit;
         }
+        .sign-in{
+            padding: 20px;
+        }
+        .sign-in .form-signin{
+            padding: 0!important;
+            margin: 0!important;
+            max-width: none!important;
+        }
     }
-    @media screen and (max-width: 400px){
+    @media screen and (max-width: 499px){
         .title-logo #logo img {
             position: inherit;
         }       
@@ -76,6 +87,14 @@
         }
         #login_content form.form-signin{
             position: inherit;
+        }
+        .sign-in{
+            padding: 20px;
+        }
+        .sign-in .form-signin{
+            padding: 0!important;
+            margin: 0!important;
+            max-width: none!important;
         }
     }
 
@@ -103,19 +122,34 @@
         bottom:0;
         position: fixed;
     }
-    
+    .background .thumbnail{
+        padding: 0;
+        border: none;
+        border-radius: 0;
+    }
 </style>
 @stop
 
 @section('content')
 @if ($isMobile == false)
 <div id = "login_content">
-    <div class="background">
+    <!-- <div class="background">
         <img src="{{ URL::asset('public/img/background-desktop.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 100%; height: auto"/>
+    </div> -->
+    <div class="row background">
+      <div class="col-xs-12 col-md-12">
+        <a  class="thumbnail">
+          <img src="{{ URL::asset('public/img/background-desktop.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
+        </a>
+      </div>
     </div>
-    
     <div class="row middle_content">
-        <div class="sign-in col-lg-4 col-md-3 col-sm-3 col-xs-12">
+        <!-- <div class="title-logo col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-xs visible-sm">
+                <div id="logo" class="">
+                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 160px; height: auto"/>
+                </div>      
+        </div> -->
+        <div class="sign-in col-lg3 col-md-3 col-sm-12 col-xs-12">
             <form class="form-signin" action="" method="post">
             <h2 class="form-signin-heading">{{ trans('user_login.login') }}</h2>     
                      
@@ -146,15 +180,15 @@
                 
             </form>            
         </div>
-        <div class="hidden-xs col-lg-5 col-md-6 col-sm-6">
-        </div>
-        <div class="title-logo col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <!-- <div class="hidden-xs col-lg-5 col-md-6 col-sm-6">
+        </div> -->
+        <div class="title-logo col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-md visible-lg col-md-offset-6 col-lg-offset-6">
                 <div id="logo" class="">
                     <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 160px; height: auto"/>
                 </div> 
-                <div id="description">
+                <!-- <div id="description">
 
-                </div>          
+                </div>           -->
         </div>
         
         
@@ -163,18 +197,24 @@
 @else
 
 <div id = "login_content">
-    <div class="background">
+    <!-- <div class="background">
         <img src="{{ URL::asset('public/img/background-mobile.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 100%; height: auto"/>
+    </div> -->
+    <div class="row background">
+      <div class="col-xs-12 col-md-12">
+        <a  class="thumbnail">
+          <img src="{{ URL::asset('public/img/background-mobile.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
+        </a>
+      </div>
     </div>
-    
     <div class="row middle_content">
         <div class="title-logo col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div id="logo" class="">
                     <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 130px; height: auto"/>
                 </div> 
-                <div id="description">
+                <!-- <div id="description">
 
-                </div>          
+                </div>    -->       
         </div>
         <div class="sign-in col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <form class="form-signin" action="" method="post">
@@ -210,7 +250,7 @@
     </div>
 </div>
 
-@endif;
+@endif
 
 @stop
 
