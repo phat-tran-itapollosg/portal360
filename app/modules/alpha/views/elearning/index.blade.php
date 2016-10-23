@@ -79,10 +79,10 @@
                                     {{ $item->per_page }}
                                 </td>
                                 <td class="text-center" >
-                                    {{ $item->created_at}}
+                                    {{ SugarUtil::formatDate($item->created_at)}}
                                 </td>      
                                 <td class="text-center" >
-                                    {{ $item->updated_at}}
+                                    {{ SugarUtil::formatDate($item->updated_at)}}
                                 </td> 
                                 <td class="text-center" >
                                     {{ $item->time_retrieve}}

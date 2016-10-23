@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     {{ trans('faq.date') }}
-                    {{ $getfaq1s->faqdate }}
+                    {{ SugarUtil::formatDate($getfaq1s->faqdate) }}
                 </div>
             </div>
             

@@ -99,7 +99,7 @@
                                 </td>      
                                 <td class="text-center" >
                                     <b>
-                                        {{ $item->submitted }}
+                                        {{ SugarUtil::formatDate($item->submitted) }}
                                     </b>
                                 </td>                  
                             </tr>

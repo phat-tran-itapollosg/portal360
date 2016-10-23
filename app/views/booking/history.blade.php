@@ -52,7 +52,7 @@
                         <td>{{ $booking['schedule_time'] }}</td>
                         <td>{{ $booking['topic_name'] }} </td>
                         <td>{{ $booking['teacher_name'] }}</td>
-                        <td>{{ $booking['day_name'] }}<br>{{ $booking['schedule_date'] }}</td>
+                        <td>{{ $booking['day_name'] }}<br>{{SugarUtil::formatDate( $booking['schedule_date']) }}</td>
                         <td>{{ $booking['room_name'] }}</td>
                         <td>{{ $booking['center_name'] }}</td>       
                         <!-- <td><a class="btn btn-default btn-xs" href="{{ route('Booking.cancel',[  $booking['session_id']  ]) }}" role="button" target="_blank">{{trans('booking_index.cancel')}}</a></td> -->

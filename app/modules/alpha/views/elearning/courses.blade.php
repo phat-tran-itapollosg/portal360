@@ -65,11 +65,11 @@
                                     
                                 </td>
                                 <td class="text-center" >
-                                    {{ $item->created_at }}
+                                    {{ SugarUtil::formatDate($item->created_at) }}
                                 </td>
                                 
                                 <td class="text-center" >
-                                    {{ $item->end_date }}
+                                    {{ SugarUtil::formatDate($item->end_date)}}
                                 </td>
                                 <td class="text-center" >
                                     @if(($item->payment_status)==0)
