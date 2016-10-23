@@ -82,12 +82,12 @@
                 </ul>
             </li>    
 
-            <li class="sub-menu dcjq-parent-li">
+           <!--  <li class="sub-menu dcjq-parent-li">
                 <a href="{{ URL::to('/survey') }}" class="dcjq-parent">
                     <i class="fa fa-list"></i>
                     <span>{{ trans('app.survey') }}</span>
                 </a> 
-            </li>
+            </li> -->
             
         </ul>
         

@@ -57,20 +57,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                     
-
-
 
                         @foreach($paymentlist as $key => $payment)
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $payment['payment_type'] }} </td>                               
-                                <td>{{ $payment['total_amount'] }} </td>
-                                <td>{{ $payment['payment_amount'] }} </td>
-                                <td>{{ $payment['freebalance_amount'] }} </td>
-                                <td>{{ $payment['used_amount'] }} </td>
+                                <td><?php echo money_format("%.0n", $payment['total_amount'] ); ?></td>
+                                <td><?php echo money_format("%.0n", $payment['payment_amount'] ); ?></td>
+                                <td><?php echo money_format("%.0n", $payment['freebalance_amount'] ); ?> </td>
+                                <td><?php echo money_format("%.0n", $payment['used_amount'] ); ?></td>
                                 <td>{{ SugarUtil::formatDate($payment['start_date']) }} </td>
-                                <td>{{ SugarUtil::formatDate($payment['payment_expired_date']) }} </td>                              
+                                <td>{{ SugarUtil::formatDate($payment['payment_expired_date']) }} </td>
                                 <td>{{ $payment['total_days'] }} </td>
                                 <td>{{ $payment['ec_name'] }} </td>
                                 <td>{{ $payment['center_name'] }} </td>       
