@@ -1,4 +1,5 @@
 <?php
+include_once ('app/user_agent.php');
 
     /*
     *   Class UserController
@@ -12,6 +13,13 @@
         // Render the login page
         public function login() {
             $service_admin = Config::get('app.service_admin');
+            $ua = new UserAgent();
+            $isMobile = false;
+            //if site is accessed from mobile, then redirect to the mobile site.
+            if($ua->is_mobile()){
+                $isMobile = true;
+            }
+
             if(isset($_REQUEST['MSID']) && $_REQUEST['MSID']) {                
                 $params = array(
                     'session_id' => $_REQUEST['MSID'],
@@ -89,7 +97,8 @@
                 $data = array(
                     'username' => '',
                     'password' => '',
-                    'result' => ''
+                    'result' => '',
+                    'isMobile' => $isMobile,
                 );
 
                 // Show remembered username and password

@@ -57,18 +57,29 @@ a, a:hover, a:focus {
     -webkit-border-radius: 5px;
 }
 
+form.form-signin{
+
+    width: 100%;
+}
+
 .form-signin h2.form-signin-heading {
     margin: 0;
     padding:20px 15px;
     text-align: center;
-    background: #41cac0;
-    border-radius: 5px 5px 0 0;
+    background: #2980b9;
+    border-radius: 0px;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 300;
     font-family: 'Open Sans', sans-serif;
+}
+
+form.form-signin .login-wrap {
+    border-style: solid;
+    border-color: #2980b9;
+    border-width: thin;
 }
 
 .form-signin .checkbox {
@@ -102,7 +113,7 @@ a, a:hover, a:focus {
 }
 
 .form-signin .btn-login {
-    background: #f67a6e;
+    background: #FF3642;
     color: #fff;
     text-transform: uppercase;
     font-weight: 300;
@@ -130,6 +141,9 @@ a, a:hover, a:focus {
     padding: 20px;
 }
 
+.title-logo #logo img{
+    /*position: fixed;*/
+}
 .login-social-link  {
     display: inline-block;
     margin-top: 20px;
