@@ -17,5 +17,7 @@ return array(
 	'lang'	=> 'Ngôn Ngữ',
 	'vi'	=> 'Tiếng Việt',
 	'en'	=> 'Tiếng Anh',
+	'ImageNoteSuccess'	=> 'Thêm thành công',
+	'ImageNotefailed' => 'Thêm thất bại',
 	);
 ?>

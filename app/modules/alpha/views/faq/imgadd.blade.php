@@ -70,12 +70,15 @@ $(function () {
             }).done(function( msg ) {
               $( "#log" ).html( msg );
               if(msg.result == true){
+                alert("{{trans('faq.ImageNoteSuccess')}}");
                 window.location.href = "{{ URL::to(route('alpha.faq.faq')) }}";
               }else{
+                alert("{{trans('faq.ImageNotefailed')}}");
                 window.location.href = "{{ URL::to(route('alpha.500')) }}";
               }
               //console.log('alpha.faq.updata',msg);
             }).fail(function( jqXHR, textStatus ) {
+                 alert("{{trans('faq.ImageNotefailed')}}");
                 window.location.href = "{{ URL::to(route('alpha.500')) }}";
             });
         },
@@ -87,6 +90,7 @@ $(function () {
             );
         },
         fail: function () {
+            alert("{{trans('faq.ImageNotefailed')}}");
             window.location.href = "{{ URL::to(route('alpha.500')) }}";
         }
     });

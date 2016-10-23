@@ -16,5 +16,7 @@ return array(
 	'lang'	=> 'Language',
 	'vi'	=> 'Vietnamese',
 	'en'	=> 'English',
+	'ImageNoteSuccess'	=> 'Insert successful',
+	'ImageNotefailed' => 'Insert failed',
 	);
 ?>

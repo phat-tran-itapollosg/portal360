@@ -70,13 +70,16 @@ $(function () {
             }).done(function( msg ) {
               // $( "#log" ).html( msg );
               if(msg.result == true){
+                alert("{{trans('news.ImageNoteSuccess')}}");
                 window.location.href = "{{ URL::to(route('alpha.news.newslist')) }}";
               }else{
+                alert("{{trans('news.ImageNotefailed')}}");
                 window.location.href = "{{ URL::to(route('alpha.500')) }}";
               }
               console.log('alpha.faq.updata',msg);
             }).fail(function( jqXHR, textStatus ) {
-                console.log('alpha.faq.updata',jqXHR, textStatus);
+                // console.log('alpha.faq.updata',jqXHR, textStatus);
+               alert("{{trans('news.ImageNotefailed')}}");
                 window.location.href = "{{ URL::to(route('alpha.500')) }}";
             });
         },
@@ -88,7 +91,8 @@ $(function () {
             );
         },
         fail: function () {
-            console.log('alpha.faq.updata',jqXHR, textStatus);
+            //console.log('alpha.faq.updata',jqXHR, textStatus);
+            alert("{{trans('news.ImageNotefailed')}}");
             window.location.href = "{{ URL::to(route('alpha.500')) }}";
         }
     });

@@ -12,5 +12,7 @@ return array(
 	'back'	=> ' Quay trở lại ',
 	'contents'	=> 'Nội dung',
 	'category'	=> 'Danh mục',
+	'ImageNoteSuccess'	=> 'Thêm thành công ',
+	'ImageNotefailed' => 'Thêm thất bại',
 	);
 ?>

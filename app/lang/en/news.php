@@ -12,5 +12,8 @@ return array(
 	'back'	=> 'Back',
 	'contents'	=> 'Content',
 	'category'	=> 'Category',
+	'ImageNoteSuccess'	=> 'Insert successful',
+	'ImageNotefailed' => 'Insert failed',
+
 	);
 ?>
