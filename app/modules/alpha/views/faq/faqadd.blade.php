@@ -9,7 +9,7 @@
 @section('layout_content')
     <link rel="stylesheet" href="{{ URL::asset('public/ckeditor/css/samples.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('public/ckeditor/toolbarconfigurator/lib/codemirror/neo.css') }}">
-
+    <script src="//cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
     <script  language="javascript"  src="{{ URL::asset('public/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
     <script src="{{ URL::asset('public/ckeditor/samples/js/sample.js') }}"></script>
 <div class='row'>
