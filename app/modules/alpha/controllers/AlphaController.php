@@ -339,12 +339,14 @@ class AlphaController extends \BaseController {
         $title = Input::get('txttitle');
         $contents = Input::get('txtcontents');
         $idcate = Input::get('idcate');
+        $lang = Input::get('lang');
         if(isset($title) && isset($contents) && isset($idcate) && !empty($title) && !empty($contents) && !empty($idcate))
         {
             $InsertNews = new \AlphaNews;
             $InsertNews->ntitle = $title;
             $InsertNews->ncontent = $contents;
             $InsertNews->idcate = $idcate;
+            $InsertNews->lang = $lang;
 
             if($InsertNews->save())
             {

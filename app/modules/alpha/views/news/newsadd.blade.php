@@ -37,6 +37,15 @@
                 <input class="form-control text-left" type="text" name="txttitle">
               </div>
               <div class="form-group">
+                <label for="lang">{{ trans('faq.lang') }}</label>
+                <label class="radio-inline">
+                  <input type="radio" name="lang" id="lang-0" value="0" checked="checked"> {{ trans('faq.vi') }}
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="lang" id="lang-1" value="1"> {{ trans('faq.en') }}
+                </label>
+            </div>
+              <div class="form-group">
                 <label for="exampleInputFile">{{ trans('news.contents') }}</label>
                 <textarea class="form-control" id='txtcontents' name='txtcontents' >
                 </textarea>
