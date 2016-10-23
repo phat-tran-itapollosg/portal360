@@ -131,24 +131,31 @@
 @stop
 
 @section('content')
-@if ($isMobile == false)
+
 <div id = "login_content">
     <!-- <div class="background">
         <img src="{{ URL::asset('public/img/background-desktop.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 100%; height: auto"/>
     </div> -->
-    <div class="row background">
+    <div class="row background visible-md visible-lg">
       <div class="col-xs-12 col-md-12">
         <a  class="thumbnail">
           <img src="{{ URL::asset('public/img/background-desktop.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
         </a>
       </div>
     </div>
+    <div class="row background visible-xs visible-sm">
+      <div class="col-xs-12 col-md-12">
+        <a  class="thumbnail">
+          <img src="{{ URL::asset('public/img/background-mobile.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
+        </a>
+      </div>
+    </div>
     <div class="row middle_content">
-        <!-- <div class="title-logo col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-xs visible-sm">
+        <div class="title-logo col-lg-3 col-md-3 col-sm-12 col-xs-12 visible-xs visible-sm">
                 <div id="logo" class="">
                     <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 160px; height: auto"/>
                 </div>      
-        </div> -->
+        </div>
         <div class="sign-in col-lg3 col-md-3 col-sm-12 col-xs-12">
             <form class="form-signin" action="" method="post">
             <h2 class="form-signin-heading">{{ trans('user_login.login') }}</h2>     
@@ -194,63 +201,7 @@
         
     </div>
 </div>
-@else
 
-<div id = "login_content">
-    <!-- <div class="background">
-        <img src="{{ URL::asset('public/img/background-mobile.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 100%; height: auto"/>
-    </div> -->
-    <div class="row background">
-      <div class="col-xs-12 col-md-12">
-        <a  class="thumbnail">
-          <img src="{{ URL::asset('public/img/background-mobile.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo">
-        </a>
-      </div>
-    </div>
-    <div class="row middle_content">
-        <div class="title-logo col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div id="logo" class="">
-                    <img src="{{ URL::asset('/public/img/logo_apollo.png') }}" alt="Trung Tâm Anh Ngữ Quốc Tế Apollo" style="width: 130px; height: auto"/>
-                </div> 
-                <!-- <div id="description">
-
-                </div>    -->       
-        </div>
-        <div class="sign-in col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <form class="form-signin" action="" method="post">
-            <h2 class="form-signin-heading">{{ trans('user_login.login') }}</h2>     
-                     
-                <div class="login-wrap">
-
-                    <p class="change_lang">
-                        <span class="btn-group btn-group-xs" role="group" aria-label="Extra-small button group"> 
-                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=en" class="btn btn-default @if(App::getLocale() == 'en') btn-info @endif">English</a> 
-                            <a type="button" href="{{ URL::to('user/switchLanguage') }}?lang=vi" class="btn btn-default @if(App::getLocale() == 'vi') btn-info @endif" >Tiếng Việt</a>
-                        </span>
-                    </p>
-
-                    <input type="text" id="username" class="form-control" placeholder="{{ trans('user_login.customer_id') }}" name="username" value="{{ $username }}" autofocus>
-                    <input type="password" id="password" class="form-control" name="password" value="{{ $password }}" placeholder="{{ trans('user_login.password') }}">
-                    <label class="checkbox">
-                        <input type="checkbox" id="remember_me" name="remember_me" value="1"> {{ trans('user_login.remember_me') }}
-                    </label>
-                    <p >
-                    @if($result == 'not_for_portal')
-                    {{ trans('user_login.account_is_not_a_customer_error_msg') }}
-                    @elseif($result == 'login_failed')
-                    {{ trans('user_login.login_failed_error_msg') }}
-                    @endif
-                </p> 
-                    <button class="btn btn-lg btn-login btn-block" type="submit" id="submit" name="submit" value="{{ trans('user_login.login') }}">{{ trans('user_login.login') }}</button>
-                </div>
-            
-                
-            </form>            
-        </div>     
-    </div>
-</div>
-
-@endif
 
 @stop
 
