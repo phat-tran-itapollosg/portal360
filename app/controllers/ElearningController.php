@@ -42,11 +42,9 @@ class ElearningController extends BaseController
             ),
         );
         $result = $client->call('entryPoint', $data_params);
-        // var_dump($params['student_id']);37ff9843-89e6-effa-c1e5-56e913a00d6e
-        // var_dump($result);
-        // die();
         if(intval($result->success) == 0){
-            return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+            return View::make('elearning.index')->with(array('elearnings'=>array()));
+            exit();
         }else{
             $elearnings = json_decode($result->value_list, true);
             return View::make('elearning.index')->with(array('elearnings'=>(array)$elearnings));
