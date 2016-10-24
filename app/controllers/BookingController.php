@@ -55,7 +55,7 @@ class BookingController extends BaseController {
             );
             $result = $client->call('entryPoint', $data_params);
 
-           
+            
             if(intval($result->success) == 0)
             {
                 return App::make("ErrorsController")->callAction("error", ['code'=>500]);
@@ -123,9 +123,14 @@ class BookingController extends BaseController {
             ),
         );
         $result = $client->call('entryPoint', $data_params);
+        
         if(intval($result->success) == 0)
         {
-            return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+            // return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+            return View::make('booking.history')->with(array(
+                'session_booking'=>array(),
+                ));
+            exit();
         }
         else
         {

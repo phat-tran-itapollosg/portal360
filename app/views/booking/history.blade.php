@@ -30,6 +30,9 @@
     </header>
 
     <div class="panel-body">
+    @if (empty($session_booking) OR count($session_booking) <=0 OR $session_booking == '[]')
+                  <h4><p class="text-center">{{ trans('booking_index.could_not_find') }}</p></h4>
+                @else
     <div class="card">
     <div class="card-body card-padding overflow-auto">
         <table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
@@ -63,6 +66,7 @@
         </table> 
     </div>
     </div>
+    @endif 
     </div>
     </section>
 </div> 
