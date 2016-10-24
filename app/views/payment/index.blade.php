@@ -46,12 +46,9 @@
                             <th>#</th>
                             <th>{{trans('payment.payment_type')}}</th>
                             <th>{{trans('payment.total_amount')}}</th>                           
-                            <th>{{trans('payment.payment_amount')}}</th>
-                            <th>{{trans('payment.freebalance_amount')}}</th>
-                            <th>{{trans('payment.used_amount')}}</th>
-                            <th>{{trans('payment.start_date')}}</th>
-                            <th>{{trans('payment.payment_expired_date')}}</th>
                             <th>{{trans('payment.total_days')}}</th>
+                            <th>{{trans('payment.start_date')}}</th>
+                            <th>{{trans('payment.payment_expired_date')}}</th>                            
                             <th>{{trans('payment.ec_name')}}</th>
                             <th>{{trans('payment.center_name')}}</th>
                         </tr>
@@ -62,13 +59,10 @@
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $payment['payment_type'] }} </td>                               
-                                <td><?php echo money_format("%.0n", $payment['total_amount'] ); ?></td>
-                                <td><?php echo money_format("%.0n", $payment['payment_amount'] ); ?></td>
-                                <td><?php echo money_format("%.0n", $payment['freebalance_amount'] ); ?> </td>
-                                <td><?php echo money_format("%.0n", $payment['used_amount'] ); ?></td>
+                                <td><?php setlocale(LC_MONETARY,"vi_VN"); echo money_format("%.0n", $payment['total_amount'] ); ?></td>
+                                <td>{{ $payment['total_days'] }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['start_date']) }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['payment_expired_date']) }} </td>
-                                <td>{{ $payment['total_days'] }} </td>
                                 <td>{{ $payment['ec_name'] }} </td>
                                 <td>{{ $payment['center_name'] }} </td>       
                             </tr>
