@@ -31,13 +31,17 @@
                 else {
                     $bgClass = 'textbg_orange';
                 }
-
+                $start = date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_start)));
+                $end = date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_end)));
+               
                 $events[] = array(
                     'title' => $schedules[$i]->session_name,
-                    'start' => date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_start))),
+                    'start' => $start,
                     'starttime' => SugarUtil::formatDate($schedules[$i]->date_start),
-                    'end' => date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_end))),
-                    'endtime' => SugarUtil::formatDate($schedules[$i]->date_end), 
+                    'startinpopup' => SugarUtil::formatDate($start),
+                    'end' => $end,
+                    'endtime' => SugarUtil::formatDate($schedules[$i]->date_end),
+                    'endinpopup' => SugarUtil::formatDate($end),
                     'teacher_name' => $schedules[$i]->teacher_name, 
                     'class_name' => $schedules[$i]->class_name, 
                     'room_name' => $schedules[$i]->room_name, 

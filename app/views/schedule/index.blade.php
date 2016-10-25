@@ -50,7 +50,9 @@
                               <p class="clear">{{ trans('schedule_index.not_started') }}</p>
                           </div>
                          </div>
-                          <div id="calendar" class="has-toolbar"></div>
+                          <div id="calendar" class="has-toolbar">
+                            
+                          </div>
                       </div>
 
                       <div class="modal fade session_detail" id="session_detail" data-backdrop="static" data-keyboard="false">
