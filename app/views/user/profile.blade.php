@@ -14,11 +14,9 @@
           <section class="panel">
               <div class="user-heading round">
                   <a href="#">
-                        @if(Session::get('contact')->picture != '')
+                        
                         <img src="{{ Config::get('app.service_config.server_url') }}/index.php?entryPoint=getAvatar&id={{Session::get('contact')->picture}}&type=SugarFieldImage&isTempFile=1" alt="">
-                         @else
-                        <img src="{{ URL::asset('public/img/customer-avatar.png') }}" alt="">
-                         @endif
+                     
                   </a>
                   <h1>{{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }}</h1>
                   <p>{{ Session::get('user')->user_name }}</p>
@@ -49,7 +47,7 @@
       <aside class="profile-info col-lg-9">
               <section class="panel panel-default">
               <header class="panel-heading" style="border-radius:0">
-                <b>{{ trans('user_change_password.page_title') }}</b>
+                <b>{{ trans('user_profile.page_title') }}</b>
               </header>
               <div class="panel-body bio-graph-info">
                   <form id="form-profile" action="{{ URL::to('user/saveProfile') }}" method="post" class="form-horizontal" role="form">
@@ -62,7 +60,7 @@
                       <div class="form-group">
                           <label  class="col-lg-2 control-label"><b>{{ trans('user_profile.first_name') }}</b></label>
                           <div class="col-lg-6">
-                              <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ trans('user_profile.first_name') }}" value="{{ $user->first_name }}">
+                              <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ trans('user_profile.first_name') }}" value="{{ $user->first_name }}">
                           </div>
                       </div>
                       <div class="form-group">

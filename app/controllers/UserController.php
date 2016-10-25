@@ -209,7 +209,6 @@ include_once ('app/user_agent.php');
             $session = Session::get('session');
             $user = Session::get('user');
             $appListStrings = Session::get('app_list_strings');
-
             //Get timezone list - Edit by Tung Bui 31/05/2016
             $timezoneList = SugarUtil::getTimezoneList();
 
