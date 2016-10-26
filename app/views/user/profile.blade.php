@@ -16,7 +16,6 @@
                   <a href="#">
                         
                         <img src="{{ Config::get('app.service_config.server_url') }}/index.php?entryPoint=getAvatar&id={{Session::get('contact')->picture}}&type=SugarFieldImage&isTempFile=1" alt="">
-                     
                   </a>
                   <h1>{{ Session::get('contact')->last_name }} {{ Session::get('contact')->first_name }}</h1>
                   <p>{{ Session::get('user')->user_name }}</p>
