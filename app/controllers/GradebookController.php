@@ -48,7 +48,11 @@
                 $name_of_gradebook = explode('-',$gradebook->name);
                 $type_of_gradebook = $name_of_gradebook[count($name_of_gradebook) - 1];
 
-                $detail_content = "<table class = 'gb_detail' width='100%'>
+
+
+
+                if($type_of_gradebook != 'LMS'){
+                        $detail_content = "<table class = 'gb_detail' width='100%'>
                         <tbody>
                         <tr>
                         <td><b>{$lang['lbl_name']}:</b></td>
@@ -67,20 +71,16 @@
                         <td>{$gradebook->center_name}</td>
                         </tr>
                         <tr>
-                        <tr>
+                        
                         <td><b>{$lang['lbl_teacher_comment']}:</b></td>
                         <td>".$detail->comment."</td>
                         </tr>
-                        <tr>
+                        
                         </tbody>
-                        </tabel> 
-
+                        </table> 
+                        <hr>
                         <div class= 'overflow-auto'>
-                        ";
-
-
-                if($type_of_gradebook != 'LMS'){
-                        $detail_content .="<table class = 'mark_detail table table-striped table-bordered table-hover table-vmiddle' width='100%'>
+                        <table class = 'mark_detail table table-striped table-bordered table-hover table-vmiddle' width='100%'>
                         <thead>
                         <tr><th></th>";
                         $header_html = '';
@@ -120,43 +120,81 @@
                         "; 
                         // $detail_content = array(base64_encode($detail_content));
                         $detail_htmls[$i] = $detail_content;
-                        
-                        
+                            
+                            
                     }else{
+
                         $variable = $this->gradebookLMSportal($class_id,$student_id);
-                        
-                        foreach ($variable as $data) {
-                            $detail_content .= "<div class='panel panel-default'>
-                                  <!-- Default panel contents -->
-                                  <div class='panel-heading'>{$data['lesson_name']}</div>
-                                  <!-- Table -->
-                                  <table class='table'> 
-                                    <thead> 
-                                        <tr> 
-                                            <th>{$lang['Columns']}</th> 
-                                            <th>{$lang['Speaking']}</th>
-                                            <th>{$lang['Listening']}</th> 
-                                            <th>{$lang['Reading']}</th> 
-                                            <th>{$lang['Grammar']}</th> 
-                                            <th>{$lang['Total']}</th> 
-                                        </tr> 
-                                    </thead> 
-                                    <tbody> 
-                                        <tr> 
-                                            <th >%</th> 
-                                            <td>{$data['Speaking']}</td> 
-                                            <td>{$data['Listening']}</td> 
-                                            <td>{$data['Reading']}</td> 
-                                            <td>{$data['Grammar']}</td> 
-                                            <td></td> 
-                                            
-                                        </tr>
-                                    </tbody> 
-                                  </table>
-                                </div>";
-                        }
-                        $detail_content .="</div>";
+                        $detail_content ="<table class='gb_detail' width='100%'>
+                                <tbody>
+                                <tr>
+                                <td><b>{$lang['lbl_name']}:</b></td>
+                                <td>{$gradebook->name}</td>
+                                </tr>
+                                <tr>    
+                                <td><b>{$lang['lbl_class_name']}:</b></td>
+                                <td>{$gradebook->class_name}</td>
+                                </tr>
+                                <tr>
+                                <td><b>{$lang['lbl_dateinput']}:</b></td>
+                                <td>".(SugarUtil::formatDate($gradebook->date_input))."</td>
+                                </tr>
+                                <tr>
+                                <td><b>{$lang['lbl_center']}:</b></td>
+                                <td>{$gradebook->center_name}</td>
+                                </tr>
+                                
+                                <tr>
+                                <td><b>{$lang['lbl_teacher_comment']}:</b></td>
+                                <td>".$detail->comment."</td>
+                                </tr>
+                                
+                                </tbody>
+                                </table> <hr> <div class= 'overflow-auto'>";
+
+                                
+
+                        $item = "";
                         $detail_htmls[$i] = $detail_content;
+                            foreach ($variable as $data) {
+                                $Total = floatval($data->Speaking) 
+                                    + floatval($data->Listening)
+                                    + floatval($data->Reading)
+                                    + floatval($data->Grammar);
+                                $item .= "<div class='panel panel-default'>
+                                      <!-- Default panel contents -->
+                                      <div class='panel-heading'>{$data->lesson_name}</div>
+                                      <!-- Table -->
+                                      <div class='panel-body'>
+                                      <table class='table'> 
+                                        <thead> 
+                                            <tr> 
+                                                <th>{$lang['Columns']}</th> 
+                                                <th>{$lang['Speaking']}</th>
+                                                <th>{$lang['Listening']}</th> 
+                                                <th>{$lang['Reading']}</th> 
+                                                <th>{$lang['Grammar']}</th> 
+                                                <th>{$lang['Total']}</th> 
+                                            </tr> 
+                                        </thead> 
+                                        
+                                            <tr> 
+                                                <th >%</th> 
+                                                <td>".number_format($data->Speaking,2)."</td> 
+                                                <td>".number_format($data->Listening,2)."</td> 
+                                                <td>".number_format($data->Reading,2)."</td> 
+                                                <td>".number_format($data->Grammar,2)."</td> 
+                                                <td>".number_format($Total,2)."</td> 
+                                                
+                                            </tr>
+                                        
+                                      </table>
+                                    </div></div>";
+                                    
+                            }
+                           // $detail_content .="</div>";
+                        //$detail_content .= $item."</div>";
+                        $detail_htmls[$i] = $detail_content.$item."</div>";
                     }
                 
                     $tr = "<tr>
