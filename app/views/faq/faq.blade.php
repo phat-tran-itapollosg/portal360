@@ -23,7 +23,7 @@
         @foreach ($getfaq1 as $getfaq1s ) 
             <div class="media">
               <div class="media-left">
-                <a href="faq/detal/{{$getfaq1s->id}}">
+                <a href="{{ URL::to('/faq/detal') }}/{{$getfaq1s->id}}">
                     @if(!empty($getfaq1s->img)) 
                         <img width="64px"  src="{{URL::asset('public/images/')}}/{{$getfaq1s->img}}">
                     @else
@@ -33,7 +33,7 @@
               </div>
               <div class="media-body">
                 <h4 class="media-heading">
-                    <a href="faq/detal/{{$getfaq1s->id}}">
+                    <a href="{{ URL::to('/faq/detal') }}/{{$getfaq1s->id}}">
                         {{ $getfaq1s->faqquestion }}
                     </a>
                 </h4>

@@ -23,7 +23,7 @@
             @foreach ($getnews as $getnewsv) 
             <div class="media">
               <div class="media-left">
-                <a href="news/detal/{{$getnewsv->id}}">
+                <a href="{{ URL::to('/news/detal') }}/{{$getnewsv->id}}">
                     @if(!empty($getnewsv->img)) 
                             <img  width="64px" src="{{URL::asset('public/images')}}/{{$getnewsv->img}}">
                     @else
@@ -33,7 +33,7 @@
               </div>
               <div class="media-body">
                 <h4 class="media-heading">
-                    <a href="news/detal/{{$getnewsv->id}}">
+                    <a href="{{ URL::to('/news/detal') }}/{{$getnewsv->id}}">
                         {{ $getnewsv->ntitle }}
                     </a>
                 </h4>
