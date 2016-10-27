@@ -157,10 +157,10 @@
                         $item = "";
                         $detail_htmls[$i] = $detail_content;
                             foreach ($variable as $data) {
-                                $Total = floatval($data->Speaking) 
-                                    + floatval($data->Listening)
-                                    + floatval($data->Reading)
-                                    + floatval($data->Grammar);
+                                // $Total = floatval($data->Speaking) 
+                                //     + floatval($data->Listening)
+                                //     + floatval($data->Reading)
+                                //     + floatval($data->Grammar);
                                 $item .= "<div class='panel panel-default'>
                                       <!-- Default panel contents -->
                                       <div class='panel-heading'>{$data->lesson_name}</div>
@@ -184,7 +184,7 @@
                                                 <td>".number_format($data->Listening,2)."</td> 
                                                 <td>".number_format($data->Reading,2)."</td> 
                                                 <td>".number_format($data->Grammar,2)."</td> 
-                                                <td>".number_format($Total,2)."</td> 
+                                                <td>".number_format($data->Total,2)."</td> 
                                                 
                                             </tr>
                                         
@@ -267,7 +267,16 @@
 
         public function gradebookLMSportal($class_id, $student_id)
         {
-            $sql_text ="SELECT 
+            $sql_text ="
+                        SELECT result.student_id, result.lesson_name, 
+                            MAX(result.Grammar) AS Grammar, 
+                            MAX(result.Reading) AS Reading,
+                            MAX(result.Listening) AS Listening,
+                            MAX(result.Speaking) AS Speaking,
+                            (AVG(result.Grammar) + AVG(result.Reading) 
+                            + AVG(result.Listening) + AVG(result.Speaking)) AS Total
+                        FROM                         
+                        (SELECT 
                             s.sis_student_id student_id,
                             ac.name lesson_name,
                             CASE (ls.skill)
@@ -317,7 +326,7 @@
                             WHEN ac.name LIKE 'Intermediate%' THEN 3
                             WHEN ac.name LIKE 'Upper-intermediate%' THEN 4
                             ELSE 5
-                        END ASC , lesson_name";
+                        END ASC , lesson_name) result GROUP BY result.lesson_name";
 
                         /*761f2190-d0c9-85f8-bb8f-57e9ce5f299c student_id */
                         /* e33b145e-d8b3-46cf-0649-57edc5aab064 class id*/
@@ -327,6 +336,7 @@
                 $results = DB::select($sql_text);
                 return $results;
             } catch (Exception $e) {
+                var_dump($e);die();
                 return array();
                 
             }
