@@ -25,7 +25,9 @@
         <link href="{{ URL::asset('public/theme/css/style.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/theme/css/style-responsive.css" rel="stylesheet') }}" />
         <link href="{{ URL::asset('public/css/alpha.styles.css" rel="stylesheet') }}" />
-
+        
+        <script  src="{{ URL::asset('public/ckeditor/ckeditor.js') }}"></script>
+        
         <!-- old
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
