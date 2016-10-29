@@ -56,10 +56,10 @@
                     <tbody>
 
                         @foreach($paymentlist as $key => $payment)
+                            <?php setlocale(LC_MONETARY,"vi_VN"); ?>
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $payment['payment_type'] }} </td>                               
-                                <td><?php setlocale(LC_MONETARY,"vi_VN"); echo money_format("%.0n", $payment['total_amount'] ); ?></td>
+                                <td>{{ $payment['payment_type'] }} </td>                      <td>{{ SugarUtil::formatMoney(money_format("%.0n", $payment['total_amount'] )) }}</td>     
                                 <td>{{ $payment['total_days'] }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['start_date']) }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['payment_expired_date']) }} </td>
