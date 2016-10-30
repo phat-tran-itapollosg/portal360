@@ -182,7 +182,8 @@
             }    
         }
 
-        public static function formatMoney($moneyString) {             
+        public static function formatMoney($money) {     
+            $moneyString = money_format("%.0n",$money );        
             if(!empty($moneyString)) {
                 if((int)strpos($moneyString,"$")!=false)
                 {
