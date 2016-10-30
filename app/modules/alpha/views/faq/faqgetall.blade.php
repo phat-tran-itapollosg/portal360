@@ -52,11 +52,15 @@
                                     @if(!empty($item->lang)) 
                                         <span class="label label-success">
                                         {{ trans('faq.en') }} 
-                                        </span>&nbsp;{{ $item->faqquestion }}
+                                        </span>&nbsp;
+                                        <a href="{{ URL::to('admin/faq/edit') }}/{{$item->id}}" target="_blank">{{ $item->faqquestion }}
+                                                </a>
                                     @else
                                         <span class="label label-primary">
                                         {{ trans('faq.vi') }} 
-                                        </span> &nbsp;{{ $item->faqquestion }}
+                                        </span> &nbsp;
+                                        <a href="{{ URL::to('admin/faq/edit') }}/{{$item->id}}" target="_blank">{{ $item->faqquestion }}
+                                                </a>
                                     @endif                                   
                                     
                                     
@@ -111,7 +115,7 @@
                         <tr >
                             <td>{{$item->cid}}</td>                                 
                             <td class="text-left">
-                                {{ $item -> ccontent }}
+                                <a href="{{ URL::to('admin/faq/category/edit') }}/{{$item->cid}}" target="_blank">{{ $item -> ccontent }}</a>                                
                             </td>
                             <td class="text-center">
                                 <div class="dropdown">
