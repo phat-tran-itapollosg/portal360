@@ -49,7 +49,11 @@
     </form>
     <hr>
     @if ((empty($session_booking) OR count($session_booking) <=0 OR $session_booking == '[]') AND $method == 'post' )
-      <h4><p class="text-center">{{ trans('booking_index.could_not_find') }}</p></h4>
+      @if(!isset($notify) OR empty($notify))
+        <h4><p class="text-center">{{ trans('booking_index.could_not_find') }}</p></h4>
+      @else
+        <h4><p class="text-center">{{ $notify }}</p></h4>
+      @endif
     @elseif($method == 'post')
     <div class="card">
     <div class="card-body card-padding overflow-auto">

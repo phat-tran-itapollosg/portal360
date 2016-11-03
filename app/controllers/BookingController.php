@@ -58,7 +58,19 @@ class BookingController extends BaseController {
             
             if(intval($result->success) == 0)
             {
-                return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+                //var_dump($result);die();
+                //return App::make("ErrorsController")->callAction("error", ['code'=>500]);
+                return View::make('booking.index')->with(array(
+                    'session_booking'=>array(),
+                    'start'=>$start,
+                    'end'=>$end,
+                    'class_type'=>$class_type,
+                    'method'=>$method,
+                    'todayDate' => $todayDate,
+                    'todayDateMDY' => $todayDateMDY,
+                    'notify' => $result->notify
+                    ));
+                exit();
             }
             else
             {
@@ -72,6 +84,7 @@ class BookingController extends BaseController {
                     'method'=>$method,
                     'todayDate' => $todayDate,
                     'todayDateMDY' => $todayDateMDY,
+                    // 'notify' => $result->notify
                     ));
                 exit();
             }
