@@ -45,8 +45,8 @@
                         @foreach($schedules as $schedule)
                             <tr>
                                 <td>{{ $schedule->class_name }}</td>                                 
-                                <td>{{ SugarUtil::formatDate($schedule->date_start) }}</td>
-                                <td>{{ SugarUtil::formatDate($schedule->date_end) }}</td>
+                                <td>{{ $schedule->startinpopup }}</td>
+                                <td>{{ $schedule->endinpopup }}</td>
                                 <td>{{ $schedule->duration }}</td>
                                 <td>{{ $schedule->teacher_name }}</td>
                                 <td>{{ $schedule->room_name }}</td>
