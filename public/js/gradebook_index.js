@@ -31,8 +31,10 @@ $(document).ready(function(){
             loading.hide();
             return;
         }
+        var base = $("base").attr('href');
+        //console.log('========> ')
         jQuery.ajax({ 
-            url: "getGradebookDetail", 
+            url: base+"/gradebook/getGradebookDetail", 
             type: "POST", 
             async: true,
             data:{   
