@@ -29,7 +29,7 @@
         <div class="form-group">
             <label class="control-label">{{trans('gradebook_index.lbl_class_name')}}: </label>
             <div class="" style="display:inline">
-            <select id='class_id' class="class_id styled hasCustomSelect" style="width:150px">
+            <select id='class_id' class="class_id styled hasCustomSelect" style="width:400px">
             <option value="">--None--</option>
             @foreach($classes as $class)
                 <option value="{{$class->id}}">{{$class->name}}</option>
