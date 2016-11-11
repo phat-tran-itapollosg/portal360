@@ -31,17 +31,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="slc_target">{{ trans('feedback_add.target') }}</label>
-                        <div class="fg-line col-sm-10">
-                        <select id="slc_target" name="slc_target" class="form-control">
-                            @foreach($targetOptions as $key => $value)
-                                <option value="{{ $key }}"> {{ $value }} </option>
-                            @endforeach;
-                        </select>    
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="col-sm-2 control-label" for="subject">{{ trans('feedback_add.subject') }}</label>
                         <div class="fg-line col-sm-10">
                         <input type="text" id="subject" name="subject" class="form-control" placeholder="{{ trans('feedback_add.subject') }}">
