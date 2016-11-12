@@ -39,6 +39,7 @@
       <div class="form-group">
         <label for="exampleInputName2">{{trans('booking_index.type')}}</label>
         <select class="form-control" name="class_type" id="class_type" placeholder="class_type">
+          <option value='' @if ($class_type == '') selected @endif>Select All</option>
           <option value="Skill" @if ($class_type == 'Skill') selected @endif>Skill</option>
           <option value="Connect Club" @if ($class_type == 'Connect Club') selected @endif>Connect Club</option>
           <option value="Connect Event" @if ($class_type == 'Connect Event') selected @endif>Connect Event</option>
