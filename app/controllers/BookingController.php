@@ -8,16 +8,53 @@
 class BookingController extends BaseController {
 
     public function index() {
+         $now = getdate(); 
+         $day = date('d');
+         $month = date('m');
+         $year = date('y');
 
+        // var_dump( $now["wday"]);
+         $thu= $now["wday"];
+
+         $span = 0;
+         switch ($thu) {
+
+            case 0:
+                $span = 1;
+                break;
+            case 1:
+                $span = 7;
+                break;
+            case 2:
+                $span = 6;
+                break;
+            case 3:
+                $span = 5;
+                break;
+            case 4:
+                $span = 4;
+                break;
+            case 5:
+                $span = 3;
+                break;
+            case 6:
+                $span = 2;
+                break;
+        }
+        $dateint = mktime(0,0,0,$month,$day + $span,$year);
+        $dateintend = mktime(0,0,0,$month,$day + $span +6,$year);
+        // $nextMonday = date('Y-m-d',$dateint);
+        // var_dump($nextMonday);
         //var_dump(Input::get('submit'));
         //$booking = array();
-        $start = '';
-        $end = '';
+
+        $start =date('Y-m-d',$dateint);
+        $end = date('Y-m-d',$dateintend);
+
         $class_type = '';
         $method = 'get';
         $todayDate = date("Y-m-d");
         $todayDateMDY = date("m-d-Y");
-    
         if(Input::get('start') && Input::get('end') && Input::get('class_type')) {
             //var_dump($booking);die();
             $method = 'post';
