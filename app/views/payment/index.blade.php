@@ -36,11 +36,19 @@
             </header>
 
             <div class="panel-body">
+            @if ((empty($paymentlist) OR count($paymentlist) <=0 OR $paymentlist == '[]'))
+              @if(!isset($notify) OR empty($notify))
+                <h4><p class="text-center">{{ trans('booking_index.could_not_find') }}</p></h4>
+              @else
+                <h4><p class="text-center">{{ $notify }}</p></h4>
+              @endif
+            @else
+
             <div class="card">
             <div class="card-body card-padding overflow-auto">
                 <table id="data-table" class="table table-bordered table-hover table-striped">
 
-<!--   [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) | -->
+
                     <thead>
                         <tr>
                             <th>#</th>
@@ -56,10 +64,11 @@
                     <tbody>
 
                         @foreach($paymentlist as $key => $payment)
+                            
                             <tr>
                                 <td>{{ $key+1 }}</td>
-                                <td>{{ $payment['payment_type'] }} </td>                               
-                                <td><?php setlocale(LC_MONETARY,"vi_VN"); echo money_format("%.0n", $payment['total_amount'] ); ?></td>
+                                <td>{{ $payment['payment_type'] }} </td>                      
+                                <td>{{ SugarUtil::formatMoney($payment['total_amount']) }}</td>     
                                 <td>{{ $payment['total_days'] }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['start_date']) }} </td>
                                 <td>{{ SugarUtil::formatDate($payment['payment_expired_date']) }} </td>
@@ -71,16 +80,14 @@
                 </table> 
             </div>
             </div>
+            @endif
+
             </div>
             </section>
         </div>
 
     </div>
-    
-    
-      </div>
-
-  <!-- page end-->
+    </div>
 @stop
 
 @section('scripts')

@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ trans('app.app_title') }} - {{ trans('app.center_name_title') }} - @yield('title')</title>
+        <base href="{{ url('/') }}" />
         <link rel="shortcut icon" href="{{ URL::asset('public/img/favicon.png') }}">
 
         <!-- Vendor CSS -->

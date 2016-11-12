@@ -45,11 +45,14 @@
                                 @if(!empty($item->lang)) 
                                         <span class="label label-success">
                                         {{ trans('faq.en') }} 
-                                        </span>&nbsp;{{ $item->ntitle }}
+                                        </span>&nbsp;
+                                        <a href="{{ URL::to('admin/news/edit') }}/{{$item->id}}" target="_blank">{{ $item->ntitle }}
+                                        </a>
                                     @else
                                         <span class="label label-primary">
                                         {{ trans('faq.vi') }} 
-                                        </span> &nbsp;{{ $item->ntitle }}
+                                        </span> &nbsp;
+                                        <a href="{{ URL::to('admin/news/edit') }}/{{$item->id}}" target="_blank">{{ $item->ntitle }}
                                     @endif           
                                 
                                 </td>
@@ -99,8 +102,8 @@
                             
                     <tr>
                         <td>{{$item->nid}}</td>                                 
-                        <td class="text-left">
-                            {{ $item -> ccontents }}
+                        <td class="text-left">                            
+                            <a href="{{ URL::to('admin/news/category/edit') }}/{{$item->nid}}" target="_blank">{{ $item -> ccontents }}</a>
                         </td>
                         <td class="text-center">
                             <div class="dropdown">

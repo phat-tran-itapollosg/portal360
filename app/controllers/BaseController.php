@@ -9,7 +9,7 @@ class BaseController extends Controller {
         if(Session::has('locale')) {
             App::setLocale(Session::get('locale'));
         }
-        
+        setlocale(LC_MONETARY,"vi_VN");
         $this->client = SugarUtil::getClient();
     }
     // End Hieu Nguyen

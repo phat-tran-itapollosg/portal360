@@ -48,12 +48,14 @@ class SurveyController extends BaseController
 
             $this->alphaSurveyClient->release_session_key( $sessionKey );
             if(isset($list_surveys['status']) AND !empty($list_surveys['status'])){
-                return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $list_surveys['status']]);
+                //return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $list_surveys['status']]);
+                $this->layout->content = View::make('survey.index')->with(array('surveys'=>array(), 'notify' => $list_surveys['status']));
             }else{
                 $this->layout->content = View::make('survey.index')->with(array('surveys'=>$list_surveys));
             }
         } catch (Exception $e) {
-            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $e->getMessage()]);
+            $this->layout->content = View::make('survey.index')->with(array('surveys'=>array(), 'notify' => $e->getMessage()));
+            // return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $e->getMessage()]);
         }        
     }
     public function dosurvey($id = NULL)

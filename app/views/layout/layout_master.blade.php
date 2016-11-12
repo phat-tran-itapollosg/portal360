@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="{{ URL::asset('public/img/favicon_apollo.png') }}">
 
         <title>{{ $app_title }} - {{ $center_name_title }} - @yield('title')</title>
-
+        <base href="{{ url('/') }}" />
         <!-- Bootstrap core CSS -->
         <link href="{{ URL::asset('public/theme/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('public/theme/css/bootstrap-reset.css') }}" rel="stylesheet">

@@ -33,23 +33,14 @@ class PaymentController extends BaseController {
        
         if(intval($result->success) == 0)
         {
-            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $result->notify]);
+            return View::make('payment.index')->with(array(
+                'paymentlist'=>array(),
+                'notify' => $result->notify
+                ));
+            // return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => $result->notify]);
         }
         else
         {
-            // ["payment_id"]=> string(36) "94bb0e6b-7f59-f5af-06f2-57eb21bf5584" 
-            //  ["payment_type"]=> string(7) "Deposit" 
-            //  ["total_amount"]=> string(10) "5000000.00" 
-            //  ["payment_amount"]=> string(10) "5000000.00" 
-            //  ["freebalance_amount"]=> string(4) "0.00" 
-            //  ["used_amount"]=> string(4) "0.00" 
-            //  ["start_date"]=> string(10) "2016-09-28" 
-            //  ["payment_expired_date"]=> string(10) "0000-00-00" 
-            //  ["total_days"]=> string(4) "0.00" 
-            //  ["remain_days"]=> NULL 
-            //  ["course_fee_name"]=> string(0) "" 
-            //  ["ec_name"]=> string(17) "Hoàng Tùng Lâm" 
-            //  ["center_name"]=> string(19) "Pham Ngoc Thach 360"
             $payment = json_decode($result->value_list, true);
             return View::make('payment.index')->with(array(
                 'paymentlist'=>(array)$payment,

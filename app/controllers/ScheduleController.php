@@ -60,6 +60,14 @@
 
         public function listview() {             
             $schedules = SugarUtil::getSchedules();
+            
+            for($i = 0; $i < count($schedules); $i++) {
+                $start = date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_start)));
+                $end = date('Y-m-d H:i:s',strtotime("+7 hours".($schedules[$i]->date_end)));
+               
+                $schedules[$i]->startinpopup = SugarUtil::formatDate($start);
+                $schedules[$i]->endinpopup = SugarUtil::formatDate($end);
+            }
             $data = array(
                 'schedules' => $schedules
             );    

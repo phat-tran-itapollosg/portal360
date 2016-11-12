@@ -33,6 +33,13 @@
                 </header>
                 
                 <div class="panel-body">
+                @if ((empty($paymentlist) OR count($paymentlist) <=0 OR $paymentlist == '[]'))
+              @if(!isset($notify) OR empty($notify))
+                <h4><p class="text-center">{{ trans('booking_index.could_not_find') }}</p></h4>
+              @else
+                <h4><p class="text-center">{{ $notify }}</p></h4>
+              @endif
+            @else
                 	<table id="data-table" class="datatable table table-bordered table-hover table-striped table-vmiddle">
 	                	<thead>                                   
 	                        <tr>
@@ -57,6 +64,7 @@
 	                        @endforeach
 	                    </tbody>
 	                </table>   
+	                 @endif
                 </div>
                 </section>
             

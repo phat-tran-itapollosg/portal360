@@ -4,6 +4,7 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
+	var base = $("base").attr('href');
 	// Define changes to default configuration here. For example:
 	 config.language = 'vi';
 	// config.uiColor = '#AADC6E';
@@ -17,7 +18,13 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.filebrowserFlashUploadUrl = '../ckfinder/core/connector/java/connector.java?command=QuickUpload&type=Flash';
 	
 
-	config.filebrowserBrowseUrl= 'http://localhost/test_ckfinder/';
+	// config.filebrowserBrowseUrl= 'http://localhost/test_ckfinder/';
+	// config.filebrowserBrowseUrl = 'http://localhost/apolloportal/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=files';
+    // config.filebrowserImageBrowseUrl = 'http://localhost/apolloportal/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=images';
+    // config.filebrowserFlashBrowseUrl = 'http://localhost/apolloportal/public/templateEditor/kcfinder/browse.php?opener=ckeditor&type=flash';
+    config.filebrowserUploadUrl = base+'/public/kcfinder/upload.php?opener=ckeditor&type=files';
+    // config.filebrowserImageUploadUrl = 'http://localhost/apolloportal/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=images';
+    // config.filebrowserFlashUploadUrl = 'http://localhost/apolloportal/public/templateEditor/kcfinder/upload.php?opener=ckeditor&type=flash';
 
 
 	// config.filebrowserBrowseUrl= 'http://localhost/test_kcfinder/';

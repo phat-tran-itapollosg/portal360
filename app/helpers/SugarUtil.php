@@ -182,6 +182,18 @@
             }    
         }
 
+        public static function formatMoney($money) {     
+            $moneyString = money_format("%.0n",$money );        
+            if(!empty($moneyString)) {
+                if((int)strpos($moneyString,"$")!=false)
+                {
+                    $moneyString = str_replace('$', '', $moneyString);
+                    $moneyString = $moneyString.'đ';
+                }             
+                return $moneyString;         
+            }    
+        }
+
         // Util function to convert a given date string with from format to db date format 
         public static function toDbDate($dateString, $fromFormat, $toUTC = false) {
             if(!empty($dateString)) {
@@ -219,6 +231,7 @@
             $timeFormat = isset($preferences->time_format)?$preferences->time_format:"";
             return $timeFormat;
         }
+
         //add by Tung Bui - generate tzname
         public static function tzName($name, $off){
             if(empty($name)) return '';
