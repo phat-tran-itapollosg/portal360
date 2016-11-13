@@ -55,8 +55,10 @@ class BookingController extends BaseController {
         $method = 'get';
         $todayDate = date("Y-m-d");
         $todayDateMDY = date("m-d-Y");
-        if(Input::get('start') && Input::get('end') && Input::get('class_type')) {
-            //var_dump($booking);die();
+        //var_dump(Input::get('start'));die();
+        if(Input::get('start') && Input::get('end')){//} && Input::get('class_type')) {
+            // var_dump($booking);die();
+
             $method = 'post';
             $start = Input::get('start');
             $end = Input::get('end');
