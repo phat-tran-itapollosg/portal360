@@ -26,5 +26,7 @@ return array(
     'Reading' => 'Reading',
     'Grammar' => 'Grammar',
     'Total' => 'Total',
+    'Title' => 'Title',
+    'LMSScore' => 'LMS Score',
    
 );

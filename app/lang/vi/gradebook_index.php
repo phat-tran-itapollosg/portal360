@@ -25,4 +25,6 @@ return array(
     'Reading' => 'Đọc',
     'Grammar' => 'Văn phạm',
     'Total' => 'Tổng',
+    'Title' => 'Tiêu đề',
+    'LMSScore' => 'Điểm LMS',
 );
