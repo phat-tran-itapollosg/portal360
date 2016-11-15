@@ -1,12 +1,11 @@
 var loading = new Spinner();
 var detail;
+var LMSDetail;
 $(document).ready(function(){
 
     $("#class_id").select2({
         'language' : locale,    
     });
-
-//  1e1413e10f011dfebcc6b900cffce8e8da2906d0
 
     $("#gradebook-filter").on("change",'#class_id',function(){
         getGradebookContent();
@@ -19,7 +18,6 @@ $(document).ready(function(){
         {
             $('.panel-body').show();
         }
-//  [SVN] r6072 | trung | 2016-08-12 09:21:28 +0700 (T6, 12 Th08 2016) |
     });
     function getGradebookContent() {
 
@@ -46,6 +44,7 @@ $(document).ready(function(){
                 $('.gradebook_content').html(data.html);
                 $('.gradebook_result').html(data.total_result);
                 detail =  data.detail;
+                LMSDetail =  data.getLMSDetail;
                 loading.hide();
             },
             error: function(){                    
@@ -69,5 +68,12 @@ $(document).ready(function(){
         var data = _this.attr('data');
         $("#type_detail .modal-body").html(detail[data]);
         $('#type_detail').modal("show");        
+    });
+    $(".panel-body").on("click",".btn_lms_detail", function(){
+        var _this = $(this);
+        var data = _this.attr('data');
+        $("#get-lms-detail .modal-body").html(LMSDetail[data].body);
+        $("#get-lms-detail .modal-header .modal-title").html(LMSDetail[data].title);
+        $('#get-lms-detail').modal("show");        
     });
 });
