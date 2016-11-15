@@ -301,7 +301,7 @@
                 'module_name' => 'Contacts',
                 'module_id' => $contact->id,
                 'link_field_name' => 'j_class_contacts_1',
-                'related_module_query' => '',
+                'related_module_query' => ' j_class.class_type_adult = "Practice" ',
                 'related_fields' => array(
                     'id', 'name', 'end_date', 'hours' 
                 ),
