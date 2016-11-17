@@ -74,6 +74,17 @@ $(document).ready(function(){
         var data = _this.attr('data');
         $("#get-lms-detail .modal-body").html(LMSDetail[data].body);
         $("#get-lms-detail .modal-header .modal-title").html(LMSDetail[data].title);
-        $('#get-lms-detail').modal("show");        
+        $('#gradebook_detail').modal("hide");    
+        setTimeout(function(){
+            $('#get-lms-detail').modal("show");   
+        }, 500);   
+    });
+    $("#btn-lms-cancel").click(function(){
+        console.log('========> lms_btn_cancel',this);
+        $('#get-lms-detail').modal("hide");   
+        setTimeout(function(){
+            $('#gradebook_detail').modal("show");    
+        }, 500); 
+             
     });
 });

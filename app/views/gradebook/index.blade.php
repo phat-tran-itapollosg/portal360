@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" id="btn-cancel" class="btn" data-dismiss="modal">{{trans('app.btn_close_text')}}</button>
+                            <button type="button" id="btn-lms-cancel" class="btn" data-dismiss="modal">{{trans('app.btn_close_text')}}</button>
                         </div>
                     </div>
                 </div>
