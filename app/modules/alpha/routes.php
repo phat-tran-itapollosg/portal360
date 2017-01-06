@@ -31,6 +31,7 @@ Route::group(array('prefix' => 'admin','before' => 'auth','namespace' => 'App\Mo
     Route::get('faq/category/edit/{id}', ['as' => 'alpha.faq.editCategoryFaq', 'uses' => 'AlphaController@editCategoryFaq']);
     Route::get('faq/category/del/{id}', ['as' => 'alpha.faq.delCategoryFaq', 'uses' => 'AlphaController@delCategoryFaq']);
     Route::post('faq/category/del/data', ['as' => 'alpha.faq.editCategoryFaqData', 'uses' => 'AlphaController@editCategoryFaqData']);
+    Route::post('faq/check', ['as' => 'alpha.faq.FaqCheckBox', 'uses' => 'AlphaController@FaqCheckBox']);
 
     //Route::post('/faq/re/del', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@redelFagdata']);
     //Route::get('faq/category/{idcate}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@GetAlphaCategory']);
@@ -44,6 +45,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth','namespace' => 'App\Mo
 
     //del news
     Route::get('news/del/{id}', ['as' => 'alpha.news.delnews', 'uses' => 'AlphaController@delnews']);
+    //del check data
+    Route::post('news/check', ['as' => 'alpha.news.DelCheckBox', 'uses' => 'AlphaController@DelCheckBox']);
+    
     //Route::get('news/redel/{id}', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@redelnews']);
     //Route::get('news/list/dele', ['as' => 'alpha.faq.dosurvey', 'uses' => 'AlphaController@delNewsget']); 
 
