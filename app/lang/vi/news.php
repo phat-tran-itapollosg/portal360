@@ -14,5 +14,6 @@ return array(
 	'category'	=> 'Danh mục',
 	'ImageNoteSuccess'	=> 'Thêm thành công ',
 	'ImageNotefailed' => 'Thêm thất bại',
+	
 	);
 ?>

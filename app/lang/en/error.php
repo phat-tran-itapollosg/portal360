@@ -7,6 +7,7 @@ return array(
 	'success'	=> 'Success',
 	'error'		=> 'Server has experienced a problem. please try again after some time!',
 	'empty'		=> 'Server has experienced a problem. please try again after some time!',
+	'errorcheckbox' => 'Not choose what to delete'
 );
 
 ?>

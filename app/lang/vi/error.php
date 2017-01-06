@@ -7,6 +7,7 @@ return array(
 	'success'	=> 'Thành công',
 	'error'		=> 'Quá trình xử lý có một vấn đề. Vui lòng thử lại sau!',
 	'empty'		=> 'Quá trình xử lý có một vấn đề. Vui lòng thử lại sau!',
+	'errorcheckbox' => 'Chưa chọn nội dung cần xóa'
 );
 
 ?>
