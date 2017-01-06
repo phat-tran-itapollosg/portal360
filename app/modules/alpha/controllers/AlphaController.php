@@ -20,7 +20,7 @@ class AlphaController extends \BaseController {
     protected function faq()
     {
         
-        $recordAlphaFaq =  \AlphaFaq::where('faqdelete',0)->orderBy('faqdate','desc')->get();
+        $recordAlphaFaq =  \AlphaFaq::orderBy('faqdate','desc')->get();
         $getCateFaq = \AlphaFaqCategory::where('cdelete',0)->get();
         $this->layout->content = view::make('alpha::faq.faqgetall')->with(array('faqdelget' =>$recordAlphaFaq,
 
@@ -249,9 +249,18 @@ class AlphaController extends \BaseController {
     //controller news
     protected function newslist()
     {
-        $getfaq1 = \AlphaNews::where('ndelete',0)->orderBy('ndate','desc')->get();
-        $getCategoryNews = \AlphaNewsCategory::where('cdelete',0)->get();
-         $this->layout->content = \view::make('alpha::news.newslist')->with(
+        // $getfaq1 = \AlphaNews::where('ndelete',0)->orderBy('ndate','desc')->get();
+        
+        // $getCategoryNews = \AlphaNewsCategory::where('cdelete',0)->get();
+
+        ////////// edit
+        $getfaq1 = \AlphaNews::orderBy('ndate','desc')->get();
+        $getCategoryNews = \AlphaNewsCategory::get();
+
+
+
+
+        $this->layout->content = \view::make('alpha::news.newslist')->with(
             array('getfaq1'=>$getfaq1,'getCategoryNews' =>$getCategoryNews));
     }
 
@@ -275,6 +284,8 @@ class AlphaController extends \BaseController {
             return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Looks like Something went wrong.']);   
         }
     }
+
+
 
     protected function newsedit($id)
     {
@@ -520,4 +531,66 @@ class AlphaController extends \BaseController {
         $this->layout->content=\view::make('alpha::500');
     }
 
- }
+    protected function DelCheckBox()
+    {
+       $a = Input::get();
+       if (isset($a) && !empty($a)) 
+       {
+           $getAllActive = \AlphaNews::where('ndelete',0)->lists('id');
+            $ColDelete = 'ndelete';
+            $Table = 'alpha_news';  
+           if (array_intersect ($a , $getAllActive)) {
+                $this->ChageActive( $Table,0,1,$ColDelete,array_intersect ($a , $getAllActive));
+           }
+           if(array_diff ($a , $getAllActive))
+           {
+
+                $this->ChageActive($Table,1,0,$ColDelete,array_diff ($a , $getAllActive));
+
+           }
+        
+            return \Redirect::to(route('alpha.news.newslist')); 
+        }
+        else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Please select on Checkbox.']);
+        }
+    }
+    // Table change
+    // Deleted trang thai dang ton tai
+    protected function ChageActive($Table,$DeleteNows,$DeleteChange,$ColDelete,$Array)
+    {
+        $DeleteArray = \DB::table((string)$Table)
+                    ->where((string)$ColDelete,$DeleteNows)
+                    ->whereIn('id', array_unique($Array))
+                    ->update([$ColDelete=>$DeleteChange]);
+        if($DeleteArray)
+        {
+            return true;
+        }
+    }
+    protected function FaqCheckBox()
+    {
+        $a = Input::get();
+       if (isset($a) && !empty($a)) 
+       {
+           $getAllActive = \AlphaFaq::where('faqdelete',0)->lists('id');
+            $ColDelete = 'faqdelete';
+            $Table = 'alpha_faq';  
+           if (array_intersect ($a , $getAllActive)) {
+                $this->ChageActive( $Table,0,1,$ColDelete,array_intersect ($a , $getAllActive));
+           }
+           if(array_diff ($a , $getAllActive))
+           {
+
+                $this->ChageActive($Table,1,0,$ColDelete,array_diff ($a , $getAllActive));
+
+           }
+        
+            return \Redirect::to(route('alpha.faq.faq')); 
+        }
+        else{
+            return App::make("ErrorsController")->callAction("error", ['code'=>500, 'messenger' => 'Please select on Checkbox.']);
+        }
+    }
+}
+        
