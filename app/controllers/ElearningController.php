@@ -69,6 +69,7 @@ class ElearningController extends BaseController
         $Class = NULL ;
         $session_id = NULL ;
         $classroom = NULL;
+        $sis_class_id = NULL;
 
         if(count($request) == 2){
             parse_str($request[1], $classroom);
@@ -84,6 +85,7 @@ class ElearningController extends BaseController
                 $start_study = $classroom['start_study'];
                 $end_access_date = $end_study = $classroom['end_study'];
                 $session_id = $classroom['session_id'];
+                $sis_class_id = $classroom['sis_class_id'];
             }
         }
 
@@ -212,13 +214,15 @@ class ElearningController extends BaseController
                         if($record == NULL){
                             $record = new \AlphaStudents;
                             $record->alpha_student_id = \AlphaUtil::create_guid();
-                            $record->login = $user['login'];
-                            $record->login = $user['login'];
+                            $record->login = $user['login'];  
                             $record->first_name = $user['first_name'];
                             $record->last_name = $user['last_name'];
                             $record->email = $user['email'];
                             $record->sis_student_id = $contact->id;
                             $record->session_id = $session_id;
+                            $record->sis_class_id = $sis_class_id;
+                            $record->start_date = $start_study;
+                            $record->end_date = $end_study;
                             if($Class != NULL){
                                 $record->alpha_classroom_id = $Class->getKey();
                                 $record->classroom_id = $Class->id;
@@ -226,13 +230,15 @@ class ElearningController extends BaseController
                             
                             $record->save();
                         }else{
-                            $record->login = $user['login'];
-                            $record->login = $user['login'];
+                            $record->login = $user['login'];    
                             $record->first_name = $user['first_name'];
                             $record->last_name = $user['last_name'];
                             $record->email = $user['email'];
                             $record->sis_student_id = $contact->id;
                             $record->session_id = $session_id;
+                            $record->sis_class_id = $sis_class_id;
+                            $record->start_date = $start_study;
+                            $record->end_date = $end_study;
                             if($Class != NULL){
                                 $record->alpha_classroom_id = $Class->getKey();
                                 $record->classroom_id = $Class->id;
