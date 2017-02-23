@@ -33,13 +33,7 @@ return array(
     'rss_url' => '',
     
     // For webservice. Added by Hieu Nguyen on 2016-03-15
-    'service_config' => array(
-        'server_url' => 'http://sistest.apollo.edu.vn/',
-        'custom_service' => true,   // Use custom service in custom folder or not
-        'root_username' => 'webservice',
-        'root_password' => '57ee62e7ce2ba75fac974faa3eae09e0',  // MD5
-        //'root_password' => 'dc483e80a7a0bd9ef71d8cf973673924',
-    ),
+    
     // End for webservice
     
     // Date time config. Added by Hieu Nguyen on 2016-03-15
@@ -246,14 +240,7 @@ return array(
 		'username'        =>'admin',
 		'password'        =>'123456',
 	),
-	'service_elearning' => array(
-		'remoteUrl'      =>'https://re.reallyenglish.com/teachatapollo/sso',
-		'retrievingUrl'      =>'https://re.reallyenglish.com/api/v1/organizations/2509/classrooms/',
-		'auth'   =>array(
-			'organization_code' => 'APOLLO',
-			'password' => 'w7vubOvqX',
-			'api_key' => '374cb2ebfe74bd4fec17d0dffb1023c6c4676c3a35a93d20f830ea56ade0039a',
-		),
+	
 		// 'course'       =>array(
 		// 	'course_code' => 'APOLLO-PE6',
   //           'group_code' => 'TEST_GROUP',
